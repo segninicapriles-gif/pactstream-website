@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350" width="300" height="350">
+  <defs>
+    <linearGradient id="shieldOuter" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D3F6E"/>
+      <stop offset="50%" stop-color="#0F4C81"/>
+      <stop offset="100%" stop-color="#1B6B4A"/>
+    </linearGradient>
+    <linearGradient id="shieldInner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#135A8F"/>
+      <stop offset="100%" stop-color="#258B55"/>
+    </linearGradient>
+    <linearGradient id="lockBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D8EDE2"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-5%" width="120%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Outer shield -->
+  <path d="M150 15 L275 65 L275 170 Q275 275 150 330 Q25 275 25 170 L25 65 Z"
+        fill="url(#shieldOuter)" filter="url(#shadow)"/>
+
+  <!-- Inner shield -->
+  <path d="M150 30 L262 76 L262 168 Q262 264 150 316 Q38 264 38 168 L38 76 Z"
+        fill="url(#shieldInner)"/>
+
+  <!-- Inner glow line -->
+  <path d="M150 42 L252 84 L252 164 Q252 254 150 304 Q48 254 48 164 L48 84 Z"
+        fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.2"/>
+
+  <!-- Lock shackle -->
+  <path d="M132 112 L132 94 Q132 74 150 74 Q168 74 168 94 L168 112"
+        fill="none" stroke="url(#lockBody)" stroke-width="6" stroke-linecap="round" opacity="0.95"/>
+
+  <!-- Lock body -->
+  <rect x="122" y="112" width="56" height="42" rx="5" ry="5" fill="url(#lockBody)" opacity="0.95"/>
+
+  <!-- Keyhole -->
+  <circle cx="150" cy="127" r="5.5" fill="#0F4C81"/>
+  <path d="M147.5 127 L146 142 L154 142 L152.5 127" fill="#0F4C81"/>
+
+  <!-- Checkmark badge -->
+  <circle cx="174" cy="150" r="13" fill="#228B4A" stroke="#1A5C94" stroke-width="1.5"/>
+  <polyline points="166,150 171,155 182,144" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Primary text -->
+  <text x="150" y="192" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="20" font-weight="700" fill="white" letter-spacing="2">
+    SEGURIDAD
+  </text>
+  <text x="150" y="214" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="20" font-weight="700" fill="white" letter-spacing="2">
+    VERIFICADA
+  </text>
+
+  <!-- Divider -->
+  <line x1="85" y1="224" x2="215" y2="224" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+
+  <!-- Secondary text -->
+  <text x="150" y="242" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="16" fill="rgba(255,255,255,0.75)" letter-spacing="0.4">
+    Datos cifrados
+  </text>
+  <text x="150" y="260" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="16" fill="rgba(255,255,255,0.75)" letter-spacing="0.4">
+    y protegidos
+  </text>
+
+  <!-- Year stamp -->
+  <text x="150" y="286" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="13" fill="rgba(255,255,255,0.4)" letter-spacing="1">
+    2026
+  </text>
+</svg>

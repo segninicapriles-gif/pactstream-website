@@ -1590,6 +1590,11 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
             </ul>
           </div>
         </div>
+        {/* Trust badge */}
+        <div className="flex items-center justify-center gap-2 py-6">
+          <img src="/security-badge.svg" alt="Seguridad Verificada" width="36" height="44" />
+          <span className="text-xs text-[#8896A6]">Datos cifrados y protegidos · Seguridad verificada 2026</span>
+        </div>
         {/* Divider */}
         <div className="h-px bg-white/[0.06]" />
         {/* Bottom row */}
