@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Nunito } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,6 +15,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pactstream.io"),
   title: "PactStream — Cobra antes. Documenta mejor. Certifica sin riesgos.",
   description:
     "El único escrow inteligente para construcción en España. Pagos protegidos PSD2, verificación con IA (score 0-100) y cobros por hitos validados. Para promotores, constructores y técnicos.",
@@ -39,12 +41,21 @@ export const metadata: Metadata = {
     locale: "es_ES",
     siteName: "PactStream",
     url: "https://pactstream.io",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "PactStream — Escrow inteligente para construcción",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "PactStream — Escrow inteligente para construcción",
     description:
       "Pagos protegidos PSD2, verificación IA y cobros por hitos. Para promotores, constructores y técnicos en España.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -55,6 +66,29 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "PactStream",
+  url: "https://pactstream.io",
+  description:
+    "Escrow inteligente para construcción residencial en España. Pagos protegidos PSD2, verificación de evidencias con IA (score 0-100) y cobros por hitos validados.",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+    description: "Starter — gratis, 2,4% por transacción",
+  },
+  author: {
+    "@type": "Organization",
+    name: "Tomato Design S.L.",
+    url: "https://wearetomato.com",
+  },
+  inLanguage: "es",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,7 +96,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.className} ${nunito.variable}`}>
-      <body className="min-h-screen flex flex-col">{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

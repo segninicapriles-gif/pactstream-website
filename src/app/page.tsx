@@ -44,6 +44,7 @@ import {
   ScreenDashboardPromotor,
 } from "@/components/AppScreens";
 import { type Locale, type Dict, getDictionary, defaultLocale } from "@/i18n";
+import { track } from "@vercel/analytics";
 
 const SUPABASE_URL = "https://tkncogzzlzbfhsfqlnsw.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_9Td5AIshuNe-LOGdKTYcNw_N7rqGQUD";
@@ -273,7 +274,7 @@ function HeroSection({ t }: { t: Dict }) {
             </p>
             {/* Inline email capture */}
             {!heroSubmitted ? (
-              <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); try { await insertWaitlist(heroEmail, undefined, "hero"); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
+              <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); try { await insertWaitlist(heroEmail, undefined, "hero"); track("waitlist_submit", { source: "hero" }); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
                 <input
                   type="email"
                   required
@@ -344,17 +345,18 @@ function HeroSection({ t }: { t: Dict }) {
 /* ─── WAITLIST ─── */
 function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
   const TOTAL_SPOTS = 200;
-  const [spotsLeft] = useState(147);
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !role) return;
     setLoading(true);
-    try { await insertWaitlist(email, role, "waitlist"); setSubmitted(true); } catch { /* error silently */ }
+    setError(false);
+    try { await insertWaitlist(email, role, "waitlist"); track("waitlist_submit", { source: "waitlist", role }); setSubmitted(true); } catch { setError(true); }
     setLoading(false);
   };
 
@@ -369,21 +371,17 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-5">{t.waitlist.heading}</h2>
             <p className="text-lg text-[#8896A6] leading-relaxed mb-10">{t.waitlist.sub}</p>
 
-            {/* Spots counter */}
+            {/* Spots — primera fase */}
             <div className="mb-10">
               <div className="flex items-baseline gap-3 mb-3">
-                <span className="text-5xl font-black font-display text-[#a9f3ff]">{spotsLeft}</span>
-                <span className="text-lg text-[#8896A6]">/ {TOTAL_SPOTS} {t.waitlist.spotsLeft}</span>
+                <span className="text-5xl font-black font-display text-[#a9f3ff]">{TOTAL_SPOTS}</span>
+                <span className="text-lg text-[#8896A6]">{locale === "es" ? "plazas en la primera oleada" : "spots in the first wave"}</span>
               </div>
-              <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full rounded-full"
-                  style={{ background: "linear-gradient(90deg, #0D9B84, #a9f3ff)" }}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${((TOTAL_SPOTS - spotsLeft) / TOTAL_SPOTS) * 100}%` }}
-                  transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
-                />
-              </div>
+              <p className="text-sm text-[#8896A6]">
+                {locale === "es"
+                  ? "Acceso por orden de registro. Cuando se completen, abriremos lista de espera."
+                  : "Access in order of registration. Once full, we'll open a waiting list."}
+              </p>
             </div>
 
             {/* Tiers */}
@@ -446,6 +444,13 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
                     >
                       {t.waitlist.cta} <ArrowRight className="w-5 h-5" />
                     </motion.button>
+                    {error && (
+                      <p className="text-xs text-center text-red-300" role="alert">
+                        {locale === "es"
+                          ? "No hemos podido registrarte. Inténtalo de nuevo o escríbenos a hello@pactstream.io."
+                          : "We couldn't register you. Try again or write to hello@pactstream.io."}
+                      </p>
+                    )}
                     <p className="text-xs text-center text-[#8896A6]">{t.waitlist.privacy}</p>
                   </motion.form>
                 ) : (
@@ -468,8 +473,8 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
                     </h3>
                     <p className="text-[#8896A6] text-sm mb-4">
                       {locale === "es"
-                        ? `Tu posición: #${TOTAL_SPOTS - spotsLeft + 1}. Te avisaremos cuando sea tu turno.`
-                        : `Your position: #${TOTAL_SPOTS - spotsLeft + 1}. We'll notify you when it's your turn.`}
+                        ? "Tu plaza queda reservada por orden de registro. Te avisaremos cuando sea tu turno."
+                        : "Your spot is reserved in order of registration. We'll notify you when it's your turn."}
                     </p>
                     <div className="p-3 rounded-[8px] bg-white/[0.04] border border-white/[0.06]">
                       <p className="text-xs text-[#8896A6] mb-1">
@@ -1540,7 +1545,8 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
   const tagline = (t.footer as any).tagline as string;
   const productHrefs = ["#funcionalidades", "#como-funciona", "#precios", "#ecosistema"];
   const audienceHrefs = ["#para-quien", "#para-quien", "#para-quien", "#casos-de-uso"];
-  const companyHrefs = ["#", "#", "mailto:hello@pactstream.io"];
+  // "Sobre nosotros" y "Blog" no existen aún — solo se renderizan enlaces con destino real
+  const companyHrefs = ["https://costpact.io", "mailto:hello@pactstream.io"];
 
   return (
     <footer className="py-16 bg-[#0A1420] text-white/60">
