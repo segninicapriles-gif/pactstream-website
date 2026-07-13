@@ -46,6 +46,15 @@ import {
 import { type Locale, type Dict, getDictionary, defaultLocale } from "@/i18n";
 import { track } from "@vercel/analytics";
 
+declare global {
+  interface Window { gtag?: (...args: unknown[]) => void }
+}
+
+/* Evento de conversión GA4 (complementa a Vercel Analytics, cuyo plan Hobby no registra custom events) */
+function gaEvent(name: string, params?: Record<string, unknown>) {
+  if (typeof window !== "undefined") window.gtag?.("event", name, params);
+}
+
 const SUPABASE_URL = "https://tkncogzzlzbfhsfqlnsw.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_9Td5AIshuNe-LOGdKTYcNw_N7rqGQUD";
 
@@ -274,7 +283,7 @@ function HeroSection({ t }: { t: Dict }) {
             </p>
             {/* Inline email capture */}
             {!heroSubmitted ? (
-              <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); try { await insertWaitlist(heroEmail, undefined, "hero"); track("waitlist_submit", { source: "hero" }); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
+              <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); try { await insertWaitlist(heroEmail, undefined, "hero"); track("waitlist_submit", { source: "hero" }); gaEvent("waitlist_submit", { source: "hero" }); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
                 <input
                   type="email"
                   required
@@ -356,7 +365,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
     if (!email || !role) return;
     setLoading(true);
     setError(false);
-    try { await insertWaitlist(email, role, "waitlist"); track("waitlist_submit", { source: "waitlist", role }); setSubmitted(true); } catch { setError(true); }
+    try { await insertWaitlist(email, role, "waitlist"); track("waitlist_submit", { source: "waitlist", role }); gaEvent("waitlist_submit", { source: "waitlist", role }); setSubmitted(true); } catch { setError(true); }
     setLoading(false);
   };
 

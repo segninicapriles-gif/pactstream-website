@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Nunito } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -103,6 +104,23 @@ export default function RootLayout({
         />
         {children}
         <Analytics />
+        {/* Google Analytics 4 — Consent Mode v2, denied por defecto: sin cookies sin consentimiento */}
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)}
+            window.gtag = gtag;
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied'
+            });
+            gtag('js', new Date());
+            gtag('config', 'G-0X036FTNKN');
+          `}
+        </Script>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-0X036FTNKN" strategy="afterInteractive" />
       </body>
     </html>
   );
