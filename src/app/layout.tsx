@@ -1,14 +1,31 @@
 import type { Metadata } from "next";
-import { Inter, Nunito } from "next/font/google";
+import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono, Nunito } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const inter = Inter({
+// Sistema ARCO — UI/body
+const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-hanken",
+  weight: ["400", "500", "600", "700"],
 });
 
+// Sistema ARCO — display/headings (sustituye a CorporativeSansRd)
+const bricolageGrotesque = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+  weight: ["700", "800"],
+});
+
+// Sistema ARCO — Cifra Viva (importes, scores, hitos)
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "600", "700"],
+});
+
+// Wordmark only — no se toca
 const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",
@@ -44,7 +61,7 @@ export const metadata: Metadata = {
     url: "https://pactstream.io",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.png?v=2",
         width: 1200,
         height: 630,
         alt: "PactStream — Escrow inteligente para construcción",
@@ -56,7 +73,7 @@ export const metadata: Metadata = {
     title: "PactStream — Escrow inteligente para construcción",
     description:
       "Pagos protegidos PSD2, verificación IA y cobros por hitos. Para promotores, constructores y técnicos en España.",
-    images: ["/og-image.png"],
+    images: ["/og-image.png?v=2"],
   },
   robots: {
     index: true,
@@ -64,6 +81,14 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://pactstream.io",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-64.png", sizes: "64x64", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
@@ -96,7 +121,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.className} ${nunito.variable}`}>
+    <html
+      lang="es"
+      className={`${hankenGrotesk.className} ${hankenGrotesk.variable} ${bricolageGrotesque.variable} ${jetbrainsMono.variable} ${nunito.variable}`}
+    >
       <body className="min-h-screen flex flex-col">
         <script
           type="application/ld+json"
