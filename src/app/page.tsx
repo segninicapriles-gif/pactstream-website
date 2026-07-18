@@ -164,7 +164,7 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [featDropdown, setFeatDropdown] = useState(false);
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A1420]/90 backdrop-blur-xl border-b border-white/[0.06]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#080D42]/90 backdrop-blur-xl border-b border-white/[0.06]">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
         <PactStreamLogo />
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
@@ -181,9 +181,9 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
                   transition={{ duration: 0.15 }}
                   className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
                 >
-                  <div className="w-56 p-2 rounded-[12px] bg-[#0A1420] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+                  <div className="w-56 p-2 rounded-[14px] bg-[#080D42] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
                     {t.features.items.map((f, i) => (
-                      <a key={f.tag} href="#funcionalidades" onClick={(e) => { e.preventDefault(); setFeatDropdown(false); window.dispatchEvent(new CustomEvent('pactstream:feature', { detail: i })); document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' }); }} className="block px-3 py-2.5 rounded-[8px] text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">
+                      <a key={f.tag} href="#funcionalidades" onClick={(e) => { e.preventDefault(); setFeatDropdown(false); window.dispatchEvent(new CustomEvent('pactstream:feature', { detail: i })); document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' }); }} className="block px-3 py-2.5 rounded-[10px] text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">
                         {f.tag}
                         <span className="block text-xs text-white/30 mt-0.5">{f.title}</span>
                       </a>
@@ -207,7 +207,7 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
             <Globe className="w-4 h-4" />
             <span className="uppercase font-medium">{locale === "es" ? "EN" : "ES"}</span>
           </button>
-          <a href="#waitlist" className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#0D9B84] text-white text-sm font-semibold rounded-[10px] hover:bg-[#0B8572] transition-colors">
+          <a href="#waitlist" className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#0121DC] text-white text-sm font-semibold rounded-full hover:bg-[#0019B3] transition-colors">
             {t.nav.cta} <ArrowRight className="w-4 h-4" />
           </a>
           <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 text-white/70 hover:text-white" aria-label="Menu">
@@ -221,7 +221,7 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0A1420]/95 backdrop-blur-xl border-t border-white/[0.06] overflow-hidden"
+            className="md:hidden bg-[#080D42]/95 backdrop-blur-xl border-t border-white/[0.06] overflow-hidden"
           >
             <div className="flex flex-col gap-1 px-6 py-4">
               {[
@@ -235,7 +235,7 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
                   {link.label}
                 </a>
               ))}
-              <a href="#waitlist" onClick={() => setMobileOpen(false)} className="mt-2 flex items-center justify-center gap-2 px-5 py-3 bg-[#0D9B84] text-white text-sm font-semibold rounded-[10px]">
+              <a href="#waitlist" onClick={() => setMobileOpen(false)} className="mt-2 flex items-center justify-center gap-2 px-5 py-3 bg-[#0121DC] text-white text-sm font-semibold rounded-full">
                 {t.nav.cta} <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -253,7 +253,7 @@ function HeroSection({ t }: { t: Dict }) {
   const [heroLoading, setHeroLoading] = useState(false);
   return (
     <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0A1420] via-[#0F1D2F] to-[#0A1420]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#080D42] via-[#080D42] to-[#080D42]" />
       <motion.div
         className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full opacity-[0.07]"
         style={{ background: "radial-gradient(circle, #0D9B84, transparent 70%)" }}
@@ -292,7 +292,7 @@ function HeroSection({ t }: { t: Dict }) {
                   placeholder={t.heroEmail.placeholder}
                   className="flex-1 px-5 py-4 bg-white/[0.08] border border-white/[0.12] rounded-[10px] text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D9B84]/50 focus:ring-1 focus:ring-[#0D9B84]/30 transition-colors"
                 />
-                <button type="submit" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0B6E5F] text-white text-base font-semibold rounded-[10px] hover:bg-[#095A4E] transition-all hover:shadow-[0_8px_30px_rgba(11,110,95,0.4)] whitespace-nowrap">
+                <button type="submit" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0121DC] text-white text-base font-semibold rounded-full hover:bg-[#0019B3] transition-all hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)] whitespace-nowrap">
                   {t.heroEmail.cta} <ArrowRight className="w-5 h-5" />
                 </button>
               </form>
@@ -370,7 +370,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
   };
 
   return (
-    <section id="waitlist" className="py-20 md:py-28 bg-gradient-to-br from-[#0A1420] via-[#0F1D2F] to-[#0A1420] text-white overflow-hidden relative">
+    <section id="waitlist" className="py-20 md:py-28 bg-gradient-to-br from-[#080D42] via-[#080D42] to-[#080D42] text-white overflow-hidden relative">
       {/* subtle radial glow instead of pattern */}
       <div className="absolute inset-0 opacity-[0.06]" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(13,155,132,0.3), transparent 60%)" }} />
       <div className="relative max-w-[1200px] mx-auto px-6 lg:px-10">
@@ -411,7 +411,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
-            <div className="p-8 md:p-10 rounded-[16px] bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm">
+            <div className="p-8 md:p-10 rounded-[28px] bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm">
               <AnimatePresence mode="wait">
                 {!submitted ? (
                   <motion.form
@@ -441,13 +441,13 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
                       >
                         <option value="" disabled>{t.waitlist.rolePlaceholder}</option>
                         {t.waitlist.roles.map((r) => (
-                          <option key={r} value={r} className="bg-[#1B2D45] text-white">{r}</option>
+                          <option key={r} value={r} className="bg-[#080D42] text-white">{r}</option>
                         ))}
                       </select>
                     </div>
                     <motion.button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-[#0B6E5F] text-white text-base font-semibold rounded-[10px] hover:bg-[#095A4E] transition-all hover:shadow-[0_8px_30px_rgba(11,110,95,0.4)]"
+                      className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-[#0121DC] text-white text-base font-semibold rounded-full hover:bg-[#0019B3] transition-all hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)]"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -485,7 +485,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
                         ? "Tu plaza queda reservada por orden de registro. Te avisaremos cuando sea tu turno."
                         : "Your spot is reserved in order of registration. We'll notify you when it's your turn."}
                     </p>
-                    <div className="p-3 rounded-[8px] bg-white/[0.04] border border-white/[0.06]">
+                    <div className="p-3 rounded-[10px] bg-white/[0.04] border border-white/[0.06]">
                       <p className="text-xs text-[#8896A6] mb-1">
                         {locale === "es" ? "Comparte con tu red:" : "Share with your network:"}
                       </p>
@@ -526,7 +526,7 @@ function ProblemSection({ t }: { t: Dict }) {
             const s = styles[i];
             return (
               <AnimatedSection key={card.title} delay={i * 0.1}>
-                <div className={`p-8 rounded-[12px] ${s.bg}`}>
+                <div className={`p-8 rounded-[20px] ${s.bg}`}>
                   <div className={`w-12 h-12 rounded-[10px] ${s.iconBg} flex items-center justify-center mb-5`}>
                     <Icon className={`w-6 h-6 ${s.iconColor}`} />
                   </div>
@@ -538,7 +538,7 @@ function ProblemSection({ t }: { t: Dict }) {
           })}
         </div>
         <AnimatedSection className="mt-10 text-center">
-          <a href="#waitlist" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0B6E5F] text-white text-sm font-semibold rounded-[10px] hover:bg-[#095A4E] transition-all hover:shadow-[0_8px_30px_rgba(11,110,95,0.4)]">
+          <a href="#waitlist" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0121DC] text-white text-sm font-semibold rounded-full hover:bg-[#0019B3] transition-all hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)]">
             {t.nav.cta} <ArrowRight className="w-4 h-4" />
           </a>
         </AnimatedSection>
@@ -704,7 +704,7 @@ function StickyPhoneSection({ t }: { t: Dict }) {
           </button>
         </div>
         <div className="mt-10 text-center">
-          <a href="#waitlist" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0B6E5F] text-white text-sm font-semibold rounded-[10px] hover:bg-[#095A4E] transition-all hover:shadow-[0_8px_30px_rgba(11,110,95,0.4)]">
+          <a href="#waitlist" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0121DC] text-white text-sm font-semibold rounded-full hover:bg-[#0019B3] transition-all hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)]">
             {t.nav.cta} <ArrowRight className="w-4 h-4" />
           </a>
         </div>
@@ -771,8 +771,8 @@ function RolesSection({ t }: { t: Dict }) {
             const s = roleStyles[i];
             return (
               <AnimatedSection key={role.title} delay={i * 0.1}>
-                <div className={`p-8 rounded-[12px] bg-white border ${s.border} hover:shadow-[0_8px_16px_rgba(15,29,47,0.08)] transition-all h-full`}>
-                  <div className="w-14 h-14 rounded-[12px] flex items-center justify-center mb-6" style={{ background: s.bg }}>
+                <div className={`p-8 rounded-[20px] bg-white border ${s.border} hover:shadow-[0_8px_16px_rgba(15,29,47,0.08)] transition-all h-full`}>
+                  <div className="w-14 h-14 rounded-[14px] flex items-center justify-center mb-6" style={{ background: s.bg }}>
                     <Icon className="w-7 h-7" style={{ color: s.color }} />
                   </div>
                   <h3 className="text-xl font-bold text-[#1A2332] mb-1">{role.title}</h3>
@@ -797,7 +797,7 @@ function RolesSection({ t }: { t: Dict }) {
             const s = roleStyles[i];
             return (
               <div key={role.title} className="flex-none w-[80vw] snap-center">
-                <div className={`p-6 rounded-[12px] bg-white border ${s.border} h-full`}>
+                <div className={`p-6 rounded-[20px] bg-white border ${s.border} h-full`}>
                   <div className="w-12 h-12 rounded-[10px] flex items-center justify-center mb-4" style={{ background: s.bg }}>
                     <Icon className="w-6 h-6" style={{ color: s.color }} />
                   </div>
@@ -836,8 +836,8 @@ function UseCasesSection({ t }: { t: Dict }) {
             const Icon = caseIcons[i];
             return (
               <AnimatedSection key={c.title} delay={i * 0.08}>
-                <div className="group flex gap-6 p-8 rounded-[12px] bg-[#F5F7FA] border border-[#E8ECF2] hover:border-[#0D9B84]/30 hover:shadow-[0_4px_8px_rgba(15,29,47,0.06)] transition-all">
-                  <div className="w-14 h-14 rounded-[12px] bg-white border border-[#E8ECF2] flex items-center justify-center shrink-0 group-hover:border-[#0D9B84]/30 transition-colors">
+                <div className="group flex gap-6 p-8 rounded-[20px] bg-[#F5F7FA] border border-[#E8ECF2] hover:border-[#0D9B84]/30 hover:shadow-[0_4px_8px_rgba(15,29,47,0.06)] transition-all">
+                  <div className="w-14 h-14 rounded-[14px] bg-white border border-[#E8ECF2] flex items-center justify-center shrink-0 group-hover:border-[#0D9B84]/30 transition-colors">
                     <Icon className="w-7 h-7 text-[#0B6E5F]" />
                   </div>
                   <div>
@@ -859,7 +859,7 @@ function UseCasesSection({ t }: { t: Dict }) {
 function AISection({ t }: { t: Dict }) {
   const aiIcons = [Eye, MessageSquare, TrendingUp];
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-[#0F1D2F] via-[#1B2D45] to-[#0F1D2F] text-white overflow-hidden">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-[#080D42] via-[#080D42] to-[#080D42] text-white overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
@@ -872,7 +872,7 @@ function AISection({ t }: { t: Dict }) {
                 return (
                   <AnimatedSection key={item.title} delay={i * 0.12}>
                     <div className="flex gap-4">
-                      <div className="w-10 h-10 rounded-[8px] bg-white/10 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-[10px] bg-white/10 flex items-center justify-center shrink-0">
                         <Icon className="w-5 h-5 text-[#a9f3ff]" />
                       </div>
                       <div>
@@ -900,7 +900,7 @@ function AISection({ t }: { t: Dict }) {
           </AnimatedSection>
         </div>
         <AnimatedSection className="mt-12 text-center">
-          <a href="#waitlist" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0D9B84] text-white text-sm font-semibold rounded-[10px] hover:bg-[#0B8572] transition-all hover:shadow-[0_8px_30px_rgba(13,155,132,0.3)]">
+          <a href="#waitlist" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0121DC] text-white text-sm font-semibold rounded-full hover:bg-[#0019B3] transition-all hover:shadow-[0_8px_30px_rgba(1,33,220,0.3)]">
             {t.nav.cta} <ArrowRight className="w-4 h-4" />
           </a>
         </AnimatedSection>
@@ -921,8 +921,8 @@ function EcosystemSection({ t }: { t: Dict }) {
         </AnimatedSection>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <AnimatedSection>
-            <div className="p-8 rounded-[12px] bg-white border border-[#E8ECF2] h-full">
-              <div className="w-14 h-14 rounded-[12px] bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center mb-6">
+            <div className="p-8 rounded-[20px] bg-white border border-[#E8ECF2] h-full">
+              <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center mb-6">
                 <BarChart3 className="w-7 h-7 text-[#0B6E5F]" />
               </div>
               <h3 className="text-xl font-bold text-[#1A2332] mb-2">{t.ecosystem.costpact.name}</h3>
@@ -934,8 +934,8 @@ function EcosystemSection({ t }: { t: Dict }) {
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.15}>
-            <div className="p-8 rounded-[12px] bg-gradient-to-br from-[#0F1D2F] to-[#1B2D45] text-white border border-[#1B2D45] h-full">
-              <div className="w-14 h-14 rounded-[12px] bg-white/10 flex items-center justify-center mb-6">
+            <div className="p-8 rounded-[20px] bg-gradient-to-br from-[#080D42] to-[#080D42] text-white border border-[#080D42] h-full">
+              <div className="w-14 h-14 rounded-[14px] bg-white/10 flex items-center justify-center mb-6">
                 <Shield className="w-7 h-7 text-[#a9f3ff]" />
               </div>
               <h3 className="text-xl font-bold mb-2">{t.ecosystem.pactstream.name}</h3>
@@ -951,7 +951,7 @@ function EcosystemSection({ t }: { t: Dict }) {
           <p className="text-sm text-[#5A6B7F] mb-6">
             <strong className="text-[#1A2332]">{t.ecosystem.advantage.label}</strong> {t.ecosystem.advantage.text}
           </p>
-          <a href="#waitlist" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0B6E5F] text-white text-sm font-semibold rounded-[10px] hover:bg-[#095A4E] transition-all hover:shadow-[0_8px_30px_rgba(11,110,95,0.4)]">
+          <a href="#waitlist" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0121DC] text-white text-sm font-semibold rounded-full hover:bg-[#0019B3] transition-all hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)]">
             {t.nav.cta} <ArrowRight className="w-4 h-4" />
           </a>
         </AnimatedSection>
@@ -1001,7 +1001,7 @@ function ValidationSection({ t }: { t: Dict }) {
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {t.validation.stats.map((stat, i) => (
             <AnimatedSection key={stat.label} delay={i * 0.1}>
-              <div className="p-6 rounded-[12px] bg-white border border-[#E8ECF2] text-center">
+              <div className="p-6 rounded-[20px] bg-white border border-[#E8ECF2] text-center">
                 <div className="text-3xl font-black font-display text-[#0B6E5F]">
                   <CountUp target={stat.value} suffix={stat.suffix} />
                 </div>
@@ -1045,7 +1045,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
 
   return (
     <AnimatedSection>
-      <div className="border border-[#E8ECF2] rounded-[12px] overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300">
+      <div className="border border-[#E8ECF2] rounded-[20px] overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300">
         <button
           onClick={() => setOpen(!open)}
           className="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none focus:ring-2 focus:ring-[#0B6E5F]/20 focus:ring-inset"
@@ -1078,7 +1078,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
               <div className="min-w-[500px]">
                 <div className="grid grid-cols-[1fr_90px_90px] bg-[#F5F7FA] text-xs font-semibold text-[#8896A6] uppercase tracking-wider">
                   <div className="px-6 py-3">Funcionalidad</div>
-                  <div className="px-3 py-3 text-center text-[#0B6E5F]">PactStream</div>
+                  <div className="px-3 py-3 text-center text-[#0121DC]">PactStream</div>
                   <div className="px-3 py-3 text-center" style={{ color: (comp as any).color }}>{comp.name.split("(")[0].trim()}</div>
                 </div>
                 {features.map((f, i) => (
@@ -1090,7 +1090,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
                 ))}
                 <div className="grid grid-cols-[1fr_90px_90px] border-t-2 border-[#0B6E5F]/10 bg-emerald-50/30">
                   <div className="px-6 py-3 text-sm font-semibold text-[#1A2332]">Precio</div>
-                  <div className="px-3 py-3 text-center text-xs font-bold text-[#0B6E5F]">Gratis<br/><span className="font-normal text-[#8896A6]">2,4% tx</span></div>
+                  <div className="px-3 py-3 text-center text-xs font-bold text-[#0121DC]">Gratis<br/><span className="font-normal text-[#8896A6]">2,4% tx</span></div>
                   <div className="px-3 py-3 text-center text-xs font-bold" style={{ color: (comp as any).color }}>{(comp as any).pricing}</div>
                 </div>
               </div>
@@ -1112,7 +1112,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
             </div>
 
             <div className="px-6 pb-6">
-              <div className="p-4 rounded-[12px] bg-[#0A1420] text-white">
+              <div className="p-4 rounded-[14px] bg-[#080D42] text-white">
                 <p className="text-sm font-semibold mb-1">Nuestro veredicto honesto</p>
                 <p className="text-sm text-slate-300 leading-relaxed">{(comp as any).verdict}</p>
               </div>
@@ -1133,9 +1133,9 @@ function GlobalComparisonMatrix({ t }: { t: Dict }) {
   return (
     <div className="overflow-x-auto -mx-5 px-5">
       <div className="min-w-[800px]">
-        <div className="bg-white rounded-[12px] border border-[#E8ECF2] overflow-hidden shadow-sm">
-          <div className="grid grid-cols-[180px_repeat(6,1fr)] bg-[#0A1420] text-white text-[11px] font-semibold">
-            <div className="px-4 py-3 sticky left-0 bg-[#0A1420] z-10">Funcionalidad</div>
+        <div className="bg-white rounded-[20px] border border-[#E8ECF2] overflow-hidden shadow-sm">
+          <div className="grid grid-cols-[180px_repeat(6,1fr)] bg-[#080D42] text-white text-[11px] font-semibold">
+            <div className="px-4 py-3 sticky left-0 bg-[#080D42] z-10">Funcionalidad</div>
             <div className="px-2 py-3 text-center text-[#A9F3FF]">PactStream</div>
             {competitors.map((c) => <div key={(c as any).id} className="px-2 py-3 text-center truncate">{c.name.split("(")[0].trim()}</div>)}
           </div>
@@ -1208,14 +1208,14 @@ function ComparisonSection({ t }: { t: Dict }) {
         </AnimatedSection>
 
         {/* Why PactStream Wins */}
-        <div className="rounded-[16px] bg-[#0A1420] p-8 md:p-12 mb-16">
+        <div className="rounded-[28px] bg-[#080D42] p-8 md:p-12 mb-16">
           <AnimatedSection className="text-center">
             <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-8">
               {t.comparison.whyTitle}
             </h3>
             <div className="grid sm:grid-cols-3 gap-6 mb-10">
               {t.comparison.whyReasons.map((r, i) => (
-                <div key={i} className="p-6 rounded-[12px] bg-white/5 border border-white/10 text-left">
+                <div key={i} className="p-6 rounded-[20px] bg-white/5 border border-white/10 text-left">
                   <h4 className="text-white font-bold mb-2">{r.title}</h4>
                   <p className="text-slate-400 text-sm leading-relaxed">{r.desc}</p>
                 </div>
@@ -1225,7 +1225,7 @@ function ComparisonSection({ t }: { t: Dict }) {
             <h4 className="text-lg font-semibold text-[#A9F3FF] mb-4">{t.comparison.gapsTitle}</h4>
             <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
               {t.comparison.gaps.map((g, i) => (
-                <div key={i} className="p-4 rounded-[12px] bg-white/5 border border-white/10 text-left">
+                <div key={i} className="p-4 rounded-[20px] bg-white/5 border border-white/10 text-left">
                   <p className="text-white text-sm font-medium">{g.gap}</p>
                   <p className="text-slate-500 text-xs mt-1">Quién lo tiene: {g.who}</p>
                   <p className="text-[#A9F3FF] text-xs mt-0.5">{g.when}</p>
@@ -1236,7 +1236,7 @@ function ComparisonSection({ t }: { t: Dict }) {
         </div>
 
         {/* CTA */}
-        <div className="rounded-[16px] bg-gradient-to-br from-[#0B6E5F] to-[#0A1420] p-8 md:p-12 text-center">
+        <div className="rounded-[28px] bg-gradient-to-br from-[#0121DC] to-[#080D42] p-8 md:p-12 text-center">
           <AnimatedSection>
             <h3 className="text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight mb-6">
               {t.comparison.ctaTitle}
@@ -1244,7 +1244,7 @@ function ComparisonSection({ t }: { t: Dict }) {
             <p className="text-emerald-100 text-lg mb-10 max-w-xl mx-auto">
               {t.comparison.ctaSub}
             </p>
-            <a href="#waitlist" className="inline-flex items-center gap-2 px-10 py-5 rounded-full bg-white text-[#0B6E5F] font-bold text-lg hover:bg-emerald-50 transition-all duration-200 hover:-translate-y-0.5 shadow-xl hover:shadow-2xl">
+            <a href="#waitlist" className="inline-flex items-center gap-2 px-10 py-5 rounded-full bg-white text-[#0121DC] font-bold text-lg hover:bg-blue-50 transition-all duration-200 hover:-translate-y-0.5 shadow-xl hover:shadow-2xl">
               {t.comparison.ctaButton} <ArrowRight className="w-5 h-5" />
             </a>
             <p className="text-emerald-200/60 text-sm mt-4">{t.comparison.ctaNote}</p>
@@ -1283,7 +1283,7 @@ function PricingSection({ t }: { t: Dict }) {
             return (
               <AnimatedSection key={p.role} delay={i * 0.1}>
                 <motion.div
-                  className="h-full p-8 rounded-[16px] bg-white border border-[#E8ECF2] shadow-[0_4px_12px_rgba(15,29,47,0.06)] flex flex-col"
+                  className="h-full p-8 rounded-[28px] bg-white border border-[#E8ECF2] shadow-[0_4px_12px_rgba(15,29,47,0.06)] flex flex-col"
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -1314,7 +1314,7 @@ function PricingSection({ t }: { t: Dict }) {
                       </li>
                     ))}
                   </ul>
-                  <a href="#waitlist" className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-[10px] transition-all ${i === 0 ? "bg-[#0B6E5F] text-white hover:bg-[#095A4E] hover:shadow-[0_8px_30px_rgba(11,110,95,0.4)]" : "bg-[#F0F4F8] text-[#1A2332] hover:bg-[#E2E8F0]"}`}>
+                  <a href="#waitlist" className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full transition-all ${i === 0 ? "bg-[#0121DC] text-white hover:bg-[#0019B3] hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)]" : "bg-[#F0F4F8] text-[#1A2332] hover:bg-[#E2E8F0]"}`}>
                     {t.pricing.cta} <ArrowRight className="w-4 h-4" />
                   </a>
                 </motion.div>
@@ -1328,7 +1328,7 @@ function PricingSection({ t }: { t: Dict }) {
             const colors = profileColors[p.icon] || profileColors.building;
             return (
               <div key={p.role} className="flex-none w-[80vw] snap-center">
-                <div className="h-full p-6 rounded-[16px] bg-white border border-[#E8ECF2] shadow-[0_4px_12px_rgba(15,29,47,0.06)] flex flex-col">
+                <div className="h-full p-6 rounded-[28px] bg-white border border-[#E8ECF2] shadow-[0_4px_12px_rgba(15,29,47,0.06)] flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <div className={`w-11 h-11 rounded-full ${colors.bg} ${colors.text} flex items-center justify-center`}>
                       {profileIcons[p.icon]}
@@ -1354,7 +1354,7 @@ function PricingSection({ t }: { t: Dict }) {
                       </li>
                     ))}
                   </ul>
-                  <a href="#waitlist" className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-[10px] transition-all ${i === 0 ? "bg-[#0B6E5F] text-white" : "bg-[#F0F4F8] text-[#1A2332]"}`}>
+                  <a href="#waitlist" className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full transition-all ${i === 0 ? "bg-[#0121DC] text-white" : "bg-[#F0F4F8] text-[#1A2332]"}`}>
                     {t.pricing.cta} <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
@@ -1384,7 +1384,7 @@ function BundleCard({ b, t, isDesktop }: { b: any; t: Dict; isDesktop: boolean }
   const pad = isDesktop ? "p-8" : "p-6";
   return (
     <motion.div
-      className={`h-full ${pad} rounded-[16px] bg-white flex flex-col relative ${
+      className={`h-full ${pad} rounded-[28px] bg-white flex flex-col relative ${
         b.popular
           ? "border-2 border-[#0B6E5F] shadow-[0_8px_30px_rgba(11,110,95,0.12)]"
           : "border border-[#E8ECF2] shadow-[0_4px_12px_rgba(15,29,47,0.06)]"
@@ -1444,9 +1444,9 @@ function BundleCard({ b, t, isDesktop }: { b: any; t: Dict; isDesktop: boolean }
 
       <a
         href={b.icon === "enterprise" ? "mailto:hello@pactstream.io?subject=Enterprise%20Demo" : "#waitlist"}
-        className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-[10px] transition-all ${
+        className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full transition-all ${
           b.popular
-            ? "bg-[#0B6E5F] text-white hover:bg-[#095A4E] hover:shadow-[0_8px_30px_rgba(11,110,95,0.4)]"
+            ? "bg-[#0121DC] text-white hover:bg-[#0019B3] hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)]"
             : "bg-[#F0F4F8] text-[#1A2332] hover:bg-[#E2E8F0]"
         }`}
       >
@@ -1499,7 +1499,7 @@ function FAQSection({ t }: { t: Dict }) {
         <div className="space-y-3">
           {t.faq.items.map((item, i) => (
             <AnimatedSection key={i} delay={i * 0.06}>
-              <div className="rounded-[12px] bg-white border border-[#E8ECF2] overflow-hidden">
+              <div className="rounded-[20px] bg-white border border-[#E8ECF2] overflow-hidden">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="w-full flex items-center justify-between gap-4 p-5 text-left"
@@ -1532,7 +1532,7 @@ function FAQSection({ t }: { t: Dict }) {
 /* ─── CTA FINAL ─── */
 function CTASection({ t }: { t: Dict }) {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-[#0F1D2F] via-[#1B2D45] to-[#0F1D2F] text-white">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-[#080D42] via-[#080D42] to-[#080D42] text-white">
       <AnimatedSection className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
         <h2 className="font-display text-3xl md:text-5xl font-black mb-6">
           {t.cta.heading[0]}
@@ -1540,7 +1540,7 @@ function CTASection({ t }: { t: Dict }) {
           {t.cta.heading[2]}
         </h2>
         <p className="text-lg text-[#8896A6] leading-relaxed mb-10 max-w-xl mx-auto">{t.cta.sub}</p>
-        <a href="#waitlist" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0B6E5F] text-white text-base font-semibold rounded-[10px] hover:bg-[#095A4E] transition-all hover:shadow-[0_8px_30px_rgba(11,110,95,0.4)]">
+        <a href="#waitlist" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0121DC] text-white text-base font-semibold rounded-full hover:bg-[#0019B3] transition-all hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)]">
           <Lock className="w-5 h-5" /> {t.cta.button}
         </a>
       </AnimatedSection>
@@ -1558,7 +1558,7 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
   const companyHrefs = ["https://costpact.io", "mailto:hello@pactstream.io"];
 
   return (
-    <footer className="py-16 bg-[#0A1420] text-white/60">
+    <footer className="py-16 bg-[#080D42] text-white/60">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
           {/* Logo + tagline */}

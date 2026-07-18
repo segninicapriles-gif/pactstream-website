@@ -167,7 +167,7 @@ function StatusPill({ label, color, bg }: { label: string; color: string; bg: st
 /* ═════════════════════════════════════════════ */
 export function ScreenDashboardConstructor() {
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', 'Inter', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
       <AppHeader>
         <div className="text-[9px] font-medium" style={{ opacity: 0.7 }}>Buenos días</div>
         <div className="text-[15px] font-bold mt-[1px]">Carlos Martínez</div>
@@ -266,7 +266,7 @@ export function ScreenObraDetail() {
   };
 
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', 'Inter', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
       <AppHeader>
         <div className="flex items-center gap-1 text-[9px] font-medium" style={{ opacity: 0.7 }}>
           <ChevronRight className="w-3 h-3 rotate-180" /> Mis obras
@@ -330,7 +330,7 @@ export function ScreenAIVerification() {
   ];
 
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', 'Inter', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
       <AppHeader>
         <div className="flex items-center gap-1 text-[9px] font-medium" style={{ opacity: 0.7 }}>
           <ChevronRight className="w-3 h-3 rotate-180" /> Hito 3 · Cerramientos
@@ -406,7 +406,7 @@ export function ScreenAIVerification() {
 /* ═════════════════════════════════════════════ */
 export function ScreenAssistant() {
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', 'Inter', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
       <AppHeader>
         <div className="text-[15px] font-bold">Asistente PactStream</div>
         <div className="text-[9px] mt-[1px]" style={{ opacity: 0.6 }}>Chalet Pozuelo Norte</div>
@@ -479,7 +479,7 @@ export function ScreenAssistant() {
 /* ═════════════════════════════════════════════ */
 export function ScreenDashboardPromotor() {
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', 'Inter', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
       <AppHeader>
         <div className="text-[9px] font-medium" style={{ opacity: 0.7 }}>Buenos días</div>
         <div className="text-[15px] font-bold mt-[1px]">María López Vidal</div>
