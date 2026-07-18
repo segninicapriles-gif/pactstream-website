@@ -270,12 +270,29 @@ function HeroSection({ t }: { t: Dict }) {
       <div className="relative max-w-[1200px] mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0B6E5F]/20 border border-[#0D9B84]/30 text-[#0D9B84] text-sm font-medium mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A9F3FF]/10 border border-[#A9F3FF]/30 text-[#A9F3FF] text-sm font-medium mb-8">
               <Lock className="w-4 h-4" /> {t.hero.badge}
             </div>
-            <h1 className="font-display text-4xl md:text-6xl lg:text-[72px] font-black text-white leading-[1.05] tracking-tight mb-6">
+            <h1 className="font-display text-4xl md:text-6xl lg:text-[80px] font-black text-white leading-[1.05] tracking-tighter mb-6">
               {t.hero.heading[0]}
-              <span className="bg-gradient-to-r from-[#a9f3ff] to-[#0D9B84] bg-clip-text text-transparent">{t.hero.heading[1]}</span>
+              <span className="relative inline-block">
+                <span className="text-[#A9F3FF]">{t.hero.heading[1]}</span>
+                <svg
+                  className="absolute left-[-6%] -bottom-1.5 w-[112%] h-3 pointer-events-none"
+                  viewBox="0 0 120 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 8 Q60 -2 118 8"
+                    stroke="#A9F3FF"
+                    strokeOpacity="0.6"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                </svg>
+              </span>
               {t.hero.heading[2]}
             </h1>
             <p className="text-lg md:text-xl text-[#8896A6] leading-relaxed mb-10 max-w-xl">
@@ -290,7 +307,7 @@ function HeroSection({ t }: { t: Dict }) {
                   value={heroEmail}
                   onChange={(e) => setHeroEmail(e.target.value)}
                   placeholder={t.heroEmail.placeholder}
-                  className="flex-1 px-5 py-4 bg-white/[0.08] border border-white/[0.12] rounded-[10px] text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D9B84]/50 focus:ring-1 focus:ring-[#0D9B84]/30 transition-colors"
+                  className="flex-1 px-5 py-4 bg-white/[0.08] border border-white/[0.12] rounded-full text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D9B84]/50 focus:ring-1 focus:ring-[#0D9B84]/30 transition-colors"
                 />
                 <button type="submit" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0121DC] text-white text-base font-semibold rounded-full hover:bg-[#0019B3] transition-all hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)] whitespace-nowrap">
                   {t.heroEmail.cta} <ArrowRight className="w-5 h-5" />
@@ -320,9 +337,28 @@ function HeroSection({ t }: { t: Dict }) {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-            className="flex justify-center"
+            className="relative flex justify-center"
             style={{ perspective: "1200px" }}
           >
+            {/* La bóveda — arcos concéntricos decorativos */}
+            <svg
+              className="absolute -bottom-40 -right-40 w-[900px] h-[900px] pointer-events-none"
+              viewBox="0 0 900 900"
+              fill="none"
+              aria-hidden="true"
+            >
+              {[260, 340, 420, 500, 580, 660].map((r, i) => (
+                <circle
+                  key={r}
+                  cx="900"
+                  cy="900"
+                  r={r}
+                  stroke="#A9F3FF"
+                  strokeWidth="1.25"
+                  opacity={0.04 + i * 0.012}
+                />
+              ))}
+            </svg>
             <motion.div
               animate={{ y: [0, -12, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
