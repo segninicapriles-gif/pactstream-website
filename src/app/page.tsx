@@ -46,6 +46,14 @@ import {
 import { type Locale, type Dict, getDictionary, defaultLocale } from "@/i18n";
 import { track } from "@vercel/analytics";
 
+/* ─── Language dropdown data ─── */
+const LANG_OPTIONS: { code: Locale; label: string }[] = [
+  { code: "es", label: "Español" },
+  { code: "en", label: "English" },
+  { code: "pt", label: "Português" },
+];
+const LANG_SHORT: Record<Locale, string> = { es: "ES", en: "EN", pt: "PT" };
+
 declare global {
   interface Window { gtag?: (...args: unknown[]) => void }
 }
@@ -134,7 +142,7 @@ function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
 /* ─── LOGO (HTML text — avoids SVG font-loading issues on mobile) ─── */
 function PactStreamLogo({ size = "md" }: { size?: "sm" | "md" }) {
   const uid = useId();
-  const iconH = size === "sm" ? 24 : 28;
+  const iconH = size === "sm" ? 34 : 36;
   const textClass = size === "sm" ? "text-lg" : "text-xl";
   const subClass = size === "sm" ? "text-[8px]" : "text-[9px]";
   return (
@@ -153,13 +161,54 @@ function PactStreamLogo({ size = "md" }: { size?: "sm" | "md" }) {
       </svg>
       <div className="flex flex-col leading-none">
         <span className={`${textClass} font-[family-name:var(--font-nunito)] font-bold text-white tracking-tight`}>PactStream</span>
-        <span className={`${subClass} font-[family-name:var(--font-nunito)] font-normal text-white/50 tracking-[0.15em] uppercase`}>confidence to build</span>
+        <span className={`${subClass} font-[family-name:var(--font-nunito)] font-normal text-white/50 tracking-wide`}>confidence to build</span>
       </div>
     </div>
   );
 }
 
 /* ─── NAVBAR ─── */
+function LangDropdown({ locale, setLocale, variant = "nav" }: { locale: Locale; setLocale: (l: Locale) => void; variant?: "nav" | "footer" }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handler = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+  const isFooter = variant === "footer";
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className={`flex items-center gap-1.5 px-2.5 py-1.5 text-sm transition-colors ${isFooter ? "text-white/40 hover:text-white/70" : "text-white/50 hover:text-white/80"}`}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label="Language"
+      >
+        <Globe className="w-4 h-4" />
+        <span className="font-medium">{LANG_SHORT[locale]}</span>
+        <ChevronDown className={`w-3 h-3 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <div className={`absolute ${isFooter ? "bottom-full mb-1" : "top-full mt-1"} right-0 min-w-[130px] py-1 rounded-lg shadow-lg border z-50 bg-[#080D42] border-white/10`} role="listbox" aria-label="Language">
+          {LANG_OPTIONS.map(({ code, label }) => (
+            <button
+              key={code}
+              role="option"
+              aria-selected={locale === code}
+              onClick={() => { setLocale(code); setOpen(false); }}
+              className={`w-full text-left px-3 py-2 text-sm transition-colors ${locale === code ? "text-[#0D9B84] bg-white/5 font-medium" : "text-white/60 hover:text-white hover:bg-white/5"}`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: (l: Locale) => void }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [featDropdown, setFeatDropdown] = useState(false);
@@ -199,14 +248,7 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
           <a href="#precios" className="hover:text-white transition-colors">{t.nav.pricing}</a>
         </div>
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => setLocale(locale === "es" ? "en" : "es")}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-white/50 hover:text-white/80 text-sm transition-colors"
-            aria-label="Switch language"
-          >
-            <Globe className="w-4 h-4" />
-            <span className="uppercase font-medium">{locale === "es" ? "EN" : "ES"}</span>
-          </button>
+          <LangDropdown locale={locale} setLocale={setLocale} variant="nav" />
           <a href="#waitlist" className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#0121DC] text-white text-sm font-semibold rounded-full hover:bg-[#0019B3] transition-colors">
             {t.nav.cta} <ArrowRight className="w-4 h-4" />
           </a>
@@ -308,7 +350,7 @@ function HeroSection({ t }: { t: Dict }) {
             ) : (
               <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-2 mb-6 text-[#0D9B84]">
                 <CheckCircle2 className="w-5 h-5" />
-                <span className="text-sm font-medium">{t.heroEmail.note.includes("spam") ? "¡Registrado! Te contactaremos pronto." : "Registered! We'll contact you soon."}</span>
+                <span className="text-sm font-medium">{t.ui.registered}</span>
               </motion.div>
             )}
             <p className="text-xs text-[#8896A6] mb-6">{t.heroEmail.note}</p>
@@ -393,12 +435,10 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
             <div className="mb-10">
               <div className="flex items-baseline gap-3 mb-3">
                 <span className="text-5xl font-black font-display text-[#a9f3ff]">{TOTAL_SPOTS}</span>
-                <span className="text-lg text-[#8896A6]">{locale === "es" ? "plazas en la primera oleada" : "spots in the first wave"}</span>
+                <span className="text-lg text-[#8896A6]">{t.ui.spotsFirstWave}</span>
               </div>
               <p className="text-sm text-[#8896A6]">
-                {locale === "es"
-                  ? "Acceso por orden de registro. Cuando se completen, abriremos lista de espera."
-                  : "Access in order of registration. Once full, we'll open a waiting list."}
+                {t.ui.spotsAccessInfo}
               </p>
             </div>
 
@@ -464,9 +504,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
                     </motion.button>
                     {error && (
                       <p className="text-xs text-center text-red-300" role="alert">
-                        {locale === "es"
-                          ? "No hemos podido registrarte. Inténtalo de nuevo o escríbenos a hello@pactstream.io."
-                          : "We couldn't register you. Try again or write to hello@pactstream.io."}
+                        {t.ui.registerError}
                       </p>
                     )}
                     <p className="text-xs text-center text-[#8896A6]">{t.waitlist.privacy}</p>
@@ -487,20 +525,18 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
                       <CheckCircle2 className="w-8 h-8 text-[#0D9B84]" />
                     </motion.div>
                     <h3 className="text-xl font-bold mb-2">
-                      {locale === "es" ? "¡Estás dentro!" : "You're in!"}
+                      {t.ui.youreIn}
                     </h3>
                     <p className="text-[#8896A6] text-sm mb-4">
-                      {locale === "es"
-                        ? "Tu plaza queda reservada por orden de registro. Te avisaremos cuando sea tu turno."
-                        : "Your spot is reserved in order of registration. We'll notify you when it's your turn."}
+                      {t.ui.spotReserved}
                     </p>
                     <div className="p-3 rounded-[10px] bg-white/[0.06]">
                       <p className="text-xs text-[#8896A6] mb-1">
-                        {locale === "es" ? "Comparte con tu red:" : "Share with your network:"}
+                        {t.ui.shareNetwork}
                       </p>
                       <div className="flex items-center gap-2 text-xs">
                         <code className="flex-1 px-3 py-1.5 bg-white/[0.06] rounded text-[#a9f3ff] truncate">pactstream.io</code>
-                        <button onClick={() => navigator.clipboard.writeText("https://pactstream.io")} className="px-2 py-1.5 bg-white/[0.08] hover:bg-white/[0.12] rounded text-white/60 transition-colors">{locale === "es" ? "Copiar" : "Copy"}</button>
+                        <button onClick={() => navigator.clipboard.writeText("https://pactstream.io")} className="px-2 py-1.5 bg-white/[0.08] hover:bg-white/[0.12] rounded text-white/60 transition-colors">{t.ui.copy}</button>
                       </div>
                     </div>
                   </motion.div>
@@ -743,7 +779,7 @@ function HowItWorksSection({ t }: { t: Dict }) {
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center mb-5 relative z-10">
                       <Icon className="w-8 h-8 text-[#0B6E5F]" />
                     </div>
-                    <span className="text-xs font-bold text-[#0B6E5F] uppercase tracking-widest mb-2">Paso {s.step}</span>
+                    <span className="text-xs font-bold text-[#0B6E5F] uppercase tracking-widest mb-2">{t.ui.step} {s.step}</span>
                     <h3 className="text-lg font-semibold text-[#1A2332] mb-2">{s.title}</h3>
                     <p className="text-sm text-[#5A6B7F] leading-relaxed">{s.desc}</p>
                   </div>
@@ -1086,7 +1122,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
             <div className="overflow-x-auto">
               <div className="min-w-[500px]">
                 <div className="grid grid-cols-[1fr_90px_90px] bg-[#F5F7FA] text-xs font-semibold text-[#8896A6] uppercase tracking-wider">
-                  <div className="px-6 py-3">Funcionalidad</div>
+                  <div className="px-6 py-3">{t.ui.feature}</div>
                   <div className="px-3 py-3 text-center text-[#0121DC]">PactStream</div>
                   <div className="px-3 py-3 text-center" style={{ color: (comp as any).color }}>{comp.name.split("(")[0].trim()}</div>
                 </div>
@@ -1098,8 +1134,8 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
                   </div>
                 ))}
                 <div className="grid grid-cols-[1fr_90px_90px] card-row bg-emerald-50/30">
-                  <div className="px-6 py-3 text-sm font-semibold text-[#1A2332]">Precio</div>
-                  <div className="px-3 py-3 text-center text-xs font-bold text-[#0121DC]">Gratis<br/><span className="font-normal text-[#8896A6]">2,4% tx</span></div>
+                  <div className="px-6 py-3 text-sm font-semibold text-[#1A2332]">{t.ui.price}</div>
+                  <div className="px-3 py-3 text-center text-xs font-bold text-[#0121DC]">{t.ui.free}<br/><span className="font-normal text-[#8896A6]">{t.ui.txFee}</span></div>
                   <div className="px-3 py-3 text-center text-xs font-bold" style={{ color: (comp as any).color }}>{(comp as any).pricing}</div>
                 </div>
               </div>
@@ -1107,13 +1143,13 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
 
             <div className="p-6 grid sm:grid-cols-2 gap-6 card-row">
               <div>
-                <h4 className="text-sm font-semibold text-emerald-700 mb-2">Donde {comp.name.split("(")[0].trim()} destaca</h4>
+                <h4 className="text-sm font-semibold text-emerald-700 mb-2">{t.ui.whereExcels.replace("{name}", comp.name.split("(")[0].trim())}</h4>
                 <ul className="space-y-1.5">
                   {(comp as any).strengths.map((s: string, i: number) => <li key={i} className="text-sm text-[#4A5568] flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />{s}</li>)}
                 </ul>
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-red-600 mb-2">Donde {comp.name.split("(")[0].trim()} flaquea</h4>
+                <h4 className="text-sm font-semibold text-red-600 mb-2">{t.ui.whereWeaker.replace("{name}", comp.name.split("(")[0].trim())}</h4>
                 <ul className="space-y-1.5">
                   {(comp as any).weaknesses.map((w: string, i: number) => <li key={i} className="text-sm text-[#4A5568] flex items-start gap-2"><X className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />{w}</li>)}
                 </ul>
@@ -1122,7 +1158,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
 
             <div className="px-6 pb-6">
               <div className="p-4 rounded-[14px] bg-[#080D42] text-white">
-                <p className="text-sm font-semibold mb-1">Nuestro veredicto honesto</p>
+                <p className="text-sm font-semibold mb-1">{t.ui.honestVerdict}</p>
                 <p className="text-sm text-slate-300 leading-relaxed">{(comp as any).verdict}</p>
               </div>
               <p className="text-xs text-[#8896A6] mt-3">{(comp as any).pricingDetail}</p>
@@ -1144,7 +1180,7 @@ function GlobalComparisonMatrix({ t }: { t: Dict }) {
       <div className="min-w-[800px]">
         <div className="card-surface overflow-hidden">
           <div className="grid grid-cols-[180px_repeat(6,1fr)] bg-[#080D42] text-white text-[11px] font-semibold">
-            <div className="px-4 py-3 sticky left-0 bg-[#080D42] z-10">Funcionalidad</div>
+            <div className="px-4 py-3 sticky left-0 bg-[#080D42] z-10">{t.ui.feature}</div>
             <div className="px-2 py-3 text-center text-[#A9F3FF]">PactStream</div>
             {competitors.map((c) => <div key={(c as any).id} className="px-2 py-3 text-center truncate">{c.name.split("(")[0].trim()}</div>)}
           </div>
@@ -1236,7 +1272,7 @@ function ComparisonSection({ t }: { t: Dict }) {
               {t.comparison.gaps.map((g, i) => (
                 <div key={i} className="p-4 card-surface-navy text-left">
                   <p className="text-white text-sm font-medium">{g.gap}</p>
-                  <p className="text-slate-500 text-xs mt-1">Quién lo tiene: {g.who}</p>
+                  <p className="text-slate-500 text-xs mt-1">{t.ui.whoHasIt} {g.who}</p>
                   <p className="text-[#A9F3FF] text-xs mt-0.5">{g.when}</p>
                 </div>
               ))}
@@ -1399,7 +1435,7 @@ function BundleCard({ b, t, isDesktop }: { b: any; t: Dict; isDesktop: boolean }
     >
       {b.popular && (
         <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-semibold uppercase px-3 py-1 rounded-full bg-[#0B6E5F] text-white tracking-wide">
-          ★ Popular
+          {t.ui.popular}
         </span>
       )}
       <div className="flex items-center gap-3 mb-2">
@@ -1613,7 +1649,7 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
         {/* Trust badge */}
         <div className="flex items-center justify-center gap-2 py-6">
           <img src="/security-badge.svg" alt="Seguridad Verificada" width="36" height="44" />
-          <span className="text-xs text-[#8896A6]">Datos cifrados y protegidos · Seguridad verificada 2026</span>
+          <span className="text-xs text-[#8896A6]">{t.ui.securityBadge}</span>
         </div>
         {/* Divider */}
         <div className="h-px bg-white/[0.06]" />
@@ -1624,13 +1660,7 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
             <a href="/legal" className="hover:text-white transition-colors">{t.footer.legal}</a>
             <a href="/privacidad" className="hover:text-white transition-colors">{t.footer.privacy}</a>
             <a href="/cookies" className="hover:text-white transition-colors">{t.footer.cookies}</a>
-            <button
-              onClick={() => setLocale(locale === "es" ? "en" : "es")}
-              className="flex items-center gap-1 hover:text-white transition-colors"
-            >
-              <Globe className="w-3.5 h-3.5" />
-              <span>{locale === "es" ? "English" : "Español"}</span>
-            </button>
+            <LangDropdown locale={locale} setLocale={setLocale} variant="footer" />
           </div>
         </div>
       </div>
@@ -1644,7 +1674,7 @@ export default function Page() {
   return (
     <>
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-[#0B6E5F] focus:text-white focus:rounded-lg focus:text-sm focus:font-semibold">
-        Ir al contenido principal
+        {t.ui.skipToContent}
       </a>
       <Navbar t={t} locale={locale} setLocale={setLocale} />
       <main id="main-content">
