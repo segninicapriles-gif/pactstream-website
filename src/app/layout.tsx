@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono, Nunito } from "next/font/google";
+import { Hanken_Grotesk, JetBrains_Mono, Nunito } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -11,13 +11,6 @@ const hankenGrotesk = Hanken_Grotesk({
   weight: ["400", "500", "600", "700"],
 });
 
-// Sistema ARCO — display/headings (sustituye a CorporativeSansRd)
-const bricolageGrotesque = Bricolage_Grotesque({
-  subsets: ["latin"],
-  variable: "--font-bricolage",
-  weight: ["700", "800"],
-});
-
 // Sistema ARCO — Cifra Viva (importes, scores, hitos)
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -25,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "600", "700"],
 });
 
-// Wordmark only — no se toca
+// Sistema ARCO — display/headings + wordmark (it.6: sustituye a Bricolage Grotesque)
 const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",
@@ -123,7 +116,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${hankenGrotesk.className} ${hankenGrotesk.variable} ${bricolageGrotesque.variable} ${jetbrainsMono.variable} ${nunito.variable}`}
+      className={`${hankenGrotesk.className} ${hankenGrotesk.variable} ${jetbrainsMono.variable} ${nunito.variable}`}
     >
       <body className="min-h-screen flex flex-col">
         <script

@@ -254,6 +254,15 @@ function HeroSection({ t }: { t: Dict }) {
   return (
     <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-[#080D42] via-[#080D42] to-[#080D42]" />
+      {/* Luz ambiental (it.6) — halos degradados, sin curvas ni SVG decorativo */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background:
+            "radial-gradient(circle at 88% 6%, rgba(1,33,220,0.25) 0%, transparent 55%), radial-gradient(ellipse 160% 120% at 75% 0%, rgba(169,243,255,0.06) 0%, transparent 70%)",
+        }}
+      />
       <motion.div
         className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full opacity-[0.07]"
         style={{ background: "radial-gradient(circle, #0D9B84, transparent 70%)" }}
@@ -275,24 +284,7 @@ function HeroSection({ t }: { t: Dict }) {
             </div>
             <h1 className="font-display text-4xl md:text-6xl lg:text-[80px] font-black text-white leading-[1.05] tracking-tighter mb-6">
               {t.hero.heading[0]}
-              <span className="relative inline-block">
-                <span className="text-[#A9F3FF]">{t.hero.heading[1]}</span>
-                <svg
-                  className="absolute left-[-6%] -bottom-1.5 w-[112%] h-3 pointer-events-none"
-                  viewBox="0 0 120 12"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M2 8 Q60 -2 118 8"
-                    stroke="#A9F3FF"
-                    strokeOpacity="0.6"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    vectorEffect="non-scaling-stroke"
-                  />
-                </svg>
-              </span>
+              <span className="text-[#A9F3FF]">{t.hero.heading[1]}</span>
               {t.hero.heading[2]}
             </h1>
             <p className="text-lg md:text-xl text-[#8896A6] leading-relaxed mb-10 max-w-xl">
@@ -340,25 +332,6 @@ function HeroSection({ t }: { t: Dict }) {
             className="relative flex justify-center"
             style={{ perspective: "1200px" }}
           >
-            {/* La bóveda — arcos concéntricos decorativos */}
-            <svg
-              className="absolute -bottom-40 -right-40 w-[900px] h-[900px] pointer-events-none"
-              viewBox="0 0 900 900"
-              fill="none"
-              aria-hidden="true"
-            >
-              {[260, 340, 420, 500, 580, 660].map((r, i) => (
-                <circle
-                  key={r}
-                  cx="900"
-                  cy="900"
-                  r={r}
-                  stroke="#A9F3FF"
-                  strokeWidth="1.25"
-                  opacity={0.04 + i * 0.012}
-                />
-              ))}
-            </svg>
             <motion.div
               animate={{ y: [0, -12, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
