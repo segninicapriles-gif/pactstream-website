@@ -181,7 +181,7 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
                   transition={{ duration: 0.15 }}
                   className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
                 >
-                  <div className="w-56 p-2 rounded-[14px] bg-[#080D42] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+                  <div className="w-56 p-2 rounded-[24px] bg-[#080D42] shadow-[0_10px_28px_-10px_rgba(8,13,66,0.45)]">
                     {t.features.items.map((f, i) => (
                       <a key={f.tag} href="#funcionalidades" onClick={(e) => { e.preventDefault(); setFeatDropdown(false); window.dispatchEvent(new CustomEvent('pactstream:feature', { detail: i })); document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' }); }} className="block px-3 py-2.5 rounded-[10px] text-sm text-white/60 hover:text-white hover:bg-white/[0.06] transition-colors">
                         {f.tag}
@@ -535,7 +535,7 @@ function ProblemSection({ t }: { t: Dict }) {
             const s = styles[i];
             return (
               <AnimatedSection key={card.title} delay={i * 0.1}>
-                <div className={`p-8 rounded-[20px] ${s.bg}`}>
+                <div className={`p-8 card-surface h-full`}>
                   <div className={`w-12 h-12 rounded-[10px] ${s.iconBg} flex items-center justify-center mb-5`}>
                     <Icon className={`w-6 h-6 ${s.iconColor}`} />
                   </div>
@@ -845,8 +845,8 @@ function UseCasesSection({ t }: { t: Dict }) {
             const Icon = caseIcons[i];
             return (
               <AnimatedSection key={c.title} delay={i * 0.08}>
-                <div className="group flex gap-6 p-8 rounded-[20px] bg-[#F5F7FA] border border-[#E8ECF2] hover:border-[#0D9B84]/30 hover:shadow-[0_4px_8px_rgba(15,29,47,0.06)] transition-all">
-                  <div className="w-14 h-14 rounded-[14px] bg-white border border-[#E8ECF2] flex items-center justify-center shrink-0 group-hover:border-[#0D9B84]/30 transition-colors">
+                <div className="group flex gap-6 p-8 card-surface card-surface-hover">
+                  <div className="w-14 h-14 rounded-[14px] bg-[#E6F5F2] flex items-center justify-center shrink-0">
                     <Icon className="w-7 h-7 text-[#0B6E5F]" />
                   </div>
                   <div>
@@ -930,7 +930,7 @@ function EcosystemSection({ t }: { t: Dict }) {
         </AnimatedSection>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <AnimatedSection>
-            <div className="p-8 rounded-[20px] bg-white border border-[#E8ECF2] h-full">
+            <div className="p-8 card-surface h-full">
               <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center mb-6">
                 <BarChart3 className="w-7 h-7 text-[#0B6E5F]" />
               </div>
@@ -943,7 +943,7 @@ function EcosystemSection({ t }: { t: Dict }) {
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.15}>
-            <div className="p-8 rounded-[20px] bg-gradient-to-br from-[#080D42] to-[#080D42] text-white border border-[#080D42] h-full">
+            <div className="p-8 rounded-[24px] bg-gradient-to-br from-[#080D42] to-[#080D42] text-white shadow-[0_1px_2px_rgba(8,13,66,0.04),0_10px_28px_-14px_rgba(8,13,66,0.10)] h-full">
               <div className="w-14 h-14 rounded-[14px] bg-white/10 flex items-center justify-center mb-6">
                 <Shield className="w-7 h-7 text-[#a9f3ff]" />
               </div>
@@ -1010,7 +1010,7 @@ function ValidationSection({ t }: { t: Dict }) {
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {t.validation.stats.map((stat, i) => (
             <AnimatedSection key={stat.label} delay={i * 0.1}>
-              <div className="p-6 rounded-[20px] bg-white border border-[#E8ECF2] text-center">
+              <div className="p-6 card-surface text-center">
                 <div className="text-3xl font-black font-display text-[#0B6E5F]">
                   <CountUp target={stat.value} suffix={stat.suffix} />
                 </div>
@@ -1504,7 +1504,7 @@ function FAQSection({ t }: { t: Dict }) {
         <div className="space-y-3">
           {t.faq.items.map((item, i) => (
             <AnimatedSection key={i} delay={i * 0.06}>
-              <div className="rounded-[20px] bg-white border border-[#E8ECF2] overflow-hidden">
+              <div className="card-surface overflow-hidden">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="w-full flex items-center justify-between gap-4 p-5 text-left"
@@ -1541,7 +1541,7 @@ function CTASection({ t }: { t: Dict }) {
       <AnimatedSection className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
         <h2 className="font-display text-3xl md:text-5xl font-black mb-6">
           {t.cta.heading[0]}
-          <span className="bg-gradient-to-r from-[#a9f3ff] to-[#0D9B84] bg-clip-text text-transparent">{t.cta.heading[1]}</span>
+          <span className="text-[#A9F3FF]">{t.cta.heading[1]}</span>
           {t.cta.heading[2]}
         </h2>
         <p className="text-lg text-[#8896A6] leading-relaxed mb-10 max-w-xl mx-auto">{t.cta.sub}</p>
