@@ -405,7 +405,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
             {/* Tiers */}
             <div className="space-y-3">
               {t.waitlist.tiers.map((tier, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-[10px] bg-white/[0.04] border border-white/[0.06]">
+                <div key={i} className="flex items-start gap-3 p-3 card-surface-navy">
                   <span className="text-xl mt-0.5">{tier.icon}</span>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
@@ -420,7 +420,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
-            <div className="p-8 md:p-10 rounded-[28px] bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm">
+            <div className="p-8 md:p-10 card-surface-navy backdrop-blur-sm">
               <AnimatePresence mode="wait">
                 {!submitted ? (
                   <motion.form
@@ -494,7 +494,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
                         ? "Tu plaza queda reservada por orden de registro. Te avisaremos cuando sea tu turno."
                         : "Your spot is reserved in order of registration. We'll notify you when it's your turn."}
                     </p>
-                    <div className="p-3 rounded-[10px] bg-white/[0.04] border border-white/[0.06]">
+                    <div className="p-3 rounded-[10px] bg-white/[0.06]">
                       <p className="text-xs text-[#8896A6] mb-1">
                         {locale === "es" ? "Comparte con tu red:" : "Share with your network:"}
                       </p>
@@ -614,7 +614,7 @@ function StickyPhoneSection({ t }: { t: Dict }) {
               <button
                 key={f.title}
                 onClick={() => { swipeDir.current = i > activeIndex ? 1 : -1; setActiveIndex(i); }}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${i === activeIndex ? "bg-[#0B6E5F] text-white shadow-md" : "bg-white text-[#5A6B7F] border border-[#E8ECF2] hover:border-[#0B6E5F]/30"}`}
+                className={`flex items-center gap-2 px-3 py-2.5 text-sm whitespace-nowrap transition-colors ${i === activeIndex ? "text-[#16181D] font-extrabold" : "text-[#9AA0AB] font-medium hover:text-[#5A6B7F]"}`}
               >
                 <Icon className="w-4 h-4" />
                 {f.tag}
@@ -780,7 +780,7 @@ function RolesSection({ t }: { t: Dict }) {
             const s = roleStyles[i];
             return (
               <AnimatedSection key={role.title} delay={i * 0.1}>
-                <div className={`p-8 rounded-[20px] bg-white border ${s.border} hover:shadow-[0_8px_16px_rgba(15,29,47,0.08)] transition-all h-full`}>
+                <div className="p-8 card-surface card-surface-hover h-full">
                   <div className="w-14 h-14 rounded-[14px] flex items-center justify-center mb-6" style={{ background: s.bg }}>
                     <Icon className="w-7 h-7" style={{ color: s.color }} />
                   </div>
@@ -806,7 +806,7 @@ function RolesSection({ t }: { t: Dict }) {
             const s = roleStyles[i];
             return (
               <div key={role.title} className="flex-none w-[80vw] snap-center">
-                <div className={`p-6 rounded-[20px] bg-white border ${s.border} h-full`}>
+                <div className="p-6 card-surface h-full">
                   <div className="w-12 h-12 rounded-[10px] flex items-center justify-center mb-4" style={{ background: s.bg }}>
                     <Icon className="w-6 h-6" style={{ color: s.color }} />
                   </div>
@@ -1054,7 +1054,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
 
   return (
     <AnimatedSection>
-      <div className="border border-[#E8ECF2] rounded-[20px] overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300">
+      <div className="card-surface card-surface-hover overflow-hidden">
         <button
           onClick={() => setOpen(!open)}
           className="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none focus:ring-2 focus:ring-[#0B6E5F]/20 focus:ring-inset"
@@ -1082,7 +1082,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
         </button>
 
         {open && (
-          <div className="border-t border-[#E8ECF2]">
+          <div className="card-row">
             <div className="overflow-x-auto">
               <div className="min-w-[500px]">
                 <div className="grid grid-cols-[1fr_90px_90px] bg-[#F5F7FA] text-xs font-semibold text-[#8896A6] uppercase tracking-wider">
@@ -1091,13 +1091,13 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
                   <div className="px-3 py-3 text-center" style={{ color: (comp as any).color }}>{comp.name.split("(")[0].trim()}</div>
                 </div>
                 {features.map((f, i) => (
-                  <div key={f.key} className={`grid grid-cols-[1fr_90px_90px] border-t border-[#E8ECF2]/50 ${i % 2 === 0 ? "bg-white" : "bg-[#F5F7FA]/30"}`}>
+                  <div key={f.key} className={`grid grid-cols-[1fr_90px_90px] card-row ${i % 2 === 0 ? "bg-white" : "bg-[#F5F7FA]/30"}`}>
                     <div className="px-6 py-2.5 text-sm text-[#4A5568]">{f.label}</div>
                     <div className="px-3 py-2.5 flex justify-center"><SupportBadge support={pactstream[f.key]} /></div>
                     <div className="px-3 py-2.5 flex justify-center"><SupportBadge support={compFeatures[f.key]} /></div>
                   </div>
                 ))}
-                <div className="grid grid-cols-[1fr_90px_90px] border-t-2 border-[#0B6E5F]/10 bg-emerald-50/30">
+                <div className="grid grid-cols-[1fr_90px_90px] card-row bg-emerald-50/30">
                   <div className="px-6 py-3 text-sm font-semibold text-[#1A2332]">Precio</div>
                   <div className="px-3 py-3 text-center text-xs font-bold text-[#0121DC]">Gratis<br/><span className="font-normal text-[#8896A6]">2,4% tx</span></div>
                   <div className="px-3 py-3 text-center text-xs font-bold" style={{ color: (comp as any).color }}>{(comp as any).pricing}</div>
@@ -1105,7 +1105,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
               </div>
             </div>
 
-            <div className="p-6 grid sm:grid-cols-2 gap-6 border-t border-[#E8ECF2]">
+            <div className="p-6 grid sm:grid-cols-2 gap-6 card-row">
               <div>
                 <h4 className="text-sm font-semibold text-emerald-700 mb-2">Donde {comp.name.split("(")[0].trim()} destaca</h4>
                 <ul className="space-y-1.5">
@@ -1142,14 +1142,14 @@ function GlobalComparisonMatrix({ t }: { t: Dict }) {
   return (
     <div className="overflow-x-auto -mx-5 px-5">
       <div className="min-w-[800px]">
-        <div className="bg-white rounded-[20px] border border-[#E8ECF2] overflow-hidden shadow-sm">
+        <div className="card-surface overflow-hidden">
           <div className="grid grid-cols-[180px_repeat(6,1fr)] bg-[#080D42] text-white text-[11px] font-semibold">
             <div className="px-4 py-3 sticky left-0 bg-[#080D42] z-10">Funcionalidad</div>
             <div className="px-2 py-3 text-center text-[#A9F3FF]">PactStream</div>
             {competitors.map((c) => <div key={(c as any).id} className="px-2 py-3 text-center truncate">{c.name.split("(")[0].trim()}</div>)}
           </div>
           {features.map((f, i) => (
-            <div key={f.key} className={`grid grid-cols-[180px_repeat(6,1fr)] border-t border-[#E8ECF2]/50 ${i % 2 === 0 ? "bg-white" : "bg-[#F5F7FA]/30"}`}>
+            <div key={f.key} className={`grid grid-cols-[180px_repeat(6,1fr)] card-row ${i % 2 === 0 ? "bg-white" : "bg-[#F5F7FA]/30"}`}>
               <div className="px-4 py-2 text-xs text-[#4A5568] sticky left-0 bg-inherit z-10">{f.label}</div>
               <div className="px-2 py-2 flex justify-center bg-emerald-50/30"><SupportBadge support={pactstream[f.key]} /></div>
               {competitors.map((c) => <div key={(c as any).id} className="px-2 py-2 flex justify-center"><SupportBadge support={(c.features as Record<string, Support>)[f.key]} /></div>)}
@@ -1168,7 +1168,7 @@ function ComparisonSection({ t }: { t: Dict }) {
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         {/* Hero */}
         <AnimatedSection className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[#0B6E5F] text-sm font-medium mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-[#0B6E5F] text-sm font-medium mb-6">
             {t.comparison.tag}
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1A2332] mb-2">
@@ -1182,7 +1182,7 @@ function ComparisonSection({ t }: { t: Dict }) {
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {t.comparison.competitors.map((c) => (
-              <span key={(c as any).id} className="text-sm px-4 py-2 rounded-full border border-[#E8ECF2] bg-white text-[#8896A6] select-none">
+              <span key={(c as any).id} className="text-sm px-4 py-2 rounded-full bg-[#EFEFEA] text-[#565B66] select-none">
                 {c.name.split("(")[0].trim()}
               </span>
             ))}
@@ -1224,7 +1224,7 @@ function ComparisonSection({ t }: { t: Dict }) {
             </h3>
             <div className="grid sm:grid-cols-3 gap-6 mb-10">
               {t.comparison.whyReasons.map((r, i) => (
-                <div key={i} className="p-6 rounded-[20px] bg-white/5 border border-white/10 text-left">
+                <div key={i} className="p-6 card-surface-navy text-left">
                   <h4 className="text-white font-bold mb-2">{r.title}</h4>
                   <p className="text-slate-400 text-sm leading-relaxed">{r.desc}</p>
                 </div>
@@ -1234,7 +1234,7 @@ function ComparisonSection({ t }: { t: Dict }) {
             <h4 className="text-lg font-semibold text-[#A9F3FF] mb-4">{t.comparison.gapsTitle}</h4>
             <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
               {t.comparison.gaps.map((g, i) => (
-                <div key={i} className="p-4 rounded-[20px] bg-white/5 border border-white/10 text-left">
+                <div key={i} className="p-4 card-surface-navy text-left">
                   <p className="text-white text-sm font-medium">{g.gap}</p>
                   <p className="text-slate-500 text-xs mt-1">Quién lo tiene: {g.who}</p>
                   <p className="text-[#A9F3FF] text-xs mt-0.5">{g.when}</p>
@@ -1292,7 +1292,7 @@ function PricingSection({ t }: { t: Dict }) {
             return (
               <AnimatedSection key={p.role} delay={i * 0.1}>
                 <motion.div
-                  className="h-full p-8 rounded-[28px] bg-white border border-[#E8ECF2] shadow-[0_4px_12px_rgba(15,29,47,0.06)] flex flex-col"
+                  className="h-full p-8 card-surface card-surface-hover flex flex-col"
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -1337,7 +1337,7 @@ function PricingSection({ t }: { t: Dict }) {
             const colors = profileColors[p.icon] || profileColors.building;
             return (
               <div key={p.role} className="flex-none w-[80vw] snap-center">
-                <div className="h-full p-6 rounded-[28px] bg-white border border-[#E8ECF2] shadow-[0_4px_12px_rgba(15,29,47,0.06)] flex flex-col">
+                <div className="h-full p-6 card-surface flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <div className={`w-11 h-11 rounded-full ${colors.bg} ${colors.text} flex items-center justify-center`}>
                       {profileIcons[p.icon]}
@@ -1393,11 +1393,7 @@ function BundleCard({ b, t, isDesktop }: { b: any; t: Dict; isDesktop: boolean }
   const pad = isDesktop ? "p-8" : "p-6";
   return (
     <motion.div
-      className={`h-full ${pad} rounded-[28px] bg-white flex flex-col relative ${
-        b.popular
-          ? "border-2 border-[#0B6E5F] shadow-[0_8px_30px_rgba(11,110,95,0.12)]"
-          : "border border-[#E8ECF2] shadow-[0_4px_12px_rgba(15,29,47,0.06)]"
-      }`}
+      className={`h-full ${pad} card-surface card-surface-hover flex flex-col relative`}
       whileHover={isDesktop ? { y: -4 } : undefined}
       transition={{ type: "spring", stiffness: 300 }}
     >
