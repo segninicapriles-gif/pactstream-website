@@ -16,32 +16,138 @@ import {
   Send,
 } from "lucide-react";
 
-/* ─── Real app colors (from Flutter theme) ─── */
+/* ─── Sistema ARCO — tokens (design-ecosistema-2026-07/DESIGN-ECOSISTEMA.md §1/§6/§8b) ───
+   Los mockups dibujan la MISMA app real (Flutter), así que usan los tokens ARCO
+   de PactStream: bóveda navy, cyan de glow, porcelana, Cifra Viva en mono. */
+const FONT_BODY = "var(--font-hanken), 'Hanken Grotesk', sans-serif";
+const FONT_DISPLAY = "var(--font-nunito), 'Nunito', sans-serif";
+const FONT_MONO = "var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace";
+
 const C = {
-  headerGradient: "linear-gradient(135deg, #0121DC 0%, #080D42 100%)",
-  headerGradientTecnico: "linear-gradient(135deg, #080D42 0%, #A56423 100%)",
+  navy: "#080D42",
+  headerGradient: "linear-gradient(135deg, #080D42 0%, #14193D 100%)",
   heroCard: "linear-gradient(135deg, #080D42 0%, #14193D 100%)",
-  scaffold: "#F3F4F9",
+  canvas: "#F6F6F3", // Canvas Porcelana
   surface: "#FFFFFF",
-  border: "#E7E9F1",
-  borderDark: "#2E3460",
+  hairline: "rgba(22, 24, 29, 0.08)", // solo separadores finos, nunca borde de card
   textPrimary: "#080D42",
   textSecondary: "#767BA3",
-  blue: "#0121DC",
+  blue: "#0121DC", // psBlue — progreso, primario
   blueBg: "rgba(1, 33, 220, 0.10)",
   success: "#00C389",
   successBg: "rgba(0, 195, 137, 0.12)",
   amber: "#F59E0B",
   amberBg: "rgba(245, 158, 11, 0.12)",
   red: "#FF4D6D",
-  cyan: "#A9F3FF",
+  cyan: "#A9F3FF", // glow — SOLO sobre navy
   gold: "#F59E0B",
-  tecnico: "#C97A2B",
-  tecnicoBg: "rgba(201, 122, 43, 0.12)",
   navActive: "#0121DC",
   navInactive: "#767BA3",
-  shadow: "0 2px 8px rgba(8, 13, 66, 0.06)",
+  cardShadow: "0 1px 2px rgba(8, 13, 66, 0.04), 0 8px 20px -10px rgba(8, 13, 66, 0.12)",
 };
+
+/* ═════════════════════════════════════════════ */
+/* ─── Cifra Viva — importes/%/contadores en mono ─── */
+/* ═════════════════════════════════════════════ */
+function Cifra({
+  value,
+  size = 14,
+  weight = 700,
+  color = C.textPrimary,
+  atenuado = 0.55,
+}: {
+  value: string;
+  size?: number;
+  weight?: number;
+  color?: string;
+  atenuado?: number;
+}) {
+  const m = value.match(/^(-?[\d.,]+)(.*)$/);
+  if (!m) {
+    return (
+      <span style={{ fontFamily: FONT_MONO, fontWeight: weight, color, fontSize: size }}>
+        {value}
+      </span>
+    );
+  }
+  const [, main, suffix] = m;
+  return (
+    <span style={{ fontFamily: FONT_MONO, fontSize: size }}>
+      <span style={{ fontWeight: weight, color }}>{main}</span>
+      {suffix && <span style={{ fontWeight: 400, color, opacity: atenuado }}>{suffix}</span>}
+    </span>
+  );
+}
+
+/* Detecta importes (€) y porcentajes (%) dentro de una frase y los renderiza en Cifra Viva */
+const CIFRA_PATTERN = /(\d[\d.,]*\s?(?:€|%))/g;
+function withCifra(text: string, opts?: { size?: number; color?: string }) {
+  const parts = text.split(CIFRA_PATTERN);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <Cifra key={i} value={part} size={opts?.size} color={opts?.color} />
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  );
+}
+
+/* ═════════════════════════════════════════════ */
+/* ─── Arco de custodia — gauge 270°, extremos redondeados ─── */
+/* ═════════════════════════════════════════════ */
+function ArcGauge({
+  value,
+  size = 70,
+  strokeWidth = 7,
+  trackColor,
+  progressColor,
+  children,
+}: {
+  value: number;
+  size?: number;
+  strokeWidth?: number;
+  trackColor: string;
+  progressColor: string;
+  children?: React.ReactNode;
+}) {
+  const r = (size - strokeWidth) / 2;
+  const cx = size / 2;
+  const cy = size / 2;
+  const circumference = 2 * Math.PI * r;
+  const sweep = 0.75; // 270°
+  const arcLen = circumference * sweep;
+  const progressLen = arcLen * (Math.min(Math.max(value, 0), 100) / 100);
+
+  return (
+    <div className="relative" style={{ width: size, height: size }}>
+      <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size}>
+        <g transform={`rotate(135 ${cx} ${cy})`}>
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="none"
+            stroke={trackColor}
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={`${arcLen} ${circumference}`}
+          />
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="none"
+            stroke={progressColor}
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={`${progressLen} ${circumference}`}
+          />
+        </g>
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">{children}</div>
+    </div>
+  );
+}
 
 /* ─── Shared: AppBar (real gradient + status bar) ─── */
 function AppHeader({
@@ -54,7 +160,7 @@ function AppHeader({
   return (
     <div className="relative" style={{ background: gradient }}>
       {/* Status bar icons */}
-      <div className="flex justify-between items-center px-5 pt-[6px] pb-0 text-white text-[8px] font-semibold">
+      <div className="flex justify-between items-center px-5 pt-[6px] pb-0 text-white text-[8px] font-semibold" style={{ fontFamily: FONT_MONO }}>
         <span>9:41</span>
         <div className="flex items-center gap-1.5">
           <div className="flex gap-[2px]">
@@ -73,7 +179,7 @@ function AppHeader({
   );
 }
 
-/* ─── Shared: BottomNav (real app style) ─── */
+/* ─── Shared: BottomNav (Sistema ARCO — activa por color/peso, SIN chip) ─── */
 function BottomNav({ active }: { active: number }) {
   const tabs = [
     { icon: Home, label: "Inicio" },
@@ -84,21 +190,11 @@ function BottomNav({ active }: { active: number }) {
   return (
     <div
       className="flex justify-around items-center py-2 bg-white"
-      style={{
-        borderTop: `0.5px solid ${C.border}`,
-        boxShadow: "0 -2px 8px rgba(8, 13, 66, 0.06)",
-      }}
+      style={{ boxShadow: "0 -2px 8px rgba(8, 13, 66, 0.06)" }}
     >
       {tabs.map((t, i) => (
         <div key={t.label} className="flex flex-col items-center gap-[2px] relative">
-          <div
-            className="flex items-center justify-center relative"
-            style={{
-              background: i === active ? C.blueBg : "transparent",
-              borderRadius: 999,
-              padding: i === active ? "3px 12px" : "3px 6px",
-            }}
-          >
+          <div className="flex items-center justify-center relative">
             <t.icon
               className="w-[14px] h-[14px]"
               style={{ color: i === active ? C.navActive : C.navInactive }}
@@ -106,7 +202,7 @@ function BottomNav({ active }: { active: number }) {
             />
             {t.badge && (
               <div className="absolute -top-[2px] -right-[2px] w-[12px] h-[12px] rounded-full bg-[#FF4D6D] border border-white flex items-center justify-center">
-                <span className="text-[6px] font-extrabold text-white">{t.badge}</span>
+                <span className="text-[6px] font-extrabold text-white" style={{ fontFamily: FONT_MONO }}>{t.badge}</span>
               </div>
             )}
           </div>
@@ -115,7 +211,7 @@ function BottomNav({ active }: { active: number }) {
             style={{
               color: i === active ? C.navActive : C.navInactive,
               fontWeight: i === active ? 700 : 500,
-              fontFamily: "'Nunito', sans-serif",
+              fontFamily: FONT_BODY,
             }}
           >
             {t.label}
@@ -126,36 +222,22 @@ function BottomNav({ active }: { active: number }) {
   );
 }
 
-/* ─── KPI Mini Card ─── */
-function MiniKpi({
-  label,
-  value,
-  accent = C.blue,
-}: {
-  label: string;
-  value: string;
-  accent?: string;
-}) {
+/* ─── KPI Mini Card (Sistema ARCO — sin borde-acento izquierdo, radio 20) ─── */
+function MiniKpi({ label, value }: { label: string; value: string }) {
   return (
-    <div
-      className="rounded-[12px] p-2.5 relative overflow-hidden"
-      style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}
-    >
-      <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-[12px]" style={{ background: accent }} />
-      <div className="pl-1.5">
-        <div className="text-[8px] font-medium" style={{ color: C.textSecondary }}>{label}</div>
-        <div className="text-[14px] font-bold" style={{ color: C.textPrimary, fontFamily: "'Nunito', sans-serif" }}>{value}</div>
-      </div>
+    <div className="rounded-[20px] p-2.5" style={{ background: C.surface, boxShadow: C.cardShadow }}>
+      <div className="text-[8px] font-medium" style={{ color: C.textSecondary, fontFamily: FONT_BODY }}>{label}</div>
+      <div className="mt-[2px]"><Cifra value={value} size={14} color={C.textPrimary} /></div>
     </div>
   );
 }
 
-/* ─── Status Pill (real app) ─── */
+/* ─── Status Pill — mini-pill tintada (§8b) ─── */
 function StatusPill({ label, color, bg }: { label: string; color: string; bg: string }) {
   return (
     <span
       className="inline-flex px-[7px] py-[2px] rounded-full text-[7px] font-extrabold tracking-wider uppercase"
-      style={{ color, background: bg }}
+      style={{ color, background: bg, fontFamily: FONT_BODY }}
     >
       {label}
     </span>
@@ -167,26 +249,21 @@ function StatusPill({ label, color, bg }: { label: string; color: string; bg: st
 /* ═════════════════════════════════════════════ */
 export function ScreenDashboardConstructor() {
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
         <div className="text-[9px] font-medium" style={{ opacity: 0.7 }}>Buenos días</div>
-        <div className="text-[15px] font-bold mt-[1px]">Carlos Martínez</div>
+        <div className="text-[15px] mt-[1px]" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>Carlos Martínez</div>
         {/* Hero KPI */}
-        <div className="mt-3 rounded-[12px] p-3 flex items-center justify-between" style={{ background: C.heroCard }}>
+        <div className="mt-3 rounded-[20px] p-3 flex items-center justify-between" style={{ background: C.heroCard }}>
           <div>
             <div className="text-[8px] font-medium" style={{ opacity: 0.6 }}>Facturación acumulada</div>
-            <div className="text-[22px] font-extrabold leading-tight" style={{ fontFamily: "'Nunito', sans-serif" }}>142.800€</div>
+            <div className="mt-[1px]"><Cifra value="142.800€" size={22} weight={800} color="#FFFFFF" atenuado={0.5} /></div>
           </div>
-          {/* Trust Score ring */}
+          {/* Arco de custodia — score */}
           <div className="flex flex-col items-center gap-[2px]">
-            <div className="relative w-[38px] h-[38px]">
-              <svg viewBox="0 0 38 38" className="w-full h-full -rotate-90">
-                <circle cx="19" cy="19" r="16" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2.5" />
-                <circle cx="19" cy="19" r="16" fill="none" stroke={C.gold} strokeWidth="2.5" strokeLinecap="round"
-                  strokeDasharray={`${87 * 100.53 / 100} 100.53`} />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-[11px] font-extrabold text-white">87</div>
-            </div>
+            <ArcGauge value={87} size={40} strokeWidth={4} trackColor="rgba(255,255,255,0.15)" progressColor={C.cyan}>
+              <Cifra value="87" size={12} weight={700} color="#FFFFFF" />
+            </ArcGauge>
             <div className="text-[6px] font-bold uppercase tracking-wider" style={{ color: C.gold }}>Gold</div>
           </div>
         </div>
@@ -194,14 +271,14 @@ export function ScreenDashboardConstructor() {
 
       <div className="flex-1 px-3 py-3 space-y-2.5 overflow-hidden">
         <div className="grid grid-cols-3 gap-2">
-          <MiniKpi label="Obras activas" value="7" accent={C.blue} />
-          <MiniKpi label="Pte. cobro" value="24.500€" accent={C.amber} />
-          <MiniKpi label="Cobrado mes" value="18.200€" accent={C.success} />
+          <MiniKpi label="Obras activas" value="7" />
+          <MiniKpi label="Pte. cobro" value="24.500€" />
+          <MiniKpi label="Cobrado mes" value="18.200€" />
         </div>
 
         {/* Bar chart */}
-        <div className="rounded-[12px] p-3" style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}>
-          <div className="text-[9px] font-bold mb-2" style={{ color: C.textPrimary }}>Facturación mensual</div>
+        <div className="rounded-[20px] p-3" style={{ background: C.surface, boxShadow: C.cardShadow }}>
+          <div className="text-[9px] font-bold mb-2" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Facturación mensual</div>
           <div className="flex items-end gap-[3px] h-[48px]">
             {[35, 50, 42, 65, 55, 72, 80, 60, 75, 90, 70, 85].map((h, i) => (
               <div
@@ -221,23 +298,20 @@ export function ScreenDashboardConstructor() {
         </div>
 
         {/* Work card */}
-        <div className="rounded-[12px] p-3 flex items-start gap-2.5" style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}>
-          <div className="w-[3px] h-[36px] rounded-full" style={{ background: C.success }} />
-          <div className="flex-1">
-            <div className="flex justify-between items-center">
-              <span className="text-[10px] font-bold" style={{ color: C.textPrimary }}>Chalet Pozuelo Norte</span>
-              <StatusPill label="En curso" color={C.blue} bg={C.blueBg} />
-            </div>
-            <div className="flex items-center gap-1 mt-[2px] text-[7px]" style={{ color: C.textSecondary }}>
-              <MapPin className="w-[8px] h-[8px]" /> Pozuelo de Alarcón
-            </div>
-            <div className="mt-2 rounded-full h-[5px]" style={{ background: C.border }}>
-              <div className="h-full rounded-full" style={{ width: "68%", background: C.blue }} />
-            </div>
-            <div className="flex justify-between mt-[3px] text-[7px]" style={{ color: C.textSecondary }}>
-              <span>Hito 3 de 5</span>
-              <span className="font-bold" style={{ color: C.textPrimary }}>345.000€</span>
-            </div>
+        <div className="rounded-[20px] p-3" style={{ background: C.surface, boxShadow: C.cardShadow }}>
+          <div className="flex justify-between items-center">
+            <span className="text-[10px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Chalet Pozuelo Norte</span>
+            <StatusPill label="En curso" color={C.blue} bg={C.blueBg} />
+          </div>
+          <div className="flex items-center gap-1 mt-[2px] text-[7px]" style={{ color: C.textSecondary }}>
+            <MapPin className="w-[8px] h-[8px]" /> Pozuelo de Alarcón
+          </div>
+          <div className="mt-2 rounded-full h-[5px]" style={{ background: C.hairline }}>
+            <div className="h-full rounded-full" style={{ width: "68%", background: C.blue }} />
+          </div>
+          <div className="flex justify-between mt-[3px] text-[7px]" style={{ color: C.textSecondary }}>
+            <span>Hito 3 de 5</span>
+            <Cifra value="345.000€" size={8} color={C.textPrimary} />
           </div>
         </div>
       </div>
@@ -259,55 +333,54 @@ export function ScreenObraDetail() {
   ];
 
   const cfg = {
-    paid: { label: "Pagado", color: C.success, bg: C.successBg, bar: C.success },
-    validated: { label: "Validado", color: C.blue, bg: C.blueBg, bar: C.blue },
-    in_progress: { label: "En curso", color: C.amber, bg: C.amberBg, bar: C.amber },
-    pending: { label: "Pendiente", color: C.textSecondary, bg: "rgba(118,123,163,0.08)", bar: C.border },
+    paid: { label: "Pagado", color: C.success, bg: C.successBg },
+    validated: { label: "Validado", color: C.blue, bg: C.blueBg },
+    in_progress: { label: "En curso", color: C.amber, bg: C.amberBg },
+    pending: { label: "Pendiente", color: C.textSecondary, bg: "rgba(118,123,163,0.08)" },
   };
 
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
         <div className="flex items-center gap-1 text-[9px] font-medium" style={{ opacity: 0.7 }}>
           <ChevronRight className="w-3 h-3 rotate-180" /> Mis obras
         </div>
-        <div className="text-[15px] font-bold mt-1">Chalet Pozuelo Norte</div>
+        <div className="text-[15px] mt-1" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>Chalet Pozuelo Norte</div>
         <div className="flex items-center gap-1 mt-[2px] text-[9px]" style={{ opacity: 0.6 }}>
-          <MapPin className="w-[10px] h-[10px]" /> Pozuelo de Alarcón · 245.000€
+          <MapPin className="w-[10px] h-[10px]" /> Pozuelo de Alarcón · <Cifra value="245.000€" size={9} color="#FFFFFF" atenuado={0.6} />
         </div>
       </AppHeader>
 
       <div className="flex-1 px-3 py-3 space-y-2 overflow-hidden">
         {/* Escrow card */}
-        <div className="rounded-[12px] p-3 flex items-center gap-3" style={{ background: C.heroCard }}>
-          <div className="w-[30px] h-[30px] rounded-[8px] flex items-center justify-center" style={{ background: "rgba(169,243,255,0.15)" }}>
+        <div className="rounded-[20px] p-3 flex items-center gap-3" style={{ background: C.heroCard }}>
+          <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center" style={{ background: "rgba(169,243,255,0.15)" }}>
             <Shield className="w-4 h-4" style={{ color: C.cyan }} />
           </div>
-          <div className="text-white">
-            <div className="text-[9px] font-bold">Escrow protegido</div>
-            <div className="text-[8px]" style={{ opacity: 0.6 }}>55.000€ depositados · Hito 3</div>
+          <div className="text-white flex-1">
+            <div className="text-[9px] font-bold" style={{ fontFamily: FONT_BODY }}>Escrow protegido</div>
+            <div className="text-[8px]" style={{ opacity: 0.6 }}>
+              <Cifra value="55.000€" size={8} color="#FFFFFF" atenuado={0.6} /> depositados · Hito 3
+            </div>
           </div>
           <StatusPill label="Activo" color="#080D42" bg={C.cyan} />
         </div>
 
-        <div className="text-[9px] font-bold mt-1" style={{ color: C.textPrimary }}>Hitos de obra</div>
+        <div className="text-[9px] font-bold mt-1" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Hitos de obra</div>
 
         {milestones.map((m) => {
           const s = cfg[m.status];
           return (
-            <div key={m.name} className="rounded-[12px] p-2.5 flex items-center gap-2" style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}>
-              <div className="w-[3px] h-[32px] rounded-full" style={{ background: s.bar }} />
-              <div className="flex-1">
-                <div className="flex justify-between items-center">
-                  <span className="text-[9px] font-bold" style={{ color: C.textPrimary }}>{m.name}</span>
-                  <StatusPill label={s.label} color={s.color} bg={s.bg} />
+            <div key={m.name} className="rounded-[20px] p-2.5" style={{ background: C.surface, boxShadow: C.cardShadow }}>
+              <div className="flex justify-between items-center">
+                <span className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{m.name}</span>
+                <StatusPill label={s.label} color={s.color} bg={s.bg} />
+              </div>
+              <div className="flex justify-between items-center mt-1.5">
+                <div className="flex-1 rounded-full h-[5px] mr-2" style={{ background: C.hairline }}>
+                  <div className="h-full rounded-full transition-all" style={{ width: `${m.pct}%`, background: C.blue }} />
                 </div>
-                <div className="flex justify-between items-center mt-1.5">
-                  <div className="flex-1 rounded-full h-[5px] mr-2" style={{ background: C.border }}>
-                    <div className="h-full rounded-full transition-all" style={{ width: `${m.pct}%`, background: s.bar }} />
-                  </div>
-                  <span className="text-[8px] font-bold" style={{ color: C.textPrimary }}>{m.amount}</span>
-                </div>
+                <Cifra value={m.amount} size={8} color={C.textPrimary} />
               </div>
             </div>
           );
@@ -330,33 +403,30 @@ export function ScreenAIVerification() {
   ];
 
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
         <div className="flex items-center gap-1 text-[9px] font-medium" style={{ opacity: 0.7 }}>
           <ChevronRight className="w-3 h-3 rotate-180" /> Hito 3 · Cerramientos
         </div>
-        <div className="text-[15px] font-bold mt-1">Verificación IA</div>
+        <div className="text-[15px] mt-1" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>Verificación IA</div>
       </AppHeader>
 
       <div className="flex-1 px-3 py-3 space-y-2.5 overflow-hidden">
-        {/* Score card */}
-        <div className="rounded-[12px] p-4 text-center" style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}>
-          <div className="relative w-[70px] h-[70px] mx-auto mb-2">
-            <svg viewBox="0 0 70 70" className="w-full h-full -rotate-90">
-              <circle cx="35" cy="35" r="30" fill="none" stroke={C.border} strokeWidth="4" />
-              <circle cx="35" cy="35" r="30" fill="none" stroke={C.success} strokeWidth="4" strokeLinecap="round"
-                strokeDasharray={`${94 * 188.5 / 100} 188.5`} />
-            </svg>
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-[22px] font-extrabold" style={{ color: C.success, fontFamily: "'Nunito', sans-serif" }}>94</span>
-              <span className="text-[7px] -mt-1" style={{ color: C.textSecondary }}>de 100</span>
-            </div>
+        {/* Score card — arco de custodia sobre claro: psBlue */}
+        <div className="rounded-[20px] p-4 text-center" style={{ background: C.surface, boxShadow: C.cardShadow }}>
+          <div className="mx-auto mb-2" style={{ width: 70, height: 70 }}>
+            <ArcGauge value={94} size={70} strokeWidth={7} trackColor="rgba(8,13,66,0.08)" progressColor={C.blue}>
+              <Cifra value="94" size={20} weight={800} color={C.blue} />
+              <span className="text-[7px] -mt-[1px]" style={{ color: C.textSecondary }}>de 100</span>
+            </ArcGauge>
           </div>
-          <div className="text-[10px] font-bold" style={{ color: C.textPrimary }}>Score de cumplimiento</div>
+          <div className="text-[10px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Score de cumplimiento</div>
         </div>
 
         {/* Evidence photos — real construction images */}
-        <div className="text-[9px] font-bold" style={{ color: C.textPrimary }}>Evidencias analizadas (6)</div>
+        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>
+          Evidencias analizadas (<Cifra value="6" size={9} weight={700} color={C.textPrimary} />)
+        </div>
         <div className="grid grid-cols-3 gap-1.5">
           {[
             { label: "Fachada", ok: true, src: "/evidence/facade.jpg" },
@@ -366,12 +436,12 @@ export function ScreenAIVerification() {
             { label: "Fontanería", ok: true, src: "/evidence/plumbing.jpg" },
             { label: "Carpintería", ok: true, src: "/evidence/carpentry.jpg" },
           ].map((c, n) => (
-            <div key={n} className="aspect-square rounded-[8px] relative overflow-hidden" style={{ border: `1px solid ${C.border}` }}>
+            <div key={n} className="aspect-square rounded-[14px] relative overflow-hidden">
               <img src={c.src} alt={c.label} className="w-full h-full object-cover" />
               {/* Geo tag */}
               <div className="absolute bottom-[3px] left-[3px] flex items-center gap-[2px] px-[4px] py-[1px] rounded-[3px]" style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(2px)" }}>
                 <MapPin className="w-[6px] h-[6px] text-white/90" />
-                <span className="text-[5px] text-white/90 font-bold">{c.label}</span>
+                <span className="text-[5px] text-white/90 font-bold" style={{ fontFamily: FONT_BODY }}>{c.label}</span>
               </div>
               {/* Status badge */}
               <div className="absolute top-[3px] right-[3px]">
@@ -384,15 +454,17 @@ export function ScreenAIVerification() {
         </div>
 
         {/* Findings */}
-        <div className="text-[9px] font-bold" style={{ color: C.textPrimary }}>Hallazgos</div>
+        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Hallazgos</div>
         {findings.map((f, i) => (
-          <div key={i} className="flex items-center gap-2 rounded-[8px] px-2.5 py-2" style={{ background: f.ok ? C.successBg : C.amberBg }}>
+          <div key={i} className="flex items-center gap-2 rounded-[14px] px-2.5 py-2" style={{ background: f.ok ? C.successBg : C.amberBg }}>
             {f.ok ? (
               <CheckCircle2 className="w-[12px] h-[12px] shrink-0" style={{ color: C.success }} />
             ) : (
               <AlertTriangle className="w-[12px] h-[12px] shrink-0" style={{ color: C.amber }} />
             )}
-            <span className="text-[8px] font-semibold" style={{ color: f.ok ? C.success : C.amber }}>{f.label}</span>
+            <span className="text-[8px] font-semibold" style={{ color: f.ok ? C.success : C.amber, fontFamily: FONT_BODY }}>
+              {withCifra(f.label, { size: 8, color: f.ok ? C.success : C.amber })}
+            </span>
           </div>
         ))}
       </div>
@@ -406,24 +478,24 @@ export function ScreenAIVerification() {
 /* ═════════════════════════════════════════════ */
 export function ScreenAssistant() {
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
-        <div className="text-[15px] font-bold">Asistente PactStream</div>
+        <div className="text-[15px]" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>Asistente PactStream</div>
         <div className="text-[9px] mt-[1px]" style={{ opacity: 0.6 }}>Chalet Pozuelo Norte</div>
       </AppHeader>
 
       <div className="flex-1 px-3 py-3 space-y-2 overflow-hidden">
         {/* User */}
         <div className="flex justify-end">
-          <div className="rounded-[12px] rounded-tr-[3px] px-3 py-2 max-w-[80%]" style={{ background: C.blue }}>
+          <div className="rounded-[18px] rounded-tr-[4px] px-3 py-2 max-w-[80%]" style={{ background: C.blue }}>
             <div className="text-[10px] text-white">¿Cuánto llevamos gastado en fontanería?</div>
           </div>
         </div>
         {/* AI */}
         <div className="flex justify-start">
-          <div className="rounded-[12px] rounded-tl-[3px] px-3 py-2 max-w-[85%]" style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}>
+          <div className="rounded-[18px] rounded-tl-[4px] px-3 py-2 max-w-[85%]" style={{ background: C.surface, boxShadow: C.cardShadow }}>
             <div className="text-[10px] leading-relaxed" style={{ color: C.textPrimary }}>
-              El capítulo de fontanería lleva <strong>12.450€</strong> ejecutados de <strong>18.200€</strong> (68,4%).
+              {withCifra("El capítulo de fontanería lleva 12.450€ ejecutados de 18.200€ (68,4%).", { size: 10, color: C.textPrimary })}
             </div>
             <div className="text-[10px] leading-relaxed mt-1" style={{ color: C.textPrimary }}>
               Quedan 3 partidas pendientes. Próxima certificación: <strong>viernes 28</strong>.
@@ -432,27 +504,27 @@ export function ScreenAssistant() {
         </div>
         {/* User */}
         <div className="flex justify-end">
-          <div className="rounded-[12px] rounded-tr-[3px] px-3 py-2 max-w-[80%]" style={{ background: C.blue }}>
+          <div className="rounded-[18px] rounded-tr-[4px] px-3 py-2 max-w-[80%]" style={{ background: C.blue }}>
             <div className="text-[10px] text-white">Valida la certificación del hito 3</div>
           </div>
         </div>
         {/* AI with action */}
         <div className="flex justify-start">
-          <div className="rounded-[12px] rounded-tl-[3px] px-3 py-2.5 max-w-[85%]" style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}>
+          <div className="rounded-[18px] rounded-tl-[4px] px-3 py-2.5 max-w-[85%]" style={{ background: C.surface, boxShadow: C.cardShadow }}>
             <div className="flex items-center gap-1.5 mb-1.5">
               <CheckCircle2 className="w-[12px] h-[12px]" style={{ color: C.success }} />
-              <span className="text-[9px] font-bold" style={{ color: C.success }}>Certificación #3 validada</span>
+              <span className="text-[9px] font-bold" style={{ color: C.success, fontFamily: FONT_BODY }}>Certificación #3 validada</span>
             </div>
             <div className="text-[10px]" style={{ color: C.textPrimary }}>
-              Score IA: <strong style={{ color: C.success }}>94/100</strong>
+              Score IA: <Cifra value="94/100" size={10} weight={700} color={C.success} atenuado={0.6} />
             </div>
             <div className="text-[10px] mt-0.5" style={{ color: C.textPrimary }}>
-              Pago de <strong>8.750€</strong> liberado al constructor.
+              {withCifra("Pago de 8.750€ liberado al constructor.", { size: 10, color: C.textPrimary })}
             </div>
             {/* Action card */}
-            <div className="mt-2 rounded-[8px] px-2.5 py-2 flex items-center gap-2" style={{ background: C.successBg }}>
+            <div className="mt-2 rounded-[14px] px-2.5 py-2 flex items-center gap-2" style={{ background: C.successBg }}>
               <CreditCard className="w-[12px] h-[12px]" style={{ color: C.success }} />
-              <span className="text-[7px] font-bold" style={{ color: C.success }}>
+              <span className="text-[7px] font-bold" style={{ color: C.success, fontFamily: FONT_MONO }}>
                 Transferencia procesada · Ref: PS-2026-0847
               </span>
             </div>
@@ -462,7 +534,7 @@ export function ScreenAssistant() {
 
       {/* Input */}
       <div className="px-3 pb-[52px] pt-2">
-        <div className="rounded-[12px] px-3 py-2.5 flex items-center gap-2" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
+        <div className="rounded-full px-3 py-2.5 flex items-center gap-2" style={{ background: C.surface, boxShadow: C.cardShadow }}>
           <span className="text-[10px] flex-1" style={{ color: C.textSecondary }}>Escribe un mensaje...</span>
           <div className="w-[24px] h-[24px] rounded-full flex items-center justify-center" style={{ background: C.blue }}>
             <Send className="w-[10px] h-[10px] text-white" />
@@ -479,19 +551,19 @@ export function ScreenAssistant() {
 /* ═════════════════════════════════════════════ */
 export function ScreenDashboardPromotor() {
   return (
-    <div className="h-full flex flex-col" style={{ background: C.scaffold, fontFamily: "'Nunito', sans-serif", fontSize: 11 }}>
+    <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
         <div className="text-[9px] font-medium" style={{ opacity: 0.7 }}>Buenos días</div>
-        <div className="text-[15px] font-bold mt-[1px]">María López Vidal</div>
+        <div className="text-[15px] mt-[1px]" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>María López Vidal</div>
         {/* Hero KPI */}
-        <div className="mt-3 rounded-[12px] p-3 grid grid-cols-2 gap-3" style={{ background: C.heroCard }}>
+        <div className="mt-3 rounded-[20px] p-3 grid grid-cols-2 gap-3" style={{ background: C.heroCard }}>
           <div>
             <div className="text-[8px] font-medium" style={{ opacity: 0.5 }}>En escrow</div>
-            <div className="text-[18px] font-extrabold leading-tight" style={{ fontFamily: "'Nunito', sans-serif" }}>124.500€</div>
+            <div className="mt-[1px]"><Cifra value="124.500€" size={18} weight={800} color="#FFFFFF" atenuado={0.5} /></div>
           </div>
           <div>
             <div className="text-[8px] font-medium" style={{ opacity: 0.5 }}>Liberado hoy</div>
-            <div className="text-[18px] font-extrabold leading-tight" style={{ color: C.cyan, fontFamily: "'Nunito', sans-serif" }}>8.750€</div>
+            <div className="mt-[1px]"><Cifra value="8.750€" size={18} weight={800} color={C.cyan} atenuado={0.6} /></div>
           </div>
         </div>
       </AppHeader>
@@ -499,15 +571,15 @@ export function ScreenDashboardPromotor() {
       <div className="flex-1 px-3 py-3 space-y-2 overflow-hidden">
         {/* KPI row */}
         <div className="grid grid-cols-3 gap-1.5">
-          <MiniKpi label="Obras activas" value="2" accent={C.blue} />
-          <MiniKpi label="Pte. validar" value="1" accent={C.amber} />
-          <MiniKpi label="Completadas" value="3" accent={C.success} />
+          <MiniKpi label="Obras activas" value="2" />
+          <MiniKpi label="Pte. validar" value="1" />
+          <MiniKpi label="Completadas" value="3" />
         </div>
 
         {/* Flow chart */}
-        <div className="rounded-[12px] p-3" style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}>
+        <div className="rounded-[20px] p-3" style={{ background: C.surface, boxShadow: C.cardShadow }}>
           <div className="flex justify-between items-center mb-2">
-            <div className="text-[9px] font-bold" style={{ color: C.textPrimary }}>Flujo de fondos</div>
+            <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Flujo de fondos</div>
             <span className="text-[7px] font-semibold" style={{ color: C.textSecondary }}>Últimos 6 meses</span>
           </div>
           <div className="flex items-end gap-[3px]" style={{ height: 50 }}>
@@ -530,40 +602,40 @@ export function ScreenDashboardPromotor() {
           </div>
         </div>
 
-        <div className="text-[9px] font-bold" style={{ color: C.textPrimary }}>Mis obras</div>
+        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Mis obras</div>
 
         {[
           { name: "Chalet Pozuelo Norte", builder: "C. Martínez", hito: "3/5", pct: 60, status: "En curso" },
           { name: "Reforma Salamanca 14", builder: "J. Fernández", hito: "2/4", pct: 45, status: "Validación" },
         ].map((obra) => (
-          <div key={obra.name} className="rounded-[12px] p-2.5" style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}>
+          <div key={obra.name} className="rounded-[20px] p-2.5" style={{ background: C.surface, boxShadow: C.cardShadow }}>
             <div className="flex justify-between items-start">
               <div>
-                <div className="text-[9px] font-bold" style={{ color: C.textPrimary }}>{obra.name}</div>
+                <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{obra.name}</div>
                 <div className="text-[7px] mt-[1px]" style={{ color: C.textSecondary }}>Constructor: {obra.builder} · Hito {obra.hito}</div>
               </div>
               <StatusPill label={obra.status} color={obra.status === "En curso" ? C.blue : C.amber} bg={obra.status === "En curso" ? C.blueBg : C.amberBg} />
             </div>
-            <div className="mt-1.5 rounded-full h-[5px]" style={{ background: C.border }}>
+            <div className="mt-1.5 rounded-full h-[5px]" style={{ background: C.hairline }}>
               <div className="h-full rounded-full" style={{ width: `${obra.pct}%`, background: C.blue }} />
             </div>
           </div>
         ))}
 
         {/* Recent activity */}
-        <div className="text-[9px] font-bold" style={{ color: C.textPrimary }}>Actividad reciente</div>
-        <div className="rounded-[12px] p-2.5 space-y-2" style={{ background: C.surface, border: `1px solid ${C.border}`, boxShadow: C.shadow }}>
+        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Actividad reciente</div>
+        <div className="rounded-[20px] p-2.5 space-y-2" style={{ background: C.surface, boxShadow: C.cardShadow }}>
           {[
             { icon: CreditCard, text: "Pago 8.750€ liberado a C. Martínez", time: "Hace 2h", color: C.success },
             { icon: CheckCircle2, text: "Hito 3 validado · Score IA: 94", time: "Hace 3h", color: C.blue },
             { icon: Camera, text: "6 evidencias subidas · Cerramientos", time: "Ayer", color: C.textSecondary },
           ].map((act, i) => (
             <div key={i} className="flex items-start gap-2">
-              <div className="w-[18px] h-[18px] rounded-[5px] flex items-center justify-center shrink-0 mt-[1px]" style={{ background: `${act.color}15` }}>
+              <div className="w-[18px] h-[18px] rounded-[8px] flex items-center justify-center shrink-0 mt-[1px]" style={{ background: `${act.color}15` }}>
                 <act.icon className="w-[9px] h-[9px]" style={{ color: act.color }} />
               </div>
               <div className="flex-1">
-                <div className="text-[8px] font-semibold leading-tight" style={{ color: C.textPrimary }}>{act.text}</div>
+                <div className="text-[8px] font-semibold leading-tight" style={{ color: C.textPrimary }}>{withCifra(act.text, { size: 8, color: C.textPrimary })}</div>
                 <div className="text-[7px]" style={{ color: C.textSecondary }}>{act.time}</div>
               </div>
             </div>
