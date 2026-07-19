@@ -36,6 +36,7 @@ import {
   X,
 } from "lucide-react";
 import PhoneFrame from "@/components/PhoneFrame";
+import { Hito0Seal } from "@/components/Hito0Seal";
 import {
   ScreenDashboardConstructor,
   ScreenObraDetail,
@@ -976,8 +977,8 @@ function Hito0Section({ t }: { t: Dict }) {
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         <AnimatedSection>
           <div className="max-w-4xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
-            <motion.div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center shrink-0" whileHover={{ scale: 1.05, rotate: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-              <Shield className="w-16 h-16 lg:w-20 lg:h-20 text-[#0B6E5F]" />
+            <motion.div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full bg-gradient-to-br from-[#F2FAF8] to-[#E6F5F2] flex items-center justify-center shrink-0" whileHover={{ scale: 1.05, rotate: 5 }} transition={{ type: "spring", stiffness: 300 }}>
+              <Hito0Seal size={104} className="w-[88px] h-[88px] lg:w-[104px] lg:h-[104px]" />
             </motion.div>
             <div>
               <p className="text-sm font-semibold text-[#0B6E5F] uppercase tracking-wider mb-3">{t.hito0.tag}</p>
