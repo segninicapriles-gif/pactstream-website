@@ -135,7 +135,7 @@ function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
 /* ─── LOGO (HTML text — avoids SVG font-loading issues on mobile) ─── */
 function PactStreamLogo({ size = "md" }: { size?: "sm" | "md" }) {
   const uid = useId();
-  const iconH = size === "sm" ? 24 : 28;
+  const iconH = size === "sm" ? 34 : 36;
   const textClass = size === "sm" ? "text-lg" : "text-xl";
   const subClass = size === "sm" ? "text-[8px]" : "text-[9px]";
   return (
@@ -154,7 +154,7 @@ function PactStreamLogo({ size = "md" }: { size?: "sm" | "md" }) {
       </svg>
       <div className="flex flex-col leading-none">
         <span className={`${textClass} font-[family-name:var(--font-nunito)] font-bold text-white tracking-tight`}>PactStream</span>
-        <span className={`${subClass} font-[family-name:var(--font-nunito)] font-normal text-white/50 tracking-[0.15em] uppercase`}>confidence to build</span>
+        <span className={`${subClass} font-[family-name:var(--font-nunito)] font-normal text-white/50 tracking-wide`}>confidence to build</span>
       </div>
     </div>
   );
