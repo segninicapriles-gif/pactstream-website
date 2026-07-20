@@ -10,7 +10,7 @@ export default function PhoneFrame({
   className?: string;
 }) {
   return (
-    <div className={`relative mx-auto ${className}`} style={{ width: 280, height: 572 }}>
+    <div className={`relative mx-auto ${className}`} style={{ width: 280, height: 600 }}>
       {/* Phone body */}
       <div
         className="absolute inset-0 rounded-[44px]"

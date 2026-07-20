@@ -384,7 +384,7 @@ function HeroSection({ t }: { t: Dict }) {
                 <PhoneFrame><ScreenDashboardConstructor /></PhoneFrame>
               </div>
               {/* Mobile: clean screenshot, no frame */}
-              <div className="lg:hidden w-[240px] h-[480px] rounded-[28px] overflow-hidden shadow-[0_12px_60px_rgba(0,0,0,0.4)] border border-white/10">
+              <div className="lg:hidden w-[264px] h-[578px] rounded-[28px] overflow-hidden shadow-[0_12px_60px_rgba(0,0,0,0.4)] border border-white/10">
                 <ScreenDashboardConstructor />
               </div>
             </motion.div>
@@ -695,7 +695,7 @@ function StickyPhoneSection({ t }: { t: Dict }) {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -60 * swipeDir.current }}
                     transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-[240px] h-[480px] rounded-[28px] overflow-hidden shadow-[0_12px_60px_rgba(0,0,0,0.15)] border border-black/5"
+                    className="w-[264px] h-[578px] rounded-[28px] overflow-hidden shadow-[0_12px_60px_rgba(0,0,0,0.15)] border border-black/5"
                   >
                     {screens[activeIndex]}
                   </motion.div>
@@ -938,7 +938,7 @@ function AISection({ t }: { t: Dict }) {
                 <PhoneFrame><ScreenAIVerification /></PhoneFrame>
               </div>
               {/* Mobile: clean screenshot */}
-              <div className="lg:hidden w-[240px] h-[480px] rounded-[28px] overflow-hidden shadow-[0_12px_60px_rgba(0,0,0,0.4)] border border-white/10">
+              <div className="lg:hidden w-[264px] h-[578px] rounded-[28px] overflow-hidden shadow-[0_12px_60px_rgba(0,0,0,0.4)] border border-white/10">
                 <ScreenAIVerification />
               </div>
               <div className="absolute -inset-16 bg-gradient-to-r from-[#0D9B84]/15 to-[#a9f3ff]/10 rounded-full blur-3xl -z-10" />

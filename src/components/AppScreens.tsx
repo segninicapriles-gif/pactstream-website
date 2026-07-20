@@ -269,7 +269,7 @@ export function ScreenDashboardConstructor() {
         </div>
       </AppHeader>
 
-      <div className="flex-1 px-3 py-3 space-y-2.5 overflow-hidden">
+      <div className="flex-1 min-h-0 px-3 py-2.5 space-y-2 overflow-hidden">
         <div className="grid grid-cols-3 gap-2">
           <MiniKpi label="Obras activas" value="7" />
           <MiniKpi label="Pte. cobro" value="24.500€" />
@@ -411,12 +411,12 @@ export function ScreenAIVerification() {
         <div className="text-[15px] mt-1" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>Verificación IA</div>
       </AppHeader>
 
-      <div className="flex-1 px-3 py-3 space-y-2.5 overflow-hidden">
+      <div className="flex-1 min-h-0 px-3 py-2.5 space-y-2 overflow-hidden">
         {/* Score card — arco de custodia sobre claro: psBlue */}
-        <div className="rounded-[20px] p-4 text-center" style={{ background: C.surface, boxShadow: C.cardShadow }}>
-          <div className="mx-auto mb-2" style={{ width: 70, height: 70 }}>
-            <ArcGauge value={94} size={70} strokeWidth={7} trackColor="rgba(8,13,66,0.08)" progressColor={C.blue}>
-              <Cifra value="94" size={20} weight={800} color={C.blue} />
+        <div className="rounded-[20px] p-2.5 text-center" style={{ background: C.surface, boxShadow: C.cardShadow }}>
+          <div className="mx-auto mb-1" style={{ width: 60, height: 60 }}>
+            <ArcGauge value={94} size={60} strokeWidth={6} trackColor="rgba(8,13,66,0.08)" progressColor={C.blue}>
+              <Cifra value="94" size={18} weight={800} color={C.blue} />
               <span className="text-[7px] -mt-[1px]" style={{ color: C.textSecondary }}>de 100</span>
             </ArcGauge>
           </div>
@@ -456,7 +456,7 @@ export function ScreenAIVerification() {
         {/* Findings */}
         <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Hallazgos</div>
         {findings.map((f, i) => (
-          <div key={i} className="flex items-center gap-2 rounded-[14px] px-2.5 py-2" style={{ background: f.ok ? C.successBg : C.amberBg }}>
+          <div key={i} className="flex items-center gap-2 rounded-[14px] px-2.5 py-1.5" style={{ background: f.ok ? C.successBg : C.amberBg }}>
             {f.ok ? (
               <CheckCircle2 className="w-[12px] h-[12px] shrink-0" style={{ color: C.success }} />
             ) : (
@@ -484,7 +484,7 @@ export function ScreenAssistant() {
         <div className="text-[9px] mt-[1px]" style={{ opacity: 0.6 }}>Chalet Pozuelo Norte</div>
       </AppHeader>
 
-      <div className="flex-1 px-3 py-3 space-y-2 overflow-hidden">
+      <div className="flex-1 min-h-0 px-3 py-3 space-y-2 overflow-hidden flex flex-col justify-end">
         {/* User */}
         <div className="flex justify-end">
           <div className="rounded-[18px] rounded-tr-[4px] px-3 py-2 max-w-[80%]" style={{ background: C.blue }}>
@@ -533,7 +533,7 @@ export function ScreenAssistant() {
       </div>
 
       {/* Input */}
-      <div className="px-3 pb-[52px] pt-2">
+      <div className="px-3 pb-2 pt-2">
         <div className="rounded-full px-3 py-2.5 flex items-center gap-2" style={{ background: C.surface, boxShadow: C.cardShadow }}>
           <span className="text-[10px] flex-1" style={{ color: C.textSecondary }}>Escribe un mensaje...</span>
           <div className="w-[24px] h-[24px] rounded-full flex items-center justify-center" style={{ background: C.blue }}>
