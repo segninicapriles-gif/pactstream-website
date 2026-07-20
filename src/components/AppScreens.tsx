@@ -47,7 +47,8 @@ const C = {
 };
 
 /* ═════════════════════════════════════════════ */
-/* ─── Cifra Viva — importes/%/contadores en mono ─── */
+/* ─── Cifra Viva — importes/%/contadores en Nunito (armoniza con titulares;
+   se abandonó JetBrains Mono en la web por chocar con la estética redondeada) ─── */
 /* ═════════════════════════════════════════════ */
 function Cifra({
   value,
@@ -65,14 +66,14 @@ function Cifra({
   const m = value.match(/^(-?[\d.,]+)(.*)$/);
   if (!m) {
     return (
-      <span style={{ fontFamily: FONT_MONO, fontWeight: weight, color, fontSize: size }}>
+      <span style={{ fontFamily: FONT_DISPLAY, fontWeight: weight, color, fontSize: size }}>
         {value}
       </span>
     );
   }
   const [, main, suffix] = m;
   return (
-    <span style={{ fontFamily: FONT_MONO, fontSize: size }}>
+    <span style={{ fontFamily: FONT_DISPLAY, fontSize: size }}>
       <span style={{ fontWeight: weight, color }}>{main}</span>
       {suffix && <span style={{ fontWeight: 400, color, opacity: atenuado }}>{suffix}</span>}
     </span>
