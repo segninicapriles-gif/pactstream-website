@@ -12,8 +12,8 @@ const dict = {
     },
     hero: {
       badge: "Solo 200 plazas — Acceso por invitación",
-      heading: ["Cobra antes.\nDocumenta mejor.\n", "Certifica sin riesgos", "."],
-      sub: "El único escrow inteligente para construcción en España. Tus pagos protegidos, tus evidencias verificadas por IA, tus hitos certificados automáticamente.",
+      heading: ["Control de obra, verificación por IA y\n", "pago condicionado al avance real", "."],
+      sub: "El dinero se deposita en una cuenta regulada, externa a las dos partes. La IA verifica cada hito con las evidencias de obra. El pago se libera cuando el trabajo está hecho — y solo entonces.",
       cta: "Reservar mi plaza",
       ctaSecondary: "Ver cómo funciona",
       stats: [
@@ -108,9 +108,9 @@ const dict = {
     },
     hito0: {
       tag: "Exclusivo PactStream",
-      heading: "Hito 0 Asegurado: tu anticipo, protegido",
-      desc: "El 30% de anticipo de obra queda protegido por una póliza de caución con una aseguradora líder del mercado (en negociación). Si el constructor no cumple, recuperas tu dinero. No existe nada igual en España.",
-      tags: ["Póliza de caución", "30% anticipo protegido", "Devolución garantizada", "Único en España"],
+      heading: "Hito 0 Asegurado: el constructor arranca, tu dinero protegido",
+      desc: "El escrow protege el dinero que está quieto — pero el constructor necesita un anticipo para comprar materiales y pagar a su equipo antes de certificar el primer hito. Ahí el escrow ya no cubre al cliente. Hito 0 Asegurado resuelve las dos caras a la vez: el constructor recibe el 30% para arrancar, y ese anticipo queda protegido por una póliza de caución con una aseguradora líder del mercado (en negociación). Si el constructor no empieza, el cliente recupera su dinero. Nadie más integra anticipo asegurado, escrow y verificación por IA en un mismo flujo.",
+      tags: ["Anticipo para arrancar", "Protegido con caución", "Devolución si no empieza", "Integración única"],
     },
     validation: {
       tag: "Resultados reales",
@@ -206,14 +206,14 @@ const dict = {
       ],
     },
     comparison: {
-      tag: "Comparativa actualizada — junio 2026",
+      tag: "Comparativa actualizada — julio 2026",
       heading: "PactStream vs. la competencia",
       headingAccent: "sin marketing, solo hechos",
       sub: "Comparamos PactStream con las alternativas reales del mercado español de construcción. Con honestidad: donde ellos ganan, lo decimos.",
-      matrixTitle: "Matriz global — 12 funcionalidades × 6 alternativas",
+      matrixTitle: "Matriz global — 12 funcionalidades × 7 alternativas",
       detailTitle: "Comparativa detallada por alternativa",
       detailSub: "Haz clic en cada alternativa para ver la tabla completa, fortalezas, debilidades y nuestro veredicto honesto.",
-      scrollHint: "Desliza horizontalmente para ver todas las alternativas. Datos actualizados a junio 2026.",
+      scrollHint: "Desliza horizontalmente para ver todas las alternativas. Datos actualizados a julio 2026.",
       legend: { yes: "Incluido", partial: "Parcial", no: "No disponible", roadmap: "En roadmap" },
       whyTitle: "¿Por qué PactStream gana en la mayoría de categorías?",
       whyReasons: [
@@ -262,6 +262,14 @@ const dict = {
           features: { escrow: "yes", ai_verification: "no", auto_payment: "no", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "no", ai_budgets: "no", mobile: "partial", freemium: "no" },
         },
         {
+          id: "fintiq", name: "Fintiq", country: "🇪🇸 España", tagline: "Pago por fases con custodia Stripe",
+          color: "#6C5CE7", pricing: "No publicado", pricingDetail: "Custodia de fondos vía Stripe Payments Europe (entidad regulada en la UE). Precios no públicos en su web (julio 2026).",
+          strengths: ["Custodia regulada por un tercero (Stripe Payments Europe)", "El dinero se deposita antes de empezar la obra", "Cobro de cada fase validada en 24 horas", "Mediación y peritaje en disputas"],
+          weaknesses: ["Sin verificación IA — la validación depende del cliente", "Sin anticipo: el constructor financia la primera fase de su bolsillo", "Sin protección del anticipo (no hay póliza de caución)", "Sin presupuestación integrada", "Centrado en reforma"],
+          verdict: "Fintiq valida nuestro modelo: custodia externa y pago por fases, en España. La diferencia está en cómo se libera el dinero — en Fintiq valida el cliente; en PactStream verifica la IA con evidencias geolocalizadas — y en el arranque: Fintiq no da anticipo al constructor; PactStream lo da y lo protege con Hito 0.",
+          features: { escrow: "yes", ai_verification: "no", auto_payment: "partial", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "partial", ai_budgets: "no", mobile: "no", freemium: "no" },
+        },
+        {
           id: "procore", name: "Procore", country: "🇺🇸 USA (global)", tagline: "Enterprise americano, precio americano",
           color: "#F5A623", pricing: "$4.500–60.000/año", pricingDetail: "Precio basado en volumen anual de obra (ACV). Mid-market: $35-60K/año. Usuarios ilimitados.",
           strengths: ["Plataforma integral enterprise", "Usuarios ilimitados", "Ecosistema de integraciones enorme", "Gestión documental robusta"],
@@ -303,7 +311,7 @@ const dict = {
     heroEmail: {
       placeholder: "tu@email.com",
       cta: "Reservar mi plaza",
-      note: "Sin spam · Sin tarjeta · Solo 200 plazas",
+      note: "Sin spam · Sin tarjeta · Sin compromiso",
     },
     trustBadges: ["PSD2 Regulado", "Cuenta segregada", "Cifrado end-to-end"],
     faq: {
@@ -315,7 +323,7 @@ const dict = {
         { q: "¿Qué pasa si hay una disputa?", a: "PactStream actúa como mediador neutral. Las evidencias verificadas por IA sirven como documentación objetiva e inmutable. El dinero permanece protegido en escrow hasta que se resuelva la situación." },
         { q: "¿Cuánto cuesta usar PactStream?", a: "Ofrecemos 3 paquetes que incluyen CostPact (presupuestación IA) + PactStream (escrow + pagos). Starter: gratis, solo pagas 2,4% por transacción. Professional: 99€/mes con presupuestos ilimitados, multi-obra y verificación IA ilimitada. Enterprise: desde 990€/mes con 0,8% por transacción, API, SSO y CSM dedicado. Los primeros 50 usuarios obtienen pricing de fundador de por vida." },
         { q: "¿Está mi dinero seguro?", a: "Sí. Los fondos se custodian en cuentas segregadas reguladas bajo la directiva PSD2 europea. PactStream nunca tiene acceso directo a tu dinero — solo facilita la liberación cuando se cumplen las condiciones del hito." },
-        { q: "¿Qué diferencia hay con STIMATpay o Plan Reforma?", a: "STIMATpay ofrece un escrow manual sin verificación automática. PactStream automatiza todo el ciclo: presupuestación con IA (vía CostPact), escrow regulado, verificación de evidencias con score 0-100, y liberación automática de pagos. Somos el único escrow con IA en Europa para construcción residencial." },
+        { q: "¿Qué diferencia hay con STIMATpay o Plan Reforma?", a: "STIMATpay ofrece un escrow manual sin verificación automática. PactStream integra en un solo flujo lo que nadie más reúne: presupuestación con IA (vía CostPact), escrow regulado, verificación del avance físico con score 0-100 como condición de liberación del pago, y anticipo protegido por póliza de caución (Hito 0). Esa integración —verificar el avance real y liberar el dinero en un mismo paso— es lo que nos diferencia." },
       ],
     },
     footer: {
@@ -366,8 +374,8 @@ const dict = {
     },
     hero: {
       badge: "Only 200 spots — Invite-only access",
-      heading: ["Get paid faster.\nDocument better.\n", "Certify risk-free", "."],
-      sub: "The only smart escrow for construction in Spain. Your payments protected, your evidence AI-verified, your milestones certified automatically.",
+      heading: ["Site control, AI verification and\n", "payment released on real progress", "."],
+      sub: "The money sits in a regulated account, external to both parties. AI verifies every milestone against site evidence. Payment is released when the work is done — and only then.",
       cta: "Reserve my spot",
       ctaSecondary: "See how it works",
       stats: [
@@ -462,9 +470,9 @@ const dict = {
     },
     hito0: {
       tag: "PactStream exclusive",
-      heading: "Milestone 0 Insured: your advance, protected",
-      desc: "30% of the project advance is protected by a surety bond with a leading insurer (in negotiation). If the builder defaults, you recover your money. Nothing like this exists in Spain.",
-      tags: ["Surety bond", "30% advance protected", "Guaranteed refund", "Unique in Spain"],
+      heading: "Milestone 0 Insured: the builder starts, your money protected",
+      desc: "Escrow protects money that sits still — but the builder needs an advance to buy materials and pay their team before the first milestone is certified. At that point, escrow no longer covers the client. Milestone 0 Insured solves both sides at once: the builder receives 30% to get started, and that advance is protected by a surety bond with a leading insurer (in negotiation). If the builder doesn't start, the client recovers their money. No one else integrates an insured advance, escrow and AI verification in a single flow.",
+      tags: ["Advance to get started", "Protected by surety bond", "Refund if work doesn't start", "Unique integration"],
     },
     validation: {
       tag: "Real results",
@@ -560,14 +568,14 @@ const dict = {
       ],
     },
     comparison: {
-      tag: "Comparison updated — June 2026",
+      tag: "Comparison updated — July 2026",
       heading: "PactStream vs. the competition",
       headingAccent: "no marketing, just facts",
       sub: "We compare PactStream with real alternatives in the Spanish construction market. Honestly: where they win, we say so.",
-      matrixTitle: "Global matrix — 12 features × 6 alternatives",
+      matrixTitle: "Global matrix — 12 features × 7 alternatives",
       detailTitle: "Detailed comparison by alternative",
       detailSub: "Click each alternative to see the full table, strengths, weaknesses, and our honest verdict.",
-      scrollHint: "Scroll horizontally to see all alternatives. Data updated June 2026.",
+      scrollHint: "Scroll horizontally to see all alternatives. Data updated July 2026.",
       legend: { yes: "Included", partial: "Partial", no: "Not available", roadmap: "On roadmap" },
       whyTitle: "Why PactStream wins in most categories",
       whyReasons: [
@@ -616,6 +624,14 @@ const dict = {
           features: { escrow: "yes", ai_verification: "no", auto_payment: "no", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "no", ai_budgets: "no", mobile: "partial", freemium: "no" },
         },
         {
+          id: "fintiq", name: "Fintiq", country: "🇪🇸 Spain", tagline: "Phased payments with Stripe custody",
+          color: "#6C5CE7", pricing: "Not published", pricingDetail: "Funds held by Stripe Payments Europe (EU-regulated entity). Pricing not public on their website (July 2026).",
+          strengths: ["Regulated third-party custody (Stripe Payments Europe)", "Money deposited before work starts", "Each validated phase paid within 24 hours", "Mediation and expert assessment in disputes"],
+          weaknesses: ["No AI verification — release depends on client approval", "No advance: the builder self-finances the first phase", "No advance protection (no surety bond)", "No integrated budgeting", "Renovation-focused"],
+          verdict: "Fintiq validates our model: external custody and phased payments, in Spain. The difference is how the money is released — with Fintiq the client validates; with PactStream AI verifies against geolocated evidence — and at the start: Fintiq gives the builder no advance; PactStream provides one and protects it with Milestone 0.",
+          features: { escrow: "yes", ai_verification: "no", auto_payment: "partial", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "partial", ai_budgets: "no", mobile: "no", freemium: "no" },
+        },
+        {
           id: "procore", name: "Procore", country: "🇺🇸 USA (global)", tagline: "American enterprise, American pricing",
           color: "#F5A623", pricing: "$4,500–60,000/yr", pricingDetail: "Price based on annual construction volume (ACV). Mid-market: $35-60K/yr. Unlimited users.",
           strengths: ["Comprehensive enterprise platform", "Unlimited users", "Huge integration ecosystem", "Robust document management"],
@@ -657,7 +673,7 @@ const dict = {
     heroEmail: {
       placeholder: "you@email.com",
       cta: "Reserve my spot",
-      note: "No spam · No card · Only 200 spots",
+      note: "No spam · No card · No commitment",
     },
     trustBadges: ["PSD2 Regulated", "Segregated account", "End-to-end encryption"],
     faq: {
@@ -669,7 +685,7 @@ const dict = {
         { q: "What happens if there's a dispute?", a: "PactStream acts as a neutral mediator. AI-verified evidence serves as objective, immutable documentation. Money remains protected in escrow until the situation is resolved." },
         { q: "How much does PactStream cost?", a: "We offer 3 bundles including CostPact (AI budgeting) + PactStream (escrow + payments). Starter: free, just 2.4% per transaction. Professional: €99/mo with unlimited budgets, multi-project and unlimited AI verification. Enterprise: from €990/mo with 0.8% per transaction, API, SSO and dedicated CSM. The first 50 users get lifetime founder pricing." },
         { q: "Is my money safe?", a: "Yes. Funds are held in segregated accounts regulated under the European PSD2 directive. PactStream never has direct access to your money — it only facilitates release when milestone conditions are met." },
-        { q: "How is PactStream different from STIMATpay or Plan Reforma?", a: "STIMATpay offers manual escrow without automatic verification. PactStream automates the entire cycle: AI budgeting (via CostPact), regulated escrow, evidence verification with 0-100 scoring, and automatic payment release. We're the only AI-powered escrow in Europe for residential construction." },
+        { q: "How is PactStream different from STIMATpay or Plan Reforma?", a: "STIMATpay offers manual escrow without automatic verification. PactStream integrates in a single flow what no one else brings together: AI budgeting (via CostPact), regulated escrow, physical-progress verification with a 0-100 score as the payment-release condition, and an advance protected by a surety bond (Hito 0). That integration —verifying real progress and releasing the money in one step— is what sets us apart." },
       ],
     },
     footer: {
@@ -720,8 +736,8 @@ const dict = {
     },
     hero: {
       badge: "Apenas 200 lugares — Acesso por convite",
-      heading: ["Receba antes.\nDocumente melhor.\n", "Certifique sem riscos", "."],
-      sub: "O unico escrow inteligente para construcao em Espanha. Os seus pagamentos protegidos, as suas evidencias verificadas por IA, os seus marcos certificados automaticamente.",
+      heading: ["Controlo de obra, verificacao por IA e\n", "pagamento condicionado ao avanco real", "."],
+      sub: "O dinheiro fica numa conta regulada, externa as duas partes. A IA verifica cada marco com as evidencias da obra. O pagamento e libertado quando o trabalho esta feito — e so entao.",
       cta: "Reservar o meu lugar",
       ctaSecondary: "Ver como funciona",
       stats: [
@@ -816,9 +832,9 @@ const dict = {
     },
     hito0: {
       tag: "Exclusivo PactStream",
-      heading: "Marco 0 Assegurado: o seu adiantamento, protegido",
-      desc: "30% do adiantamento da obra fica protegido por uma apolice de caucao com uma seguradora lider do mercado (em negociacao). Se o construtor nao cumprir, recupera o seu dinheiro. Nao existe nada igual em Espanha.",
-      tags: ["Apolice de caucao", "30% adiantamento protegido", "Devolucao garantida", "Unico em Espanha"],
+      heading: "Marco 0 Assegurado: o construtor arranca, o seu dinheiro protegido",
+      desc: "O escrow protege o dinheiro que esta parado — mas o construtor precisa de um adiantamento para comprar materiais e pagar a sua equipa antes de certificar o primeiro marco. Ai o escrow ja nao cobre o cliente. O Marco 0 Assegurado resolve os dois lados ao mesmo tempo: o construtor recebe 30% para arrancar, e esse adiantamento fica protegido por uma apolice de caucao com uma seguradora lider do mercado (em negociacao). Se o construtor nao comecar, o cliente recupera o seu dinheiro. Mais ninguem integra adiantamento assegurado, escrow e verificacao por IA num so fluxo.",
+      tags: ["Adiantamento para arrancar", "Protegido por caucao", "Devolucao se nao comecar", "Integracao unica"],
     },
     validation: {
       tag: "Resultados reais",
@@ -914,14 +930,14 @@ const dict = {
       ],
     },
     comparison: {
-      tag: "Comparativo atualizado — junho 2026",
+      tag: "Comparativo atualizado — julho 2026",
       heading: "PactStream vs. a concorrencia",
       headingAccent: "sem marketing, apenas factos",
       sub: "Comparamos o PactStream com as alternativas reais do mercado espanhol de construcao. Com honestidade: onde eles ganham, dizemo-lo.",
-      matrixTitle: "Matriz global — 12 funcionalidades × 6 alternativas",
+      matrixTitle: "Matriz global — 12 funcionalidades × 7 alternativas",
       detailTitle: "Comparativo detalhado por alternativa",
       detailSub: "Clique em cada alternativa para ver a tabela completa, pontos fortes, pontos fracos e o nosso veredicto honesto.",
-      scrollHint: "Deslize horizontalmente para ver todas as alternativas. Dados atualizados a junho de 2026.",
+      scrollHint: "Deslize horizontalmente para ver todas as alternativas. Dados atualizados a julho de 2026.",
       legend: { yes: "Incluido", partial: "Parcial", no: "Nao disponivel", roadmap: "No roadmap" },
       whyTitle: "Porque e que o PactStream ganha na maioria das categorias?",
       whyReasons: [
@@ -970,6 +986,14 @@ const dict = {
           features: { escrow: "yes", ai_verification: "no", auto_payment: "no", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "no", ai_budgets: "no", mobile: "partial", freemium: "no" },
         },
         {
+          id: "fintiq", name: "Fintiq", country: "🇪🇸 Espanha", tagline: "Pagamento por fases com custodia Stripe",
+          color: "#6C5CE7", pricing: "Nao publicado", pricingDetail: "Fundos custodiados pela Stripe Payments Europe (entidade regulada na UE). Precos nao publicos no site (julho 2026).",
+          strengths: ["Custodia regulada por terceiro (Stripe Payments Europe)", "O dinheiro e depositado antes de comecar a obra", "Cada fase validada e paga em 24 horas", "Mediacao e peritagem em disputas"],
+          weaknesses: ["Sem verificacao IA — a libertacao depende da aprovacao do cliente", "Sem adiantamento: o construtor financia a primeira fase do proprio bolso", "Sem protecao do adiantamento (sem apolice de caucao)", "Sem orcamentacao integrada", "Focado em renovacoes"],
+          verdict: "O Fintiq valida o nosso modelo: custodia externa e pagamento por fases, em Espanha. A diferenca esta em como o dinheiro e libertado — no Fintiq valida o cliente; no PactStream verifica a IA com evidencias geolocalizadas — e no arranque: o Fintiq nao da adiantamento ao construtor; o PactStream da-o e protege-o com o Marco 0.",
+          features: { escrow: "yes", ai_verification: "no", auto_payment: "partial", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "partial", ai_budgets: "no", mobile: "no", freemium: "no" },
+        },
+        {
           id: "procore", name: "Procore", country: "🇺🇸 EUA (global)", tagline: "Enterprise americano, preco americano",
           color: "#F5A623", pricing: "$4.500–60.000/ano", pricingDetail: "Preco baseado no volume anual de obra (ACV). Mid-market: $35-60K/ano. Utilizadores ilimitados.",
           strengths: ["Plataforma integral enterprise", "Utilizadores ilimitados", "Ecossistema de integracoes enorme", "Gestao documental robusta"],
@@ -1011,7 +1035,7 @@ const dict = {
     heroEmail: {
       placeholder: "seu@email.com",
       cta: "Reservar o meu lugar",
-      note: "Sem spam · Sem cartao · Apenas 200 lugares",
+      note: "Sem spam · Sem cartao · Sem compromisso",
     },
     trustBadges: ["PSD2 Regulado", "Conta segregada", "Encriptacao ponta a ponta"],
     faq: {
@@ -1023,7 +1047,7 @@ const dict = {
         { q: "O que acontece se houver uma disputa?", a: "O PactStream atua como mediador neutro. As evidencias verificadas por IA servem como documentacao objetiva e imutavel. O dinheiro permanece protegido em escrow ate que a situacao se resolva." },
         { q: "Quanto custa usar o PactStream?", a: "Oferecemos 3 pacotes que incluem CostPact (orcamentacao IA) + PactStream (escrow + pagamentos). Starter: gratis, so paga 2,4% por transacao. Professional: 99€/mes com orcamentos ilimitados, multi-obra e verificacao IA ilimitada. Enterprise: a partir de 990€/mes com 0,8% por transacao, API, SSO e CSM dedicado. Os primeiros 50 utilizadores obtem preco de fundador vitalicio." },
         { q: "O meu dinheiro esta seguro?", a: "Sim. Os fundos sao custodiados em contas segregadas reguladas ao abrigo da diretiva PSD2 europeia. O PactStream nunca tem acesso direto ao seu dinheiro — apenas facilita a liberacao quando se cumprem as condicoes do marco." },
-        { q: "Qual e a diferenca entre o PactStream e o STIMATpay ou Plan Reforma?", a: "O STIMATpay oferece um escrow manual sem verificacao automatica. O PactStream automatiza todo o ciclo: orcamentacao com IA (via CostPact), escrow regulado, verificacao de evidencias com score 0-100, e liberacao automatica de pagamentos. Somos o unico escrow com IA na Europa para construcao residencial." },
+        { q: "Qual e a diferenca entre o PactStream e o STIMATpay ou Plan Reforma?", a: "O STIMATpay oferece um escrow manual sem verificacao automatica. O PactStream integra num so fluxo o que mais ninguem reune: orcamentacao com IA (via CostPact), escrow regulado, verificacao do avanco fisico com score 0-100 como condicao de libertacao do pagamento, e adiantamento protegido por seguro-caucao (Hito 0). Essa integracao —verificar o avanco real e libertar o dinheiro num so passo— e o que nos diferencia." },
       ],
     },
     footer: {

@@ -27,9 +27,9 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pactstream.io"),
-  title: "PactStream — Cobra antes. Documenta mejor. Certifica sin riesgos.",
+  title: "PactStream — Control de obra, verificación IA y pago condicionado",
   description:
-    "El único escrow inteligente para construcción en España. Pagos protegidos PSD2, verificación con IA (score 0-100) y cobros por hitos validados. Para promotores, constructores y técnicos.",
+    "Control de obra, verificación del avance con IA (score 0-100) y pago condicionado al trabajo hecho. El dinero, en una cuenta regulada PSD2 externa a las partes. Para promotores, constructores y técnicos.",
   keywords: [
     "escrow construcción España",
     "pagos por hitos obra",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     "presupuesto obra IA",
   ],
   openGraph: {
-    title: "PactStream — Cobra antes. Documenta mejor. Certifica sin riesgos.",
+    title: "PactStream — Control de obra, verificación por IA y pago condicionado al avance real",
     description:
-      "Escrow inteligente con verificación IA y pagos por hitos. El único ciclo completo para construcción residencial en España.",
+      "El dinero en una cuenta regulada externa a las dos partes. La IA verifica cada hito. El pago se libera solo con trabajo certificado.",
     type: "website",
     locale: "es_ES",
     siteName: "PactStream",
@@ -63,9 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PactStream — Escrow inteligente para construcción",
+    title: "PactStream — Control de obra, verificación IA y pago condicionado",
     description:
-      "Pagos protegidos PSD2, verificación IA y cobros por hitos. Para promotores, constructores y técnicos en España.",
+      "El dinero en una cuenta regulada externa a las partes. La IA verifica cada hito. El pago se libera solo con trabajo certificado.",
     images: ["/og-image.png?v=2"],
   },
   robots: {
@@ -93,7 +93,7 @@ const jsonLd = {
   name: "PactStream",
   url: "https://pactstream.io",
   description:
-    "Escrow inteligente para construcción residencial en España. Pagos protegidos PSD2, verificación de evidencias con IA (score 0-100) y cobros por hitos validados.",
+    "Control de obra con verificación del avance por IA (score 0-100) y pago condicionado por hitos sobre cuenta regulada PSD2. Presupuesto de origen con CostPact.",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web, iOS, Android",
   offers: {

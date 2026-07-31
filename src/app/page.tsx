@@ -295,7 +295,7 @@ function HeroSection({ t }: { t: Dict }) {
   const [heroSubmitted, setHeroSubmitted] = useState(false);
   const [heroLoading, setHeroLoading] = useState(false);
   return (
-    <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+    <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-[#080D42] via-[#080D42] to-[#080D42]" />
       {/* Luz ambiental (it.6) — halos degradados, sin curvas ni SVG decorativo */}
       <div
@@ -320,19 +320,20 @@ function HeroSection({ t }: { t: Dict }) {
       />
       <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
       <div className="relative max-w-[1200px] mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A9F3FF]/10 border border-[#A9F3FF]/30 text-[#A9F3FF] text-sm font-medium mb-8">
-              <Lock className="w-4 h-4" /> {t.hero.badge}
-            </div>
-            <h1 className="font-display text-4xl md:text-6xl lg:text-[80px] font-black text-white leading-[1.05] tracking-tighter mb-6">
+            <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tighter mb-5">
               {t.hero.heading[0]}
               <span className="text-[#A9F3FF]">{t.hero.heading[1]}</span>
               {t.hero.heading[2]}
             </h1>
-            <p className="text-lg md:text-xl text-[#8896A6] leading-relaxed mb-10 max-w-xl">
+            <p className="text-lg md:text-xl text-[#8896A6] leading-relaxed mb-6 max-w-xl">
               {t.hero.sub}
             </p>
+            {/* Escasez pegada a la acción: badge + form + nota forman un solo bloque de conversión */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A9F3FF]/10 border border-[#A9F3FF]/30 text-[#A9F3FF] text-sm font-medium mb-4">
+              <Lock className="w-4 h-4" /> {t.hero.badge}
+            </div>
             {/* Inline email capture */}
             {!heroSubmitted ? (
               <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); try { await insertWaitlist(heroEmail, undefined, "hero"); track("waitlist_submit", { source: "hero" }); gaEvent("waitlist_submit", { source: "hero" }); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -354,18 +355,20 @@ function HeroSection({ t }: { t: Dict }) {
                 <span className="text-sm font-medium">{t.ui.registered}</span>
               </motion.div>
             )}
-            <p className="text-xs text-[#8896A6] mb-6">{t.heroEmail.note}</p>
-            <a href="#como-funciona" className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/20 text-white text-sm font-semibold rounded-[10px] hover:bg-white/10 transition-colors">
-              {t.hero.ctaSecondary}
-            </a>
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 mt-8">
-              {t.trustBadges.map((badge) => (
-                <div key={badge} className="flex items-center gap-1.5 text-xs text-[#8896A6]">
-                  <ShieldCheck className="w-4 h-4 text-[#0D9B84]" />
-                  <span>{badge}</span>
-                </div>
-              ))}
+            <p className="text-xs text-[#8896A6] mb-5">{t.heroEmail.note}</p>
+            {/* Acción secundaria + trust badges en una sola fila para compactar el cierre del bloque */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a href="#como-funciona" className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/20 text-white text-sm font-semibold rounded-[10px] hover:bg-white/10 transition-colors">
+                {t.hero.ctaSecondary}
+              </a>
+              <div className="flex flex-wrap gap-4">
+                {t.trustBadges.map((badge) => (
+                  <div key={badge} className="flex items-center gap-1.5 text-xs text-[#8896A6]">
+                    <ShieldCheck className="w-4 h-4 text-[#0D9B84]" />
+                    <span>{badge}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
           <motion.div
@@ -390,7 +393,7 @@ function HeroSection({ t }: { t: Dict }) {
             </motion.div>
           </motion.div>
         </div>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.6 }} className="mt-16 grid grid-cols-3 gap-8 max-w-lg">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.6 }} className="mt-12 grid grid-cols-3 gap-8 max-w-lg">
           {t.hero.stats.map((stat) => (
             <div key={stat.label}>
               <div className="text-2xl md:text-3xl font-black font-display text-[#a9f3ff]">{stat.value}</div>
