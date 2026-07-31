@@ -413,7 +413,7 @@ const dict = {
     hero: {
       badge: "Only 200 spots — Invite-only access",
       kicker: "The first platform to unite",
-      heading: ["Construction monitoring, AI verification and\n", "payment released on real progress", "."],
+      heading: ["Construction management, AI verification and\n", "payment released on real progress", "."],
       sub: "The money sits in a regulated account, external to both parties. AI verifies every milestone against site evidence. Payment is released when the work is done — and only then. No one else brings the three pieces together.",
       cta: "Reserve my spot",
       ctaSecondary: "See how it works",
@@ -495,7 +495,7 @@ const dict = {
     },
     claim: {
       tag: "Why PactStream",
-      heading: "The first platform to unite construction monitoring, AI verification and payment conditioned on real progress",
+      heading: "The first platform to unite construction management, AI verification and payment conditioned on real progress",
       body: "Some do escrow, but manually. Others verify with AI, but never touch the money. Banks finance, but verify nothing. No one had brought the three pieces together in a single flow — until now.",
     },
     example: {
