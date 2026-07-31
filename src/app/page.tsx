@@ -425,9 +425,9 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
   };
 
   return (
-    <section id="waitlist" className="py-20 md:py-28 bg-gradient-to-br from-[#080D42] via-[#080D42] to-[#080D42] text-white overflow-hidden relative">
-      {/* subtle radial glow instead of pattern */}
-      <div className="absolute inset-0 opacity-[0.06]" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(13,155,132,0.3), transparent 60%)" }} />
+    <section id="waitlist" className="py-20 md:py-28 bg-[#0A114F] text-white overflow-hidden relative border-t border-white/[0.08]">
+      {/* Banda diferenciada: navy un punto más claro + glow teal reforzado, separada por hairline */}
+      <div className="absolute inset-0 opacity-[0.12]" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(13,155,132,0.35), transparent 60%)" }} />
       <div className="relative max-w-[1200px] mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
@@ -1577,8 +1577,17 @@ function FAQSection({ t }: { t: Dict }) {
 /* ─── CTA FINAL ─── */
 function CTASection({ t }: { t: Dict }) {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-[#080D42] via-[#080D42] to-[#080D42] text-white">
-      <AnimatedSection className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
+    <section className="relative py-20 md:py-28 bg-[#080D42] text-white overflow-hidden">
+      {/* Luz ambiental (it.6) — mismo tratamiento que el hero: cierra la página con el momento dramático */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background:
+            "radial-gradient(circle at 15% 25%, rgba(1,33,220,0.30) 0%, transparent 55%), radial-gradient(circle at 85% 75%, rgba(169,243,255,0.07) 0%, transparent 60%)",
+        }}
+      />
+      <AnimatedSection className="relative max-w-3xl mx-auto px-6 lg:px-10 text-center">
         <h2 className="font-display text-3xl md:text-5xl font-black mb-6">
           {t.cta.heading[0]}
           <span className="text-[#A9F3FF]">{t.cta.heading[1]}</span>
@@ -1603,7 +1612,7 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
   const companyHrefs = ["https://costpact.io", "mailto:hello@pactstream.io"];
 
   return (
-    <footer className="py-16 bg-[#080D42] text-white/60">
+    <footer className="py-16 bg-[#050830] text-white/60 border-t border-white/[0.08]">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
           {/* Logo + tagline */}
