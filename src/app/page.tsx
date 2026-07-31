@@ -34,6 +34,9 @@ import {
   ExternalLink,
   Menu,
   X,
+  Briefcase,
+  Landmark,
+  Hotel,
 } from "lucide-react";
 import PhoneFrame from "@/components/PhoneFrame";
 import { Hito0Seal } from "@/components/Hito0Seal";
@@ -322,6 +325,8 @@ function HeroSection({ t }: { t: Dict }) {
       <div className="relative max-w-[1200px] mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
+            {/* Kicker: completa la frase con el H1 — "La primera plataforma que une [control de obra...]" */}
+            <p className="text-sm md:text-base font-semibold text-[#A9F3FF] uppercase tracking-wider mb-3">{t.hero.kicker}</p>
             <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tighter mb-5">
               {t.hero.heading[0]}
               <span className="text-[#A9F3FF]">{t.hero.heading[1]}</span>
@@ -872,7 +877,7 @@ function RolesSection({ t }: { t: Dict }) {
 
 /* ─── CASOS DE USO ─── */
 function UseCasesSection({ t }: { t: Dict }) {
-  const caseIcons = [LucideHome, Paintbrush, Building2, Ruler];
+  const caseIcons = [LucideHome, Paintbrush, Building2, Ruler, Users, Briefcase, Landmark, Hotel];
   return (
     <section className="py-20 md:py-28 bg-white">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
@@ -992,6 +997,38 @@ function EcosystemSection({ t }: { t: Dict }) {
               <p className="text-[#8896A6] text-sm leading-relaxed mb-5">{t.ecosystem.pactstream.desc}</p>
               <div className="flex items-center gap-2 text-sm font-medium text-[#a9f3ff]">
                 <ChevronRight className="w-4 h-4" /> {t.ecosystem.pactstream.link}
+              </div>
+            </div>
+          </AnimatedSection>
+          <AnimatedSection delay={0.25}>
+            <div className="p-8 card-surface h-full">
+              <div className="flex items-start justify-between mb-6">
+                <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center">
+                  <TrendingUp className="w-7 h-7 text-[#0B6E5F]" />
+                </div>
+                <span className="px-2.5 py-0.5 text-[11px] font-semibold text-[#095A4E] bg-[#E6F5F2] rounded-full tracking-wide">{t.ecosystem.fiscalcore.badge}</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#1A2332] mb-2">{t.ecosystem.fiscalcore.name}</h3>
+              <p className="text-sm text-[#0B6E5F] font-medium mb-4">{t.ecosystem.fiscalcore.sub}</p>
+              <p className="text-[#5A6B7F] text-sm leading-relaxed mb-5">{t.ecosystem.fiscalcore.desc}</p>
+              <div className="flex items-center gap-2 text-sm font-medium text-[#0B6E5F]">
+                <ChevronRight className="w-4 h-4" /> {t.ecosystem.fiscalcore.link}
+              </div>
+            </div>
+          </AnimatedSection>
+          <AnimatedSection delay={0.35}>
+            <div className="p-8 card-surface h-full">
+              <div className="flex items-start justify-between mb-6">
+                <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center">
+                  <Globe className="w-7 h-7 text-[#0B6E5F]" />
+                </div>
+                <span className="px-2.5 py-0.5 text-[11px] font-semibold text-[#095A4E] bg-[#E6F5F2] rounded-full tracking-wide">{t.ecosystem.propertyjourney.badge}</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#1A2332] mb-2">{t.ecosystem.propertyjourney.name}</h3>
+              <p className="text-sm text-[#0B6E5F] font-medium mb-4">{t.ecosystem.propertyjourney.sub}</p>
+              <p className="text-[#5A6B7F] text-sm leading-relaxed mb-5">{t.ecosystem.propertyjourney.desc}</p>
+              <div className="flex items-center gap-2 text-sm font-medium text-[#0B6E5F]">
+                <ChevronRight className="w-4 h-4" /> {t.ecosystem.propertyjourney.link}
               </div>
             </div>
           </AnimatedSection>
@@ -1681,6 +1718,87 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
   );
 }
 
+/* ─── CLAIM DIFERENCIAL ─── */
+function ClaimSection({ t }: { t: Dict }) {
+  return (
+    <section className="py-16 md:py-20 bg-[#F5F7FA]">
+      <AnimatedSection className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
+        <p className="text-sm font-semibold text-[#0B6E5F] uppercase tracking-wider mb-3">{t.claim.tag}</p>
+        <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1A2332] mb-5">{t.claim.heading}</h2>
+        <p className="text-lg text-[#5A6B7F] leading-relaxed">{t.claim.body}</p>
+      </AnimatedSection>
+    </section>
+  );
+}
+
+/* ─── EJEMPLO PRÁCTICO (Ana y Miguel) ─── */
+function ExampleSection({ t }: { t: Dict }) {
+  return (
+    <section className="py-20 md:py-28 bg-[#F5F7FA]">
+      <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+        <AnimatedSection className="max-w-3xl mx-auto text-center mb-16">
+          <p className="text-sm font-semibold text-[#0B6E5F] uppercase tracking-wider mb-3">{t.example.tag}</p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1A2332] mb-5">{t.example.heading}</h2>
+          <p className="text-lg text-[#5A6B7F]">{t.example.sub}</p>
+        </AnimatedSection>
+        <div>
+          {t.example.steps.map((s, i) => (
+            <AnimatedSection key={s.title} delay={i * 0.06}>
+              <div className="relative flex gap-5 pb-8">
+                {i < t.example.steps.length - 1 && <div className="absolute left-[19px] top-10 bottom-0 w-px bg-[#DDE3ED]" />}
+                <div className="w-10 h-10 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0 relative z-10">
+                  <span className="text-sm font-bold font-display text-[#0B6E5F]">{i + 1}</span>
+                </div>
+                <div className="pt-1.5">
+                  <h3 className="text-base font-semibold text-[#1A2332] mb-1.5">{s.title}</h3>
+                  <p className="text-sm text-[#5A6B7F] leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+        <AnimatedSection delay={0.2}>
+          <div className="mt-4 flex gap-4 p-6 md:p-8 card-surface">
+            <CheckCircle2 className="w-6 h-6 text-[#0B6E5F] shrink-0 mt-0.5" />
+            <p className="text-sm md:text-base text-[#1A2332] leading-relaxed font-medium">{t.example.result}</p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
+
+/* ─── DÓNDE ESTÁ MI DINERO ─── */
+function MoneySection({ t }: { t: Dict }) {
+  return (
+    <section className="relative py-20 md:py-28 bg-[#080D42] text-white overflow-hidden">
+      {/* Luz ambiental (it.6) — momento serio del dinero, rompe la secuencia clara */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{ background: "radial-gradient(circle at 80% 15%, rgba(1,33,220,0.22) 0%, transparent 55%)" }}
+      />
+      <div className="relative max-w-[1200px] mx-auto px-6 lg:px-10">
+        <AnimatedSection className="max-w-3xl mx-auto text-center mb-16">
+          <p className="text-sm font-semibold text-[#a9f3ff] uppercase tracking-wider mb-3">{t.money.tag}</p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-5">{t.money.heading}</h2>
+          <p className="text-lg text-[#8896A6]">{t.money.sub}</p>
+        </AnimatedSection>
+        <div className="grid md:grid-cols-2 gap-6">
+          {t.money.blocks.map((b, i) => (
+            <AnimatedSection key={b.q} delay={i * 0.08}>
+              <div className="p-8 card-surface-navy h-full">
+                <h3 className="text-lg font-semibold text-white mb-3">{b.q}</h3>
+                <p className="text-sm text-[#8896A6] leading-relaxed">{b.a}</p>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── PAGE ─── */
 export default function Page() {
   const [t, locale, setLocale] = useLang();
@@ -1692,8 +1810,11 @@ export default function Page() {
       <Navbar t={t} locale={locale} setLocale={setLocale} />
       <main id="main-content">
         <HeroSection t={t} />
+        <ClaimSection t={t} />
         <ProblemSection t={t} />
         <HowItWorksSection t={t} />
+        <ExampleSection t={t} />
+        <MoneySection t={t} />
         <StickyPhoneSection t={t} />
         <RolesSection t={t} />
         <UseCasesSection t={t} />

@@ -12,8 +12,9 @@ const dict = {
     },
     hero: {
       badge: "Solo 200 plazas — Acceso por invitación",
+      kicker: "La primera plataforma que une",
       heading: ["Control de obra, verificación por IA y\n", "pago condicionado al avance real", "."],
-      sub: "El dinero se deposita en una cuenta regulada, externa a las dos partes. La IA verifica cada hito con las evidencias de obra. El pago se libera cuando el trabajo está hecho — y solo entonces.",
+      sub: "El dinero se deposita en una cuenta regulada, externa a las dos partes. La IA verifica cada hito con las evidencias de obra. El pago se libera cuando el trabajo está hecho — y solo entonces. Nadie más reúne las tres piezas.",
       cta: "Reservar mi plaza",
       ctaSecondary: "Ver cómo funciona",
       stats: [
@@ -80,12 +81,47 @@ const dict = {
     },
     useCases: {
       tag: "Casos de uso",
-      heading: "Desde una reforma de 65.000€ hasta una obra de 700.000€",
+      heading: "Donde hay una obra y un pago, PactStream encaja",
       items: [
         { tag: "Obra nueva", title: "Autopromoción de vivienda", desc: "Construyes tu casa y necesitas garantías. PactStream protege tu inversión y la IA verifica cada fase automáticamente. Ticket medio: 700.000€." },
         { tag: "Reforma integral", title: "Reformas de alta gama", desc: "Obras de envergadura con interioristas y reformistas premium. Certificación por hitos con evidencias que eliminan la desconfianza. Ticket medio: 65.000€." },
-        { tag: "Multi-obra", title: "Promotoras inmobiliarias", desc: "Gestión multi-obra con dashboards agregados. KPIs de salud financiera y detección temprana de desviaciones en cada proyecto." },
+        { tag: "Multi-obra", title: "Promotoras inmobiliarias", desc: "Gestión multi-obra con dashboards agregados. KPIs de salud financiera y detección temprana de desviaciones en cada proyecto. También build-to-rent con reporting a inversores." },
         { tag: "Dirección de obra", title: "Estudios de arquitectura", desc: "Certificaciones digitales que reemplazan visitas innecesarias. La IA pre-valida las evidencias y el técnico confirma desde su móvil." },
+        { tag: "Comunidades", title: "Comunidades de vecinos", desc: "Derramas para fachadas, ascensores o cubiertas. Cada vecino ve el avance y la derrama solo se gasta contra trabajo certificado. Ticket típico: 15.000–80.000€." },
+        { tag: "Oficinas", title: "Oficinas y coworkings", desc: "Obras de adecuación con varios inquilinos e incidencias continuas. Cada intervención queda trazada, presupuestada y certificada por espacio. Ticket típico: 30.000–200.000€." },
+        { tag: "Obra pública", title: "Obra pública menor", desc: "Contratos menores de ayuntamientos y entidades locales. Evidencias con marca de tiempo y expediente exportable para fiscalización. Ticket típico: 100.000–500.000€." },
+        { tag: "Hoteles", title: "Reformas hoteleras por fases", desc: "Reformar sin cerrar el hotel exige certificar por zonas y plantas. Cada fase se verifica y se paga de forma independiente, sin bloquear el resto de la obra. Ticket típico: 200.000€–2M€." },
+      ],
+    },
+    claim: {
+      tag: "Por qué PactStream",
+      heading: "La primera plataforma que une control de obra, verificación por IA y pago condicionado al avance real",
+      body: "Unos hacen escrow, pero manual. Otros verifican con IA, pero no tocan el dinero. Los bancos financian, pero no verifican nada. Nadie había unido las tres piezas en un solo flujo — hasta ahora.",
+    },
+    example: {
+      tag: "Así funciona en la práctica",
+      heading: "Una reforma de 65.000€, paso a paso",
+      sub: "Ana reforma su piso en Madrid. Miguel es el reformista. No se conocían hasta hace tres semanas.",
+      steps: [
+        { title: "Firman el contrato en PactStream", desc: "Definen alcance y calendario: anticipo de 19.500€ y cinco hitos de 9.100€. Las condiciones de cada hito quedan escritas — qué tiene que estar hecho para que se libere el pago." },
+        { title: "Ana deposita el anticipo", desc: "Los 19.500€ salen de su cuenta, pero no llegan a la de Miguel: van a la cuenta segregada. Y como es el Hito 0, quedan cubiertos por la póliza de caución." },
+        { title: "Miguel arranca la obra", desc: "Demolición e instalaciones. Cuando termina el primer hito, sube ocho fotos geolocalizadas desde el móvil, a pie de obra." },
+        { title: "La IA analiza las evidencias", desc: "Cuarenta segundos. Score de cumplimiento: 91 sobre 100. Cuatro hallazgos en verde, uno en ámbar — la instalación eléctrica aparece parcialmente cubierta en dos fotos." },
+        { title: "La arquitecta revisa y valida", desc: "Pide a Miguel una foto adicional del cuadro eléctrico. La sube en diez minutos. El ámbar pasa a verde y la técnica certifica desde el móvil, sin desplazarse." },
+        { title: "Ana aprueba", desc: "Ve el informe completo, las evidencias y la certificación firmada. Aprueba con un toque en la app." },
+        { title: "Miguel cobra", desc: "Los 9.100€ llegan a su cuenta en menos de 24 horas. Sin esperar 45 días. Sin llamadas incómodas." },
+      ],
+      result: "Ana pagó por trabajo que pudo verificar. Miguel cobró en un día en lugar de un mes y medio. La arquitecta certificó sin pisar la obra. Y si mañana surge un problema, los tres tienen el mismo expediente.",
+    },
+    money: {
+      tag: "Hablemos del dinero",
+      heading: "¿Dónde está mi dinero? Sin rodeos",
+      sub: "La pregunta que todo el mundo se hace y que casi ninguna plataforma responde con claridad.",
+      blocks: [
+        { q: "¿Dónde va mi dinero?", a: "A una cuenta bancaria segregada, gestionada por un proveedor de pagos autorizado bajo normativa PSD2. No es tu cuenta. No es la del constructor. Y no es la de PactStream: nosotros no custodiamos fondos en ningún momento." },
+        { q: "¿Quién puede sacarlo?", a: "Nadie por su cuenta. El dinero se libera únicamente cuando se cumplen las condiciones del contrato: evidencias subidas desde la obra, verificación de la IA y validación del técnico y del promotor. Si falta un paso, el pago no sale." },
+        { q: "¿Qué pasa si no estamos de acuerdo?", a: "El sistema conserva las evidencias geolocalizadas con marca de tiempo, el informe completo de la IA y el histórico de cada decisión. En una disputa no hay \"tu palabra contra la mía\": hay un expediente que cualquier técnico, abogado o juez puede revisar." },
+        { q: "¿Y el anticipo? Es lo que más miedo da.", a: "Con razón: es el único momento en que se paga antes de que exista trabajo. Por eso existe Hito 0 Asegurado — el anticipo del 30% queda cubierto por una póliza de caución con una aseguradora líder del mercado (en negociación). Si el constructor no arranca, recuperas tu dinero." },
       ],
     },
     ai: {
@@ -101,9 +137,11 @@ const dict = {
     ecosystem: {
       tag: "Ecosistema",
       heading: "El único ciclo completo del mercado",
-      sub: "Ningún competidor en Europa integra presupuestación con IA, escrow regulado y verificación automática en una sola plataforma.",
+      sub: "Ningún competidor en Europa integra el ciclo entero: presupuesto con IA, obra y pagos verificados, caja y fiscal, y comercialización.",
       costpact: { name: "CostPact", sub: "SaaS de presupuestación con IA", desc: "Genera presupuestos profesionales en minutos desde un catálogo de más de 755 partidas con 13 años de datos reales de obra. El punto de entrada al ecosistema.", link: "Alimenta automáticamente a PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificación IA + pagos", desc: "Protege los pagos en escrow regulado PSD2, verifica el avance con IA y libera fondos por hitos validados. El motor financiero de la construcción.", link: "Ciclo completo: presupuesto → pago" },
+      fiscalcore: { badge: "Próximamente", name: "FiscalCore", sub: "Caja y fiscal para construcción", desc: "El tercer eslabón: tesorería Profit First pensada para obra y cumplimiento Verifactu 2027, con un CFO-IA que no solo aconseja — ejecuta. Cada cobro certificado aterriza en una caja ordenada.", link: "Cierra el ciclo: cobro → caja → impuestos" },
+      propertyjourney: { badge: "Partner", name: "PropertyJourney", sub: "Comercialización para promotores", desc: "La plataforma portuguesa que gestiona la venta de promociones: clientes, agencias, postventa y seguimiento financiero. Extiende el ecosistema a la comercialización y abre la puerta a Portugal.", link: "Del ladrillo verificado a la venta" },
       advantage: { label: "Ventaja competitiva:", text: "STIMATpay (Plan Reforma) es el único escrow manual en España — su 70% de adopción voluntaria valida la demanda. Nosotros automatizamos lo que ellos hacen a mano y añadimos IA." },
     },
     hito0: {
@@ -374,8 +412,9 @@ const dict = {
     },
     hero: {
       badge: "Only 200 spots — Invite-only access",
+      kicker: "The first platform to unite",
       heading: ["Site control, AI verification and\n", "payment released on real progress", "."],
-      sub: "The money sits in a regulated account, external to both parties. AI verifies every milestone against site evidence. Payment is released when the work is done — and only then.",
+      sub: "The money sits in a regulated account, external to both parties. AI verifies every milestone against site evidence. Payment is released when the work is done — and only then. No one else brings the three pieces together.",
       cta: "Reserve my spot",
       ctaSecondary: "See how it works",
       stats: [
@@ -442,12 +481,47 @@ const dict = {
     },
     useCases: {
       tag: "Use cases",
-      heading: "From a €65,000 renovation to a €700,000 new build",
+      heading: "Wherever there is a build and a payment, PactStream fits",
       items: [
         { tag: "New build", title: "Self-build homes", desc: "Building your home and need guarantees. PactStream protects your investment and AI verifies every phase automatically. Average ticket: €700,000." },
         { tag: "Full renovation", title: "High-end renovations", desc: "Large-scale projects with interior designers and premium contractors. Milestone certification with evidence that eliminates distrust. Average ticket: €65,000." },
-        { tag: "Multi-project", title: "Property developers", desc: "Multi-project management with aggregated dashboards. Financial health KPIs and early deviation detection on every project." },
+        { tag: "Multi-project", title: "Property developers", desc: "Multi-project management with aggregated dashboards. Financial health KPIs and early deviation detection on every project. Build-to-rent with investor reporting too." },
         { tag: "Project management", title: "Architecture firms", desc: "Digital certifications that replace unnecessary site visits. AI pre-validates evidence and the surveyor confirms from their phone." },
+        { tag: "Communities", title: "Homeowner associations", desc: "Special levies for facades, lifts or roofing. Every owner sees the progress and the levy is only spent against certified work. Typical ticket: €15,000–80,000." },
+        { tag: "Offices", title: "Offices and coworking spaces", desc: "Fit-out works with multiple tenants and ongoing incidents. Every intervention is traced, budgeted and certified per space. Typical ticket: €30,000–200,000." },
+        { tag: "Public works", title: "Minor public works", desc: "Minor contracts for town councils and local entities. Timestamped evidence and an exportable file for auditing. Typical ticket: €100,000–500,000." },
+        { tag: "Hotels", title: "Phased hotel renovations", desc: "Renovating without closing the hotel means certifying by zones and floors. Each phase is verified and paid independently, without blocking the rest. Typical ticket: €200,000–2M." },
+      ],
+    },
+    claim: {
+      tag: "Why PactStream",
+      heading: "The first platform to unite site control, AI verification and payment conditioned on real progress",
+      body: "Some do escrow, but manually. Others verify with AI, but never touch the money. Banks finance, but verify nothing. No one had brought the three pieces together in a single flow — until now.",
+    },
+    example: {
+      tag: "How it works in practice",
+      heading: "A €65,000 renovation, step by step",
+      sub: "Ana is renovating her flat in Madrid. Miguel is the contractor. They met three weeks ago.",
+      steps: [
+        { title: "They sign the contract on PactStream", desc: "They define scope and schedule: a €19,500 advance and five milestones of €9,100. The conditions of each milestone are written down — what must be done for the payment to be released." },
+        { title: "Ana deposits the advance", desc: "The €19,500 leaves her account, but never reaches Miguel's: it goes to the segregated account. And since it is Milestone 0, it is covered by the surety bond." },
+        { title: "Miguel starts the work", desc: "Demolition and installations. When the first milestone is done, he uploads eight geolocated photos from his phone, on site." },
+        { title: "AI analyses the evidence", desc: "Forty seconds. Compliance score: 91 out of 100. Four findings in green, one in amber — the electrical installation appears partially covered in two photos." },
+        { title: "The architect reviews and validates", desc: "She asks Miguel for one extra photo of the electrical panel. He uploads it in ten minutes. The amber turns green and she certifies from her phone, without travelling." },
+        { title: "Ana approves", desc: "She sees the full report, the evidence and the signed certification. She approves with one tap in the app." },
+        { title: "Miguel gets paid", desc: "The €9,100 reaches his account in under 24 hours. No 45-day wait. No awkward phone calls." },
+      ],
+      result: "Ana paid for work she could verify. Miguel got paid in a day instead of a month and a half. The architect certified without setting foot on site. And if a problem arises tomorrow, all three hold the same file.",
+    },
+    money: {
+      tag: "Let's talk about the money",
+      heading: "Where is my money? No hedging",
+      sub: "The question everyone asks and almost no platform answers clearly.",
+      blocks: [
+        { q: "Where does my money go?", a: "To a segregated bank account, managed by an authorised payment provider under PSD2 regulation. It is not your account. It is not the builder's. And it is not PactStream's: we never hold funds at any point." },
+        { q: "Who can take it out?", a: "No one on their own. The money is released only when the contract conditions are met: evidence uploaded from the site, AI verification, and validation by the surveyor and the client. If one step is missing, the payment does not move." },
+        { q: "What if we disagree?", a: "The system keeps the geolocated, timestamped evidence, the full AI report and the history of every decision. In a dispute there is no \"your word against mine\": there is a file any surveyor, lawyer or judge can review." },
+        { q: "And the advance? That is the scariest part.", a: "Rightly so: it is the only moment you pay before any work exists. That is why Milestone 0 Insured exists — the 30% advance is covered by a surety bond with a leading insurer (in negotiation). If the builder never starts, you get your money back." },
       ],
     },
     ai: {
@@ -463,9 +537,11 @@ const dict = {
     ecosystem: {
       tag: "Ecosystem",
       heading: "The only complete cycle on the market",
-      sub: "No competitor in Europe integrates AI budgeting, regulated escrow, and automatic verification in a single platform.",
+      sub: "No competitor in Europe integrates the entire cycle: AI budgeting, verified site and payments, cash and tax, and sales.",
       costpact: { name: "CostPact", sub: "AI-powered budgeting SaaS", desc: "Generate professional budgets in minutes from a catalog of 755+ items with 13 years of real construction data. The entry point to the ecosystem.", link: "Automatically feeds into PactStream" },
       pactstream: { name: "PactStream", sub: "Smart escrow + AI verification + payments", desc: "Protects payments in PSD2-regulated escrow, verifies progress with AI, and releases funds on validated milestones. The financial engine of construction.", link: "Complete cycle: budget → payment" },
+      fiscalcore: { badge: "Coming soon", name: "FiscalCore", sub: "Cash and tax for construction", desc: "The third link: Profit First treasury designed for construction and Verifactu 2027 compliance, with an AI CFO that doesn't just advise — it executes. Every certified payment lands in an orderly cash position.", link: "Closes the cycle: payment → cash → taxes" },
+      propertyjourney: { badge: "Partner", name: "PropertyJourney", sub: "Sales platform for developers", desc: "The Portuguese platform that manages development sales: clients, agencies, after-sales and financial tracking. It extends the ecosystem into sales and opens the door to Portugal.", link: "From verified bricks to the sale" },
       advantage: { label: "Competitive advantage:", text: "STIMATpay (Plan Reforma) is the only manual escrow in Spain — their 70% voluntary adoption validates demand. We automate what they do manually and add AI." },
     },
     hito0: {
@@ -736,8 +812,9 @@ const dict = {
     },
     hero: {
       badge: "Apenas 200 lugares — Acesso por convite",
+      kicker: "A primeira plataforma que une",
       heading: ["Controlo de obra, verificacao por IA e\n", "pagamento condicionado ao avanco real", "."],
-      sub: "O dinheiro fica numa conta regulada, externa as duas partes. A IA verifica cada marco com as evidencias da obra. O pagamento e libertado quando o trabalho esta feito — e so entao.",
+      sub: "O dinheiro fica numa conta regulada, externa as duas partes. A IA verifica cada marco com as evidencias da obra. O pagamento e libertado quando o trabalho esta feito — e so entao. Mais ninguem reune as tres pecas.",
       cta: "Reservar o meu lugar",
       ctaSecondary: "Ver como funciona",
       stats: [
@@ -804,12 +881,47 @@ const dict = {
     },
     useCases: {
       tag: "Casos de uso",
-      heading: "Desde uma renovacao de 65.000€ ate uma obra de 700.000€",
+      heading: "Onde ha uma obra e um pagamento, o PactStream encaixa",
       items: [
         { tag: "Obra nova", title: "Autoconstrucao de habitacao", desc: "Constroi a sua casa e precisa de garantias. O PactStream protege o seu investimento e a IA verifica cada fase automaticamente. Ticket medio: 700.000€." },
         { tag: "Renovacao integral", title: "Renovacoes de alta gama", desc: "Obras de envergadura com designers de interiores e reformistas premium. Certificacao por marcos com evidencias que eliminam a desconfianca. Ticket medio: 65.000€." },
-        { tag: "Multi-obra", title: "Promotoras imobiliarias", desc: "Gestao multi-obra com dashboards agregados. KPIs de saude financeira e detecao precoce de desvios em cada projeto." },
+        { tag: "Multi-obra", title: "Promotoras imobiliarias", desc: "Gestao multi-obra com dashboards agregados. KPIs de saude financeira e detecao precoce de desvios em cada projeto. Tambem build-to-rent com reporting a investidores." },
         { tag: "Direcao de obra", title: "Estudios de arquitetura", desc: "Certificacoes digitais que substituem visitas desnecessarias. A IA pre-valida as evidencias e o tecnico confirma a partir do telemovel." },
+        { tag: "Condominios", title: "Condominios", desc: "Quotas extraordinarias para fachadas, elevadores ou coberturas. Cada condomino ve o avanco e a quota so se gasta contra trabalho certificado. Ticket tipico: 15.000–80.000€." },
+        { tag: "Escritorios", title: "Escritorios e coworkings", desc: "Obras de adequacao com varios inquilinos e incidencias continuas. Cada intervencao fica tracada, orcamentada e certificada por espaco. Ticket tipico: 30.000–200.000€." },
+        { tag: "Obra publica", title: "Obra publica menor", desc: "Contratos menores de camaras municipais e entidades locais. Evidencias com marca temporal e processo exportavel para fiscalizacao. Ticket tipico: 100.000–500.000€." },
+        { tag: "Hoteis", title: "Renovacoes hoteleiras por fases", desc: "Renovar sem fechar o hotel exige certificar por zonas e pisos. Cada fase e verificada e paga de forma independente, sem bloquear o resto da obra. Ticket tipico: 200.000€–2M€." },
+      ],
+    },
+    claim: {
+      tag: "Porque PactStream",
+      heading: "A primeira plataforma que une controlo de obra, verificacao por IA e pagamento condicionado ao avanco real",
+      body: "Uns fazem escrow, mas manual. Outros verificam com IA, mas nao tocam no dinheiro. Os bancos financiam, mas nao verificam nada. Ninguem tinha unido as tres pecas num so fluxo — ate agora.",
+    },
+    example: {
+      tag: "Assim funciona na pratica",
+      heading: "Uma renovacao de 65.000€, passo a passo",
+      sub: "A Ana renova o seu apartamento em Madrid. O Miguel e o empreiteiro. Conheceram-se ha tres semanas.",
+      steps: [
+        { title: "Assinam o contrato no PactStream", desc: "Definem ambito e calendario: adiantamento de 19.500€ e cinco marcos de 9.100€. As condicoes de cada marco ficam escritas — o que tem de estar feito para o pagamento ser libertado." },
+        { title: "A Ana deposita o adiantamento", desc: "Os 19.500€ saem da sua conta, mas nao chegam a do Miguel: vao para a conta segregada. E como e o Marco 0, ficam cobertos pela apolice de caucao." },
+        { title: "O Miguel arranca a obra", desc: "Demolicao e instalacoes. Quando termina o primeiro marco, carrega oito fotos geolocalizadas a partir do telemovel, em obra." },
+        { title: "A IA analisa as evidencias", desc: "Quarenta segundos. Score de conformidade: 91 em 100. Quatro achados em verde, um em ambar — a instalacao eletrica aparece parcialmente coberta em duas fotos." },
+        { title: "A arquiteta reve e valida", desc: "Pede ao Miguel uma foto adicional do quadro eletrico. Ele carrega-a em dez minutos. O ambar passa a verde e a tecnica certifica a partir do telemovel, sem se deslocar." },
+        { title: "A Ana aprova", desc: "Ve o relatorio completo, as evidencias e a certificacao assinada. Aprova com um toque na app." },
+        { title: "O Miguel recebe", desc: "Os 9.100€ chegam a sua conta em menos de 24 horas. Sem esperar 45 dias. Sem chamadas incomodas." },
+      ],
+      result: "A Ana pagou por trabalho que pode verificar. O Miguel recebeu num dia em vez de mes e meio. A arquiteta certificou sem pisar a obra. E se amanha surgir um problema, os tres tem o mesmo processo.",
+    },
+    money: {
+      tag: "Falemos do dinheiro",
+      heading: "Onde esta o meu dinheiro? Sem rodeios",
+      sub: "A pergunta que toda a gente faz e que quase nenhuma plataforma responde com clareza.",
+      blocks: [
+        { q: "Para onde vai o meu dinheiro?", a: "Para uma conta bancaria segregada, gerida por um prestador de pagamentos autorizado ao abrigo da PSD2. Nao e a sua conta. Nao e a do construtor. E nao e a do PactStream: nos nunca custodiamos fundos." },
+        { q: "Quem pode levanta-lo?", a: "Ninguem por conta propria. O dinheiro e libertado apenas quando as condicoes do contrato se cumprem: evidencias carregadas da obra, verificacao da IA e validacao do tecnico e do promotor. Se falta um passo, o pagamento nao sai." },
+        { q: "E se nao estivermos de acordo?", a: "O sistema conserva as evidencias geolocalizadas com marca temporal, o relatorio completo da IA e o historico de cada decisao. Numa disputa nao ha \"a tua palavra contra a minha\": ha um processo que qualquer tecnico, advogado ou juiz pode rever." },
+        { q: "E o adiantamento? E o que mais assusta.", a: "Com razao: e o unico momento em que se paga antes de existir trabalho. Por isso existe o Marco 0 Assegurado — o adiantamento de 30% fica coberto por uma apolice de caucao com uma seguradora lider do mercado (em negociacao). Se o construtor nao arrancar, recupera o seu dinheiro." },
       ],
     },
     ai: {
@@ -825,9 +937,11 @@ const dict = {
     ecosystem: {
       tag: "Ecossistema",
       heading: "O unico ciclo completo do mercado",
-      sub: "Nenhum concorrente na Europa integra orcamentacao com IA, escrow regulado e verificacao automatica numa unica plataforma.",
+      sub: "Nenhum concorrente na Europa integra o ciclo inteiro: orcamento com IA, obra e pagamentos verificados, caixa e fiscal, e comercializacao.",
       costpact: { name: "CostPact", sub: "SaaS de orcamentacao com IA", desc: "Gere orcamentos profissionais em minutos a partir de um catalogo de mais de 755 itens com 13 anos de dados reais de obra. O ponto de entrada no ecossistema.", link: "Alimenta automaticamente o PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificacao IA + pagamentos", desc: "Protege os pagamentos em escrow regulado PSD2, verifica o avanco com IA e libera fundos por marcos validados. O motor financeiro da construcao.", link: "Ciclo completo: orcamento → pagamento" },
+      fiscalcore: { badge: "Em breve", name: "FiscalCore", sub: "Caixa e fiscal para construcao", desc: "O terceiro elo: tesouraria Profit First pensada para obra e conformidade Verifactu 2027, com um CFO-IA que nao so aconselha — executa. Cada recebimento certificado aterra numa caixa ordenada.", link: "Fecha o ciclo: recebimento → caixa → impostos" },
+      propertyjourney: { badge: "Partner", name: "PropertyJourney", sub: "Comercializacao para promotores", desc: "A plataforma portuguesa que gere a venda de empreendimentos: clientes, agencias, pos-venda e acompanhamento financeiro. Estende o ecossistema a comercializacao e abre a porta a Portugal.", link: "Do tijolo verificado a venda" },
       advantage: { label: "Vantagem competitiva:", text: "O STIMATpay (Plan Reforma) e o unico escrow manual em Espanha — a sua adocao voluntaria de 70% valida a procura. Nos automatizamos o que eles fazem a mao e adicionamos IA." },
     },
     hito0: {
