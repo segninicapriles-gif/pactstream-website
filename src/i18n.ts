@@ -163,7 +163,7 @@ const dict = {
       tag: "Precios claros",
       heading: "Cada rol paga por el valor que recibe",
       sub: "El promotor protege su inversión. El constructor asegura su cobro. El técnico gana productividad. Sin costes ocultos.",
-      founderNote: "Los primeros 50 usuarios (Fundadores) obtienen pricing especial de por vida.",
+      founderNote: "Estos son precios de fundador para la primera oleada (200 plazas). Los primeros 50 los conservan de por vida.",
       cta: "Reservar mi plaza",
       profiles: [
         {
@@ -413,7 +413,7 @@ const dict = {
     hero: {
       badge: "Only 200 spots — Invite-only access",
       kicker: "The first platform to unite",
-      heading: ["Site control, AI verification and\n", "payment released on real progress", "."],
+      heading: ["Construction monitoring, AI verification and\n", "payment released on real progress", "."],
       sub: "The money sits in a regulated account, external to both parties. AI verifies every milestone against site evidence. Payment is released when the work is done — and only then. No one else brings the three pieces together.",
       cta: "Reserve my spot",
       ctaSecondary: "See how it works",
@@ -495,7 +495,7 @@ const dict = {
     },
     claim: {
       tag: "Why PactStream",
-      heading: "The first platform to unite site control, AI verification and payment conditioned on real progress",
+      heading: "The first platform to unite construction monitoring, AI verification and payment conditioned on real progress",
       body: "Some do escrow, but manually. Others verify with AI, but never touch the money. Banks finance, but verify nothing. No one had brought the three pieces together in a single flow — until now.",
     },
     example: {
@@ -563,7 +563,7 @@ const dict = {
       tag: "Clear pricing",
       heading: "Each role pays for the value they receive",
       sub: "Developers protect their investment. Builders secure their payments. Surveyors gain productivity. No hidden costs.",
-      founderNote: "The first 50 users (Founders) get lifetime special pricing.",
+      founderNote: "These are founder prices for the first wave (200 spots). The first 50 keep them for life.",
       cta: "Reserve my spot",
       profiles: [
         {
@@ -963,7 +963,7 @@ const dict = {
       tag: "Precos claros",
       heading: "Cada papel paga pelo valor que recebe",
       sub: "O promotor protege o seu investimento. O construtor assegura o seu pagamento. O tecnico ganha produtividade. Sem custos ocultos.",
-      founderNote: "Os primeiros 50 utilizadores (Fundadores) obtem preco especial vitalicio.",
+      founderNote: "Estes sao precos de fundador para a primeira vaga (200 lugares). Os primeiros 50 mantem-nos para sempre.",
       cta: "Reservar o meu lugar",
       profiles: [
         {
