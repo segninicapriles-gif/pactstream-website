@@ -367,6 +367,7 @@ const dict = {
     },
     footer: {
       copy: "© 2026 PactStream SL (en constitución)",
+      cimbrium: "Parte del ecosistema Cimbrium",
       legal: "Aviso legal",
       privacy: "Privacidad",
       cookies: "Cookies",
@@ -768,6 +769,7 @@ const dict = {
     },
     footer: {
       copy: "© 2026 PactStream SL (in formation)",
+      cimbrium: "Part of the Cimbrium ecosystem",
       legal: "Legal notice",
       privacy: "Privacy",
       cookies: "Cookies",
@@ -1169,6 +1171,7 @@ const dict = {
     },
     footer: {
       copy: "© 2026 PactStream SL (em constituicao)",
+      cimbrium: "Parte do ecossistema Cimbrium",
       legal: "Aviso legal",
       privacy: "Privacidade",
       cookies: "Cookies",

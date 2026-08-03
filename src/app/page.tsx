@@ -1706,7 +1706,11 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
         <div className="h-px bg-white/[0.06]" />
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs mt-8">
-          <p>{t.footer.copy}</p>
+          <p>
+            {t.footer.copy}
+            {" · "}
+            <a href="https://cimbrium.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{t.footer.cimbrium}</a>
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <a href="/legal" className="hover:text-white transition-colors">{t.footer.legal}</a>
             <a href="/privacidad" className="hover:text-white transition-colors">{t.footer.privacy}</a>
