@@ -75,8 +75,8 @@ const dict = {
       sub: "Paga solo por trabajo verificado. Cobra cuando cumples. Certifica con datos.",
       items: [
         { title: "Promotores y autopromotores", subtitle: "Paga solo por trabajo verificado", benefits: ["Verifica el avance con IA antes de liberar fondos", "Tu dinero protegido en escrow hasta la validación", "Dashboard con estado financiero en tiempo real", "Evidencias inmutables que te protegen ante disputas"] },
-        { title: "Constructores y reformistas", subtitle: "Cobra antes, certifica automático", benefits: ["Pago instantáneo al validar el hito — sin esperar 30-45 días", "Evidencias verificadas por IA reducen disputas un 90%", "Trust Score que te diferencia de la competencia", "Presupuestos profesionales automáticos con CostPact"] },
-        { title: "Arquitectos y técnicos", subtitle: "Validación IA. Score 0-100. Findings verde/ámbar/rojo.", benefits: ["La IA pre-valida evidencias — tú solo confirmas", "Certificaciones digitales con firma electrónica", "Informes de progreso generados automáticamente", "Reduce tiempo administrativo un 70%"] },
+        { title: "Constructores y reformistas", subtitle: "Cobra antes, certifica automático", benefits: ["Pago instantáneo al validar el hito — sin esperar 30-45 días", "Evidencias verificadas por IA — cada cobro queda documentado y respaldado ante cualquier disputa", "Trust Score que te diferencia de la competencia", "Presupuestos profesionales automáticos con CostPact"] },
+        { title: "Arquitectos y técnicos", subtitle: "Validación IA. Score 0-100. Findings verde/ámbar/rojo.", benefits: ["La IA pre-valida evidencias — tú solo confirmas", "Certificaciones digitales con firma electrónica", "Informes de progreso generados automáticamente", "Valida a distancia lo que hoy exige visita presencial a obra"] },
       ],
     },
     useCases: {
@@ -475,8 +475,8 @@ const dict = {
       sub: "Pay only for verified work. Get paid when you deliver. Certify with data.",
       items: [
         { title: "Developers & self-promoters", subtitle: "Pay only for verified work", benefits: ["AI-verify progress before releasing funds", "Money protected in escrow until validation", "Real-time financial dashboard", "Immutable evidence that protects you in disputes"] },
-        { title: "Builders & contractors", subtitle: "Get paid faster, certify automatically", benefits: ["Instant payment on milestone validation — no 30-45 day waits", "AI-verified evidence reduces disputes by 90%", "Trust Score that sets you apart from competition", "Automatic professional budgets with CostPact"] },
-        { title: "Architects & surveyors", subtitle: "AI validation. Score 0-100. Green/amber/red findings.", benefits: ["AI pre-validates evidence — you just confirm", "Digital certifications with electronic signature", "Progress reports generated automatically", "Reduce admin time by 70%"] },
+        { title: "Builders & contractors", subtitle: "Get paid faster, certify automatically", benefits: ["Instant payment on milestone validation — no 30-45 day waits", "AI-verified evidence — every payment is documented and backed if a dispute arises", "Trust Score that sets you apart from competition", "Automatic professional budgets with CostPact"] },
+        { title: "Architects & surveyors", subtitle: "AI validation. Score 0-100. Green/amber/red findings.", benefits: ["AI pre-validates evidence — you just confirm", "Digital certifications with electronic signature", "Progress reports generated automatically", "Validate remotely what today requires an on-site visit"] },
       ],
     },
     useCases: {
@@ -875,8 +875,8 @@ const dict = {
       sub: "Pague apenas por trabalho verificado. Receba quando cumpre. Certifique com dados.",
       items: [
         { title: "Promotores e autopromotores", subtitle: "Pague apenas por trabalho verificado", benefits: ["Verifique o avanco com IA antes de liberar fundos", "O seu dinheiro protegido em escrow ate a validacao", "Dashboard com estado financeiro em tempo real", "Evidencias imutaveis que o protegem em disputas"] },
-        { title: "Construtores e reformistas", subtitle: "Receba antes, certifique automaticamente", benefits: ["Pagamento instantaneo ao validar o marco — sem esperar 30-45 dias", "Evidencias verificadas por IA reduzem disputas em 90%", "Trust Score que o diferencia da concorrencia", "Orcamentos profissionais automaticos com CostPact"] },
-        { title: "Arquitetos e tecnicos", subtitle: "Validacao IA. Score 0-100. Conclusoes verde/ambar/vermelho.", benefits: ["A IA pre-valida evidencias — voce so confirma", "Certificacoes digitais com assinatura eletronica", "Relatorios de progresso gerados automaticamente", "Reduza tempo administrativo em 70%"] },
+        { title: "Construtores e reformistas", subtitle: "Receba antes, certifique automaticamente", benefits: ["Pagamento instantaneo ao validar o marco — sem esperar 30-45 dias", "Evidencias verificadas por IA — cada recebimento fica documentado e respaldado perante qualquer disputa", "Trust Score que o diferencia da concorrencia", "Orcamentos profissionais automaticos com CostPact"] },
+        { title: "Arquitetos e tecnicos", subtitle: "Validacao IA. Score 0-100. Conclusoes verde/ambar/vermelho.", benefits: ["A IA pre-valida evidencias — voce so confirma", "Certificacoes digitais com assinatura eletronica", "Relatorios de progresso gerados automaticamente", "Valide a distancia o que hoje exige visita presencial a obra"] },
       ],
     },
     useCases: {
