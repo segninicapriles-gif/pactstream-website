@@ -1034,6 +1034,7 @@ function EcosystemSection({ t }: { t: Dict }) {
           </AnimatedSection>
         </div>
         <AnimatedSection delay={0.3} className="mt-12 text-center">
+          <p className="text-sm text-[#5A6B7F] mb-4 max-w-3xl mx-auto">{t.ecosystem.global}</p>
           <p className="text-sm text-[#5A6B7F] mb-6">
             <strong className="text-[#1A2332]">{t.ecosystem.advantage.label}</strong> {t.ecosystem.advantage.text}
           </p>
