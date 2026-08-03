@@ -982,9 +982,9 @@ function EcosystemSection({ t }: { t: Dict }) {
               <h3 className="text-xl font-bold text-[#1A2332] mb-2">{t.ecosystem.costpact.name}</h3>
               <p className="text-sm text-[#0B6E5F] font-medium mb-4">{t.ecosystem.costpact.sub}</p>
               <p className="text-[#5A6B7F] text-sm leading-relaxed mb-5">{t.ecosystem.costpact.desc}</p>
-              <div className="flex items-center gap-2 text-sm font-medium text-[#0B6E5F]">
+              <a href="https://costpact.io" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-[#0B6E5F] hover:underline">
                 <ChevronRight className="w-4 h-4" /> {t.ecosystem.costpact.link}
-              </div>
+              </a>
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.15}>
@@ -1011,9 +1011,9 @@ function EcosystemSection({ t }: { t: Dict }) {
               <h3 className="text-xl font-bold text-[#1A2332] mb-2">{t.ecosystem.fiscalcore.name}</h3>
               <p className="text-sm text-[#0B6E5F] font-medium mb-4">{t.ecosystem.fiscalcore.sub}</p>
               <p className="text-[#5A6B7F] text-sm leading-relaxed mb-5">{t.ecosystem.fiscalcore.desc}</p>
-              <div className="flex items-center gap-2 text-sm font-medium text-[#0B6E5F]">
+              <a href="https://fiscalcore.io" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-[#0B6E5F] hover:underline">
                 <ChevronRight className="w-4 h-4" /> {t.ecosystem.fiscalcore.link}
-              </div>
+              </a>
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.35}>
@@ -1027,9 +1027,9 @@ function EcosystemSection({ t }: { t: Dict }) {
               <h3 className="text-xl font-bold text-[#1A2332] mb-2">{t.ecosystem.propertyjourney.name}</h3>
               <p className="text-sm text-[#0B6E5F] font-medium mb-4">{t.ecosystem.propertyjourney.sub}</p>
               <p className="text-[#5A6B7F] text-sm leading-relaxed mb-5">{t.ecosystem.propertyjourney.desc}</p>
-              <div className="flex items-center gap-2 text-sm font-medium text-[#0B6E5F]">
+              <a href="https://propertyjourney.pt" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-[#0B6E5F] hover:underline">
                 <ChevronRight className="w-4 h-4" /> {t.ecosystem.propertyjourney.link}
-              </div>
+              </a>
             </div>
           </AnimatedSection>
         </div>
