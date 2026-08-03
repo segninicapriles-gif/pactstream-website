@@ -40,8 +40,8 @@ const dict = {
       ],
     },
     problem: {
-      heading: "El 78% de las reformas en España sufren fraude o incumplimiento",
-      sub: "1,9 millones de renovaciones al año. Un sector de 52.500M€ sin herramientas digitales. Promotores pagan sin garantías, constructores esperan semanas para cobrar, técnicos certifican con fotos de WhatsApp.",
+      heading: "Pagar una obra a ciegas es un problema global",
+      sub: "En EE. UU. los bancos exigen un inspector a 100-395$ por visita antes de liberar cada pago. En Países Bajos, verificar el avance cuesta un 1-3% del presupuesto. En Noruega lo obliga la ley. El mundo entero paga por resolver a mano lo que sigue sin herramienta digital: promotores que pagan sin garantías, constructores que esperan semanas para cobrar, técnicos que certifican con fotos de WhatsApp.",
       cards: [
         { title: "Promotores", desc: "\"Pago y no sé si la obra avanza.\" Sin visibilidad, sin protección, sin forma de verificar antes de soltar el dinero." },
         { title: "Constructores", desc: "\"Cumplo y tardo 45 días en cobrar.\" Sin garantías de pago, sin forma de demostrar que el trabajo está hecho." },
@@ -328,7 +328,7 @@ const dict = {
           color: "#95A5A6", pricing: "0€", pricingDetail: "Sin coste de transacción. Sin protección. Sin verificación. Sin trazabilidad.",
           strengths: ["Gratis", "Simple y rápido", "Todo el mundo lo conoce", "Sin intermediarios"],
           weaknesses: ["Cero protección al promotor", "Cero garantía de cobro al constructor", "Sin verificación del trabajo", "Sin trazabilidad legal", "Sin mediación en disputas"],
-          verdict: "La transferencia directa es gratis, pero el 78% de las reformas sufren fraude o incumplimiento. El 2,4% de PactStream es un seguro: proteges tu inversión, verificas con IA y cobras al instante. La alternativa \"gratis\" te puede costar miles.",
+          verdict: "La transferencia directa es gratis, pero no protege a nadie: por eso en EE. UU. cada pago de obra exige una inspección de 100-395$ y en Países Bajos el mercado paga un 1-3% por verificación manual. El 2,4% de PactStream es un seguro: proteges tu inversión, verificas con IA y cobras al instante. La alternativa \"gratis\" te puede costar miles.",
           features: { escrow: "no", ai_verification: "no", auto_payment: "no", milestone_payments: "no", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "no", ai_budgets: "no", mobile: "no", freemium: "yes" },
         },
         {
@@ -440,8 +440,8 @@ const dict = {
       ],
     },
     problem: {
-      heading: "78% of renovations in Spain involve fraud or non-compliance",
-      sub: "1.9 million renovations per year. A €52.5B sector with no digital tools. Developers pay without guarantees, builders wait weeks to get paid, surveyors certify with WhatsApp photos.",
+      heading: "Paying for construction blind is a global problem",
+      sub: "In the US, lenders require a draw inspection at $100-395 per visit before releasing each payment. In the Netherlands, verifying progress costs 1-3% of the budget. In Norway, it's required by law. The whole world pays to solve by hand what still has no digital tool: developers pay without guarantees, builders wait weeks to get paid, surveyors certify with WhatsApp photos.",
       cards: [
         { title: "Developers", desc: "\"I pay and don't know if work progresses.\" No visibility, no protection, no way to verify before releasing funds." },
         { title: "Builders", desc: "\"I deliver and wait 45 days to get paid.\" No payment guarantees, no way to prove work is done." },
@@ -728,7 +728,7 @@ const dict = {
           color: "#95A5A6", pricing: "€0", pricingDetail: "No transaction cost. No protection. No verification. No traceability.",
           strengths: ["Free", "Simple and fast", "Everyone knows it", "No intermediaries"],
           weaknesses: ["Zero protection for developers", "Zero payment guarantee for builders", "No work verification", "No legal traceability", "No dispute mediation"],
-          verdict: "Direct transfer is free, but 78% of renovations suffer fraud or non-compliance. PactStream's 2.4% is insurance: you protect your investment, verify with AI, and get paid instantly. The 'free' alternative can cost you thousands.",
+          verdict: "Direct transfer is free, but it protects no one: that's why every US construction draw requires a $100-395 inspection and the Dutch market pays 1-3% for manual verification. PactStream's 2.4% is insurance: you protect your investment, verify with AI, and get paid instantly. The 'free' alternative can cost you thousands.",
           features: { escrow: "no", ai_verification: "no", auto_payment: "no", milestone_payments: "no", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "no", ai_budgets: "no", mobile: "no", freemium: "yes" },
         },
         {
@@ -840,8 +840,8 @@ const dict = {
       ],
     },
     problem: {
-      heading: "78% das renovacoes em Espanha sofrem fraude ou incumprimento",
-      sub: "1,9 milhoes de renovacoes por ano. Um setor de 52.500M€ sem ferramentas digitais. Promotores pagam sem garantias, construtores esperam semanas para receber, tecnicos certificam com fotos de WhatsApp.",
+      heading: "Pagar uma obra as cegas e um problema global",
+      sub: "Nos EUA, os bancos exigem um inspetor a 100-395$ por visita antes de liberar cada pagamento. Nos Paises Baixos, verificar o avanco custa 1-3% do orcamento. Na Noruega, e obrigatorio por lei. O mundo inteiro paga para resolver a mao o que continua sem ferramenta digital: promotores pagam sem garantias, construtores esperam semanas para receber, tecnicos certificam com fotos de WhatsApp.",
       cards: [
         { title: "Promotores", desc: "\"Pago e nao sei se a obra avanca.\" Sem visibilidade, sem protecao, sem forma de verificar antes de liberar o dinheiro." },
         { title: "Construtores", desc: "\"Cumpro e demoro 45 dias a receber.\" Sem garantias de pagamento, sem forma de provar que o trabalho esta feito." },
@@ -1128,7 +1128,7 @@ const dict = {
           color: "#95A5A6", pricing: "0€", pricingDetail: "Sem custo de transacao. Sem protecao. Sem verificacao. Sem rastreabilidade.",
           strengths: ["Gratis", "Simples e rapido", "Toda a gente conhece", "Sem intermediarios"],
           weaknesses: ["Zero protecao ao promotor", "Zero garantia de pagamento ao construtor", "Sem verificacao do trabalho", "Sem rastreabilidade legal", "Sem mediacao em disputas"],
-          verdict: "A transferencia direta e gratis, mas 78% das renovacoes sofrem fraude ou incumprimento. Os 2,4% do PactStream sao um seguro: protege o seu investimento, verifica com IA e recebe de imediato. A alternativa \"gratis\" pode custar-lhe milhares.",
+          verdict: "A transferencia direta e gratis, mas nao protege ninguem: por isso nos EUA cada pagamento de obra exige uma inspecao de 100-395$ e nos Paises Baixos o mercado paga 1-3% por verificacao manual. Os 2,4% do PactStream sao um seguro: protege o seu investimento, verifica com IA e recebe de imediato. A alternativa \"gratis\" pode custar-lhe milhares.",
           features: { escrow: "no", ai_verification: "no", auto_payment: "no", milestone_payments: "no", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "no", ai_budgets: "no", mobile: "no", freemium: "yes" },
         },
         {
