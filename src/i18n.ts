@@ -367,7 +367,7 @@ const dict = {
     },
     footer: {
       copy: "© 2026 PactStream SL (en constitución)",
-      cimbrium: "Parte del ecosistema Cimbrium",
+      cimbrium: "Parte del ecosistema Cimbrium — Cada pago de la obra, sostenido por evidencia",
       legal: "Aviso legal",
       privacy: "Privacidad",
       cookies: "Cookies",
@@ -769,7 +769,7 @@ const dict = {
     },
     footer: {
       copy: "© 2026 PactStream SL (in formation)",
-      cimbrium: "Part of the Cimbrium ecosystem",
+      cimbrium: "Part of the Cimbrium ecosystem — Every construction payment, held by evidence",
       legal: "Legal notice",
       privacy: "Privacy",
       cookies: "Cookies",
@@ -1171,7 +1171,7 @@ const dict = {
     },
     footer: {
       copy: "© 2026 PactStream SL (em constituicao)",
-      cimbrium: "Parte do ecossistema Cimbrium",
+      cimbrium: "Parte do ecossistema Cimbrium — Cada pagamento da obra, sustentado por evidência",
       legal: "Aviso legal",
       privacy: "Privacidade",
       cookies: "Cookies",
