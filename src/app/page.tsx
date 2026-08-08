@@ -994,7 +994,7 @@ function EcosystemSection({ t }: { t: Dict }) {
               </div>
               <h3 className="text-xl font-bold mb-2">{t.ecosystem.pactstream.name}</h3>
               <p className="text-sm text-[#a9f3ff] font-medium mb-4">{t.ecosystem.pactstream.sub}</p>
-              <p className="text-[#8896A6] text-sm leading-relaxed mb-5">{t.ecosystem.pactstream.desc}</p>
+              <p className="text-[#5A6B7F] text-sm leading-relaxed mb-5">{t.ecosystem.pactstream.desc}</p>
               <div className="flex items-center gap-2 text-sm font-medium text-[#a9f3ff]">
                 <ChevronRight className="w-4 h-4" /> {t.ecosystem.pactstream.link}
               </div>
@@ -1093,7 +1093,7 @@ function ValidationSection({ t }: { t: Dict }) {
                   <CountUp target={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="text-sm font-medium text-[#1A2332] mb-1">{stat.label}</div>
-                <div className="text-xs text-[#8896A6]">{stat.sub}</div>
+                <div className="text-xs text-[#5A6B7F]">{stat.sub}</div>
               </div>
             </AnimatedSection>
           ))}
@@ -1145,9 +1145,9 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <h3 className="font-display font-bold text-lg text-[#1A2332]">{comp.name}</h3>
-                <span className="text-xs text-[#8896A6]">{(comp as any).country}</span>
+                <span className="text-xs text-[#5A6B7F]">{(comp as any).country}</span>
               </div>
-              <p className="text-sm text-[#8896A6] truncate">{(comp as any).tagline}</p>
+              <p className="text-sm text-[#5A6B7F] truncate">{(comp as any).tagline}</p>
             </div>
           </div>
           <div className="flex items-center gap-3 shrink-0 ml-4">
@@ -1155,7 +1155,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
               <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700">{t.comparison.wins} {psWins}</span>
               {compWins > 0 && <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">{comp.name.split(" ")[0]} {compWins}</span>}
             </div>
-            <ChevronDown className={`w-5 h-5 text-[#8896A6] transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+            <ChevronDown className={`w-5 h-5 text-[#5A6B7F] transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
           </div>
         </button>
 
@@ -1163,7 +1163,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
           <div className="card-row">
             <div className="overflow-x-auto">
               <div className="min-w-[500px]">
-                <div className="grid grid-cols-[1fr_90px_90px] bg-[#F5F7FA] text-xs font-semibold text-[#8896A6] uppercase tracking-wider">
+                <div className="grid grid-cols-[1fr_90px_90px] bg-[#F5F7FA] text-xs font-semibold text-[#5A6B7F] uppercase tracking-wider">
                   <div className="px-6 py-3">{t.ui.feature}</div>
                   <div className="px-3 py-3 text-center text-[#0121DC]">PactStream</div>
                   <div className="px-3 py-3 text-center" style={{ color: (comp as any).color }}>{comp.name.split("(")[0].trim()}</div>
@@ -1177,7 +1177,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
                 ))}
                 <div className="grid grid-cols-[1fr_90px_90px] card-row bg-emerald-50/30">
                   <div className="px-6 py-3 text-sm font-semibold text-[#1A2332]">{t.ui.price}</div>
-                  <div className="px-3 py-3 text-center text-xs font-bold text-[#0121DC]">{t.ui.free}<br/><span className="font-normal text-[#8896A6]">{t.ui.txFee}</span></div>
+                  <div className="px-3 py-3 text-center text-xs font-bold text-[#0121DC]">{t.ui.free}<br/><span className="font-normal text-[#5A6B7F]">{t.ui.txFee}</span></div>
                   <div className="px-3 py-3 text-center text-xs font-bold" style={{ color: (comp as any).color }}>{(comp as any).pricing}</div>
                 </div>
               </div>
@@ -1203,7 +1203,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
                 <p className="text-sm font-semibold mb-1">{t.ui.honestVerdict}</p>
                 <p className="text-sm text-slate-300 leading-relaxed">{(comp as any).verdict}</p>
               </div>
-              <p className="text-xs text-[#8896A6] mt-3">{(comp as any).pricingDetail}</p>
+              <p className="text-xs text-[#5A6B7F] mt-3">{(comp as any).pricingDetail}</p>
             </div>
           </div>
         )}
@@ -1235,7 +1235,7 @@ function GlobalComparisonMatrix({ t }: { t: Dict }) {
           ))}
         </div>
       </div>
-      <p className="text-xs text-[#8896A6] mt-3 text-center">{t.comparison.scrollHint}</p>
+      <p className="text-xs text-[#5A6B7F] mt-3 text-center">{t.comparison.scrollHint}</p>
     </div>
   );
 }
@@ -1274,7 +1274,7 @@ function ComparisonSection({ t }: { t: Dict }) {
         </AnimatedSection>
 
         {/* Legend */}
-        <div className="flex flex-wrap justify-center gap-6 text-sm text-[#8896A6] mb-16">
+        <div className="flex flex-wrap justify-center gap-6 text-sm text-[#5A6B7F] mb-16">
           <span className="flex items-center gap-1.5"><span className="text-emerald-600"><CheckCircle2 className="w-4 h-4" /></span> {t.comparison.legend.yes}</span>
           <span className="flex items-center gap-1.5"><span className="w-4 h-[2.5px] bg-amber-500 rounded-full block" /> {t.comparison.legend.partial}</span>
           <span className="flex items-center gap-1.5"><span className="text-slate-300"><X className="w-4 h-4" /></span> {t.comparison.legend.no}</span>
@@ -1286,7 +1286,7 @@ function ComparisonSection({ t }: { t: Dict }) {
           <h3 className="text-2xl md:text-3xl font-display font-bold text-[#1A2332] text-center mb-4">
             {t.comparison.detailTitle}
           </h3>
-          <p className="text-[#8896A6] text-center max-w-xl mx-auto mb-10">
+          <p className="text-[#5A6B7F] text-center max-w-xl mx-auto mb-10">
             {t.comparison.detailSub}
           </p>
           <div className="space-y-4">
@@ -1494,7 +1494,7 @@ function BundleCard({ b, t, isDesktop }: { b: any; t: Dict; isDesktop: boolean }
         )}
       </div>
       <p className="text-sm text-[#5A6B7F]">{b.target}</p>
-      <p className="text-xs text-[#8A99AB] mb-4">{b.range}</p>
+      <p className="text-xs text-[#5A6B7F] mb-4">{b.range}</p>
 
       <div className="mb-1">
         <span className="font-display text-3xl font-black text-[#1A2332]">{b.price}</span>
@@ -1502,7 +1502,7 @@ function BundleCard({ b, t, isDesktop }: { b: any; t: Dict; isDesktop: boolean }
       <p className="text-xs text-[#0B6E5F] font-medium mb-5">{b.priceNote}</p>
 
       <div className="mb-4">
-        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#8A99AB] mb-2">CostPact</p>
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#5A6B7F] mb-2">CostPact</p>
         <ul className="space-y-2">
           {b.costpact.map((f: string) => (
             <li key={f} className="flex items-start gap-2">
@@ -1514,7 +1514,7 @@ function BundleCard({ b, t, isDesktop }: { b: any; t: Dict; isDesktop: boolean }
       </div>
 
       <div className="mb-6 flex-1">
-        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#8A99AB] mb-2">PactStream</p>
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#5A6B7F] mb-2">PactStream</p>
         <ul className="space-y-2">
           {b.pactstream.map((f: string) => (
             <li key={f} className="flex items-start gap-2">
@@ -1588,7 +1588,7 @@ function FAQSection({ t }: { t: Dict }) {
                   className="w-full flex items-center justify-between gap-4 p-5 text-left"
                 >
                   <span className="text-sm font-semibold text-[#1A2332]">{item.q}</span>
-                  <ChevronDown className={`w-5 h-5 text-[#8896A6] shrink-0 transition-transform ${open === i ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`w-5 h-5 text-[#5A6B7F] shrink-0 transition-transform ${open === i ? "rotate-180" : ""}`} />
                 </button>
                 <AnimatePresence>
                   {open === i && (
