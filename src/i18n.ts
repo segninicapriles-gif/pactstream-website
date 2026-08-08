@@ -484,7 +484,7 @@ const dict = {
       heading: "Every role gets its edge",
       sub: "Your money only moves against verified progress. Get paid when you deliver. Certify with data.",
       items: [
-        { title: "Developers & self-promoters", subtitle: "Pay only for verified work", benefits: ["AI-verify progress before releasing funds", "Money protected in escrow until validation", "Real-time financial dashboard", "Immutable evidence that protects you in disputes"] },
+        { title: "Developers & self-promoters", subtitle: "Your money only moves against verified progress", benefits: ["AI-verify progress before releasing funds", "Money protected in escrow until validation", "Real-time financial dashboard", "Immutable evidence that protects you in disputes"] },
         { title: "Builders & contractors", subtitle: "Get paid faster, certify automatically", benefits: ["Instant payment on milestone validation — no 30-45 day waits", "AI-verified evidence — every payment is documented and backed if a dispute arises", "Trust Score that sets you apart from competition", "Automatic professional budgets with CostPact"] },
         { title: "Architects & surveyors", subtitle: "AI validation. Score 0-100. Green/amber/red findings.", benefits: ["AI pre-validates evidence — you just confirm", "Digital certifications with electronic signature", "Progress reports generated automatically", "Validate remotely what today requires an on-site visit"] },
       ],
