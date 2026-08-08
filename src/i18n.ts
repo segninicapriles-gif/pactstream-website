@@ -72,9 +72,9 @@ const dict = {
     roles: {
       tag: "Para quién",
       heading: "Cada rol tiene su ventaja",
-      sub: "Paga solo por trabajo verificado. Cobra cuando cumples. Certifica con datos.",
+      sub: "Tu dinero solo sale contra avance verificado. Cobra cuando cumples. Certifica con datos.",
       items: [
-        { title: "Promotores y autopromotores", subtitle: "Paga solo por trabajo verificado", benefits: ["Verifica el avance con IA antes de liberar fondos", "Tu dinero protegido en escrow hasta la validación", "Dashboard con estado financiero en tiempo real", "Evidencias inmutables que te protegen ante disputas"] },
+        { title: "Promotores y autopromotores", subtitle: "Tu dinero solo sale contra avance verificado", benefits: ["Verifica el avance con IA antes de liberar fondos", "Tu dinero protegido en escrow hasta la validación", "Dashboard con estado financiero en tiempo real", "Evidencias inmutables que te protegen ante disputas"] },
         { title: "Constructores y reformistas", subtitle: "Cobra antes, certifica automático", benefits: ["Pago instantáneo al validar el hito — sin esperar 30-45 días", "Evidencias verificadas por IA — cada cobro queda documentado y respaldado ante cualquier disputa", "Trust Score que te diferencia de la competencia", "Presupuestos profesionales automáticos con CostPact"] },
         { title: "Arquitectos y técnicos", subtitle: "Validación IA. Score 0-100. Findings verde/ámbar/rojo.", benefits: ["La IA pre-valida evidencias — tú solo confirmas", "Certificaciones digitales con firma electrónica", "Informes de progreso generados automáticamente", "Valida a distancia lo que hoy exige visita presencial a obra"] },
       ],
@@ -482,7 +482,7 @@ const dict = {
     roles: {
       tag: "For whom",
       heading: "Every role gets its edge",
-      sub: "Pay only for verified work. Get paid when you deliver. Certify with data.",
+      sub: "Your money only moves against verified progress. Get paid when you deliver. Certify with data.",
       items: [
         { title: "Developers & self-promoters", subtitle: "Pay only for verified work", benefits: ["AI-verify progress before releasing funds", "Money protected in escrow until validation", "Real-time financial dashboard", "Immutable evidence that protects you in disputes"] },
         { title: "Builders & contractors", subtitle: "Get paid faster, certify automatically", benefits: ["Instant payment on milestone validation — no 30-45 day waits", "AI-verified evidence — every payment is documented and backed if a dispute arises", "Trust Score that sets you apart from competition", "Automatic professional budgets with CostPact"] },
@@ -892,9 +892,9 @@ const dict = {
     roles: {
       tag: "Para quem",
       heading: "Cada papel tem a sua vantagem",
-      sub: "Pague apenas por trabalho verificado. Receba quando cumpre. Certifique com dados.",
+      sub: "O seu dinheiro so sai contra avanco verificado. Receba quando cumpre. Certifique com dados.",
       items: [
-        { title: "Promotores e autopromotores", subtitle: "Pague apenas por trabalho verificado", benefits: ["Verifique o avanco com IA antes de liberar fundos", "O seu dinheiro protegido em escrow ate a validacao", "Dashboard com estado financeiro em tempo real", "Evidencias imutaveis que o protegem em disputas"] },
+        { title: "Promotores e autopromotores", subtitle: "O seu dinheiro so sai contra avanco verificado", benefits: ["Verifique o avanco com IA antes de liberar fundos", "O seu dinheiro protegido em escrow ate a validacao", "Dashboard com estado financeiro em tempo real", "Evidencias imutaveis que o protegem em disputas"] },
         { title: "Construtores e reformistas", subtitle: "Receba antes, certifique automaticamente", benefits: ["Pagamento instantaneo ao validar o marco — sem esperar 30-45 dias", "Evidencias verificadas por IA — cada recebimento fica documentado e respaldado perante qualquer disputa", "Trust Score que o diferencia da concorrencia", "Orcamentos profissionais automaticos com CostPact"] },
         { title: "Arquitetos e tecnicos", subtitle: "Validacao IA. Score 0-100. Conclusoes verde/ambar/vermelho.", benefits: ["A IA pre-valida evidencias — voce so confirma", "Certificacoes digitais com assinatura eletronica", "Relatorios de progresso gerados automaticamente", "Valide a distancia o que hoje exige visita presencial a obra"] },
       ],
