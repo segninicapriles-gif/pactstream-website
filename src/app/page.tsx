@@ -994,7 +994,7 @@ function EcosystemSection({ t }: { t: Dict }) {
               </div>
               <h3 className="text-xl font-bold mb-2">{t.ecosystem.pactstream.name}</h3>
               <p className="text-sm text-[#a9f3ff] font-medium mb-4">{t.ecosystem.pactstream.sub}</p>
-              <p className="text-[#5A6B7F] text-sm leading-relaxed mb-5">{t.ecosystem.pactstream.desc}</p>
+              <p className="text-[#8896A6] text-sm leading-relaxed mb-5">{t.ecosystem.pactstream.desc}</p>
               <div className="flex items-center gap-2 text-sm font-medium text-[#a9f3ff]">
                 <ChevronRight className="w-4 h-4" /> {t.ecosystem.pactstream.link}
               </div>
