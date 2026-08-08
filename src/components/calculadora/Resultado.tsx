@@ -36,7 +36,9 @@ function SinFicha({ tecnologia }: { tecnologia: Tecnologia }) {
               : 'Esta actuación puede generar CAE, pero su ficha todavía no está incorporada a la calculadora. No mostramos un importe que no podamos justificar con el BOE en la mano.'}
           </p>
           <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">
-            La deducción de IRPF de aquí abajo sí aplica.
+            La deducción de IRPF de aquí abajo <strong>puede aplicar</strong>: cuál de los
+            tres tramos corresponde lo determinan los certificados energéticos previo y
+            posterior de esta actuación, no esta calculadora.
           </p>
         </div>
       </div>
@@ -102,12 +104,12 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
               <p className="mt-4 text-sm font-medium text-[var(--color-navy-vault)]">
                 Cómo lo recorta el tope, según el consumo del edificio
               </p>
-              <p className="text-xs text-[var(--color-ps-neutral-600)]">
+              <p className="text-xs text-[var(--color-ps-navy-300)]">
                 Ilustrativo: son consumos de referencia, no los de esta vivienda.
               </p>
               <table className="mt-2 w-full text-sm">
                 <thead>
-                  <tr className="text-left text-xs text-[var(--color-ps-neutral-600)]">
+                  <tr className="text-left text-xs text-[var(--color-ps-navy-300)]">
                     <th className="py-1 font-medium">Consumo</th>
                     <th className="py-1 font-medium">Ahorro</th>
                     <th className="py-1 font-medium">Valor</th>
@@ -137,7 +139,7 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
             </>
           )}
 
-          <p className="mt-3 text-xs text-[var(--color-ps-neutral-600)]">
+          <p className="mt-3 text-xs text-[var(--color-ps-navy-300)]">
             Precio aplicado: {precio.min}–{precio.max} €/MWh. {precio.fuente}.
           </p>
           <Fuente texto={FUENTE_CAE} />
@@ -148,13 +150,27 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
       {cae && cae.aplicable && (
         <div className={tarjeta}>
           <h3 className={titulo}>Espesor mínimo exigido</h3>
-          <p className="mt-2 font-mono text-2xl font-bold text-[var(--color-navy-vault)]">
-            {milimetros(cae.espesorMinimoMm)}
-          </p>
-          <p className="mt-1 text-sm text-[var(--color-ps-navy-400)]">
-            Sale de e = Rt · λd. No es orientativo: es una fórmula, y λd se toma de la
-            Declaración de Prestaciones del producto, así que es comprobable.
-          </p>
+          {cae.espesorCalculable ? (
+            <>
+              <p className="mt-2 font-mono text-2xl font-bold text-[var(--color-navy-vault)]">
+                {milimetros(cae.espesorMinimoMm)}
+              </p>
+              <p className="mt-1 text-sm text-[var(--color-ps-navy-400)]">
+                Sale de e = Rt · λd. No es orientativo: es una fórmula, y λd se toma de la
+                Declaración de Prestaciones del producto, así que es comprobable.
+                {cae.lambdaDPorDefecto &&
+                  ' Aquí se ha usado 0,035 W/mK (lana mineral corriente) porque no se indicó ' +
+                    'la conductividad del aislante: confírmala en la Declaración de Prestaciones ' +
+                    'antes de cerrar la cifra.'}
+              </p>
+            </>
+          ) : (
+            <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">
+              La λd indicada está fuera del rango plausible (0,010–0,100 W/mK), así que no
+              se calcula un espesor con ese dato. Revisa la Declaración de Prestaciones del
+              producto y corrígela en el formulario.
+            </p>
+          )}
           <Fuente texto={FUENTE_CAE} />
         </div>
       )}
@@ -174,12 +190,12 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
                     <td className="py-2 pr-3">
                       <span className="text-[var(--color-ps-navy-400)]">{t.condicion}</span>
                       {t.nota && (
-                        <span className="block text-xs text-[var(--color-ps-neutral-600)]">{t.nota}</span>
+                        <span className="block text-xs text-[var(--color-ps-navy-300)]">{t.nota}</span>
                       )}
                     </td>
                     <td className="py-2 text-right font-mono font-bold text-[var(--color-navy-vault)]">
                       {euros(t.deduccion)}
-                      <span className="block text-xs font-normal text-[var(--color-ps-neutral-600)]">
+                      <span className="block text-xs font-normal text-[var(--color-ps-navy-300)]">
                         base {euros(t.baseAplicada)}
                       </span>
                     </td>
@@ -206,14 +222,16 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
         <div className={tarjeta}>
           <h3 className={titulo}>Qué puedes descontar en tu oferta</h3>
           <p className="mt-3 font-mono text-2xl font-bold text-[var(--color-navy-vault)]">
-            {cae.ahorroKwh !== null
-              ? eurosRango(valorarKwh(cae.ahorroKwh, precio))
-              : `hasta ${eurosRango(valorarKwh(cae.aesKwh, precio))}`}
+            {eurosRango(valorarKwh(cae.ahorroKwh ?? cae.aesKwh, precio))}
+          </p>
+          <p className="mt-1 text-xs text-[var(--color-ps-navy-300)]">
+            Pago único — no es un importe anual, aunque el ahorro de arriba se exprese en
+            kWh/año.
           </p>
           <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">
             {cae.ahorroKwh !== null
-              ? 'Es el CAE que te cede tu cliente, y por tanto lo que puedes rebajar del precio sin perder margen.'
-              : 'Es el techo. Sin el certificado previo no sabes cuánto de esto vas a cobrar, así que descontarlo entero es apostar contra tu propio margen.'}
+              ? 'Es el CAE que te cede tu cliente: descuéntalo por el extremo bajo del rango si quieres cuidar el margen, y ten en cuenta que solo se cobra si el expediente se verifica y se acepta.'
+              : 'Es el techo. Sin el certificado previo no sabes cuánto de esto vas a cobrar, así que descuenta como mucho el extremo bajo del rango: darlo entero es apostar contra tu propio margen.'}
           </p>
           <p className="mt-3 rounded-[var(--radius-sm)] bg-[var(--color-ps-neutral-100)] p-3 text-sm text-[var(--color-navy-vault)]">
             <strong>La deducción de IRPF no entra aquí.</strong> Es de tu cliente, no tuya:

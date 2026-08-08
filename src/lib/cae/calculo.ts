@@ -13,6 +13,13 @@ import {
   tramoDeAnio, esZonaRES022,
 } from './fichas'
 
+/**
+ * Cota de cordura para λd. Fuera de este rango no es un dato del BOE que se
+ * pueda cuestionar: es un error de tecleo o de unidad, y calcular un espesor
+ * con eso produce una cifra absurda (ver crítico de la revisión del 8-ago).
+ */
+export const LAMBDA_D_RANGO = { min: 0.010, max: 0.100 } as const
+
 export interface EntradaRES022 {
   /** Zona climática del CTE. RES022 solo aplica en C, D y E. */
   zona: string
@@ -50,13 +57,18 @@ export interface ResultadoRES022 {
   /** `true` si el tope es lo que limita. `null` si no se aportó el consumo */
   mandaTope: boolean | null
   espesorMinimoMm: number
+  /** `false` cuando λd está fuera del rango plausible: no se calcula un espesor con ese dato. */
+  espesorCalculable: boolean
+  /** `true` cuando no se indicó λd (o no era positiva) y se aplicó 0,035 W/mK por defecto. */
+  lambdaDPorDefecto: boolean
   /** Solo se rellena cuando NO hay consumo aportado */
   sensibilidad: PuntoSensibilidad[]
 }
 
 const NO_APLICABLE: Omit<ResultadoRES022, 'motivoNoAplicable'> = {
   aplicable: false, vauz: 0, aesKwh: 0, topeKwh: null,
-  ahorroKwh: null, mandaTope: null, espesorMinimoMm: 0, sensibilidad: [],
+  ahorroKwh: null, mandaTope: null, espesorMinimoMm: 0,
+  espesorCalculable: true, lambdaDPorDefecto: false, sensibilidad: [],
 }
 
 export function calcularRES022(e: EntradaRES022): ResultadoRES022 {
@@ -77,8 +89,14 @@ export function calcularRES022(e: EntradaRES022): ResultadoRES022 {
   const vauz = VAUZ_RES022[e.zona][tramoDeAnio(e.anioConstruccion)]
   const aesKwh = Math.round(e.superficieM2 * vauz)
 
-  const lambda = e.lambdaD && e.lambdaD > 0 ? e.lambdaD : LAMBDA_D_POR_DEFECTO
-  const espesorMinimoMm = Math.round(RT_MINIMA_RES022[e.zona] * lambda * 1000)
+  const lambdaDPorDefecto = !(e.lambdaD && e.lambdaD > 0)
+  const lambda = lambdaDPorDefecto ? LAMBDA_D_POR_DEFECTO : (e.lambdaD as number)
+  const lambdaDFueraDeRango =
+    !lambdaDPorDefecto && (lambda < LAMBDA_D_RANGO.min || lambda > LAMBDA_D_RANGO.max)
+  const espesorCalculable = !lambdaDFueraDeRango
+  const espesorMinimoMm = espesorCalculable
+    ? Math.round(RT_MINIMA_RES022[e.zona] * lambda * 1000)
+    : 0
 
   // Un consumo cero o negativo se trata como ausente: no es un dato, es un error.
   const cef =
@@ -100,7 +118,7 @@ export function calcularRES022(e: EntradaRES022): ResultadoRES022 {
     return {
       aplicable: true, motivoNoAplicable: null, vauz, aesKwh,
       topeKwh: null, ahorroKwh: null, mandaTope: null,
-      espesorMinimoMm, sensibilidad,
+      espesorMinimoMm, espesorCalculable, lambdaDPorDefecto, sensibilidad,
     }
   }
 
@@ -109,7 +127,7 @@ export function calcularRES022(e: EntradaRES022): ResultadoRES022 {
   return {
     aplicable: true, motivoNoAplicable: null, vauz, aesKwh,
     topeKwh, ahorroKwh, mandaTope: topeKwh < aesKwh,
-    espesorMinimoMm, sensibilidad: [],
+    espesorMinimoMm, espesorCalculable, lambdaDPorDefecto, sensibilidad: [],
   }
 }
 

@@ -42,7 +42,7 @@ export default function CalculadoraCaePage() {
 
       <Calculadora />
 
-      <footer className="mt-12 max-w-3xl text-xs text-[var(--color-ps-neutral-600)]">
+      <footer className="mt-12 max-w-3xl text-xs text-[var(--color-ps-navy-300)]">
         <p>
           Cálculo orientativo. La ficha RES022 se transcribió de BOE-A-2026-12283 el 7 de
           agosto de 2026 y las deducciones de IRPF se verificaron ese mismo día contra la

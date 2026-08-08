@@ -1,10 +1,20 @@
 'use client'
 
+import { useState } from 'react'
+import { LAMBDA_D_RANGO } from '@/lib/cae/calculo'
+
 // Campos 1-7 del spec. Regla de diseño: cada campo de más reduce la conversión,
 // así que solo está lo que cambia el resultado.
 //
 // La zona climática se ELIGE, no se deduce de la provincia: la tabla del CTE no
 // está verificada y no se inventa. Mapearla queda para la v2.
+//
+// Campos numéricos de texto libre (superficie, importe, λd): el estado que
+// controla el <input> es el TEXTO CRUDO tecleado, nunca el número derivado.
+// Antes se hacía `value={datos.x || ''}`, y como "0" o cualquier prefijo que
+// evalúa a 0/NaN es falsy, React reescribía el campo a vacío en cada pulsación
+// (tecleando "0,032" el campo acababa en "32"). Ver crítico de la revisión del
+// 8-ago-2026. El número solo se calcula a partir del texto al notificar arriba.
 
 export type Tecnologia =
   | 'aislamiento_buhardilla'
@@ -52,7 +62,7 @@ const campo =
   'bg-white px-3 py-2 font-mono text-sm text-[var(--color-navy-vault)] ' +
   'focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 ' +
   'focus:ring-[var(--color-primary)]/20'
-const ayuda = 'mt-1 block text-xs text-[var(--color-ps-neutral-600)]'
+const ayuda = 'mt-1 block text-xs text-[var(--color-ps-navy-300)]'
 
 export function Formulario({
   datos,
@@ -65,6 +75,29 @@ export function Formulario({
     onChange({ ...datos, [k]: v })
 
   const numero = (v: string) => (v === '' ? 0 : Number(v))
+
+  /** Acepta coma o punto como separador decimal. Lo que no parsea, es 0. */
+  const numeroComaOPunto = (texto: string) => {
+    const normalizado = texto.trim().replace(',', '.')
+    if (normalizado === '') return 0
+    const valor = Number(normalizado)
+    return Number.isFinite(valor) ? valor : 0
+  }
+
+  const [textoSuperficie, setTextoSuperficie] = useState(
+    datos.superficieM2 ? String(datos.superficieM2) : '',
+  )
+  const [textoImporte, setTextoImporte] = useState(
+    datos.importeObra ? String(datos.importeObra) : '',
+  )
+  const [textoLambda, setTextoLambda] = useState(
+    datos.lambdaD ? String(datos.lambdaD).replace('.', ',') : '',
+  )
+
+  const lambdaNumero = numeroComaOPunto(textoLambda)
+  const lambdaFueraDeRango =
+    textoLambda.trim() !== '' &&
+    (lambdaNumero < LAMBDA_D_RANGO.min || lambdaNumero > LAMBDA_D_RANGO.max)
 
   return (
     <div className="grid gap-5">
@@ -121,9 +154,13 @@ export function Formulario({
           <div>
             <label className={etiqueta} htmlFor="superficie">Superficie tratada (m²)</label>
             <input
-              id="superficie" type="number" min={0} className={campo}
-              value={datos.superficieM2 || ''}
-              onChange={(ev) => set('superficieM2', numero(ev.target.value))}
+              id="superficie" type="text" inputMode="decimal" className={campo}
+              value={textoSuperficie}
+              onChange={(ev) => {
+                const texto = ev.target.value
+                setTextoSuperficie(texto)
+                set('superficieM2', numeroComaOPunto(texto))
+              }}
             />
           </div>
 
@@ -132,20 +169,30 @@ export function Formulario({
               Conductividad del aislante λd (W/mK)
             </label>
             <input
-              id="lambda" type="number" step="0.001" min={0} className={campo}
-              value={datos.lambdaD || ''}
-              onChange={(ev) => set('lambdaD', numero(ev.target.value))}
+              id="lambda" type="text" inputMode="decimal" className={campo}
+              value={textoLambda}
+              onChange={(ev) => {
+                const texto = ev.target.value
+                setTextoLambda(texto)
+                set('lambdaD', numeroComaOPunto(texto))
+              }}
             />
             <span className={ayuda}>
               Viene en la Declaración de Prestaciones del producto. 0,035 es lo corriente
               en lana mineral.
             </span>
+            {lambdaFueraDeRango && (
+              <span className="mt-1 block text-xs text-[var(--color-ps-orange-700)]">
+                Fuera del rango plausible (0,010–0,100 W/mK): revisa la Declaración de
+                Prestaciones. No se calculará el espesor con este valor.
+              </span>
+            )}
           </div>
 
           <div>
             <label className={etiqueta} htmlFor="cef">
               Consumo de calefacción del certificado previo (kWh/año)
-              <span className="ml-1 font-normal text-[var(--color-ps-neutral-600)]">— opcional</span>
+              <span className="ml-1 font-normal text-[var(--color-ps-navy-300)]">— opcional</span>
             </label>
             <input
               id="cef" type="number" min={0} className={campo}
@@ -165,9 +212,13 @@ export function Formulario({
       <div>
         <label className={etiqueta} htmlFor="importe">Importe estimado de la obra (€)</label>
         <input
-          id="importe" type="number" min={0} className={campo}
-          value={datos.importeObra || ''}
-          onChange={(ev) => set('importeObra', numero(ev.target.value))}
+          id="importe" type="text" inputMode="decimal" className={campo}
+          value={textoImporte}
+          onChange={(ev) => {
+            const texto = ev.target.value
+            setTextoImporte(texto)
+            set('importeObra', numeroComaOPunto(texto))
+          }}
         />
         <span className={ayuda}>Para calcular la deducción que le corresponde a tu cliente.</span>
       </div>

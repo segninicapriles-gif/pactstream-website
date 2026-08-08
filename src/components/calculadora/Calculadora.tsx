@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Formulario, DATOS_INICIALES, type DatosFormulario } from './Formulario'
 import { Resultado } from './Resultado'
 import { Captacion } from './Captacion'
@@ -16,12 +16,24 @@ export function Calculadora() {
 
   // Se mide la tecnología elegida: responde cuál es el segmento real,
   // que es una de las dudas abiertas del análisis estratégico.
+  //
+  // El efecto depende SOLO de la tecnología, no del valor del consumo: si
+  // dependiera de `datos.cefCalefaccion`, cada dígito tecleado en ese campo
+  // disparaba un evento idéntico (teclear "20000" mandaba cinco eventos). Lo
+  // que interesa es si hay consumo o no (`!= null`), leído en el momento en
+  // que la tecnología cambia, no cada pulsación. Tampoco se mide el montaje
+  // inicial: interesa la elección, no la visita.
+  const esPrimerRenderizado = useRef(true)
   useEffect(() => {
+    if (esPrimerRenderizado.current) {
+      esPrimerRenderizado.current = false
+      return
+    }
     window.gtag?.('event', 'calculadora_tecnologia', {
       tecnologia: datos.tecnologia,
       tiene_cef: datos.cefCalefaccion != null,
     })
-  }, [datos.tecnologia, datos.cefCalefaccion])
+  }, [datos.tecnologia])
 
   return (
     <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
