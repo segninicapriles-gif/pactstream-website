@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "verificar:cae": "tsx scripts/verificar-cae.mjs"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.505",
@@ -28,6 +29,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
+    "tsx": "^4.23.11",
     "typescript": "^5"
   }
 }
