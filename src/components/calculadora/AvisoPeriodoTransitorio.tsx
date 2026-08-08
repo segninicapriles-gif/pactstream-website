@@ -36,7 +36,7 @@ export function AvisoPeriodoTransitorio() {
   const vencido = dias !== null && dias <= 0
 
   return (
-    <div className="mt-6 rounded-[var(--radius-md)] border-l-4 border-[var(--color-primary)] bg-[var(--color-primary)]/5 px-4 py-3">
+    <div className="mt-6 rounded-[var(--radius-md)] border border-[var(--color-primary)]/25 bg-[var(--color-primary)]/5 px-4 py-3">
       <p className="text-sm font-medium text-[var(--color-navy-vault)]">
         {vencido ? (
           <>
