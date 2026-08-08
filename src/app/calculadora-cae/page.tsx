@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Calculadora } from '@/components/calculadora/Calculadora'
+import { AvisoPeriodoTransitorio } from '@/components/calculadora/AvisoPeriodoTransitorio'
 
 export const metadata: Metadata = {
   title: 'Calculadora de CAE y ayudas para instaladores | PactStream',
@@ -38,6 +39,7 @@ export default function CalculadoraCaePage() {
           techo: el ahorro real está limitado por la mitad del consumo de calefacción del
           certificado previo, y ese tope casi nadie lo aplica.
         </p>
+        <AvisoPeriodoTransitorio />
       </header>
 
       <Calculadora />
