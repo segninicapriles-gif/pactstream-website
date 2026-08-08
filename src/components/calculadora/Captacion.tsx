@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import type { DatosFormulario } from './Formulario'
+import { usaFichaRES022 } from './Formulario'
 
 const DESTINO = 'hola@pactstream.io'
 
@@ -12,8 +13,10 @@ export function Captacion({ datos }: { datos: DatosFormulario }) {
     'Quiero el desglose de este cálculo.',
     '',
     `Tecnología: ${datos.tecnologia}`,
-    `Zona climática: ${datos.zona}`,
-    `Superficie: ${datos.superficieM2} m2`,
+    ...(usaFichaRES022(datos.tecnologia) ? [
+      `Zona climática: ${datos.zona}`,
+      `Superficie: ${datos.superficieM2} m2`,
+    ] : []),
     `Importe de obra: ${datos.importeObra} EUR`,
     `Consumo del certificado previo: ${datos.cefCalefaccion ?? 'no lo tengo'}`,
     '',
