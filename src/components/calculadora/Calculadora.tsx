@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Formulario, DATOS_INICIALES, type DatosFormulario } from './Formulario'
 import { Resultado } from './Resultado'
+import { Captacion } from './Captacion'
 
 declare global {
   interface Window {
@@ -32,6 +33,7 @@ export function Calculadora() {
 
       <section aria-label="Resultado">
         <Resultado datos={datos} />
+        <Captacion datos={datos} />
       </section>
     </div>
   )
