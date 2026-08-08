@@ -3,6 +3,7 @@
 // Todos los valores esperados salen de BOE-A-2026-12283.
 import { calcularRES022, valorarKwh } from '../src/lib/cae/calculo'
 import { PRECIO_CAE_EUR_MWH } from '../src/lib/cae/fichas'
+import { escaleraIRPF } from '../src/lib/cae/irpf'
 
 let fallos = 0
 function comprobar(nombre, real, esperado) {
@@ -43,6 +44,17 @@ comprobar('7 sensibilidad', c1.sensibilidad.map(s => s.ahorroKwh), [4000, 6000, 
 
 // 8 — El rango oficial de precio es el del MITECO
 comprobar('8 rango oficial', [PRECIO_CAE_EUR_MWH.oficial.min, PRECIO_CAE_EUR_MWH.oficial.max], [115, 140])
+
+// 9 — Escalera de IRPF sobre una obra de 10.000 EUR.
+// El porcentaje se aplica sobre la BASE MAXIMA, no sobre el importe de la obra.
+const irpf = escaleraIRPF(10000)
+comprobar('9 deducciones', irpf.map(t => t.deduccion), [1000, 3000, 3000])
+comprobar('9 bases topadas', irpf.map(t => t.baseAplicada), [5000, 7500, 5000])
+
+// 10 — Obra pequeña: la base no llega al tope y manda el importe
+const irpfPeq = escaleraIRPF(3000)
+comprobar('10 base sin topar', irpfPeq.map(t => t.baseAplicada), [3000, 3000, 3000])
+comprobar('10 deducciones pequenas', irpfPeq.map(t => t.deduccion), [600, 1200, 1800])
 
 console.log(fallos === 0 ? '\nTodo correcto.' : `\n${fallos} comprobaciones fallidas.`)
 process.exit(fallos === 0 ? 0 : 1)
