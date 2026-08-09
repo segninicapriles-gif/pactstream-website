@@ -348,7 +348,7 @@ function HeroSection({ t }: { t: Dict }) {
                   value={heroEmail}
                   onChange={(e) => setHeroEmail(e.target.value)}
                   placeholder={t.heroEmail.placeholder}
-                  className="flex-1 px-5 py-4 bg-white/[0.08] border border-white/[0.12] rounded-full text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D9B84]/50 focus:ring-1 focus:ring-[#0D9B84]/30 transition-colors"
+                  className="flex-1 pl-5 pr-12 py-4 bg-white/[0.08] border border-white/[0.12] rounded-full text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D9B84]/50 focus:ring-1 focus:ring-[#0D9B84]/30 transition-colors"
                 />
                 <button type="submit" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0121DC] text-white text-base font-semibold rounded-full hover:bg-[#0019B3] transition-all hover:shadow-[0_8px_30px_rgba(1,33,220,0.4)] whitespace-nowrap">
                   {t.heroEmail.cta} <ArrowRight className="w-5 h-5" />
@@ -486,7 +486,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder={t.waitlist.emailPlaceholder}
-                        className="w-full px-4 py-3.5 bg-white/[0.06] border border-white/[0.1] rounded-[10px] text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D9B84]/50 focus:ring-1 focus:ring-[#0D9B84]/30 transition-colors"
+                        className="w-full pl-4 pr-12 py-3.5 bg-white/[0.06] border border-white/[0.1] rounded-[10px] text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D9B84]/50 focus:ring-1 focus:ring-[#0D9B84]/30 transition-colors"
                       />
                     </div>
                     <div>

@@ -31,7 +31,10 @@ const C = {
   surface: "#FFFFFF",
   hairline: "rgba(22, 24, 29, 0.08)", // solo separadores finos, nunca borde de card
   textPrimary: "#080D42",
-  textSecondary: "#767BA3",
+  // 8-ago-2026: era #767BA3 (4,09:1 sobre blanco, por debajo de AA). Verificado
+  // en navegador que sus 32 usos visibles caen todos sobre superficie blanca,
+  // ninguno sobre la cabecera navy, asi que oscurecerlo es seguro.
+  textSecondary: "#5A6B7F",
   blue: "#0121DC", // psBlue — progreso, primario
   blueBg: "rgba(1, 33, 220, 0.10)",
   success: "#00C389",
@@ -42,7 +45,7 @@ const C = {
   cyan: "#A9F3FF", // glow — SOLO sobre navy
   gold: "#F59E0B",
   navActive: "#0121DC",
-  navInactive: "#767BA3",
+  navInactive: "#5A6B7F", // mismo motivo que textSecondary: la barra inferior va sobre blanco
   cardShadow: "0 1px 2px rgba(8, 13, 66, 0.04), 0 8px 20px -10px rgba(8, 13, 66, 0.12)",
 };
 
