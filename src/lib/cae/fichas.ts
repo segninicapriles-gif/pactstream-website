@@ -60,6 +60,56 @@ export const PRECIO_CAE_EUR_MWH = {
   mercado: { min: 85, max: 155, fuente: 'Portales del sector (no oficial)' },
 } as const
 
+// ─── RES060 · Sustitución de caldera por bomba de calor ───────────────────────
+//
+// Fuente: ficha oficial del catálogo vigente del MITECO, «Ficha RES060.pdf»,
+// versión V1.1. Transcrita el 9-ago-2026.
+//
+// Tres cosas que un instalador necesita saber ANTES de ofertar, y que la ficha
+// deja claras en su ámbito de aplicación:
+//
+//   1. Es una ficha de SUSTITUCIÓN de caldera de combustión. Una bomba de calor
+//      en obra nueva, o que sustituya a un sistema eléctrico, no entra aquí.
+//   2. «La actuación no afecta a los elementos terminales que configuran la
+//      instalación térmica»: si además se cambian los emisores, deja de encajar.
+//   3. No admite bombas de calor con compresor de accionamiento térmico.
+//
+// A diferencia de la RES022, esta ficha NO lleva tope sobre el consumo previo.
+// Pero depende por completo del certificado energético anterior: la demanda de
+// calefacción y la de ACS salen de él. Sin certificado previo no hay número.
+
+export const FICHA_RES060 = {
+  codigo: 'RES060',
+  version: 'V1.1',
+  denominacion:
+    'Sustitución de caldera de combustión por una bomba de calor de accionamiento eléctrico',
+  boe: 'Catálogo vigente MITECO · Ficha RES060 V1.1',
+} as const
+
+/**
+ * Rendimiento de la caldera de combustible fósil sustituida, sobre energía
+ * final referida a PCS. La ficha lo fija: no es un dato del instalador.
+ *
+ * Nota: la ficha admite alternativamente el valor de la última inspección.
+ */
+export const RENDIMIENTO_CALDERA_RES060 = 0.92
+
+/** Factor de ponderación de la ficha. Vale 1. */
+export const FACTOR_PONDERACION_RES060 = 1
+
+/**
+ * Conversión de poder calorífico inferior a superior (PCS = PCI × Fconv),
+ * según la tabla CB-01 de la guía del IDAE que cita la ficha.
+ * Se incluye porque el rendimiento de la caldera va referido a PCS y los
+ * catálogos de caldera suelen darlo sobre PCI.
+ */
+export const CONVERSION_PCI_A_PCS = {
+  gasNatural: 1.106,
+  gasoleo: 1.059,
+  propano: 1.087,
+  butano: 1.083,
+} as const
+
 /** Consumos de calefacción de referencia para la tabla de sensibilidad, kWh/m²·año. */
 export const CEF_REFERENCIA_KWH_M2 = [80, 120, 200] as const
 

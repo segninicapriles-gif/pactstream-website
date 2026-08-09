@@ -10,6 +10,7 @@
 import {
   VAUZ_RES022, RT_MINIMA_RES022, TOPE_SOBRE_CEF_RES022,
   LAMBDA_D_POR_DEFECTO, CEF_REFERENCIA_KWH_M2,
+  RENDIMIENTO_CALDERA_RES060, FACTOR_PONDERACION_RES060,
   tramoDeAnio, esZonaRES022,
 } from './fichas'
 
@@ -128,6 +129,99 @@ export function calcularRES022(e: EntradaRES022): ResultadoRES022 {
     aplicable: true, motivoNoAplicable: null, vauz, aesKwh,
     topeKwh, ahorroKwh, mandaTope: topeKwh < aesKwh,
     espesorMinimoMm, espesorCalculable, lambdaDPorDefecto, sensibilidad: [],
+  }
+}
+
+// ─── RES060 · Sustitución de caldera por bomba de calor ───────────────────────
+//
+// AE = FP · [ (D_cal · S) · (1/ηi − 1/SCOP) + D_ACS · (1/ηi − 1/SCOP_dhw) ]
+//
+// A diferencia de la RES022 no hay tope, pero la dependencia del certificado
+// energético previo es total: D_cal y D_ACS salen de él. Por eso aquí no cabe
+// un «techo» como en buhardillas — sin certificado no hay cálculo posible, y
+// decirlo es más honesto que ofrecer un número orientativo.
+
+export interface EntradaRES060 {
+  /** Demanda de calefacción del CEE ANTERIOR a la actuación, kWh/m²·año */
+  demandaCalefaccionKwhM2: number
+  /** Superficie útil habitable, m² */
+  superficieUtilM2: number
+  /** Demanda de ACS del CEE ANTERIOR a la actuación, kWh/año. 0 si no aplica */
+  demandaAcsKwhAnio: number
+  /** Rendimiento estacional de la bomba de calor en calefacción */
+  scopCalefaccion: number
+  /** Rendimiento estacional en ACS. Si no produce ACS, se ignora */
+  scopAcs?: number
+  /** Rendimiento de la caldera sustituida. Por defecto el 0,92 de la ficha */
+  rendimientoCaldera?: number
+}
+
+export interface ResultadoRES060 {
+  aplicable: boolean
+  motivoNoAplicable: string | null
+  /** Ahorro imputable a calefacción, kWh/año */
+  ahorroCalefaccionKwh: number
+  /** Ahorro imputable a ACS, kWh/año */
+  ahorroAcsKwh: number
+  /** Suma, kWh/año */
+  ahorroKwh: number
+  /** Rendimiento de caldera aplicado */
+  rendimientoCaldera: number
+  /** `true` si se usó el 0,92 por defecto de la ficha en vez de un dato propio */
+  rendimientoPorDefecto: boolean
+}
+
+const RES060_NO_APLICABLE: Omit<ResultadoRES060, 'motivoNoAplicable'> = {
+  aplicable: false, ahorroCalefaccionKwh: 0, ahorroAcsKwh: 0, ahorroKwh: 0,
+  rendimientoCaldera: RENDIMIENTO_CALDERA_RES060, rendimientoPorDefecto: true,
+}
+
+export function calcularRES060(e: EntradaRES060): ResultadoRES060 {
+  const eta =
+    e.rendimientoCaldera && e.rendimientoCaldera > 0
+      ? e.rendimientoCaldera
+      : RENDIMIENTO_CALDERA_RES060
+  const porDefecto = !(e.rendimientoCaldera && e.rendimientoCaldera > 0)
+
+  if (!(e.scopCalefaccion > 0)) {
+    return {
+      ...RES060_NO_APLICABLE,
+      motivoNoAplicable:
+        'Falta el rendimiento estacional (SCOP) de la bomba de calor: viene en su ficha técnica.',
+    }
+  }
+  if (!(e.demandaCalefaccionKwhM2 > 0) || !(e.superficieUtilM2 > 0)) {
+    return {
+      ...RES060_NO_APLICABLE,
+      motivoNoAplicable:
+        'Faltan la demanda de calefacción y la superficie útil. Ambas salen del certificado energético anterior a la obra: sin él no hay cálculo posible.',
+    }
+  }
+  // Una bomba con SCOP por debajo del rendimiento de la caldera no ahorraría
+  // nada. No debería ocurrir, pero el término se anula en vez de restar.
+  const factorCal = Math.max(0, 1 / eta - 1 / e.scopCalefaccion)
+  const ahorroCal = FACTOR_PONDERACION_RES060 * e.demandaCalefaccionKwhM2 * e.superficieUtilM2 * factorCal
+
+  const scopAcs = e.scopAcs && e.scopAcs > 0 ? e.scopAcs : null
+  const ahorroAcs =
+    scopAcs && e.demandaAcsKwhAnio > 0
+      ? FACTOR_PONDERACION_RES060 * e.demandaAcsKwhAnio * Math.max(0, 1 / eta - 1 / scopAcs)
+      : 0
+
+  // El total es la SUMA DE LOS REDONDEOS, no el redondeo de la suma: si no,
+  // las dos partes que se muestran en pantalla no cuadran con su total y
+  // parece un error de la herramienta. Aquí se pierde como mucho 1 kWh.
+  const calRedondeado = Math.round(ahorroCal)
+  const acsRedondeado = Math.round(ahorroAcs)
+
+  return {
+    aplicable: true,
+    motivoNoAplicable: null,
+    ahorroCalefaccionKwh: calRedondeado,
+    ahorroAcsKwh: acsRedondeado,
+    ahorroKwh: calRedondeado + acsRedondeado,
+    rendimientoCaldera: eta,
+    rendimientoPorDefecto: porDefecto,
   }
 }
 

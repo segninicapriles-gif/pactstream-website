@@ -7,12 +7,12 @@
 //   · Donde no hay ficha transcrita del BOE, se dice; no se estima.
 
 import { AlertTriangle, FileWarning, Info } from 'lucide-react'
-import { calcularRES022, valorarKwh } from '@/lib/cae/calculo'
+import { calcularRES022, calcularRES060, valorarKwh } from '@/lib/cae/calculo'
 import { escaleraIRPF } from '@/lib/cae/irpf'
-import { FICHA_RES022, PRECIO_CAE_EUR_MWH } from '@/lib/cae/fichas'
+import { FICHA_RES022, FICHA_RES060, PRECIO_CAE_EUR_MWH } from '@/lib/cae/fichas'
 import { euros, eurosRango, kwh, milimetros } from '@/lib/cae/formato'
 import { Fuente } from './Fuente'
-import { usaFichaRES022, type DatosFormulario, type Tecnologia } from './Formulario'
+import { usaFichaRES022, usaFichaRES060, type DatosFormulario, type Tecnologia } from './Formulario'
 
 const FUENTE_CAE = `${FICHA_RES022.boe} · ficha ${FICHA_RES022.codigo} ${FICHA_RES022.version}`
 const FUENTE_IRPF = 'AEAT · deducciones por obras de eficiencia energética (verificado 7-ago-2026)'
@@ -59,12 +59,63 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
       })
     : null
 
+  const conFicha060 = usaFichaRES060(datos.tecnologia)
+  const cae060 = conFicha060
+    ? calcularRES060({
+        demandaCalefaccionKwhM2: datos.demandaCalefaccion,
+        superficieUtilM2: datos.superficieUtil,
+        demandaAcsKwhAnio: datos.demandaAcs,
+        scopCalefaccion: datos.scop,
+        scopAcs: datos.scopAcs,
+      })
+    : null
+
   const precio = PRECIO_CAE_EUR_MWH.oficial
 
   return (
     <div className="grid gap-4">
       {/* Bloque 1 y 2 — CAE */}
-      {!conFicha && <SinFicha tecnologia={datos.tecnologia} />}
+      {!conFicha && !conFicha060 && <SinFicha tecnologia={datos.tecnologia} />}
+
+      {cae060 && (
+        <div className={tarjeta}>
+          <h3 className={titulo}>Valor del CAE</h3>
+          {cae060.aplicable ? (
+            <>
+              <p className="mt-3 text-sm text-[var(--color-ps-navy-400)]">Ahorro certificable</p>
+              <p className={cifra}>{kwh(cae060.ahorroKwh)}/año</p>
+              <p className="mt-1 font-mono text-lg text-[var(--color-navy-vault)]">
+                {eurosRango(valorarKwh(cae060.ahorroKwh, precio))}
+              </p>
+              <table className="mt-3 w-full text-sm">
+                <tbody className="font-mono">
+                  <tr className="border-t border-[var(--color-ps-neutral-300)]">
+                    <td className="py-1">Calefacción</td>
+                    <td className="py-1 text-right">{kwh(cae060.ahorroCalefaccionKwh)}</td>
+                  </tr>
+                  <tr className="border-t border-[var(--color-ps-neutral-300)]">
+                    <td className="py-1">Agua caliente</td>
+                    <td className="py-1 text-right">{kwh(cae060.ahorroAcsKwh)}</td>
+                  </tr>
+                </tbody>
+              </table>
+              {cae060.rendimientoPorDefecto && (
+                <p className="mt-3 rounded-[var(--radius-sm)] bg-[var(--color-ps-neutral-100)] p-3 text-sm text-[var(--color-navy-vault)]">
+                  Se ha aplicado el rendimiento de caldera de {cae060.rendimientoCaldera} que fija la
+                  propia ficha, referido a poder calorífico superior. La ficha admite usar en su
+                  lugar el valor de la última inspección.
+                </p>
+              )}
+            </>
+          ) : (
+            <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">{cae060.motivoNoAplicable}</p>
+          )}
+          <p className="mt-3 text-xs text-[var(--color-ps-navy-300)]">
+            Precio aplicado: {precio.min}–{precio.max} €/MWh. {precio.fuente}.
+          </p>
+          <Fuente texto={`${FICHA_RES060.boe} · ficha ${FICHA_RES060.codigo} ${FICHA_RES060.version}`} />
+        </div>
+      )}
 
       {cae && !cae.aplicable && (
         <div className={tarjeta}>

@@ -1,7 +1,7 @@
 // Comprueba el motor de CAE contra los siete casos del spec
 // docs/superpowers/specs/2026-08-08-calculadora-cae-instalador-design.md §9
 // Todos los valores esperados salen de BOE-A-2026-12283.
-import { calcularRES022, valorarKwh } from '../src/lib/cae/calculo'
+import { calcularRES022, calcularRES060, valorarKwh } from '../src/lib/cae/calculo'
 import { PRECIO_CAE_EUR_MWH } from '../src/lib/cae/fichas'
 import { escaleraIRPF } from '../src/lib/cae/irpf'
 
@@ -55,6 +55,33 @@ comprobar('9 bases topadas', irpf.map(t => t.baseAplicada), [5000, 7500, 5000])
 const irpfPeq = escaleraIRPF(3000)
 comprobar('10 base sin topar', irpfPeq.map(t => t.baseAplicada), [3000, 3000, 3000])
 comprobar('10 deducciones pequenas', irpfPeq.map(t => t.deduccion), [600, 1200, 1800])
+
+// ─── RES060 · sustitucion de caldera por bomba de calor ───────────────────────
+// Valores esperados calculados a mano desde la formula de la ficha V1.1:
+//   AE = FP · [ (D_cal · S) · (1/eta - 1/SCOP) + D_ACS · (1/eta - 1/SCOP_dhw) ]
+//   con FP = 1 y eta = 0,92 fijados por la propia ficha.
+const a1 = calcularRES060({ demandaCalefaccionKwhM2: 85, superficieUtilM2: 120,
+  demandaAcsKwhAnio: 2200, scopCalefaccion: 3.5, scopAcs: 2.8 })
+comprobar('11 RES060 calefaccion', a1.ahorroCalefaccionKwh, 8173)
+comprobar('11 RES060 ACS', a1.ahorroAcsKwh, 1606)
+comprobar('11 RES060 total', a1.ahorroKwh, 9779)
+comprobar('11 RES060 usa el 0,92 de la ficha', a1.rendimientoPorDefecto, true)
+
+// Sin ACS: el segundo termino se anula, no se estima
+const a2 = calcularRES060({ demandaCalefaccionKwhM2: 85, superficieUtilM2: 120,
+  demandaAcsKwhAnio: 0, scopCalefaccion: 3.5 })
+comprobar('12 RES060 sin ACS', a2.ahorroKwh, 8173)
+
+// Una bomba peor que la caldera no puede dar ahorro negativo
+const a3 = calcularRES060({ demandaCalefaccionKwhM2: 85, superficieUtilM2: 120,
+  demandaAcsKwhAnio: 0, scopCalefaccion: 0.90 })
+comprobar('13 RES060 SCOP por debajo de la caldera', a3.ahorroKwh, 0)
+
+// Sin certificado previo no hay numero: la ficha no admite estimacion
+const a4 = calcularRES060({ demandaCalefaccionKwhM2: 0, superficieUtilM2: 120,
+  demandaAcsKwhAnio: 0, scopCalefaccion: 3.5 })
+comprobar('14 RES060 sin datos del CEE previo', a4.aplicable, false)
+
 
 console.log(fallos === 0 ? '\nTodo correcto.' : `\n${fallos} comprobaciones fallidas.`)
 process.exit(fallos === 0 ? 0 : 1)

@@ -31,6 +31,13 @@ export interface DatosFormulario {
   importeObra: number
   cefCalefaccion: number | null
   lambdaD: number
+  // RES060 · sustitución de caldera por bomba de calor. Los tres primeros
+  // salen del certificado energético ANTERIOR a la obra; sin él no hay cálculo.
+  demandaCalefaccion: number
+  superficieUtil: number
+  demandaAcs: number
+  scop: number
+  scopAcs: number
 }
 
 export const DATOS_INICIALES: DatosFormulario = {
@@ -41,6 +48,11 @@ export const DATOS_INICIALES: DatosFormulario = {
   importeObra: 0,
   cefCalefaccion: null,
   lambdaD: 0.035,
+  demandaCalefaccion: 0,
+  superficieUtil: 0,
+  demandaAcs: 0,
+  scop: 0,
+  scopAcs: 0,
 }
 
 const TECNOLOGIAS: Array<{ valor: Tecnologia; etiqueta: string }> = [
@@ -52,6 +64,15 @@ const TECNOLOGIAS: Array<{ valor: Tecnologia; etiqueta: string }> = [
 ]
 
 /** Solo la ficha RES022 necesita zona, año y superficie. */
+/**
+ * La RES060 solo cubre la SUSTITUCIÓN de una caldera de combustión por una
+ * bomba de calor. Obra nueva, o sustituir un sistema eléctrico, no entra.
+ * La geotermia encaja porque la ficha admite tierra-agua y tierra-aire.
+ */
+export function usaFichaRES060(t: Tecnologia): boolean {
+  return t === 'aerotermia' || t === 'geotermia'
+}
+
 export function usaFichaRES022(t: Tecnologia): boolean {
   return t === 'aislamiento_buhardilla'
 }
@@ -205,6 +226,76 @@ export function Formulario({
               Anexo II del certificado energético anterior a la obra. Sin este dato no se
               puede cerrar el número: solo se puede acotar.
             </span>
+          </div>
+        </>
+      )}
+
+      {usaFichaRES060(datos.tecnologia) && (
+        <>
+          <p className="rounded-[var(--radius-sm)] bg-[var(--color-primary)]/5 px-3 py-2 text-xs text-[var(--color-navy-vault)]">
+            La ficha RES060 cubre la <strong>sustitución de una caldera de combustión</strong> por
+            una bomba de calor, sin cambiar los emisores. Obra nueva o sustituir un sistema
+            eléctrico no entran.
+          </p>
+
+          <div>
+            <label className={etiqueta} htmlFor="demandaCal">
+              Demanda de calefacción del certificado previo (kWh/m²·año)
+            </label>
+            <input
+              id="demandaCal" type="text" inputMode="decimal" className={campo}
+              value={datos.demandaCalefaccion || ''}
+              onChange={(ev) => set('demandaCalefaccion', numeroComaOPunto(ev.target.value))}
+            />
+            <span className={ayuda}>
+              Del certificado energético <strong>anterior</strong> a la obra. Es el dato del que
+              cuelga todo el cálculo: sin certificado previo no hay número posible.
+            </span>
+          </div>
+
+          <div>
+            <label className={etiqueta} htmlFor="supUtil">Superficie útil habitable (m²)</label>
+            <input
+              id="supUtil" type="text" inputMode="decimal" className={campo}
+              value={datos.superficieUtil || ''}
+              onChange={(ev) => set('superficieUtil', numeroComaOPunto(ev.target.value))}
+            />
+          </div>
+
+          <div>
+            <label className={etiqueta} htmlFor="scop">SCOP de la bomba en calefacción</label>
+            <input
+              id="scop" type="text" inputMode="decimal" className={campo}
+              value={datos.scop || ''}
+              onChange={(ev) => set('scop', numeroComaOPunto(ev.target.value))}
+            />
+            <span className={ayuda}>
+              Rendimiento estacional, de la ficha técnica del equipo.
+            </span>
+          </div>
+
+          <div>
+            <label className={etiqueta} htmlFor="demandaAcs">
+              Demanda de agua caliente del certificado previo (kWh/año)
+              <span className="ml-1 font-normal text-[var(--color-ps-navy-300)]">— si produce ACS</span>
+            </label>
+            <input
+              id="demandaAcs" type="text" inputMode="decimal" className={campo}
+              value={datos.demandaAcs || ''}
+              onChange={(ev) => set('demandaAcs', numeroComaOPunto(ev.target.value))}
+            />
+          </div>
+
+          <div>
+            <label className={etiqueta} htmlFor="scopAcs">
+              SCOP en agua caliente
+              <span className="ml-1 font-normal text-[var(--color-ps-navy-300)]">— si produce ACS</span>
+            </label>
+            <input
+              id="scopAcs" type="text" inputMode="decimal" className={campo}
+              value={datos.scopAcs || ''}
+              onChange={(ev) => set('scopAcs', numeroComaOPunto(ev.target.value))}
+            />
           </div>
         </>
       )}
