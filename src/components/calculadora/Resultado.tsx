@@ -15,6 +15,10 @@ import { Fuente } from './Fuente'
 import { usaFichaRES022, usaFichaRES060, type DatosFormulario, type Tecnologia } from './Formulario'
 
 const FUENTE_CAE = `${FICHA_RES022.boe} · ficha ${FICHA_RES022.codigo} ${FICHA_RES022.version}`
+// La RES060 no viene de un BOE con número propio: es la ficha autocompletable
+// del catálogo vigente. Su campo `boe` ya nombra la ficha y la versión, así que
+// aquí no se vuelven a añadir o sale «Ficha RES060 V1.1 · ficha RES060 V1.1».
+const FUENTE_CAE_060 = FICHA_RES060.boe
 const FUENTE_IRPF = 'AEAT · deducciones por obras de eficiencia energética (verificado 7-ago-2026)'
 
 const tarjeta =
@@ -101,9 +105,12 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
               </table>
               {cae060.rendimientoPorDefecto && (
                 <p className="mt-3 rounded-[var(--radius-sm)] bg-[var(--color-ps-neutral-100)] p-3 text-sm text-[var(--color-navy-vault)]">
-                  Se ha aplicado el rendimiento de caldera de {cae060.rendimientoCaldera} que fija la
-                  propia ficha, referido a poder calorífico superior. La ficha admite usar en su
-                  lugar el valor de la última inspección.
+                  Se ha aplicado el rendimiento de caldera de{' '}
+                  <span className="font-mono">
+                    {cae060.rendimientoCaldera.toLocaleString('es-ES')}
+                  </span>{' '}
+                  que fija la propia ficha, referido a poder calorífico superior. La ficha admite
+                  usar en su lugar el valor de la última inspección.
                 </p>
               )}
             </>
@@ -113,7 +120,7 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
           <p className="mt-3 text-xs text-[var(--color-ps-navy-300)]">
             Precio aplicado: {precio.min}–{precio.max} €/MWh. {precio.fuente}.
           </p>
-          <Fuente texto={`${FICHA_RES060.boe} · ficha ${FICHA_RES060.codigo} ${FICHA_RES060.version}`} />
+          <Fuente texto={FUENTE_CAE_060} />
         </div>
       )}
 
