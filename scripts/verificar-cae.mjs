@@ -101,5 +101,20 @@ const b2 = calcularRES022({ zona: 'D', anioConstruccion: 1990, superficieM2: 100
 comprobar('18 con el tope el ahorro cae a 6.000', b2.ahorroKwh, 6000)
 comprobar('18 y entonces hacen falta 5, no 3', actuacionesParaElMinimo(b2.ahorroKwh), 5)
 
+// Sin certificado previo, el motivo debe senalar el CERTIFICADO, no el SCOP:
+// el SCOP lo tiene el instalador en la ficha tecnica; el certificado no.
+const v1 = calcularRES060({ demandaCalefaccionKwhM2: 0, superficieUtilM2: 0,
+  demandaAcsKwhAnio: 0, scopCalefaccion: 0 })
+comprobar('19 con todo vacio manda el certificado', v1.motivoNoAplicable.startsWith('Faltan la demanda'), true)
+comprobar('19 y ademas menciona el SCOP', v1.motivoNoAplicable.includes('SCOP'), true)
+// Con el certificado puesto y sin SCOP, el motivo si es el SCOP
+const v2 = calcularRES060({ demandaCalefaccionKwhM2: 85, superficieUtilM2: 120,
+  demandaAcsKwhAnio: 0, scopCalefaccion: 0 })
+comprobar('20 con certificado, el que falta es el SCOP', v2.motivoNoAplicable.startsWith('Falta el rendimiento'), true)
+// Sin superficie util tampoco hay numero, aunque haya demanda
+const v3 = calcularRES060({ demandaCalefaccionKwhM2: 85, superficieUtilM2: 0,
+  demandaAcsKwhAnio: 0, scopCalefaccion: 3.5 })
+comprobar('20 sin superficie util no hay numero', v3.aplicable, false)
+
 console.log(fallos === 0 ? '\nTodo correcto.' : `\n${fallos} comprobaciones fallidas.`)
 process.exit(fallos === 0 ? 0 : 1)

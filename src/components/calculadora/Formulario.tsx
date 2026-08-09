@@ -115,6 +115,17 @@ export function Formulario({
     datos.lambdaD ? String(datos.lambdaD).replace('.', ',') : '',
   )
 
+  // Los cinco campos de la RES060 nacieron el 9-ago con `value={datos.x || ''}`
+  // — justo el patrón que se había arreglado el 8-ago para superficie, importe
+  // y λd. Reproducido en producción tecleando carácter a carácter: "3,5"
+  // acababa en "35" y "0,92" en "92", porque al escribir la coma el número
+  // derivado vuelve a pintarse sin ella. En España la coma es EL separador
+  // decimal, así que el SCOP era intecleable. Mismo remedio: el estado que
+  // controla el <input> es el texto crudo; el número solo se deriva al avisar.
+  const [textoRES060, setTextoRES060] = useState<Record<string, string>>({})
+  const textoDe = (clave: keyof DatosFormulario) =>
+    textoRES060[clave] ?? (datos[clave] ? String(datos[clave]).replace('.', ',') : '')
+
   const lambdaNumero = numeroComaOPunto(textoLambda)
   const lambdaFueraDeRango =
     textoLambda.trim() !== '' &&
@@ -244,8 +255,12 @@ export function Formulario({
             </label>
             <input
               id="demandaCal" type="text" inputMode="decimal" className={campo}
-              value={datos.demandaCalefaccion || ''}
-              onChange={(ev) => set('demandaCalefaccion', numeroComaOPunto(ev.target.value))}
+              value={textoDe('demandaCalefaccion')}
+              onChange={(ev) => {
+                const texto = ev.target.value
+                setTextoRES060((t) => ({ ...t, demandaCalefaccion: texto }))
+                set('demandaCalefaccion', numeroComaOPunto(texto))
+              }}
             />
             <span className={ayuda}>
               Del certificado energético <strong>anterior</strong> a la obra. Es el dato del que
@@ -257,8 +272,12 @@ export function Formulario({
             <label className={etiqueta} htmlFor="supUtil">Superficie útil habitable (m²)</label>
             <input
               id="supUtil" type="text" inputMode="decimal" className={campo}
-              value={datos.superficieUtil || ''}
-              onChange={(ev) => set('superficieUtil', numeroComaOPunto(ev.target.value))}
+              value={textoDe('superficieUtil')}
+              onChange={(ev) => {
+                const texto = ev.target.value
+                setTextoRES060((t) => ({ ...t, superficieUtil: texto }))
+                set('superficieUtil', numeroComaOPunto(texto))
+              }}
             />
           </div>
 
@@ -266,8 +285,12 @@ export function Formulario({
             <label className={etiqueta} htmlFor="scop">SCOP de la bomba en calefacción</label>
             <input
               id="scop" type="text" inputMode="decimal" className={campo}
-              value={datos.scop || ''}
-              onChange={(ev) => set('scop', numeroComaOPunto(ev.target.value))}
+              value={textoDe('scop')}
+              onChange={(ev) => {
+                const texto = ev.target.value
+                setTextoRES060((t) => ({ ...t, scop: texto }))
+                set('scop', numeroComaOPunto(texto))
+              }}
             />
             <span className={ayuda}>
               Rendimiento estacional, de la ficha técnica del equipo.
@@ -281,8 +304,12 @@ export function Formulario({
             </label>
             <input
               id="demandaAcs" type="text" inputMode="decimal" className={campo}
-              value={datos.demandaAcs || ''}
-              onChange={(ev) => set('demandaAcs', numeroComaOPunto(ev.target.value))}
+              value={textoDe('demandaAcs')}
+              onChange={(ev) => {
+                const texto = ev.target.value
+                setTextoRES060((t) => ({ ...t, demandaAcs: texto }))
+                set('demandaAcs', numeroComaOPunto(texto))
+              }}
             />
           </div>
 
@@ -293,8 +320,12 @@ export function Formulario({
             </label>
             <input
               id="scopAcs" type="text" inputMode="decimal" className={campo}
-              value={datos.scopAcs || ''}
-              onChange={(ev) => set('scopAcs', numeroComaOPunto(ev.target.value))}
+              value={textoDe('scopAcs')}
+              onChange={(ev) => {
+                const texto = ev.target.value
+                setTextoRES060((t) => ({ ...t, scopAcs: texto }))
+                set('scopAcs', numeroComaOPunto(texto))
+              }}
             />
           </div>
         </>

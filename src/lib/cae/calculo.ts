@@ -183,18 +183,28 @@ export function calcularRES060(e: EntradaRES060): ResultadoRES060 {
       : RENDIMIENTO_CALDERA_RES060
   const porDefecto = !(e.rendimientoCaldera && e.rendimientoCaldera > 0)
 
-  if (!(e.scopCalefaccion > 0)) {
+  // El orden importa. Con el formulario vacío faltan las dos cosas, y si se
+  // reporta primero el SCOP se señala el dato FÁCIL —el instalador lo tiene en
+  // la ficha técnica del equipo— y se esconde el que de verdad bloquea: sin
+  // certificado energético previo la RES060 no admite estimación ninguna.
+  // Verificado en producción el 9-ago-2026: con todo vacío la calculadora
+  // pedía el SCOP y no mencionaba el certificado.
+  const faltaCertificado = !(e.demandaCalefaccionKwhM2 > 0) || !(e.superficieUtilM2 > 0)
+  const faltaScop = !(e.scopCalefaccion > 0)
+
+  if (faltaCertificado) {
+    return {
+      ...RES060_NO_APLICABLE,
+      motivoNoAplicable:
+        'Faltan la demanda de calefacción y la superficie útil, que salen del certificado energético anterior a la obra. Sin ese certificado la ficha RES060 no admite estimación: no hay número posible.' +
+        (faltaScop ? ' También falta el SCOP de la bomba, que viene en su ficha técnica.' : ''),
+    }
+  }
+  if (faltaScop) {
     return {
       ...RES060_NO_APLICABLE,
       motivoNoAplicable:
         'Falta el rendimiento estacional (SCOP) de la bomba de calor: viene en su ficha técnica.',
-    }
-  }
-  if (!(e.demandaCalefaccionKwhM2 > 0) || !(e.superficieUtilM2 > 0)) {
-    return {
-      ...RES060_NO_APLICABLE,
-      motivoNoAplicable:
-        'Faltan la demanda de calefacción y la superficie útil. Ambas salen del certificado energético anterior a la obra: sin él no hay cálculo posible.',
     }
   }
   // Una bomba con SCOP por debajo del rendimiento de la caldera no ahorraría
