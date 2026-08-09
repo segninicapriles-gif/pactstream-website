@@ -37,7 +37,10 @@ const C = {
   textSecondary: "#5A6B7F",
   blue: "#0121DC", // psBlue — progreso, primario
   blueBg: "rgba(1, 33, 220, 0.10)",
-  success: "#00C389",
+  // verde-700. El #00C389 anterior daba 2,12:1 sobre el canvas claro donde se
+  // usa: ni texto ni indicador. Verificado que sus usos visibles caen todos
+  // sobre superficie clara, ninguno sobre la cabecera navy.
+  success: "#0A6344",
   successBg: "rgba(0, 195, 137, 0.12)",
   // ambar-700. El 500 (#F59E0B) da 1,98:1 sobre el canvas claro donde se usa
   // esto — ni texto ni barra indicadora. Sobre navy sí vale: ver `gold`.

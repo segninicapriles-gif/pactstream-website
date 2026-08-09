@@ -31,6 +31,26 @@
 }
 
 @theme inline {
+  /* ─── El canon ARCO es la ÚNICA paleta ────────────────────────────────────
+     8-ago-2026. Se desactiva la paleta por defecto de Tailwind: `slate-*`,
+     `emerald-*`, `violet-*`, `amber-*` y compañía dejan de existir como clases.
+     Motivo: el canon se estaba rompiendo por la puerta de atrás — nadie decidía
+     salirse de ARCO, simplemente escribía `text-violet-700` porque estaba a mano.
+     Con la paleta activa, el sistema propio queda como una alternativa opcional.
+
+     ⚠️ Si escribes una clase de color que no esté definida abajo, Tailwind no la
+     genera y el elemento hereda el color del padre — no da error. Si algo sale
+     sin color, es que se ha usado un token que no existe en el canon.
+
+     `white` y `black` se vuelven a declarar porque el reinicio también se los
+     lleva y hay 142 usos de `white` en el sitio. */
+  --color-*: initial;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-inherit: inherit;
+
   /* Sistema ARCO — tokens de marca (2026-07-18, ver design-ecosistema-2026-07/DESIGN-PACTSTREAM.md) */
   --color-primary: #0121DC;      /* azul PactStream: CTAs genéricos, links, focus, progreso activo */
   --color-navy-vault: #080D42;   /* la bóveda: heros/marketing dark, sidebar oscuro, base de sombras */
@@ -65,6 +85,14 @@
   --color-ps-green-400: #12B07A;
   --color-ps-green-500: #0E8A5F;
   --color-ps-green-700: #0A6344;
+
+  /* Red (Debilidad / error) — incorporado al canon el 8-ago-2026.
+     Faltaba: los avisos de error y las columnas "dónde es más débil" usaban
+     red-* de Tailwind. Para texto sobre claro, el 700; sobre navy, el 400. */
+  --color-ps-red-50: #FDECEF;
+  --color-ps-red-400: #E8607A;   /* sobre navy */
+  --color-ps-red-500: #C1223C;
+  --color-ps-red-700: #A31C33;   /* 7,58:1 sobre blanco · 6,65:1 sobre su tinte */
 
   /* Purple (Ecosistema completo) — incorporado al canon el 8-ago-2026.
      Antes se usaba la paleta por defecto de Tailwind (violet-*), que no es ARCO.

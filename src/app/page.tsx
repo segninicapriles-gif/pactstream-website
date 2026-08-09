@@ -512,7 +512,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
                       {t.waitlist.cta} <ArrowRight className="w-5 h-5" />
                     </motion.button>
                     {error && (
-                      <p className="text-xs text-center text-red-300" role="alert">
+                      <p className="text-xs text-center text-[var(--color-ps-red-400)]" role="alert">
                         {t.ui.registerError}
                       </p>
                     )}
@@ -1108,10 +1108,10 @@ type Support = "yes" | "no" | "partial" | "roadmap";
 
 function SupportBadge({ support }: { support: Support }) {
   switch (support) {
-    case "yes": return <span className="inline-flex items-center text-emerald-600"><CheckCircle2 className="w-[18px] h-[18px]" /></span>;
-    case "no": return <span className="inline-flex items-center text-slate-300"><X className="w-[18px] h-[18px]" /></span>;
+    case "yes": return <span className="inline-flex items-center text-[var(--color-ps-green-700)]"><CheckCircle2 className="w-[18px] h-[18px]" /></span>;
+    case "no": return <span className="inline-flex items-center text-[var(--color-ps-navy-300)]"><X className="w-[18px] h-[18px]" /></span>;
     case "partial": return <span className="inline-flex items-center text-[var(--color-ps-amber-700)]"><span className="w-[18px] h-[2.5px] bg-[var(--color-ps-amber-700)] rounded-full block" /></span>;
-    case "roadmap": return <span className="inline-flex items-center text-blue-400 text-xs font-medium">2027</span>;
+    case "roadmap": return <span className="inline-flex items-center text-[var(--color-ps-blue-700)] text-xs font-medium">2027</span>;
   }
 }
 
@@ -1152,8 +1152,8 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
           </div>
           <div className="flex items-center gap-3 shrink-0 ml-4">
             <div className="hidden sm:flex items-center gap-2">
-              <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700">{t.comparison.wins} {psWins}</span>
-              {compWins > 0 && <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">{comp.name.split(" ")[0]} {compWins}</span>}
+              <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--color-ps-green-50)] text-[var(--color-ps-green-700)]">{t.comparison.wins} {psWins}</span>
+              {compWins > 0 && <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--color-ps-neutral-200)] text-[var(--color-ps-navy-400)]">{comp.name.split(" ")[0]} {compWins}</span>}
             </div>
             <ChevronDown className={`w-5 h-5 text-[#5A6B7F] transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
           </div>
@@ -1175,7 +1175,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
                     <div className="px-3 py-2.5 flex justify-center"><SupportBadge support={compFeatures[f.key]} /></div>
                   </div>
                 ))}
-                <div className="grid grid-cols-[1fr_90px_90px] card-row bg-emerald-50/30">
+                <div className="grid grid-cols-[1fr_90px_90px] card-row bg-[var(--color-ps-green-50)]/30">
                   <div className="px-6 py-3 text-sm font-semibold text-[#1A2332]">{t.ui.price}</div>
                   <div className="px-3 py-3 text-center text-xs font-bold text-[#0121DC]">{t.ui.free}<br/><span className="font-normal text-[#5A6B7F]">{t.ui.txFee}</span></div>
                   <div className="px-3 py-3 text-center text-xs font-bold" style={{ color: (comp as any).color }}>{(comp as any).pricing}</div>
@@ -1185,15 +1185,15 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
 
             <div className="p-6 grid sm:grid-cols-2 gap-6 card-row">
               <div>
-                <h4 className="text-sm font-semibold text-emerald-700 mb-2">{t.ui.whereExcels.replace("{name}", comp.name.split("(")[0].trim())}</h4>
+                <h4 className="text-sm font-semibold text-[var(--color-ps-green-700)] mb-2">{t.ui.whereExcels.replace("{name}", comp.name.split("(")[0].trim())}</h4>
                 <ul className="space-y-1.5">
-                  {(comp as any).strengths.map((s: string, i: number) => <li key={i} className="text-sm text-[#4A5568] flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />{s}</li>)}
+                  {(comp as any).strengths.map((s: string, i: number) => <li key={i} className="text-sm text-[#4A5568] flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[var(--color-ps-green-700)] mt-0.5 shrink-0" />{s}</li>)}
                 </ul>
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-red-600 mb-2">{t.ui.whereWeaker.replace("{name}", comp.name.split("(")[0].trim())}</h4>
+                <h4 className="text-sm font-semibold text-[var(--color-ps-red-700)] mb-2">{t.ui.whereWeaker.replace("{name}", comp.name.split("(")[0].trim())}</h4>
                 <ul className="space-y-1.5">
-                  {(comp as any).weaknesses.map((w: string, i: number) => <li key={i} className="text-sm text-[#4A5568] flex items-start gap-2"><X className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />{w}</li>)}
+                  {(comp as any).weaknesses.map((w: string, i: number) => <li key={i} className="text-sm text-[#4A5568] flex items-start gap-2"><X className="w-4 h-4 text-[var(--color-ps-red-700)] mt-0.5 shrink-0" />{w}</li>)}
                 </ul>
               </div>
             </div>
@@ -1201,7 +1201,7 @@ function CompetitorCard({ comp, t }: { comp: (typeof t.comparison.competitors)[n
             <div className="px-6 pb-6">
               <div className="p-4 rounded-[14px] bg-[#080D42] text-white">
                 <p className="text-sm font-semibold mb-1">{t.ui.honestVerdict}</p>
-                <p className="text-sm text-slate-300 leading-relaxed">{(comp as any).verdict}</p>
+                <p className="text-sm text-[var(--color-ps-neutral-500)] leading-relaxed">{(comp as any).verdict}</p>
               </div>
               <p className="text-xs text-[#5A6B7F] mt-3">{(comp as any).pricingDetail}</p>
             </div>
@@ -1229,7 +1229,7 @@ function GlobalComparisonMatrix({ t }: { t: Dict }) {
           {features.map((f, i) => (
             <div key={f.key} className={`grid grid-cols-[180px_repeat(6,1fr)] card-row ${i % 2 === 0 ? "bg-white" : "bg-[#F5F7FA]/30"}`}>
               <div className="px-4 py-2 text-xs text-[#4A5568] sticky left-0 bg-inherit z-10">{f.label}</div>
-              <div className="px-2 py-2 flex justify-center bg-emerald-50/30"><SupportBadge support={pactstream[f.key]} /></div>
+              <div className="px-2 py-2 flex justify-center bg-[var(--color-ps-green-50)]/30"><SupportBadge support={pactstream[f.key]} /></div>
               {competitors.map((c) => <div key={(c as any).id} className="px-2 py-2 flex justify-center"><SupportBadge support={(c.features as Record<string, Support>)[f.key]} /></div>)}
             </div>
           ))}
@@ -1246,7 +1246,7 @@ function ComparisonSection({ t }: { t: Dict }) {
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         {/* Hero */}
         <AnimatedSection className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-[#0B6E5F] text-sm font-medium mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--color-ps-green-50)] text-[#0B6E5F] text-sm font-medium mb-6">
             {t.comparison.tag}
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1A2332] mb-2">
@@ -1275,10 +1275,10 @@ function ComparisonSection({ t }: { t: Dict }) {
 
         {/* Legend */}
         <div className="flex flex-wrap justify-center gap-6 text-sm text-[#5A6B7F] mb-16">
-          <span className="flex items-center gap-1.5"><span className="text-emerald-600"><CheckCircle2 className="w-4 h-4" /></span> {t.comparison.legend.yes}</span>
+          <span className="flex items-center gap-1.5"><span className="text-[var(--color-ps-green-700)]"><CheckCircle2 className="w-4 h-4" /></span> {t.comparison.legend.yes}</span>
           <span className="flex items-center gap-1.5"><span className="w-4 h-[2.5px] bg-[var(--color-ps-amber-700)] rounded-full block" /> {t.comparison.legend.partial}</span>
-          <span className="flex items-center gap-1.5"><span className="text-slate-300"><X className="w-4 h-4" /></span> {t.comparison.legend.no}</span>
-          <span className="flex items-center gap-1.5"><span className="text-blue-400 text-xs font-medium">2027</span> {t.comparison.legend.roadmap}</span>
+          <span className="flex items-center gap-1.5"><span className="text-[var(--color-ps-navy-300)]"><X className="w-4 h-4" /></span> {t.comparison.legend.no}</span>
+          <span className="flex items-center gap-1.5"><span className="text-[var(--color-ps-blue-700)] text-xs font-medium">2027</span> {t.comparison.legend.roadmap}</span>
         </div>
 
         {/* Individual Comparisons */}
@@ -1304,7 +1304,7 @@ function ComparisonSection({ t }: { t: Dict }) {
               {t.comparison.whyReasons.map((r, i) => (
                 <div key={i} className="p-6 card-surface-navy text-left">
                   <h4 className="text-white font-bold mb-2">{r.title}</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">{r.desc}</p>
+                  <p className="text-[var(--color-ps-navy-200)] text-sm leading-relaxed">{r.desc}</p>
                 </div>
               ))}
             </div>
@@ -1314,7 +1314,7 @@ function ComparisonSection({ t }: { t: Dict }) {
               {t.comparison.gaps.map((g, i) => (
                 <div key={i} className="p-4 card-surface-navy text-left">
                   <p className="text-white text-sm font-medium">{g.gap}</p>
-                  <p className="text-slate-500 text-xs mt-1">{t.ui.whoHasIt} {g.who}</p>
+                  <p className="text-[var(--color-ps-navy-200)] text-xs mt-1">{t.ui.whoHasIt} {g.who}</p>
                   <p className="text-[#A9F3FF] text-xs mt-0.5">{g.when}</p>
                 </div>
               ))}
@@ -1328,13 +1328,13 @@ function ComparisonSection({ t }: { t: Dict }) {
             <h3 className="text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight mb-6">
               {t.comparison.ctaTitle}
             </h3>
-            <p className="text-emerald-100 text-lg mb-10 max-w-xl mx-auto">
+            <p className="text-[var(--color-ps-teal-100)] text-lg mb-10 max-w-xl mx-auto">
               {t.comparison.ctaSub}
             </p>
-            <a href="#waitlist" className="inline-flex items-center gap-2 px-10 py-5 rounded-full bg-white text-[#0121DC] font-bold text-lg hover:bg-blue-50 transition-all duration-200 hover:-translate-y-0.5 shadow-xl hover:shadow-2xl">
+            <a href="#waitlist" className="inline-flex items-center gap-2 px-10 py-5 rounded-full bg-white text-[#0121DC] font-bold text-lg hover:bg-[var(--color-ps-blue-50)] transition-all duration-200 hover:-translate-y-0.5 shadow-xl hover:shadow-2xl">
               {t.comparison.ctaButton} <ArrowRight className="w-5 h-5" />
             </a>
-            <p className="text-emerald-200/60 text-sm mt-4">{t.comparison.ctaNote}</p>
+            <p className="text-[var(--color-ps-teal-200)]/60 text-sm mt-4">{t.comparison.ctaNote}</p>
           </AnimatedSection>
         </div>
       </div>
@@ -1491,7 +1491,7 @@ function BundleCard({ b, t, isDesktop }: { b: any; t: Dict; isDesktop: boolean }
         </div>
         <h3 className="font-display text-lg font-bold text-[#1A2332]">{b.tier}</h3>
         {b.badge && (
-          <span className="ml-auto text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">
+          <span className="ml-auto text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full bg-[var(--color-ps-green-50)] text-[var(--color-ps-green-700)]">
             {b.badge}
           </span>
         )}
