@@ -66,6 +66,24 @@
   --color-ps-green-500: #0E8A5F;
   --color-ps-green-700: #0A6344;
 
+  /* Purple (Ecosistema completo) — incorporado al canon el 8-ago-2026.
+     Antes se usaba la paleta por defecto de Tailwind (violet-*), que no es ARCO.
+     El 500 es el morado de marca; sobre blanco da 4,38:1, así que NO vale como
+     texto: para texto sobre claro, usar el 700. */
+  --color-ps-purple-50: #F1EDFE;
+  --color-ps-purple-400: #9B7DFB;
+  --color-ps-purple-500: #7C5CFC;
+  --color-ps-purple-700: #5F3AD8;  /* 6,81:1 sobre blanco */
+
+  /* Amber (Parcial / Gold) — incorporado al canon el 8-ago-2026.
+     ⚠️ El 500 sobre blanco da 2,15:1: no llega ni al 3:1 de elementos gráficos,
+     así que NO usarlo sobre fondo claro ni como texto ni como barra indicadora.
+     Sobre navy sí funciona (8,53:1) y es el que viste el distintivo Gold. */
+  --color-ps-amber-50: #FEF3DC;
+  --color-ps-amber-400: #F7B54A;
+  --color-ps-amber-500: #F59E0B;   /* solo sobre navy */
+  --color-ps-amber-700: #8F5D00;   /* 5,62:1 sobre blanco · 5,11:1 sobre su propio tinte */
+
   /* Navy (Dark Surfaces) */
   --color-ps-navy-200: #8896A6;
   --color-ps-navy-300: #5A6B7F;

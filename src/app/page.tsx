@@ -1110,7 +1110,7 @@ function SupportBadge({ support }: { support: Support }) {
   switch (support) {
     case "yes": return <span className="inline-flex items-center text-emerald-600"><CheckCircle2 className="w-[18px] h-[18px]" /></span>;
     case "no": return <span className="inline-flex items-center text-slate-300"><X className="w-[18px] h-[18px]" /></span>;
-    case "partial": return <span className="inline-flex items-center text-amber-500"><span className="w-[18px] h-[2.5px] bg-amber-500 rounded-full block" /></span>;
+    case "partial": return <span className="inline-flex items-center text-[var(--color-ps-amber-700)]"><span className="w-[18px] h-[2.5px] bg-[var(--color-ps-amber-700)] rounded-full block" /></span>;
     case "roadmap": return <span className="inline-flex items-center text-blue-400 text-xs font-medium">2027</span>;
   }
 }
@@ -1276,7 +1276,7 @@ function ComparisonSection({ t }: { t: Dict }) {
         {/* Legend */}
         <div className="flex flex-wrap justify-center gap-6 text-sm text-[#5A6B7F] mb-16">
           <span className="flex items-center gap-1.5"><span className="text-emerald-600"><CheckCircle2 className="w-4 h-4" /></span> {t.comparison.legend.yes}</span>
-          <span className="flex items-center gap-1.5"><span className="w-4 h-[2.5px] bg-amber-500 rounded-full block" /> {t.comparison.legend.partial}</span>
+          <span className="flex items-center gap-1.5"><span className="w-4 h-[2.5px] bg-[var(--color-ps-amber-700)] rounded-full block" /> {t.comparison.legend.partial}</span>
           <span className="flex items-center gap-1.5"><span className="text-slate-300"><X className="w-4 h-4" /></span> {t.comparison.legend.no}</span>
           <span className="flex items-center gap-1.5"><span className="text-blue-400 text-xs font-medium">2027</span> {t.comparison.legend.roadmap}</span>
         </div>
@@ -1348,10 +1348,13 @@ const profileIcons: Record<string, React.ReactNode> = {
   hammer: <Paintbrush className="w-6 h-6" />,
   ruler: <Ruler className="w-6 h-6" />,
 };
+// Tokens ARCO, no la paleta por defecto de Tailwind: el canon es cerrado.
+// El texto usa el escalón 700 de cada color, que es el que cumple AA sobre su
+// propio tinte 50; el borde es ese mismo 700 al 25 %.
 const profileColors: Record<string, { bg: string; text: string; border: string }> = {
-  building: { bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
-  hammer: { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200" },
-  ruler: { bg: "bg-violet-50", text: "text-violet-700", border: "border-violet-200" },
+  building: { bg: "bg-[var(--color-ps-blue-50)]", text: "text-[var(--color-ps-blue-700)]", border: "border-[var(--color-ps-blue-700)]/25" },
+  hammer: { bg: "bg-[var(--color-ps-green-50)]", text: "text-[var(--color-ps-green-700)]", border: "border-[var(--color-ps-green-700)]/25" },
+  ruler: { bg: "bg-[var(--color-ps-purple-50)]", text: "text-[var(--color-ps-purple-700)]", border: "border-[var(--color-ps-purple-700)]/25" },
 };
 
 function PricingSection({ t }: { t: Dict }) {

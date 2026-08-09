@@ -39,7 +39,9 @@ const C = {
   blueBg: "rgba(1, 33, 220, 0.10)",
   success: "#00C389",
   successBg: "rgba(0, 195, 137, 0.12)",
-  amber: "#F59E0B",
+  // ambar-700. El 500 (#F59E0B) da 1,98:1 sobre el canvas claro donde se usa
+  // esto — ni texto ni barra indicadora. Sobre navy sí vale: ver `gold`.
+  amber: "#8F5D00",
   amberBg: "rgba(245, 158, 11, 0.12)",
   red: "#FF4D6D",
   cyan: "#A9F3FF", // glow — SOLO sobre navy
