@@ -93,5 +93,13 @@ comprobar('16 por encima del minimo sigue siendo una', actuacionesParaElMinimo(4
 // Sin ahorro no hay solicitud que agrupar: 0, no infinito ni division por cero
 comprobar('17 sin ahorro no se pide nada', actuacionesParaElMinimo(0), 0)
 
+// El techo miente sobre cuantas viviendas hacen falta: con el tope aplicado
+// salen MAS, nunca menos. Caso tipico D / 1979-2006, 100 m2, CEF 12.000.
+const b1 = calcularRES022({ zona: 'D', anioConstruccion: 1990, superficieM2: 100 })
+comprobar('18 sobre el techo salen 3', actuacionesParaElMinimo(b1.aesKwh), 3)
+const b2 = calcularRES022({ zona: 'D', anioConstruccion: 1990, superficieM2: 100, cefCalefaccionKwhAnio: 12000 })
+comprobar('18 con el tope el ahorro cae a 6.000', b2.ahorroKwh, 6000)
+comprobar('18 y entonces hacen falta 5, no 3', actuacionesParaElMinimo(b2.ahorroKwh), 5)
+
 console.log(fallos === 0 ? '\nTodo correcto.' : `\n${fallos} comprobaciones fallidas.`)
 process.exit(fallos === 0 ? 0 : 1)

@@ -91,15 +91,20 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
 
   const precio = PRECIO_CAE_EUR_MWH.oficial
 
-  // El ahorro que llega al expediente, venga de la ficha que venga. Para la
-  // RES022 sin certificado previo solo hay techo: se usa el techo, y entonces
-  // el número de actuaciones es el MEJOR caso (con el tope harán falta más).
+  // El ahorro que llega al expediente, venga de la ficha que venga.
+  //
+  // OJO con la RES022 sin certificado previo: ahí `ahorroKwh` es null y lo
+  // único que hay es el TECHO. Contar actuaciones sobre el techo da el MEJOR
+  // caso posible; en cuanto el tope muerde harán falta más viviendas, no menos.
+  // Presentar ese número como si fuera firme sería el mismo error que enseñar
+  // el techo como si fuera el cobro. Por eso se marca como suelo.
   const ahorroCertificable = cae060?.aplicable
     ? cae060.ahorroKwh
     : cae?.aplicable
       ? (cae.ahorroKwh ?? cae.aesKwh)
       : 0
   const actuacionesNecesarias = actuacionesParaElMinimo(ahorroCertificable)
+  const cuentaSobreElTecho = Boolean(cae?.aplicable && cae.ahorroKwh === null)
 
   return (
     <div className="grid gap-4">
@@ -266,11 +271,28 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
           <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">
             Cada solicitud de emisión debe sumar al menos{' '}
             <strong>{kwh(MINIMO_SOLICITUD_KWH)}</strong> de ahorro. Con{' '}
-            {kwh(ahorroCertificable)} por actuación, hacen falta{' '}
-            <strong>{actuacionesNecesarias} actuaciones como esta</strong> en la misma
-            solicitud. Y solo pueden presentarla un sujeto obligado o un sujeto delegado:
-            tú no.
+            {kwh(ahorroCertificable)} por actuación,{' '}
+            {cuentaSobreElTecho ? (
+              <>
+                harían falta <strong>{actuacionesNecesarias} actuaciones como esta</strong> —
+                y eso es el <strong>mejor caso</strong>: {kwh(ahorroCertificable)} es el techo,
+                no el ahorro. En cuanto el tope del certificado previo muerda, harán falta{' '}
+                <strong>más viviendas, no menos</strong>.
+              </>
+            ) : (
+              <>
+                hacen falta <strong>{actuacionesNecesarias} actuaciones como esta</strong> en
+                la misma solicitud.
+              </>
+            )}{' '}
+            Y solo pueden presentarla un sujeto obligado o un sujeto delegado: tú no.
           </p>
+          {cuentaSobreElTecho && (
+            <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">
+              Mete el consumo de calefacción del certificado previo arriba y este número se
+              cierra.
+            </p>
+          )}
           <ul className="mt-3 grid gap-2 text-sm text-[var(--color-ps-navy-400)]">
             <li>
               · Las actuaciones que se agrupan tienen que ser del <strong>mismo año</strong>{' '}
