@@ -113,6 +113,32 @@ export const CONVERSION_PCI_A_PCS = {
 /** Consumos de calefacción de referencia para la tabla de sensibilidad, kWh/m²·año. */
 export const CEF_REFERENCIA_KWH_M2 = [80, 120, 200] as const
 
+// ─── Reglas del procedimiento, comunes a todas las fichas ─────────────────────
+//
+// Fuente: Orden TED/815/2023, de 18 de julio (BOE-A-2023-16734), texto
+// consolidado. Verificado el 9-ago-2026.
+//
+// No son detalles administrativos: cambian quién cobra y cuándo.
+//   · art. 14.1 — solo los sujetos obligados y los delegados pueden presentar la
+//     solicitud. El instalador NUNCA la presenta él.
+//   · art. 14.3 — las actuaciones agrupadas en una solicitud deben ser del mismo
+//     año y de la misma comunidad autónoma.
+//   · art. 14.6 — mínimo de 30 MWh por solicitud (salvo Ceuta y Melilla).
+//   · art. 14.8 — una actuación que recibió ayuda del Fondo Nacional de
+//     Eficiencia Energética NO puede generar CAE. La ayuda quema el certificado.
+
+/** Ahorro mínimo por solicitud de emisión de CAE, en kWh. Orden TED/815/2023, art. 14.6. */
+export const MINIMO_SOLICITUD_KWH = 30_000
+
+/**
+ * Cuántas actuaciones como esta hacen falta para alcanzar el mínimo de solicitud.
+ * Devuelve 1 cuando la actuación ya llega sola.
+ */
+export function actuacionesParaElMinimo(ahorroKwh: number): number {
+  if (ahorroKwh <= 0) return 0
+  return Math.ceil(MINIMO_SOLICITUD_KWH / ahorroKwh)
+}
+
 export function tramoDeAnio(anioConstruccion: number): TramoAntiguedad {
   if (anioConstruccion <= 1978) return 'hasta1978'
   if (anioConstruccion <= 2006) return 'de1979a2006'

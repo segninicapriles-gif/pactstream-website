@@ -9,7 +9,13 @@
 import { AlertTriangle, FileWarning, Info } from 'lucide-react'
 import { calcularRES022, calcularRES060, valorarKwh } from '@/lib/cae/calculo'
 import { escaleraIRPF } from '@/lib/cae/irpf'
-import { FICHA_RES022, FICHA_RES060, PRECIO_CAE_EUR_MWH } from '@/lib/cae/fichas'
+import {
+  FICHA_RES022,
+  FICHA_RES060,
+  MINIMO_SOLICITUD_KWH,
+  PRECIO_CAE_EUR_MWH,
+  actuacionesParaElMinimo,
+} from '@/lib/cae/fichas'
 import { euros, eurosRango, kwh, milimetros } from '@/lib/cae/formato'
 import { Fuente } from './Fuente'
 import { usaFichaRES022, usaFichaRES060, type DatosFormulario, type Tecnologia } from './Formulario'
@@ -20,6 +26,7 @@ const FUENTE_CAE = `${FICHA_RES022.boe} · ficha ${FICHA_RES022.codigo} ${FICHA_
 // aquí no se vuelven a añadir o sale «Ficha RES060 V1.1 · ficha RES060 V1.1».
 const FUENTE_CAE_060 = FICHA_RES060.boe
 const FUENTE_IRPF = 'AEAT · deducciones por obras de eficiencia energética (verificado 7-ago-2026)'
+const FUENTE_PROCEDIMIENTO = 'Orden TED/815/2023 · art. 14 (BOE-A-2023-16734)'
 
 const tarjeta =
   'rounded-[var(--radius-lg)] border border-[var(--color-ps-neutral-400)] bg-white p-5 shadow-[var(--shadow-ps-sm)]'
@@ -36,9 +43,17 @@ function SinFicha({ tecnologia }: { tecnologia: Tecnologia }) {
           <h3 className={titulo}>Certificados de ahorro energético</h3>
           <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">
             {esFotovoltaica
-              ? 'No nos consta que el autoconsumo fotovoltaico genere CAE. Preferimos decirlo a estimar una cifra que luego no se cobre.'
+              ? 'El autoconsumo fotovoltaico no genera CAE. No hay ninguna ficha fotovoltaica en los cinco sectores del catálogo vigente, y la única que la nombra —la IND250, de solar térmica— es para excluirla: en paneles híbridos solo cuenta la componente térmica.'
               : 'Esta actuación puede generar CAE, pero su ficha todavía no está incorporada a la calculadora. No mostramos un importe que no podamos justificar con el BOE en la mano.'}
           </p>
+          {esFotovoltaica && (
+            <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">
+              El CAE no paga por producir energía limpia, sino por{' '}
+              <strong>consumir menos energía final</strong>. Una placa no baja el consumo:
+              cambia de dónde vienen los mismos kWh. Si en la misma obra entra una bomba de
+              calor, <strong>esa parte sí genera CAE</strong> por la ficha RES060.
+            </p>
+          )}
           <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">
             La deducción de IRPF de aquí abajo <strong>puede aplicar</strong>: cuál de los
             tres tramos corresponde lo determinan los certificados energéticos previo y
@@ -75,6 +90,16 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
     : null
 
   const precio = PRECIO_CAE_EUR_MWH.oficial
+
+  // El ahorro que llega al expediente, venga de la ficha que venga. Para la
+  // RES022 sin certificado previo solo hay techo: se usa el techo, y entonces
+  // el número de actuaciones es el MEJOR caso (con el tope harán falta más).
+  const ahorroCertificable = cae060?.aplicable
+    ? cae060.ahorroKwh
+    : cae?.aplicable
+      ? (cae.ahorroKwh ?? cae.aesKwh)
+      : 0
+  const actuacionesNecesarias = actuacionesParaElMinimo(ahorroCertificable)
 
   return (
     <div className="grid gap-4">
@@ -230,6 +255,34 @@ export function Resultado({ datos }: { datos: DatosFormulario }) {
             </p>
           )}
           <Fuente texto={FUENTE_CAE} />
+        </div>
+      )}
+
+      {/* Bloque 2 bis — cómo se cobra. Lo mismo para las dos fichas: el número
+          de arriba es real, pero no se presenta solo. */}
+      {ahorroCertificable > 0 && (
+        <div className={tarjeta}>
+          <h3 className={titulo}>Este CAE no se presenta solo</h3>
+          <p className="mt-2 text-sm text-[var(--color-ps-navy-400)]">
+            Cada solicitud de emisión debe sumar al menos{' '}
+            <strong>{kwh(MINIMO_SOLICITUD_KWH)}</strong> de ahorro. Con{' '}
+            {kwh(ahorroCertificable)} por actuación, hacen falta{' '}
+            <strong>{actuacionesNecesarias} actuaciones como esta</strong> en la misma
+            solicitud. Y solo pueden presentarla un sujeto obligado o un sujeto delegado:
+            tú no.
+          </p>
+          <ul className="mt-3 grid gap-2 text-sm text-[var(--color-ps-navy-400)]">
+            <li>
+              · Las actuaciones que se agrupan tienen que ser del <strong>mismo año</strong>{' '}
+              y de la <strong>misma comunidad autónoma</strong>.
+            </li>
+            <li>
+              · Una actuación que haya recibido una ayuda financiada con cargo al{' '}
+              <strong>Fondo Nacional de Eficiencia Energética</strong> no puede generar CAE.
+              Comprueba la ayuda <em>antes</em> de descontar el CAE en la oferta.
+            </li>
+          </ul>
+          <Fuente texto={FUENTE_PROCEDIMIENTO} />
         </div>
       )}
 

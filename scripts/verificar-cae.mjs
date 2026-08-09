@@ -2,7 +2,7 @@
 // docs/superpowers/specs/2026-08-08-calculadora-cae-instalador-design.md §9
 // Todos los valores esperados salen de BOE-A-2026-12283.
 import { calcularRES022, calcularRES060, valorarKwh } from '../src/lib/cae/calculo'
-import { PRECIO_CAE_EUR_MWH } from '../src/lib/cae/fichas'
+import { PRECIO_CAE_EUR_MWH, actuacionesParaElMinimo } from '../src/lib/cae/fichas'
 import { escaleraIRPF } from '../src/lib/cae/irpf'
 
 let fallos = 0
@@ -82,6 +82,16 @@ const a4 = calcularRES060({ demandaCalefaccionKwhM2: 0, superficieUtilM2: 120,
   demandaAcsKwhAnio: 0, scopCalefaccion: 3.5 })
 comprobar('14 RES060 sin datos del CEE previo', a4.aplicable, false)
 
+
+// ─── Minimo de 30 MWh por solicitud (Orden TED/815/2023, art. 14.6) ──────────
+// El caso que importa: ninguna vivienda sola llega al minimo.
+comprobar('15 aerotermia del ejemplo no llega sola', actuacionesParaElMinimo(9779), 4)
+comprobar('15 buhardilla en su techo tampoco', actuacionesParaElMinimo(12500), 3)
+// Justo en el umbral no debe pedir dos por un error de redondeo
+comprobar('16 exactamente 30 MWh basta con una', actuacionesParaElMinimo(30000), 1)
+comprobar('16 por encima del minimo sigue siendo una', actuacionesParaElMinimo(41000), 1)
+// Sin ahorro no hay solicitud que agrupar: 0, no infinito ni division por cero
+comprobar('17 sin ahorro no se pide nada', actuacionesParaElMinimo(0), 0)
 
 console.log(fallos === 0 ? '\nTodo correcto.' : `\n${fallos} comprobaciones fallidas.`)
 process.exit(fallos === 0 ? 0 : 1)
