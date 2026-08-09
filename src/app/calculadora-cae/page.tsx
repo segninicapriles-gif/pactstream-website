@@ -5,11 +5,13 @@ import { AvisoPeriodoTransitorio } from '@/components/calculadora/AvisoPeriodoTr
 export const metadata: Metadata = {
   title: 'Calculadora de CAE y ayudas para instaladores | PactStream',
   description:
-    'Calcula el valor real del CAE de una actuación aplicando el tope del 50 % sobre el consumo de calefacción del certificado previo, y la deducción de IRPF que le corresponde a tu cliente. Según BOE-A-2026-12283.',
+    'Calcula el valor real del CAE de una actuación con las fichas oficiales RES022 (aislamiento de buhardillas) y RES060 (sustitución de caldera por bomba de calor), y la deducción de IRPF que le corresponde a tu cliente.',
   keywords: [
     'calculadora CAE',
     'certificados de ahorro energético',
     'ficha RES022',
+    'ficha RES060',
+    'CAE aerotermia',
     'valor CAE por metro cuadrado',
     'deducción IRPF eficiencia energética',
     'aislamiento buhardilla CAE',
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Calculadora de CAE y ayudas para instaladores',
     description:
-      'El tope del 50 % sobre el consumo de calefacción puede dejar el ahorro por debajo de un tercio del que da la tabla. Calcúlalo antes de ofertar.',
+      'El número no sale de una tabla: depende del certificado energético anterior a la obra. Calcúlalo antes de descontarlo de tu oferta.',
     url: 'https://pactstream.io/calculadora-cae',
     type: 'website',
     locale: 'es_ES',
@@ -48,8 +50,9 @@ export default function CalculadoraCaePage() {
       <footer className="mt-12 max-w-3xl text-xs text-[var(--color-ps-navy-300)]">
         <p>
           Cálculo orientativo. La ficha RES022 se transcribió de BOE-A-2026-12283 el 7 de
-          agosto de 2026 y las deducciones de IRPF se verificaron ese mismo día contra la
-          AEAT. Las deducciones han sufrido cambios normativos durante 2025 y 2026:
+          agosto de 2026 y la RES060 V1.1, del catálogo vigente del MITECO, el 9 de agosto.
+          Las deducciones de IRPF se verificaron contra la AEAT el 7 de agosto. Las
+          deducciones han sufrido cambios normativos durante 2025 y 2026:
           confírmalas antes de comprometerlas con un cliente. No sustituye al criterio de un
           técnico ni al de un asesor fiscal.
         </p>
