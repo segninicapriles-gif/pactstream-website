@@ -34,10 +34,11 @@ export default function CalculadoraCaePage() {
           ¿Cuánto vale de verdad este trabajo antes de que lo ofertes?
         </h1>
         <p className="mt-4 text-base text-[var(--color-ps-navy-400)]">
-          Si descuentas el CAE de tu oferta antes de emitirlo y luego el expediente se topa
-          o decae, la pérdida es tuya y contra margen. La tabla de valores que circula es un
-          techo: el ahorro real está limitado por la mitad del consumo de calefacción del
-          certificado previo, y ese tope casi nadie lo aplica.
+          Si descuentas el CAE de tu oferta antes de emitirlo y luego el expediente sale por
+          menos o decae, la pérdida es tuya y contra margen. Y el número no sale de una tabla:
+          en las dos fichas que cubre esta calculadora depende del{' '}
+          <strong>certificado energético anterior a la obra</strong> — en buhardillas porque
+          topa el ahorro, y en bombas de calor porque es de donde salen las demandas.
         </p>
         <AvisoPeriodoTransitorio />
       </header>
