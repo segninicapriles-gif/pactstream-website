@@ -564,8 +564,8 @@ function ProblemSection({ t }: { t: Dict }) {
   const icons = [LucideHome, Building2, Ruler];
   const styles = [
     { bg: "bg-[#EBF3FC]", iconBg: "bg-[#1A6FD4]/10", iconColor: "text-[#1A6FD4]" },
-    { bg: "bg-[#FFF0E6]", iconBg: "bg-[#D4640A]/10", iconColor: "text-[#D4640A]" },
-    { bg: "bg-[#E8F7F0]", iconBg: "bg-[#0E8A5F]/10", iconColor: "text-[#0E8A5F]" },
+    { bg: "bg-[#FFF0E6]", iconBg: "bg-[#9A4907]/10", iconColor: "text-[#9A4907]" },
+    { bg: "bg-[#E8F7F0]", iconBg: "bg-[#0A6344]/10", iconColor: "text-[#0A6344]" },
   ];
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -807,8 +807,8 @@ function RolesSection({ t }: { t: Dict }) {
   const roleIcons = [LucideHome, Building2, Ruler];
   const roleStyles = [
     { color: "#1A6FD4", bg: "#EBF3FC", border: "border-[#1A6FD4]/20" },
-    { color: "#D4640A", bg: "#FFF0E6", border: "border-[#D4640A]/20" },
-    { color: "#0E8A5F", bg: "#E8F7F0", border: "border-[#0E8A5F]/20" },
+    { color: "#9A4907", bg: "#FFF0E6", border: "border-[#9A4907]/20" },
+    { color: "#0A6344", bg: "#E8F7F0", border: "border-[#0A6344]/20" },
   ];
   return (
     <section id="para-quien" className="py-20 md:py-28 bg-[#F5F7FA]">
@@ -1506,7 +1506,7 @@ function BundleCard({ b, t, isDesktop }: { b: any; t: Dict; isDesktop: boolean }
         <ul className="space-y-2">
           {b.costpact.map((f: string) => (
             <li key={f} className="flex items-start gap-2">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#7C5CFC] shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#5B3FD6] shrink-0 mt-0.5" />
               <span className="text-xs text-[#3A4D65]">{f}</span>
             </li>
           ))}
@@ -1544,7 +1544,7 @@ function BundlesSection({ t }: { t: Dict }) {
     <section id="bundles" className="py-20 md:py-28 bg-[#F8FAFB]">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         <AnimatedSection className="max-w-3xl mx-auto text-center mb-16">
-          <p className="text-sm font-semibold text-[#7C5CFC] uppercase tracking-wider mb-3">{t.bundles.tag}</p>
+          <p className="text-sm font-semibold text-[#5B3FD6] uppercase tracking-wider mb-3">{t.bundles.tag}</p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1A2332] mb-5">{t.bundles.heading}</h2>
           <p className="text-lg text-[#5A6B7F]">{t.bundles.sub}</p>
         </AnimatedSection>
