@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Formulario, DATOS_INICIALES, type DatosFormulario } from './Formulario'
+import { Formulario, DATOS_INICIALES, usaFichaRES022, type DatosFormulario } from './Formulario'
 import { Resultado } from './Resultado'
 import { Captacion } from './Captacion'
+import { AvisoPeriodoTransitorio } from './AvisoPeriodoTransitorio'
 
 declare global {
   interface Window {
@@ -35,8 +36,17 @@ export function Calculadora() {
     })
   }, [datos.tecnologia])
 
+  // El aviso del periodo transitorio es de la RES022 y solo de ella. Vivía en
+  // la cabecera de la página, así que salía también con aerotermia o
+  // fotovoltaica: no era falso —lleva su etiqueta— pero es ruido para quien no
+  // viene a buhardillas. Al vivir aquí sigue apareciendo en el HTML servido,
+  // porque la tecnología inicial ES buhardilla: no se pierde ni para los
+  // buscadores ni para quien no ejecuta JavaScript.
   return (
-    <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
+    <>
+      {usaFichaRES022(datos.tecnologia) && <AvisoPeriodoTransitorio />}
+
+      <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
       <section aria-label="Datos de la actuación">
         <div className="rounded-[var(--radius-lg)] border border-[var(--color-ps-neutral-400)] bg-white p-5 shadow-[var(--shadow-ps-sm)]">
           <Formulario datos={datos} onChange={setDatos} />
@@ -47,6 +57,7 @@ export function Calculadora() {
         <Resultado datos={datos} />
         <Captacion datos={datos} />
       </section>
-    </div>
+      </div>
+    </>
   )
 }

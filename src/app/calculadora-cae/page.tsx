@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Calculadora } from '@/components/calculadora/Calculadora'
-import { AvisoPeriodoTransitorio } from '@/components/calculadora/AvisoPeriodoTransitorio'
 
 export const metadata: Metadata = {
   title: 'Calculadora de CAE y ayudas para instaladores | PactStream',
@@ -42,7 +41,6 @@ export default function CalculadoraCaePage() {
           <strong>certificado energético anterior a la obra</strong> — en buhardillas porque
           topa el ahorro, y en bombas de calor porque es de donde salen las demandas.
         </p>
-        <AvisoPeriodoTransitorio />
       </header>
 
       <Calculadora />
