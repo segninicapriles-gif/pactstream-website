@@ -18,20 +18,40 @@
 // cuenta sí va en el HTML servido, que es lo que lee un buscador y lo que ve
 // quien no ejecuta JavaScript.
 
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 import { FICHA_RES022 } from '@/lib/cae/fichas'
 
 const FIN = FICHA_RES022.finPeriodoTransitorio // '2026-09-07'
 const FIN_LEGIBLE = '7 de septiembre de 2026'
 
-export function AvisoPeriodoTransitorio() {
-  const [dias, setDias] = useState<number | null>(null)
+// El reloj no emite eventos, así que no hay nada a lo que suscribirse: la cifra
+// se recalcula al re-renderizar, no al pasar el tiempo. Basta para un contador
+// de DÍAS. Va fuera del componente para que su identidad no cambie en cada
+// render — si cambiara, React se resuscribiría en cada uno.
+const sinSuscripcion = () => () => {}
 
-  useEffect(() => {
-    // Fin del día en curso: el plazo se agota al terminar el 7 de septiembre.
-    const fin = new Date(`${FIN}T23:59:59`).getTime()
-    setDias(Math.ceil((fin - Date.now()) / 86_400_000))
-  }, [])
+// Cuánto queda. Fin del día en curso: el plazo se agota al terminar el 7 de
+// septiembre.
+//
+// Devuelve un NÚMERO y no un objeto a propósito: React llama a esta función
+// varias veces y compara el resultado con `Object.is`. Un objeto nuevo en cada
+// llamada nunca sería igual al anterior y metería al componente en un bucle de
+// renders.
+const diasQueQuedan = () =>
+  Math.ceil((new Date(`${FIN}T23:59:59`).getTime() - Date.now()) / 86_400_000)
+
+// Lo que se ve en el HTML del build —y en la primera pasada de hidratación, que
+// React resuelve con esta misma función—. Devolver `null` es lo que mantiene la
+// promesa de la cabecera: el número NO viaja en el HTML estático, así que no
+// puede quedarse congelado en la fecha de compilación.
+const sinCifraTodavia = () => null
+
+export function AvisoPeriodoTransitorio() {
+  // `useSyncExternalStore` y no `useState` + `useEffect`: es el API que React
+  // ofrece para leer un valor que solo existe en el cliente, y evita lo que
+  // señala la regla `react-hooks/set-state-in-effect` — que un `setState`
+  // síncrono dentro de un efecto encadena renders.
+  const dias = useSyncExternalStore(sinSuscripcion, diasQueQuedan, sinCifraTodavia)
 
   const vencido = dias !== null && dias <= 0
 
