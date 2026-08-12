@@ -1716,6 +1716,7 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <a href="/legal" className="hover:text-white transition-colors">{t.footer.legal}</a>
+            <a href="/terminos" className="hover:text-white transition-colors">{t.footer.terms}</a>
             <a href="/privacidad" className="hover:text-white transition-colors">{t.footer.privacy}</a>
             <a href="/cookies" className="hover:text-white transition-colors">{t.footer.cookies}</a>
             <LangDropdown locale={locale} setLocale={setLocale} variant="footer" />

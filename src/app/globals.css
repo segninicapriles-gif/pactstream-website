@@ -1,4 +1,7 @@
 @import "tailwindcss";
+/* Sin este plugin, las clases `prose` de las 4 paginas legales son inertes:
+   los h2 se renderizan como texto corrido y las listas pierden la vinieta. */
+@plugin "@tailwindcss/typography";
 
 /* CorporativeSansRd — marketing headings only */
 @font-face {
