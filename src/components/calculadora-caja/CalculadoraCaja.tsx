@@ -116,9 +116,11 @@ export function CalculadoraCaja() {
           ¿Cuánta caja te devuelve cobrar contra certificación?
         </h1>
         <p className="mt-3 mb-9 max-w-[58ch] text-[17px] text-[#3d445f]">
-          El sector cobra a 96,5 días de media (PMcM). Con el pago condicionado al avance
-          verificado, cobras en 24&nbsp;horas desde la validación del hito. Mueve los datos de tu
-          obra y mira el resultado — también cuando no nos favorece.
+          El sector cobra a 96,5 días de media (PMcM).{' '}
+          <b className="text-[var(--color-navy-vault)]">PactStream invierte el orden</b>: el dinero
+          de la obra queda custodiado en cuenta regulada antes de empezar, y cada certificación
+          verificada libera tu cobro en 24&nbsp;horas desde la validación del hito. Mueve los datos
+          de tu obra y mira lo que eso vale — también cuando no nos favorece.
         </p>
 
         <div className="grid items-start gap-7 md:grid-cols-[minmax(300px,5fr)_minmax(320px,6fr)]">
@@ -201,13 +203,14 @@ export function CalculadoraCaja() {
               <p className="mt-2 max-w-[52ch] text-[13.5px] text-[var(--color-ps-navy-200)]">
                 {positivo ? (
                   <>
-                    Y el circulante es la parte pequeña: el dinero ya está custodiado antes de
-                    empezar, y en cuanto las partes aprueban —o la verificación determina que está
-                    bien ejecutado— <b className="text-[#6fe0b8]">el pago se libera automáticamente</b>.
+                    Y el circulante es la parte pequeña: con PactStream el dinero ya está custodiado
+                    antes de empezar, y en cuanto las partes aprueban —o la verificación determina
+                    que está bien ejecutado—{' '}
+                    <b className="text-[#6fe0b8]">el pago se libera automáticamente</b>.
                   </>
                 ) : (
                   <>
-                    Te lo decimos tal cual. Lo que queda sobre la mesa:{' '}
+                    Te lo decimos tal cual. Lo que PactStream deja sobre la mesa igualmente:{' '}
                     <b className="text-[var(--color-ps-red-400)]">el impago deja de ser posible</b> — el
                     dinero ya está custodiado antes de empezar —, la aprobación{' '}
                     <b className="text-[var(--color-ps-red-400)]">libera el pago automáticamente</b> sobre
@@ -227,11 +230,15 @@ export function CalculadoraCaja() {
               ejecutado.
             </p>
 
+            <p className="mt-5 font-display text-[17px] font-bold leading-snug text-white [text-wrap:balance]">
+              Tu cobro deja de depender de tu cliente. Depende de tu avance.{' '}
+              <span className="text-[var(--color-cyan-glow)]">Eso es PactStream.</span>
+            </p>
             <a
               href="/#waitlist"
-              className="mt-5 inline-block rounded-lg bg-[var(--color-primary)] px-6 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-cyan-glow)]"
+              className="mt-4 inline-block rounded-lg bg-[var(--color-primary)] px-6 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-cyan-glow)]"
             >
-              Reservar mi plaza →
+              Reservar mi plaza en PactStream →
             </a>
           </section>
         </div>
