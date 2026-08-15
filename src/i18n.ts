@@ -11,10 +11,9 @@ const dict = {
       cta: "Reservar mi plaza",
     },
     hero: {
-      badge: "Solo 200 plazas — Acceso por invitación",
       kicker: "La primera plataforma que une",
       heading: ["Control de obra, verificación por IA y\n", "pago condicionado al avance real", "."],
-      sub: "El dinero se deposita en una cuenta regulada, externa a las dos partes. La IA verifica cada hito con las evidencias de obra. El pago se libera cuando el trabajo está hecho — y solo entonces. Nadie más reúne las tres piezas.",
+      sub: "El dinero se deposita en una cuenta regulada, externa a las dos partes. La IA verifica cada hito con las evidencias de obra. El pago se libera cuando el trabajo está hecho — y solo entonces.",
       cta: "Reservar mi plaza",
       ctaSecondary: "Ver cómo funciona",
       stats: [
@@ -34,9 +33,9 @@ const dict = {
       cta: "Reservar mi plaza",
       privacy: "Sin spam. Sin compromiso. Acceso progresivo por oleadas.",
       tiers: [
-        { icon: "🥇", name: "Fundador", desc: "Pricing especial de por vida + acceso prioritario a nuevas funciones", range: "Plazas 1-50" },
-        { icon: "🥈", name: "Early Adopter", desc: "6 meses gratis + beta features", range: "Plazas 51-200" },
-        { icon: "📋", name: "Lista de espera", desc: "Acceso progresivo por oleadas mensuales", range: "201+" },
+        { icon: "🥇", name: "Oleada Fundador", desc: "Precio de por vida.", range: "Plazas 1-50" },
+        { icon: "🥈", name: "Early Adopter", desc: "6 meses gratis + beta privada.", range: "Plazas 51-200" },
+        { icon: "📋", name: "Lista de espera", desc: "Acceso escalonado mensual.", range: "201+" },
       ],
     },
     problem: {
@@ -74,9 +73,9 @@ const dict = {
       heading: "Cada rol tiene su ventaja",
       sub: "Tu dinero solo sale contra avance verificado. Cobra cuando cumples. Certifica con datos.",
       items: [
-        { title: "Promotores y autopromotores", subtitle: "Tu dinero solo sale contra avance verificado", benefits: ["Verifica el avance con IA antes de liberar fondos", "Tu dinero protegido en escrow hasta la validación", "Dashboard con estado financiero en tiempo real", "Evidencias inmutables que te protegen ante disputas"] },
-        { title: "Constructores y reformistas", subtitle: "Cobra antes, certifica automático", benefits: ["Pago instantáneo al validar el hito — sin esperar 30-45 días", "Evidencias verificadas por IA — cada cobro queda documentado y respaldado ante cualquier disputa", "Trust Score que te diferencia de la competencia", "Presupuestos profesionales automáticos con CostPact"] },
-        { title: "Arquitectos y técnicos", subtitle: "Validación IA. Score 0-100. Findings verde/ámbar/rojo.", benefits: ["La IA pre-valida evidencias — tú solo confirmas", "Certificaciones digitales con firma electrónica", "Informes de progreso generados automáticamente", "Valida a distancia lo que hoy exige visita presencial a obra"] },
+        { title: "Promotores y autopromotores", subtitle: "Tu dinero solo sale contra avance verificado", desc: "", benefits: ["Verifica el avance con IA antes de liberar fondos", "Tu dinero protegido en escrow hasta la validación", "Dashboard con estado financiero en tiempo real", "Evidencias inmutables que te protegen ante disputas"] },
+        { title: "Constructores y reformistas", subtitle: "Tu cobro deja de depender de tu cliente. Depende de tu avance.", desc: "Certificas, la IA verifica, cobras en 24h desde la validación del hito. La comisión se paga sola con la caja que libera.", benefits: ["Pago instantáneo al validar el hito — sin esperar 30-45 días", "Evidencias verificadas por IA — cada cobro queda documentado y respaldado ante cualquier disputa", "Trust Score que te diferencia de la competencia", "Presupuestos profesionales automáticos con CostPact"] },
+        { title: "Arquitectos y técnicos", subtitle: "Validación IA. Score 0-100. Findings verde/ámbar/rojo.", desc: "", benefits: ["La IA pre-valida evidencias — tú solo confirmas", "Certificaciones digitales con firma electrónica", "Informes de progreso generados automáticamente", "Valida a distancia lo que hoy exige visita presencial a obra"] },
       ],
     },
     useCases: {
@@ -127,7 +126,7 @@ const dict = {
     ai: {
       tag: "Inteligencia Artificial",
       heading: "Documenta mejor. Cobra más rápido. Certifica sin riesgos.",
-      sub: "Dos motores de IA que eliminan la subjetividad de la certificación y aceleran los cobros. No es tecnología por tecnología — es que cobres antes y protejas mejor tu inversión.",
+      sub: "La IA emite un dictamen 0-100 sobre evidencia sellada — GPS, hora de servidor y huella criptográfica — y el dictamen es inmutable. La dirección facultativa firma encima, siempre.",
       items: [
         { title: "Verificación visual automática", desc: "Sube fotos geolocalizadas. La IA las compara con el presupuesto y genera un score 0-100. Hallazgos clasificados: verde (cumple), ámbar (revisión), rojo (incumplimiento). Certificas con datos, no con opiniones." },
         { title: "Asistente que ejecuta, no solo responde", desc: "Pregunta sobre presupuesto, pide una certificación, libera un pago, detecta desviaciones. Todo conversacional, todo en tiempo real, todo con acciones reales." },
@@ -140,8 +139,8 @@ const dict = {
       sub: "Ningún competidor en Europa integra el ciclo entero: presupuesto con IA, obra y pagos verificados, caja y fiscal, y comercialización.",
       costpact: { name: "CostPact", sub: "SaaS de presupuestación con IA", desc: "Genera presupuestos profesionales en minutos desde un catálogo de más de 755 partidas con 13 años de datos reales de obra. El punto de entrada al ecosistema.", link: "Alimenta automáticamente a PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificación IA + pagos", desc: "Protege los pagos en escrow regulado PSD2, verifica el avance con IA y libera fondos por hitos validados. El motor financiero de la construcción.", link: "Ciclo completo: presupuesto → pago" },
-      fiscalcore: { badge: "Próximamente", name: "FiscalCore", sub: "Caja y fiscal para construcción", desc: "El tercer eslabón: tesorería Profit First pensada para obra y cumplimiento Verifactu 2027, con un CFO-IA que no solo aconseja — ejecuta. Cada cobro certificado aterriza en una caja ordenada.", link: "Cierra el ciclo: cobro → caja → impuestos" },
-      propertyjourney: { badge: "Partner", name: "PropertyJourney", sub: "Comercialización para promotores", desc: "La plataforma del ecosistema que gestiona la venta de promociones: clientes, agencias, postventa y seguimiento financiero. Extiende el ciclo completo hasta la comercialización.", link: "Del ladrillo verificado a la venta" },
+      fiscalcore: { name: "FiscalCore", sub: "Del cobro bruto al ingreso real, con la fiscalidad resuelta", desc: "El tercer eslabón: tesorería Profit First pensada para obra y cumplimiento Verifactu 2027, con un CFO-IA que no solo aconseja — ejecuta. Cada cobro certificado aterriza en una caja ordenada.", link: "Únete a la lista → fiscalcore.io" },
+      propertyjourney: { name: "PropertyJourney", sub: "Comercialización y posventa" },
       global: "Un ecosistema preparado para operar en cualquier mercado: todas las plataformas funcionan en varios idiomas y monedas (euro, dólar y más), se adaptan a la moneda y normativa local y se integran con cualquier sistema o base de datos vía API.",
       advantage: { label: "Ventaja competitiva:", text: "STIMATpay (Plan Reforma) es el único escrow manual en España — su 70% de adopción voluntaria valida la demanda. Nosotros automatizamos lo que ellos hacen a mano y añadimos IA." },
     },
@@ -384,7 +383,7 @@ const dict = {
       columns: {
         product: { title: "Producto", links: ["Funcionalidades", "Cómo funciona", "Precios", "Ecosistema"] },
         audience: { title: "Para quién", links: ["Promotores", "Constructores", "Técnicos", "Casos de uso"] },
-        company: { title: "Ecosistema", links: ["CostPact", "FiscalCore", "PropertyJourney (partner)", "Contacto"] },
+        company: { title: "Ecosistema", links: ["CostPact", "FiscalCore", "PropertyJourney", "Contacto"] },
       },
       tagline: "Escrow inteligente para construcción. Protege cada euro de tu obra con IA y pagos por hitos.",
     },
@@ -422,10 +421,9 @@ const dict = {
       cta: "Reserve my spot",
     },
     hero: {
-      badge: "Only 200 spots — Invite-only access",
       kicker: "The first platform to unite",
-      heading: ["Construction management, AI verification and\n", "milestone payments on verified work", "."],
-      sub: "The money sits in a regulated account, external to both parties. AI verifies every milestone against site evidence. Payment is released when the work is done — and only then. No one else brings the three pieces together.",
+      heading: ["Construction monitoring, AI verification, and\n", "payment conditioned on real progress", "."],
+      sub: "Funds sit in a regulated account, external to both parties. AI verifies every milestone against site evidence. Payment is released when the work is done — and only then.",
       cta: "Reserve my spot",
       ctaSecondary: "See how it works",
       stats: [
@@ -445,9 +443,9 @@ const dict = {
       cta: "Reserve my spot",
       privacy: "No spam. No commitment. Progressive access in waves.",
       tiers: [
-        { icon: "🥇", name: "Founder", desc: "Lifetime special pricing + priority access to new features", range: "Spots 1-50" },
-        { icon: "🥈", name: "Early Adopter", desc: "6 months free + beta features", range: "Spots 51-200" },
-        { icon: "📋", name: "Waitlist", desc: "Progressive monthly-wave access", range: "201+" },
+        { icon: "🥇", name: "Founder wave", desc: "Lifetime pricing.", range: "Seats 1-50" },
+        { icon: "🥈", name: "Early adopter", desc: "6 months free + private beta.", range: "Seats 51-200" },
+        { icon: "📋", name: "Waitlist", desc: "Monthly staged access.", range: "201+" },
       ],
     },
     problem: {
@@ -485,9 +483,9 @@ const dict = {
       heading: "Every role gets its edge",
       sub: "Your money only moves against verified progress. Get paid when you deliver. Certify with data.",
       items: [
-        { title: "Developers & self-promoters", subtitle: "Your money only moves against verified progress", benefits: ["AI-verify progress before releasing funds", "Money protected in escrow until validation", "Real-time financial dashboard", "Immutable evidence that protects you in disputes"] },
-        { title: "Builders & contractors", subtitle: "Get paid faster, certify automatically", benefits: ["Instant payment on milestone validation — no 30-45 day waits", "AI-verified evidence — every payment is documented and backed if a dispute arises", "Trust Score that sets you apart from competition", "Automatic professional budgets with CostPact"] },
-        { title: "Architects & surveyors", subtitle: "AI validation. Score 0-100. Green/amber/red findings.", benefits: ["AI pre-validates evidence — you just confirm", "Digital certifications with electronic signature", "Progress reports generated automatically", "Validate remotely what today requires an on-site visit"] },
+        { title: "Developers & self-promoters", subtitle: "Your money only moves against verified progress", desc: "", benefits: ["AI-verify progress before releasing funds", "Money protected in escrow until validation", "Real-time financial dashboard", "Immutable evidence that protects you in disputes"] },
+        { title: "Builders & contractors", subtitle: "Getting paid stops depending on your client. It depends on your progress.", desc: "You certify, AI verifies, you get paid within 24h of milestone validation. The fee pays for itself with the cash it releases.", benefits: ["Instant payment on milestone validation — no 30-45 day waits", "AI-verified evidence — every payment is documented and backed if a dispute arises", "Trust Score that sets you apart from competition", "Automatic professional budgets with CostPact"] },
+        { title: "Architects & surveyors", subtitle: "AI validation. Score 0-100. Green/amber/red findings.", desc: "", benefits: ["AI pre-validates evidence — you just confirm", "Digital certifications with electronic signature", "Progress reports generated automatically", "Validate remotely what today requires an on-site visit"] },
       ],
     },
     useCases: {
@@ -506,7 +504,7 @@ const dict = {
     },
     claim: {
       tag: "Why PactStream",
-      heading: "The first platform to unite construction management, AI verification and milestone payments on verified work",
+      heading: "The first platform to unite construction monitoring, AI verification and payment conditioned on real progress",
       body: "Some do escrow, but manually. Others verify with AI, but never touch the money. Banks finance, but verify nothing. No one had brought the three pieces together in a single flow — until now.",
     },
     example: {
@@ -538,7 +536,7 @@ const dict = {
     ai: {
       tag: "Artificial Intelligence",
       heading: "Document better. Get paid faster. Certify risk-free.",
-      sub: "Two AI engines that eliminate certification subjectivity and accelerate payments. Not technology for technology's sake — it's about getting paid sooner and protecting your investment better.",
+      sub: "AI issues a 0-100 verdict on sealed evidence — GPS, server time and cryptographic fingerprint — and the verdict is immutable. The supervising architect signs on top of it, always.",
       items: [
         { title: "Automatic visual verification", desc: "Upload geolocated photos. AI compares them with the budget and generates a 0-100 score. Classified findings: green (compliant), amber (review), red (non-compliant). Certify with data, not opinions." },
         { title: "An assistant that acts, not just answers", desc: "Ask about budget, request a certification, release a payment, detect deviations. All conversational, all real-time, all with real actions." },
@@ -551,8 +549,8 @@ const dict = {
       sub: "No competitor in Europe integrates the entire cycle: AI budgeting, verified site and payments, cash and tax, and sales.",
       costpact: { name: "CostPact", sub: "AI-powered budgeting SaaS", desc: "Generate professional budgets in minutes from a catalog of 755+ items with 13 years of real construction data. The entry point to the ecosystem.", link: "Automatically feeds into PactStream" },
       pactstream: { name: "PactStream", sub: "Smart escrow + AI verification + payments", desc: "Protects payments in PSD2-regulated escrow, verifies progress with AI, and releases funds on validated milestones. The financial engine of construction.", link: "Complete cycle: budget → payment" },
-      fiscalcore: { badge: "Coming soon", name: "FiscalCore", sub: "Cash and tax for construction", desc: "The third link: Profit First treasury designed for construction and Verifactu 2027 compliance, with an AI CFO that doesn't just advise — it executes. Every certified payment lands in an orderly cash position.", link: "Closes the cycle: payment → cash → taxes" },
-      propertyjourney: { badge: "Partner", name: "PropertyJourney", sub: "Sales platform for developers", desc: "The ecosystem's platform for managing development sales: clients, agencies, after-sales and financial tracking. It extends the full cycle into sales.", link: "From verified bricks to the sale" },
+      fiscalcore: { name: "FiscalCore", sub: "From gross collection to real income, taxation resolved", desc: "The third link: Profit First treasury designed for construction and Verifactu 2027 compliance, with an AI CFO that doesn't just advise — it executes. Every certified payment lands in an orderly cash position.", link: "Join the list → fiscalcore.io" },
+      propertyjourney: { name: "PropertyJourney", sub: "Sales and after-sales" },
       global: "An ecosystem built to operate in any market: every platform runs in multiple languages and currencies (euro, dollar and more), adapts to local currency and regulations, and integrates with any system or database via API.",
       advantage: { label: "Competitive advantage:", text: "STIMATpay (Plan Reforma) is the only manual escrow in Spain — their 70% voluntary adoption validates demand. We automate what they do manually and add AI." },
     },
@@ -795,9 +793,9 @@ const dict = {
       columns: {
         product: { title: "Product", links: ["Features", "How it works", "Pricing", "Ecosystem"] },
         audience: { title: "For whom", links: ["Developers", "Builders", "Surveyors", "Use cases"] },
-        company: { title: "Ecosystem", links: ["CostPact", "FiscalCore", "PropertyJourney (partner)", "Contact"] },
+        company: { title: "Ecosystem", links: ["CostPact", "FiscalCore", "PropertyJourney", "Contact"] },
       },
-      tagline: "Smart escrow for construction. Protect every euro of your project with AI and milestone-based payments.",
+      tagline: "Condition-based payment infrastructure for construction. Protect every euro of your project with AI and milestone-based payments.",
     },
     ui: {
       step: "Step",
@@ -833,10 +831,9 @@ const dict = {
       cta: "Reservar o meu lugar",
     },
     hero: {
-      badge: "Apenas 200 lugares — Acesso por convite",
       kicker: "A primeira plataforma que une",
-      heading: ["Controlo de obra, verificacao por IA e\n", "pagamento condicionado ao avanco real", "."],
-      sub: "O dinheiro fica numa conta regulada, externa as duas partes. A IA verifica cada marco com as evidencias da obra. O pagamento e libertado quando o trabalho esta feito — e so entao. Mais ninguem reune as tres pecas.",
+      heading: ["Controlo de obra, verificação por IA e\n", "pagamento condicionado ao avanço real", "."],
+      sub: "O dinheiro é depositado numa conta regulada, externa às duas partes. A IA verifica cada marco com as evidências da obra. O pagamento é libertado quando o trabalho está feito — e só então.",
       cta: "Reservar o meu lugar",
       ctaSecondary: "Ver como funciona",
       stats: [
@@ -856,9 +853,9 @@ const dict = {
       cta: "Reservar o meu lugar",
       privacy: "Sem spam. Sem compromisso. Acesso progressivo por vagas.",
       tiers: [
-        { icon: "🥇", name: "Fundador", desc: "Preco especial vitalicio + acesso prioritario a novas funcionalidades", range: "Lugares 1-50" },
-        { icon: "🥈", name: "Early Adopter", desc: "6 meses gratis + funcionalidades beta", range: "Lugares 51-200" },
-        { icon: "📋", name: "Lista de espera", desc: "Acesso progressivo por vagas mensais", range: "201+" },
+        { icon: "🥇", name: "Vaga Fundador", desc: "Preço vitalício.", range: "Lugares 1-50" },
+        { icon: "🥈", name: "Early adopter", desc: "6 meses grátis + beta privada.", range: "Lugares 51-200" },
+        { icon: "📋", name: "Lista de espera", desc: "Acesso escalonado mensal.", range: "201+" },
       ],
     },
     problem: {
@@ -896,9 +893,9 @@ const dict = {
       heading: "Cada papel tem a sua vantagem",
       sub: "O seu dinheiro so sai contra avanco verificado. Receba quando cumpre. Certifique com dados.",
       items: [
-        { title: "Promotores e autopromotores", subtitle: "O seu dinheiro so sai contra avanco verificado", benefits: ["Verifique o avanco com IA antes de liberar fundos", "O seu dinheiro protegido em escrow ate a validacao", "Dashboard com estado financeiro em tempo real", "Evidencias imutaveis que o protegem em disputas"] },
-        { title: "Construtores e reformistas", subtitle: "Receba antes, certifique automaticamente", benefits: ["Pagamento instantaneo ao validar o marco — sem esperar 30-45 dias", "Evidencias verificadas por IA — cada recebimento fica documentado e respaldado perante qualquer disputa", "Trust Score que o diferencia da concorrencia", "Orcamentos profissionais automaticos com CostPact"] },
-        { title: "Arquitetos e tecnicos", subtitle: "Validacao IA. Score 0-100. Conclusoes verde/ambar/vermelho.", benefits: ["A IA pre-valida evidencias — voce so confirma", "Certificacoes digitais com assinatura eletronica", "Relatorios de progresso gerados automaticamente", "Valide a distancia o que hoje exige visita presencial a obra"] },
+        { title: "Promotores e autopromotores", subtitle: "O seu dinheiro so sai contra avanco verificado", desc: "", benefits: ["Verifique o avanco com IA antes de liberar fundos", "O seu dinheiro protegido em escrow ate a validacao", "Dashboard com estado financeiro em tempo real", "Evidencias imutaveis que o protegem em disputas"] },
+        { title: "Construtores e reformistas", subtitle: "Receber deixa de depender do teu cliente. Depende do teu avanço.", desc: "Certificas, a IA verifica, recebes em 24h desde a validação do marco. A comissão paga-se sozinha com a caixa que liberta.", benefits: ["Pagamento instantaneo ao validar o marco — sem esperar 30-45 dias", "Evidencias verificadas por IA — cada recebimento fica documentado e respaldado perante qualquer disputa", "Trust Score que o diferencia da concorrencia", "Orcamentos profissionais automaticos com CostPact"] },
+        { title: "Arquitetos e tecnicos", subtitle: "Validacao IA. Score 0-100. Conclusoes verde/ambar/vermelho.", desc: "", benefits: ["A IA pre-valida evidencias — voce so confirma", "Certificacoes digitais com assinatura eletronica", "Relatorios de progresso gerados automaticamente", "Valide a distancia o que hoje exige visita presencial a obra"] },
       ],
     },
     useCases: {
@@ -949,7 +946,7 @@ const dict = {
     ai: {
       tag: "Inteligencia Artificial",
       heading: "Documente melhor. Receba mais rapido. Certifique sem riscos.",
-      sub: "Dois motores de IA que eliminam a subjetividade da certificacao e aceleram os pagamentos. Nao e tecnologia pela tecnologia — e para que receba antes e proteja melhor o seu investimento.",
+      sub: "A IA emite um parecer 0-100 sobre evidência selada — GPS, hora de servidor e impressão digital criptográfica — e o parecer é imutável. A direção de fiscalização assina por cima, sempre.",
       items: [
         { title: "Verificacao visual automatica", desc: "Carregue fotos geolocalizadas. A IA compara-as com o orcamento e gera um score 0-100. Conclusoes classificadas: verde (conforme), ambar (revisao), vermelho (incumprimento). Certifique com dados, nao com opinioes." },
         { title: "Assistente que executa, nao apenas responde", desc: "Pergunte sobre orcamento, peca uma certificacao, libere um pagamento, detete desvios. Tudo conversacional, tudo em tempo real, tudo com acoes reais." },
@@ -962,8 +959,8 @@ const dict = {
       sub: "Nenhum concorrente na Europa integra o ciclo inteiro: orcamento com IA, obra e pagamentos verificados, caixa e fiscal, e comercializacao.",
       costpact: { name: "CostPact", sub: "SaaS de orcamentacao com IA", desc: "Gere orcamentos profissionais em minutos a partir de um catalogo de mais de 755 itens com 13 anos de dados reais de obra. O ponto de entrada no ecossistema.", link: "Alimenta automaticamente o PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificacao IA + pagamentos", desc: "Protege os pagamentos em escrow regulado PSD2, verifica o avanco com IA e libera fundos por marcos validados. O motor financeiro da construcao.", link: "Ciclo completo: orcamento → pagamento" },
-      fiscalcore: { badge: "Em breve", name: "FiscalCore", sub: "Caixa e fiscal para construcao", desc: "O terceiro elo: tesouraria Profit First pensada para obra e conformidade Verifactu 2027, com um CFO-IA que nao so aconselha — executa. Cada recebimento certificado aterra numa caixa ordenada.", link: "Fecha o ciclo: recebimento → caixa → impostos" },
-      propertyjourney: { badge: "Partner", name: "PropertyJourney", sub: "Comercializacao para promotores", desc: "A plataforma do ecossistema que gere a venda de empreendimentos: clientes, agencias, pos-venda e acompanhamento financeiro. Estende o ciclo completo ate a comercializacao.", link: "Do tijolo verificado a venda" },
+      fiscalcore: { name: "FiscalCore", sub: "Do recebimento bruto ao rendimento real, com a fiscalidade resolvida", desc: "O terceiro elo: tesouraria Profit First pensada para obra e conformidade Verifactu 2027, com um CFO-IA que nao so aconselha — executa. Cada recebimento certificado aterra numa caixa ordenada.", link: "Junta-te à lista → fiscalcore.io" },
+      propertyjourney: { name: "PropertyJourney", sub: "Comercialização e pós-venda" },
       global: "Um ecossistema preparado para operar em qualquer mercado: todas as plataformas funcionam em varios idiomas e moedas (euro, dolar e mais), adaptam-se a moeda e normativa local e integram-se com qualquer sistema ou base de dados via API.",
       advantage: { label: "Vantagem competitiva:", text: "O STIMATpay (Plan Reforma) e o unico escrow manual em Espanha — a sua adocao voluntaria de 70% valida a procura. Nos automatizamos o que eles fazem a mao e adicionamos IA." },
     },
@@ -1206,7 +1203,7 @@ const dict = {
       columns: {
         product: { title: "Produto", links: ["Funcionalidades", "Como funciona", "Precos", "Ecossistema"] },
         audience: { title: "Para quem", links: ["Promotores", "Construtores", "Tecnicos", "Casos de uso"] },
-        company: { title: "Ecossistema", links: ["CostPact", "FiscalCore", "PropertyJourney (partner)", "Contacto"] },
+        company: { title: "Ecossistema", links: ["CostPact", "FiscalCore", "PropertyJourney", "Contacto"] },
       },
       tagline: "Escrow inteligente para construcao. Proteja cada euro da sua obra com IA e pagamentos por marcos.",
     },

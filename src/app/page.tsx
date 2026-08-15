@@ -335,10 +335,6 @@ function HeroSection({ t }: { t: Dict }) {
             <p className="text-lg md:text-xl text-[#8896A6] leading-relaxed mb-6 max-w-xl">
               {t.hero.sub}
             </p>
-            {/* Escasez pegada a la acción: badge + form + nota forman un solo bloque de conversión */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A9F3FF]/10 border border-[#A9F3FF]/30 text-[#A9F3FF] text-sm font-medium mb-4">
-              <Lock className="w-4 h-4" /> {t.hero.badge}
-            </div>
             {/* Inline email capture */}
             {!heroSubmitted ? (
               <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); try { await insertWaitlist(heroEmail, undefined, "hero"); track("waitlist_submit", { source: "hero" }); gaEvent("waitlist_submit", { source: "hero" }); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -830,7 +826,8 @@ function RolesSection({ t }: { t: Dict }) {
                     <Icon className="w-7 h-7" style={{ color: s.color }} />
                   </div>
                   <h3 className="text-xl font-bold text-[#1A2332] mb-1">{role.title}</h3>
-                  <p className="text-sm font-medium mb-5" style={{ color: s.color }}>{role.subtitle}</p>
+                  <p className={role.desc ? "text-sm font-medium mb-2" : "text-sm font-medium mb-5"} style={{ color: s.color }}>{role.subtitle}</p>
+                  {role.desc && <p className="text-sm text-[#5A6B7F] mb-5">{role.desc}</p>}
                   <ul className="space-y-3">
                     {role.benefits.map((b) => (
                       <li key={b} className="flex items-start gap-3">
@@ -856,7 +853,8 @@ function RolesSection({ t }: { t: Dict }) {
                     <Icon className="w-6 h-6" style={{ color: s.color }} />
                   </div>
                   <h3 className="text-lg font-bold text-[#1A2332] mb-1">{role.title}</h3>
-                  <p className="text-sm font-medium mb-4" style={{ color: s.color }}>{role.subtitle}</p>
+                  <p className={role.desc ? "text-sm font-medium mb-2" : "text-sm font-medium mb-4"} style={{ color: s.color }}>{role.subtitle}</p>
+                  {role.desc && <p className="text-sm text-[#5A6B7F] mb-4">{role.desc}</p>}
                   <ul className="space-y-2.5">
                     {role.benefits.map((b) => (
                       <li key={b} className="flex items-start gap-2.5">
@@ -1002,11 +1000,8 @@ function EcosystemSection({ t }: { t: Dict }) {
           </AnimatedSection>
           <AnimatedSection delay={0.25}>
             <div className="p-8 card-surface h-full">
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center">
-                  <TrendingUp className="w-7 h-7 text-[#0B6E5F]" />
-                </div>
-                <span className="px-2.5 py-0.5 text-[11px] font-semibold text-[#095A4E] bg-[#E6F5F2] rounded-full tracking-wide">{t.ecosystem.fiscalcore.badge}</span>
+              <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center mb-6">
+                <TrendingUp className="w-7 h-7 text-[#0B6E5F]" />
               </div>
               <h3 className="text-xl font-bold text-[#1A2332] mb-2">{t.ecosystem.fiscalcore.name}</h3>
               <p className="text-sm text-[#0B6E5F] font-medium mb-4">{t.ecosystem.fiscalcore.sub}</p>
@@ -1018,18 +1013,11 @@ function EcosystemSection({ t }: { t: Dict }) {
           </AnimatedSection>
           <AnimatedSection delay={0.35}>
             <div className="p-8 card-surface h-full">
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center">
-                  <Globe className="w-7 h-7 text-[#0B6E5F]" />
-                </div>
-                <span className="px-2.5 py-0.5 text-[11px] font-semibold text-[#095A4E] bg-[#E6F5F2] rounded-full tracking-wide">{t.ecosystem.propertyjourney.badge}</span>
+              <div className="w-14 h-14 rounded-[14px] bg-gradient-to-br from-[#E6F5F2] to-[#B3E2D9] flex items-center justify-center mb-6">
+                <Globe className="w-7 h-7 text-[#0B6E5F]" />
               </div>
               <h3 className="text-xl font-bold text-[#1A2332] mb-2">{t.ecosystem.propertyjourney.name}</h3>
-              <p className="text-sm text-[#0B6E5F] font-medium mb-4">{t.ecosystem.propertyjourney.sub}</p>
-              <p className="text-[#5A6B7F] text-sm leading-relaxed mb-5">{t.ecosystem.propertyjourney.desc}</p>
-              <a href="https://propertyjourney.pt" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-[#0B6E5F] hover:underline">
-                <ChevronRight className="w-4 h-4" /> {t.ecosystem.propertyjourney.link}
-              </a>
+              <p className="text-sm text-[#0B6E5F] font-medium">{t.ecosystem.propertyjourney.sub}</p>
             </div>
           </AnimatedSection>
         </div>
