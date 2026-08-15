@@ -137,12 +137,12 @@ const dict = {
       tag: "Ecosistema",
       heading: "El único ciclo completo del mercado",
       sub: "Ningún competidor en Europa integra el ciclo entero: presupuesto con IA, obra y pagos verificados, caja y fiscal, y comercialización.",
-      costpact: { name: "CostPact", sub: "SaaS de presupuestación con IA", desc: "Genera presupuestos profesionales en minutos desde un catálogo de más de 755 partidas con 13 años de datos reales de obra. El punto de entrada al ecosistema.", link: "Alimenta automáticamente a PactStream" },
+      costpact: { name: "CostPact", sub: "SaaS de presupuestación con IA", desc: "Genera presupuestos profesionales en minutos desde un catálogo propio con 13 años de datos reales de obra. El punto de entrada al ecosistema.", link: "El presupuesto aprobado se convierte en el contrato de PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificación IA + pagos", desc: "Protege los pagos en escrow regulado PSD2, verifica el avance con IA y libera fondos por hitos validados. El motor financiero de la construcción.", link: "Ciclo completo: presupuesto → pago" },
       fiscalcore: { name: "FiscalCore", sub: "Del cobro bruto al ingreso real, con la fiscalidad resuelta", desc: "El tercer eslabón: tesorería Profit First pensada para obra y cumplimiento Verifactu 2027, con un CFO-IA que no solo aconseja — ejecuta. Cada cobro certificado aterriza en una caja ordenada.", link: "Únete a la lista → fiscalcore.io" },
       propertyjourney: { name: "PropertyJourney", sub: "Comercialización y posventa" },
       global: "Un ecosistema preparado para operar en cualquier mercado: todas las plataformas funcionan en varios idiomas y monedas (euro, dólar y más), se adaptan a la moneda y normativa local y se integran con cualquier sistema o base de datos vía API.",
-      advantage: { label: "Ventaja competitiva:", text: "STIMATpay (Plan Reforma) es el único escrow manual en España — su 70% de adopción voluntaria valida la demanda. Nosotros automatizamos lo que ellos hacen a mano y añadimos IA." },
+      advantage: { label: "Ventaja competitiva:", text: "STIMATpay (Plan Reforma) es el escrow manual pionero en España — su tracción valida la demanda. Nosotros automatizamos lo que ellos hacen a mano y añadimos IA." },
     },
     hito0: {
       tag: "Exclusivo PactStream",
@@ -156,7 +156,7 @@ const dict = {
       stats: [
         { value: 84, suffix: "/100", divisor: 1, label: "Score UX/Diseño", sub: "Auditoría independiente post-implementación" },
         { value: 3, suffix: " roles", divisor: 1, label: "Dashboards diferenciados", sub: "Promotor, constructor y técnico" },
-        { value: 755, suffix: "+", divisor: 1, label: "Partidas en catálogo CostPact", sub: "13 años de datos reales de 200+ obras" },
+        { value: 200, suffix: "+", divisor: 1, label: "Obras reales detrás del catálogo", sub: "13 años de datos medidos en obra" },
       ],
     },
     pricing: {
@@ -213,7 +213,7 @@ const dict = {
           popular: false,
           price: "0€/mes",
           priceNote: "solo % por transacción",
-          costpact: ["Hasta 2 presupuestos/mes", "IA genera partidas desde planos", "Catálogo 755 partidas"],
+          costpact: ["Hasta 2 presupuestos/mes", "IA genera partidas desde planos", "Catálogo propio completo"],
           pactstream: ["Escalera del 2,4% al 1,2% por operación", "Escrow PSD2 + verificación IA", "Dashboard básico"],
           badge: "Gratis",
         },
@@ -294,9 +294,9 @@ const dict = {
         {
           id: "stimatpay", name: "STIMATpay", country: "🇪🇸 España", tagline: "Escrow manual para reformas",
           color: "#E67E22", pricing: "3-5% tx", pricingDetail: "Comisión por transacción 3-5%. Peritos presenciales. Fundada 2018 como Plan Reforma.",
-          strengths: ["Pioneros del escrow en construcción española", "70% adopción voluntaria valida demanda", "Red de 150+ peritos presenciales", "Marca conocida (Plan Reforma)"],
+          strengths: ["Pioneros del escrow en construcción española", "Adopción voluntaria que valida la demanda", "Red de 150+ peritos presenciales", "Marca conocida (Plan Reforma)"],
           weaknesses: ["Sin IA — verificación 100% manual", "Sin score automático de cumplimiento", "Solo reformas, no obra nueva", "Comisión más alta (3-5% vs 2,4%)", "Sin presupuestación integrada"],
-          verdict: "STIMATpay demostró que el mercado quiere escrow en construcción. Su 70% de adopción voluntaria es nuestra mejor validación. Pero su verificación es manual y cara — PactStream automatiza con IA lo que ellos hacen con visitas presenciales, a menor coste.",
+          verdict: "STIMATpay demostró que el mercado quiere escrow en construcción. Su adopción voluntaria es nuestra mejor validación. Pero su verificación es manual y cara — PactStream automatiza con IA lo que ellos hacen con visitas presenciales, a menor coste.",
           features: { escrow: "yes", ai_verification: "no", auto_payment: "no", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "no", ai_budgets: "no", mobile: "partial", freemium: "no" },
         },
         {
@@ -547,12 +547,12 @@ const dict = {
       tag: "Ecosystem",
       heading: "The only complete cycle on the market",
       sub: "No competitor in Europe integrates the entire cycle: AI budgeting, verified site and payments, cash and tax, and sales.",
-      costpact: { name: "CostPact", sub: "AI-powered budgeting SaaS", desc: "Generate professional budgets in minutes from a catalog of 755+ items with 13 years of real construction data. The entry point to the ecosystem.", link: "Automatically feeds into PactStream" },
+      costpact: { name: "CostPact", sub: "AI-powered budgeting SaaS", desc: "Generate professional budgets in minutes from a proprietary catalog built on 13 years of real construction data. The entry point to the ecosystem.", link: "Your approved budget becomes the PactStream contract" },
       pactstream: { name: "PactStream", sub: "Smart escrow + AI verification + payments", desc: "Protects payments in PSD2-regulated escrow, verifies progress with AI, and releases funds on validated milestones. The financial engine of construction.", link: "Complete cycle: budget → payment" },
       fiscalcore: { name: "FiscalCore", sub: "From gross collection to real income, taxation resolved", desc: "The third link: Profit First treasury designed for construction and Verifactu 2027 compliance, with an AI CFO that doesn't just advise — it executes. Every certified payment lands in an orderly cash position.", link: "Join the list → fiscalcore.io" },
       propertyjourney: { name: "PropertyJourney", sub: "Sales and after-sales" },
       global: "An ecosystem built to operate in any market: every platform runs in multiple languages and currencies (euro, dollar and more), adapts to local currency and regulations, and integrates with any system or database via API.",
-      advantage: { label: "Competitive advantage:", text: "STIMATpay (Plan Reforma) is the only manual escrow in Spain — their 70% voluntary adoption validates demand. We automate what they do manually and add AI." },
+      advantage: { label: "Competitive advantage:", text: "STIMATpay (Plan Reforma) is the manual-escrow pioneer in Spain — its traction validates demand. We automate what they do manually and add AI." },
     },
     hito0: {
       tag: "PactStream exclusive",
@@ -566,7 +566,7 @@ const dict = {
       stats: [
         { value: 84, suffix: "/100", divisor: 1, label: "UX/Design score", sub: "Independent post-implementation audit" },
         { value: 3, suffix: " roles", divisor: 1, label: "Differentiated dashboards", sub: "Developer, builder, and surveyor" },
-        { value: 755, suffix: "+", divisor: 1, label: "CostPact catalog items", sub: "13 years of real data from 200+ projects" },
+        { value: 200, suffix: "+", divisor: 1, label: "Real projects behind the catalog", sub: "13 years of data measured on site" },
       ],
     },
     pricing: {
@@ -623,7 +623,7 @@ const dict = {
           popular: false,
           price: "€0/mo",
           priceNote: "transaction % only",
-          costpact: ["Up to 2 budgets/month", "AI generates items from plans", "755-item catalog"],
+          costpact: ["Up to 2 budgets/month", "AI generates items from plans", "Full proprietary catalog"],
           pactstream: ["Sliding rate from 2.4% to 1.2% per transaction", "PSD2 escrow + AI verification", "Basic dashboard"],
           badge: "Free",
         },
@@ -704,9 +704,9 @@ const dict = {
         {
           id: "stimatpay", name: "STIMATpay", country: "🇪🇸 Spain", tagline: "Manual escrow for renovations",
           color: "#E67E22", pricing: "3-5% tx", pricingDetail: "Transaction fee 3-5%. In-person surveyors. Founded 2018 as Plan Reforma.",
-          strengths: ["Pioneers of construction escrow in Spain", "70% voluntary adoption validates demand", "Network of 150+ in-person surveyors", "Known brand (Plan Reforma)"],
+          strengths: ["Pioneers of construction escrow in Spain", "Voluntary adoption that validates demand", "Network of 150+ in-person surveyors", "Known brand (Plan Reforma)"],
           weaknesses: ["No AI — 100% manual verification", "No automatic compliance score", "Renovations only, not new builds", "Higher commission (3-5% vs 2.4%)", "No integrated budgeting"],
-          verdict: "STIMATpay proved the market wants construction escrow. Their 70% voluntary adoption is our best validation. But their verification is manual and expensive — PactStream automates with AI what they do with site visits, at lower cost.",
+          verdict: "STIMATpay proved the market wants construction escrow. Their voluntary adoption is our best validation. But their verification is manual and expensive — PactStream automates with AI what they do with site visits, at lower cost.",
           features: { escrow: "yes", ai_verification: "no", auto_payment: "no", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "no", ai_budgets: "no", mobile: "partial", freemium: "no" },
         },
         {
@@ -957,12 +957,12 @@ const dict = {
       tag: "Ecossistema",
       heading: "O unico ciclo completo do mercado",
       sub: "Nenhum concorrente na Europa integra o ciclo inteiro: orcamento com IA, obra e pagamentos verificados, caixa e fiscal, e comercializacao.",
-      costpact: { name: "CostPact", sub: "SaaS de orcamentacao com IA", desc: "Gere orcamentos profissionais em minutos a partir de um catalogo de mais de 755 itens com 13 anos de dados reais de obra. O ponto de entrada no ecossistema.", link: "Alimenta automaticamente o PactStream" },
+      costpact: { name: "CostPact", sub: "SaaS de orcamentacao com IA", desc: "Gere orcamentos profissionais em minutos a partir de um catalogo proprio com 13 anos de dados reais de obra. O ponto de entrada no ecossistema.", link: "O orcamento aprovado converte-se no contrato do PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificacao IA + pagamentos", desc: "Protege os pagamentos em escrow regulado PSD2, verifica o avanco com IA e libera fundos por marcos validados. O motor financeiro da construcao.", link: "Ciclo completo: orcamento → pagamento" },
       fiscalcore: { name: "FiscalCore", sub: "Do recebimento bruto ao rendimento real, com a fiscalidade resolvida", desc: "O terceiro elo: tesouraria Profit First pensada para obra e conformidade Verifactu 2027, com um CFO-IA que nao so aconselha — executa. Cada recebimento certificado aterra numa caixa ordenada.", link: "Junta-te à lista → fiscalcore.io" },
       propertyjourney: { name: "PropertyJourney", sub: "Comercialização e pós-venda" },
       global: "Um ecossistema preparado para operar em qualquer mercado: todas as plataformas funcionam em varios idiomas e moedas (euro, dolar e mais), adaptam-se a moeda e normativa local e integram-se com qualquer sistema ou base de dados via API.",
-      advantage: { label: "Vantagem competitiva:", text: "O STIMATpay (Plan Reforma) e o unico escrow manual em Espanha — a sua adocao voluntaria de 70% valida a procura. Nos automatizamos o que eles fazem a mao e adicionamos IA." },
+      advantage: { label: "Vantagem competitiva:", text: "O STIMATpay (Plan Reforma) e o pioneiro do escrow manual em Espanha — a sua tracao valida a procura. Nos automatizamos o que eles fazem a mao e adicionamos IA." },
     },
     hito0: {
       tag: "Exclusivo PactStream",
@@ -976,7 +976,7 @@ const dict = {
       stats: [
         { value: 84, suffix: "/100", divisor: 1, label: "Score UX/Design", sub: "Auditoria independente pos-implementacao" },
         { value: 3, suffix: " papeis", divisor: 1, label: "Dashboards diferenciados", sub: "Promotor, construtor e tecnico" },
-        { value: 755, suffix: "+", divisor: 1, label: "Itens no catalogo CostPact", sub: "13 anos de dados reais de 200+ obras" },
+        { value: 200, suffix: "+", divisor: 1, label: "Obras reais por tras do catalogo", sub: "13 anos de dados medidos em obra" },
       ],
     },
     pricing: {
@@ -1033,7 +1033,7 @@ const dict = {
           popular: false,
           price: "0€/mes",
           priceNote: "apenas % por transacao",
-          costpact: ["Ate 2 orcamentos/mes", "IA gera itens a partir de planos", "Catalogo 755 itens"],
+          costpact: ["Ate 2 orcamentos/mes", "IA gera itens a partir de planos", "Catalogo proprio completo"],
           pactstream: ["Escala do 2,4% ao 1,2% por operação", "Escrow PSD2 + verificacao IA", "Dashboard basico"],
           badge: "Gratis",
         },
@@ -1114,9 +1114,9 @@ const dict = {
         {
           id: "stimatpay", name: "STIMATpay", country: "🇪🇸 Espanha", tagline: "Escrow manual para renovacoes",
           color: "#E67E22", pricing: "3-5% tx", pricingDetail: "Comissao por transacao 3-5%. Peritos presenciais. Fundada em 2018 como Plan Reforma.",
-          strengths: ["Pioneiros do escrow na construcao espanhola", "70% de adocao voluntaria valida a procura", "Rede de 150+ peritos presenciais", "Marca conhecida (Plan Reforma)"],
+          strengths: ["Pioneiros do escrow na construcao espanhola", "Adocao voluntaria que valida a procura", "Rede de 150+ peritos presenciais", "Marca conhecida (Plan Reforma)"],
           weaknesses: ["Sem IA — verificacao 100% manual", "Sem score automatico de conformidade", "Apenas renovacoes, nao obra nova", "Comissao mais alta (3-5% vs 2,4%)", "Sem orcamentacao integrada"],
-          verdict: "O STIMATpay demonstrou que o mercado quer escrow na construcao. A sua adocao voluntaria de 70% e a nossa melhor validacao. Mas a sua verificacao e manual e cara — o PactStream automatiza com IA o que eles fazem com visitas presenciais, a menor custo.",
+          verdict: "O STIMATpay demonstrou que o mercado quer escrow na construcao. A sua adocao voluntaria e a nossa melhor validacao. Mas a sua verificacao e manual e cara — o PactStream automatiza com IA o que eles fazem com visitas presenciais, a menor custo.",
           features: { escrow: "yes", ai_verification: "no", auto_payment: "no", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "no", ai_budgets: "no", mobile: "partial", freemium: "no" },
         },
         {
