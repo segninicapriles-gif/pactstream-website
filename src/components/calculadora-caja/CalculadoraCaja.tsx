@@ -203,23 +203,39 @@ export function CalculadoraCaja() {
               <p className="mt-2 max-w-[52ch] text-[13.5px] text-[var(--color-ps-navy-200)]">
                 {positivo ? (
                   <>
-                    Y el circulante es la parte pequeña: con PactStream el dinero ya está custodiado
-                    antes de empezar, y en cuanto las partes aprueban —o la verificación determina
-                    que está bien ejecutado—{' '}
-                    <b className="text-[#6fe0b8]">el pago se libera automáticamente</b>.
+                    Y el circulante es solo la parte que se puede medir en euros.{' '}
+                    <b className="text-[#6fe0b8]">Lo que de verdad cambia no depende de este número</b> —
+                    lo tienes justo debajo, y vale igual para ti y para tu cliente.
                   </>
                 ) : (
                   <>
-                    Te lo decimos tal cual. Lo que PactStream deja sobre la mesa igualmente:{' '}
-                    <b className="text-[var(--color-ps-red-400)]">el impago deja de ser posible</b> — el
-                    dinero ya está custodiado antes de empezar —, la aprobación{' '}
-                    <b className="text-[var(--color-ps-red-400)]">libera el pago automáticamente</b> sobre
-                    evidencia sellada, y si hay desacuerdo solo se aparta el importe en disputa: la
-                    obra no se para. La caja liberada te deja aceptar la siguiente obra sin
-                    financiarla.
+                    Te lo decimos tal cual. Pero el circulante nunca fue el motivo para usar
+                    PactStream:{' '}
+                    <b className="text-[var(--color-ps-red-400)]">lo que sí cambia sigue intacto</b> a
+                    cualquier plazo — y vale igual para ti y para tu cliente.
                   </>
                 )}
               </p>
+            </div>
+
+            <p className="mt-5 text-[13px] font-bold text-white">Lo que no depende del cálculo</p>
+            <div className="mt-2 grid gap-4 rounded-xl border border-[rgba(169,243,255,0.16)] bg-[rgba(169,243,255,0.05)] p-4 sm:grid-cols-2">
+              <BenefBloque
+                titulo="Para ti"
+                puntos={[
+                  'Cobras contra tu avance certificado, no contra la tesorería de tu cliente.',
+                  'El impago deja de ser posible: el dinero se custodia en cuenta regulada antes de empezar.',
+                  'Si hay desacuerdo, solo se aparta el importe en disputa. La obra no se para.',
+                ]}
+              />
+              <BenefBloque
+                titulo="Para tu cliente"
+                puntos={[
+                  'Su dinero se libera contra certificación verificada, nunca por adelantado.',
+                  'Paga por obra ejecutada y sellada, no sobre promesas.',
+                  'Ante un problema, retiene solo lo que discute — el resto sigue fluyendo.',
+                ]}
+              />
             </div>
 
             <p className="mt-4 border-t border-[rgba(169,243,255,0.14)] pt-3 text-[13px] text-[var(--color-ps-navy-200)]">
@@ -262,6 +278,31 @@ function Fila({ label, valor, sub, borde }: { label: string; valor: string; sub?
         {valor}
         {sub ? <small className="ml-1.5 text-xs font-semibold text-[var(--color-ps-navy-200)]">{sub}</small> : null}
       </span>
+    </div>
+  )
+}
+
+function BenefBloque({ titulo, puntos }: { titulo: string; puntos: string[] }) {
+  return (
+    <div>
+      <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-cyan-glow)]">
+        {titulo}
+      </p>
+      <ul className="space-y-2">
+        {puntos.map((p) => (
+          <li key={p} className="flex gap-2 text-[13px] leading-snug text-[var(--color-ps-navy-200)]">
+            <svg
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+              className="mt-[3px] h-3 w-3 shrink-0 fill-none stroke-[var(--color-cyan-glow)]"
+              strokeWidth={2}
+            >
+              <path d="M3 8.5l3.2 3.2L13 5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span>{p}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
