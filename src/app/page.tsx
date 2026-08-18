@@ -1654,7 +1654,7 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
   const productHrefs = ["#funcionalidades", "#como-funciona", "#precios", "#ecosistema"];
   const audienceHrefs = ["#para-quien", "#para-quien", "#para-quien", "#casos-de-uso"];
   // "Sobre nosotros" y "Blog" no existen aún — solo se renderizan enlaces con destino real
-  const companyHrefs = ["https://costpact.io", "https://fiscalcore.io", "https://propertyjourney.pt", "/lanzamiento/", "mailto:hello@pactstream.io"];
+  const companyHrefs = ["https://costpact.io", "https://fiscalcore.io", "https://propertyjourney.pt", "/lanzamiento", "mailto:hello@pactstream.io"];
 
   return (
     <footer className="py-16 bg-[#050830] text-white/60 border-t border-white/[0.08]">
