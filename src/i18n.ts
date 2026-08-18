@@ -95,7 +95,7 @@ const dict = {
     claim: {
       tag: "Por qué PactStream",
       heading: "Control de obra, verificación por IA y pago condicionado al avance real",
-      body: "Unos hacen escrow, pero manual. Otros verifican con IA, pero no tocan el dinero. Los bancos financian, pero no verifican nada. Nadie había unido las tres piezas en un solo flujo — hasta ahora.",
+      body: "Unos hacen escrow, pero manual. Otros verifican con IA, pero no tocan el dinero. Los bancos financian, pero no verifican nada. En los ocho mercados que hemos analizado, nadie las ha unido en un solo flujo.",
     },
     example: {
       tag: "Así funciona en la práctica",
@@ -135,7 +135,7 @@ const dict = {
     },
     ecosystem: {
       tag: "Ecosistema",
-      heading: "El único ciclo completo del mercado",
+      heading: "El ciclo completo, de principio a fin",
       sub: "Ningún competidor en Europa integra el ciclo entero: presupuesto con IA, obra y pagos verificados, caja y fiscal, y comercialización.",
       costpact: { name: "CostPact", sub: "SaaS de presupuestación con IA", desc: "Genera presupuestos profesionales en minutos desde un catálogo propio con 13 años de datos reales de obra. El punto de entrada al ecosistema.", link: "El presupuesto aprobado se convierte en el contrato de PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificación IA + pagos", desc: "Protege los pagos en escrow regulado PSD2, verifica el avance con IA y libera fondos por hitos validados. El motor financiero de la construcción.", link: "Ciclo completo: presupuesto → pago" },
@@ -147,7 +147,7 @@ const dict = {
     hito0: {
       tag: "Exclusivo PactStream",
       heading: "Hito 0 Asegurado: el constructor arranca, tu dinero protegido",
-      desc: "El escrow protege el dinero que está quieto — pero el constructor necesita un anticipo para comprar materiales y pagar a su equipo antes de certificar el primer hito. Ahí el escrow ya no cubre al cliente. Hito 0 Asegurado resuelve las dos caras a la vez: el constructor recibe el 30% para arrancar, y ese anticipo queda protegido por una póliza de caución con una aseguradora líder del mercado (en negociación). Si el constructor no empieza, el cliente recupera su dinero. Nadie más integra anticipo asegurado, escrow y verificación por IA en un mismo flujo.",
+      desc: "El escrow protege el dinero que está quieto — pero el constructor necesita un anticipo para comprar materiales y pagar a su equipo antes de certificar el primer hito. Ahí el escrow ya no cubre al cliente. Hito 0 Asegurado resuelve las dos caras a la vez: el constructor recibe el 30% para arrancar, y ese anticipo queda protegido por una póliza de caución con una aseguradora líder del mercado (en negociación). Si el constructor no empieza, el cliente recupera su dinero. Hasta donde alcanza nuestra investigación, ningún competidor integra anticipo asegurado, custodia y verificación por IA en un mismo flujo.",
       tags: ["Anticipo para arrancar", "Protegido con caución", "Devolución si no empieza", "Integración única"],
     },
     validation: {
@@ -255,7 +255,7 @@ const dict = {
       legend: { yes: "Incluido", partial: "Parcial", no: "No disponible", roadmap: "En roadmap" },
       whyTitle: "¿Por qué PactStream gana en la mayoría de categorías?",
       whyReasons: [
-        { title: "Escrow + IA", desc: "La única plataforma que combina escrow regulado PSD2 con verificación automática por IA. Nadie más lo hace." },
+        { title: "Escrow + IA", desc: "Combina custodia regulada PSD2 con verificación automática por IA. En los ocho mercados analizados, ese cruce sigue vacante." },
         { title: "Ciclo completo", desc: "Presupuesto (CostPact) → escrow → verificación IA → certificación → pago automático. Todo en un sitio." },
         { title: "Precio justo", desc: "Gratis para empezar. Solo pagas % por transacción. Sin licencias ni módulos ocultos." },
       ],
@@ -369,7 +369,7 @@ const dict = {
         { q: "¿Qué pasa si hay una disputa?", a: "PactStream actúa como mediador neutral. Las evidencias verificadas por IA sirven como documentación objetiva e inmutable. El dinero permanece protegido en escrow hasta que se resuelva la situación." },
         { q: "¿Cuánto cuesta usar PactStream?", a: "Ofrecemos 3 paquetes que incluyen CostPact (presupuestación IA) + PactStream (escrow + pagos). La comisión la paga la constructora, no su cliente. Starter: gratis, solo pagas la comisión por transacción, que baja con el importe de la obra — 2,4% hasta 100.000 €, 2,0% hasta 400.000 €, 1,5% hasta 1M€ y 1,2% por encima. Professional: 99€/mes con presupuestos ilimitados, multi-obra y verificación IA ilimitada. Enterprise: desde 990€/mes con comisión desde 1,2%, API, SSO y CSM dedicado; se activa con GMV superior a 5M€ al año o con una sola obra de más de 3M€. Los primeros 50 usuarios obtienen pricing de fundador de por vida." },
         { q: "¿Está mi dinero seguro?", a: "Sí. Los fondos se custodian en cuentas segregadas reguladas bajo la directiva PSD2 europea. PactStream nunca tiene acceso directo a tu dinero — solo facilita la liberación cuando se cumplen las condiciones del hito." },
-        { q: "¿Qué diferencia hay con STIMATpay o Plan Reforma?", a: "STIMATpay ofrece un escrow manual sin verificación automática. PactStream integra en un solo flujo lo que nadie más reúne: presupuestación con IA (vía CostPact), escrow regulado, verificación del avance físico con score 0-100 como condición de liberación del pago, y anticipo protegido por póliza de caución (Hito 0). Esa integración —verificar el avance real y liberar el dinero en un mismo paso— es lo que nos diferencia." },
+        { q: "¿Qué diferencia hay con STIMATpay o Plan Reforma?", a: "STIMATpay ofrece un escrow manual sin verificación automática. PactStream integra en un solo flujo lo que no hemos visto reunido en ningún competidor: presupuestación con IA (vía CostPact), escrow regulado, verificación del avance físico con score 0-100 como condición de liberación del pago, y anticipo protegido por póliza de caución (Hito 0). Esa integración —verificar el avance real y liberar el dinero en un mismo paso— es lo que nos diferencia." },
       ],
     },
     footer: {
@@ -505,7 +505,7 @@ const dict = {
     claim: {
       tag: "Why PactStream",
       heading: "Construction monitoring, AI verification and payment conditioned on real progress",
-      body: "Some do escrow, but manually. Others verify with AI, but never touch the money. Banks finance, but verify nothing. No one had brought the three pieces together in a single flow — until now.",
+      body: "Some do escrow, but manually. Others verify with AI, but never touch the money. Banks finance, but verify nothing. In the eight markets we have analysed, no one has brought them together in a single flow.",
     },
     example: {
       tag: "How it works in practice",
@@ -545,7 +545,7 @@ const dict = {
     },
     ecosystem: {
       tag: "Ecosystem",
-      heading: "The only complete cycle on the market",
+      heading: "The complete cycle, end to end",
       sub: "No competitor in Europe integrates the entire cycle: AI budgeting, verified site and payments, cash and tax, and sales.",
       costpact: { name: "CostPact", sub: "AI-powered budgeting SaaS", desc: "Generate professional budgets in minutes from a proprietary catalog built on 13 years of real construction data. The entry point to the ecosystem.", link: "Your approved budget becomes the PactStream contract" },
       pactstream: { name: "PactStream", sub: "Smart escrow + AI verification + payments", desc: "Protects payments in PSD2-regulated escrow, verifies progress with AI, and releases funds on validated milestones. The financial engine of construction.", link: "Complete cycle: budget → payment" },
@@ -557,7 +557,7 @@ const dict = {
     hito0: {
       tag: "PactStream exclusive",
       heading: "Milestone 0 Insured: the builder starts, your money protected",
-      desc: "Escrow protects money that sits still — but the builder needs an advance to buy materials and pay their team before the first milestone is certified. At that point, escrow no longer covers the client. Milestone 0 Insured solves both sides at once: the builder receives 30% to get started, and that advance is protected by a surety bond with a leading insurer (in negotiation). If the builder doesn't start, the client recovers their money. No one else integrates an insured advance, escrow and AI verification in a single flow.",
+      desc: "Escrow protects money that sits still — but the builder needs an advance to buy materials and pay their team before the first milestone is certified. At that point, escrow no longer covers the client. Milestone 0 Insured solves both sides at once: the builder receives 30% to get started, and that advance is protected by a surety bond with a leading insurer (in negotiation). If the builder doesn't start, the client recovers their money. As far as our research reaches, no competitor integrates an insured advance, custody and AI verification in a single flow.",
       tags: ["Advance to get started", "Protected by surety bond", "Refund if work doesn't start", "Unique integration"],
     },
     validation: {
@@ -665,7 +665,7 @@ const dict = {
       legend: { yes: "Included", partial: "Partial", no: "Not available", roadmap: "On roadmap" },
       whyTitle: "Why PactStream wins in most categories",
       whyReasons: [
-        { title: "Escrow + AI", desc: "The only platform combining PSD2-regulated escrow with automatic AI verification. No one else does this." },
+        { title: "Escrow + AI", desc: "Combines PSD2-regulated custody with automatic AI verification. In the eight markets analysed, that crossover remains vacant." },
         { title: "Complete cycle", desc: "Budget (CostPact) → escrow → AI verification → certification → automatic payment. All in one place." },
         { title: "Fair pricing", desc: "Free to start. Pay only % per transaction. No licenses or hidden modules." },
       ],
@@ -779,7 +779,7 @@ const dict = {
         { q: "What happens if there's a dispute?", a: "PactStream acts as a neutral mediator. AI-verified evidence serves as objective, immutable documentation. Money remains protected in escrow until the situation is resolved." },
         { q: "How much does PactStream cost?", a: "We offer 3 bundles including CostPact (AI budgeting) + PactStream (escrow + payments). The fee is paid by the builder, not by their client. Starter: free, you only pay the transaction fee, which falls as the project grows — 2.4% up to €100,000, 2.0% up to €400,000, 1.5% up to €1M and 1.2% above that. Professional: €99/mo with unlimited budgets, multi-project and unlimited AI verification. Enterprise: from €990/mo with fees from 1.2%, API, SSO and a dedicated CSM; it kicks in above €5M annual GMV or with a single project over €3M. The first 50 users get lifetime founder pricing." },
         { q: "Is my money safe?", a: "Yes. Funds are held in segregated accounts regulated under the European PSD2 directive. PactStream never has direct access to your money — it only facilitates release when milestone conditions are met." },
-        { q: "How is PactStream different from STIMATpay or Plan Reforma?", a: "STIMATpay offers manual escrow without automatic verification. PactStream integrates in a single flow what no one else brings together: AI budgeting (via CostPact), regulated escrow, physical-progress verification with a 0-100 score as the payment-release condition, and an advance protected by a surety bond (Hito 0). That integration —verifying real progress and releasing the money in one step— is what sets us apart." },
+        { q: "How is PactStream different from STIMATpay or Plan Reforma?", a: "STIMATpay offers manual escrow without automatic verification. PactStream integrates in a single flow what we have not seen any competitor bring together: AI budgeting (via CostPact), regulated escrow, physical-progress verification with a 0-100 score as the payment-release condition, and an advance protected by a surety bond (Hito 0). That integration —verifying real progress and releasing the money in one step— is what sets us apart." },
       ],
     },
     footer: {
@@ -915,7 +915,7 @@ const dict = {
     claim: {
       tag: "Porque PactStream",
       heading: "Controlo de obra, verificacao por IA e pagamento condicionado ao avanco real",
-      body: "Uns fazem escrow, mas manual. Outros verificam com IA, mas nao tocam no dinheiro. Os bancos financiam, mas nao verificam nada. Ninguem tinha unido as tres pecas num so fluxo — ate agora.",
+      body: "Uns fazem escrow, mas manual. Outros verificam com IA, mas nao tocam no dinheiro. Os bancos financiam, mas nao verificam nada. Nos oito mercados que analisamos, ninguem as uniu num so fluxo.",
     },
     example: {
       tag: "Assim funciona na pratica",
@@ -955,7 +955,7 @@ const dict = {
     },
     ecosystem: {
       tag: "Ecossistema",
-      heading: "O unico ciclo completo do mercado",
+      heading: "O ciclo completo, de ponta a ponta",
       sub: "Nenhum concorrente na Europa integra o ciclo inteiro: orcamento com IA, obra e pagamentos verificados, caixa e fiscal, e comercializacao.",
       costpact: { name: "CostPact", sub: "SaaS de orcamentacao com IA", desc: "Gere orcamentos profissionais em minutos a partir de um catalogo proprio com 13 anos de dados reais de obra. O ponto de entrada no ecossistema.", link: "O orcamento aprovado converte-se no contrato do PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificacao IA + pagamentos", desc: "Protege os pagamentos em escrow regulado PSD2, verifica o avanco com IA e libera fundos por marcos validados. O motor financeiro da construcao.", link: "Ciclo completo: orcamento → pagamento" },
@@ -967,7 +967,7 @@ const dict = {
     hito0: {
       tag: "Exclusivo PactStream",
       heading: "Marco 0 Assegurado: o construtor arranca, o seu dinheiro protegido",
-      desc: "O escrow protege o dinheiro que esta parado — mas o construtor precisa de um adiantamento para comprar materiais e pagar a sua equipa antes de certificar o primeiro marco. Ai o escrow ja nao cobre o cliente. O Marco 0 Assegurado resolve os dois lados ao mesmo tempo: o construtor recebe 30% para arrancar, e esse adiantamento fica protegido por uma apolice de caucao com uma seguradora lider do mercado (em negociacao). Se o construtor nao comecar, o cliente recupera o seu dinheiro. Mais ninguem integra adiantamento assegurado, escrow e verificacao por IA num so fluxo.",
+      desc: "O escrow protege o dinheiro que esta parado — mas o construtor precisa de um adiantamento para comprar materiais e pagar a sua equipa antes de certificar o primeiro marco. Ai o escrow ja nao cobre o cliente. O Marco 0 Assegurado resolve os dois lados ao mesmo tempo: o construtor recebe 30% para arrancar, e esse adiantamento fica protegido por uma apolice de caucao com uma seguradora lider do mercado (em negociacao). Se o construtor nao comecar, o cliente recupera o seu dinheiro. Mais ate onde alcanca a nossa investigacao, nenhum concorrente integra adiantamento assegurado, custodia e verificacao por IA num so fluxo.",
       tags: ["Adiantamento para arrancar", "Protegido por caucao", "Devolucao se nao comecar", "Integracao unica"],
     },
     validation: {
@@ -1075,7 +1075,7 @@ const dict = {
       legend: { yes: "Incluido", partial: "Parcial", no: "Nao disponivel", roadmap: "No roadmap" },
       whyTitle: "Porque e que o PactStream ganha na maioria das categorias?",
       whyReasons: [
-        { title: "Escrow + IA", desc: "A unica plataforma que combina escrow regulado PSD2 com verificacao automatica por IA. Ninguem mais o faz." },
+        { title: "Escrow + IA", desc: "Combina custodia regulada PSD2 com verificacao automatica por IA. Nos oito mercados analisados, esse cruzamento continua por preencher." },
         { title: "Ciclo completo", desc: "Orcamento (CostPact) → escrow → verificacao IA → certificacao → pagamento automatico. Tudo num so lugar." },
         { title: "Preco justo", desc: "Gratis para comecar. So paga % por transacao. Sem licencas nem modulos ocultos." },
       ],
@@ -1189,7 +1189,7 @@ const dict = {
         { q: "O que acontece se houver uma disputa?", a: "O PactStream atua como mediador neutro. As evidencias verificadas por IA servem como documentacao objetiva e imutavel. O dinheiro permanece protegido em escrow ate que a situacao se resolva." },
         { q: "Quanto custa usar o PactStream?", a: "Oferecemos 3 pacotes que incluem CostPact (orcamentacao IA) + PactStream (escrow + pagamentos). A comissão e paga pela construtora, nao pelo cliente dela. Starter: gratis, so paga a comissão por transação, que desce com o valor da obra — 2,4% até 100.000 €, 2,0% até 400.000 €, 1,5% até 1M€ e 1,2% acima disso. Professional: 99€/mes com orcamentos ilimitados, multi-obra e verificacao IA ilimitada. Enterprise: a partir de 990€/mes com comissão desde 1,2%, API, SSO e CSM dedicado; ativa-se com GMV acima de 5M€ por ano ou com uma única obra acima de 3M€. Os primeiros 50 utilizadores obtem preco de fundador vitalicio." },
         { q: "O meu dinheiro esta seguro?", a: "Sim. Os fundos sao custodiados em contas segregadas reguladas ao abrigo da diretiva PSD2 europeia. O PactStream nunca tem acesso direto ao seu dinheiro — apenas facilita a liberacao quando se cumprem as condicoes do marco." },
-        { q: "Qual e a diferenca entre o PactStream e o STIMATpay ou Plan Reforma?", a: "O STIMATpay oferece um escrow manual sem verificacao automatica. O PactStream integra num so fluxo o que mais ninguem reune: orcamentacao com IA (via CostPact), escrow regulado, verificacao do avanco fisico com score 0-100 como condicao de libertacao do pagamento, e adiantamento protegido por seguro-caucao (Hito 0). Essa integracao —verificar o avanco real e libertar o dinheiro num so passo— e o que nos diferencia." },
+        { q: "Qual e a diferenca entre o PactStream e o STIMATpay ou Plan Reforma?", a: "O STIMATpay oferece um escrow manual sem verificacao automatica. O PactStream integra num so fluxo o que nao vimos reunido em nenhum concorrente: orcamentacao com IA (via CostPact), escrow regulado, verificacao do avanco fisico com score 0-100 como condicao de libertacao do pagamento, e adiantamento protegido por seguro-caucao (Hito 0). Essa integracao —verificar o avanco real e libertar o dinheiro num so passo— e o que nos diferencia." },
       ],
     },
     footer: {
