@@ -19,7 +19,7 @@ const dict = {
       stats: [
         { value: "200", label: "Plazas primera oleada" },
         { value: "IA", label: "Score de cumplimiento 0-100" },
-        { value: "PSD2", label: "Fondos protegidos por ley" },
+        { value: "PSD2", label: "Marco regulatorio del pago" },
       ],
     },
     waitlist: {
@@ -359,7 +359,11 @@ const dict = {
       cta: "Reservar mi plaza",
       note: "Sin spam · Sin tarjeta · Sin compromiso",
     },
-    trustBadges: ["PSD2 Regulado", "Cuenta segregada", "Cifrado end-to-end"],
+    trustBadges: ["Cuenta regulada PSD2 · previsto Q4 2026", "Evidencias con sello temporal", "Cifrado end-to-end"],
+    estado: {
+      titulo: "Estado del producto",
+      cuerpo: "CostPact (presupuesto) y FiscalCore (fiscalidad) están operativos hoy. La custodia del dinero y la liberación automática del pago están sujetas a la contratación de un proveedor de pagos regulado: en esta web describen el diseño del producto, no un servicio disponible hoy. Lanzamiento previsto Q4 2026. El Hito 0 Asegurado se instrumenta con póliza de caución de una aseguradora líder del mercado, en negociación.",
+    },
     faq: {
       tag: "Preguntas frecuentes",
       heading: "Resolvemos tus dudas",
@@ -429,7 +433,7 @@ const dict = {
       stats: [
         { value: "200", label: "First-wave spots" },
         { value: "AI", label: "Compliance score 0-100" },
-        { value: "PSD2", label: "Legally protected funds" },
+        { value: "PSD2", label: "Regulatory framework for payment" },
       ],
     },
     waitlist: {
@@ -769,7 +773,11 @@ const dict = {
       cta: "Reserve my spot",
       note: "No spam · No card · No commitment",
     },
-    trustBadges: ["PSD2 Regulated", "Segregated account", "End-to-end encryption"],
+    trustBadges: ["PSD2-regulated account · planned Q4 2026", "Time-stamped evidence", "End-to-end encryption"],
+    estado: {
+      titulo: "Product status",
+      cuerpo: "CostPact (budgeting) and FiscalCore (tax) are live today. Money custody and automatic payment release are subject to contracting a regulated payment provider: on this site they describe the product design, not a service available today. Launch planned for Q4 2026. Milestone 0 Insured is arranged through a surety bond with a leading insurer, under negotiation.",
+    },
     faq: {
       tag: "FAQ",
       heading: "Your questions answered",
@@ -839,7 +847,7 @@ const dict = {
       stats: [
         { value: "200", label: "Lugares na primeira vaga" },
         { value: "IA", label: "Score de conformidade 0-100" },
-        { value: "PSD2", label: "Fundos protegidos por lei" },
+        { value: "PSD2", label: "Quadro regulatorio do pagamento" },
       ],
     },
     waitlist: {
@@ -1179,7 +1187,11 @@ const dict = {
       cta: "Reservar o meu lugar",
       note: "Sem spam · Sem cartao · Sem compromisso",
     },
-    trustBadges: ["PSD2 Regulado", "Conta segregada", "Encriptacao ponta a ponta"],
+    trustBadges: ["Conta regulada PSD2 · previsto Q4 2026", "Evidencias com selo temporal", "Encriptacao ponta a ponta"],
+    estado: {
+      titulo: "Estado do produto",
+      cuerpo: "O CostPact (orcamentacao) e o FiscalCore (fiscalidade) estao operacionais hoje. A custodia do dinheiro e a libertacao automatica do pagamento estao sujeitas a contratacao de um fornecedor de pagamentos regulado: nesta pagina descrevem o desenho do produto, nao um servico disponivel hoje. Lancamento previsto para o 4.o trimestre de 2026. O Marco 0 Assegurado e instrumentado com apolice de caucao de uma seguradora lider de mercado, em negociacao.",
+    },
     faq: {
       tag: "Perguntas frequentes",
       heading: "Respondemos as suas duvidas",

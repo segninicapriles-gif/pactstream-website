@@ -366,6 +366,18 @@ function HeroSection({ t }: { t: Dict }) {
               <a href="#como-funciona" className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/20 text-white text-sm font-semibold rounded-[10px] hover:bg-white/10 transition-colors">
                 {t.hero.ctaSecondary}
               </a>
+              {/* Declaracion de estado. Va AQUI, bajo el heroe y sobre el pliegue,
+                  porque la pagina describe en presente un mecanismo cuya custodia
+                  todavia no tiene proveedor contratado — es el unico bloqueante de
+                  salida comercial. Enterrarla en el pie seria cumplir la forma y no
+                  el fondo. Se marca role="note" para que la lean los lectores de
+                  pantalla como aclaracion, no como reclamo. */}
+              <div role="note" className="mb-6 max-w-xl rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3">
+                <p className="text-xs font-semibold uppercase tracking-wider text-[#A9F3FF] mb-1.5">
+                  {t.estado.titulo}
+                </p>
+                <p className="text-xs leading-relaxed text-[#8896A6]">{t.estado.cuerpo}</p>
+              </div>
               <div className="flex flex-wrap gap-4">
                 {t.trustBadges.map((badge) => (
                   <div key={badge} className="flex items-center gap-1.5 text-xs text-[#8896A6]">
