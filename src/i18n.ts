@@ -411,7 +411,7 @@ const dict = {
       columns: {
         product: { title: "Producto", links: ["Funcionalidades", "Cómo funciona", "Precios", "Ecosistema"] },
         audience: { title: "Para quién", links: ["Promotores", "Constructores", "Técnicos", "Casos de uso"] },
-        company: { title: "Ecosistema", links: ["CostPact", "FiscalCore", "PropertyJourney", "Contacto"] },
+        company: { title: "Ecosistema", links: ["CostPact", "FiscalCore", "PropertyJourney", "Lanzamiento", "Contacto"] },
       },
       tagline: "Escrow inteligente para construcción. Protege cada euro de tu obra con IA y pagos por hitos.",
     },
@@ -849,7 +849,7 @@ const dict = {
       columns: {
         product: { title: "Product", links: ["Features", "How it works", "Pricing", "Ecosystem"] },
         audience: { title: "For whom", links: ["Developers", "Builders", "Surveyors", "Use cases"] },
-        company: { title: "Ecosystem", links: ["CostPact", "FiscalCore", "PropertyJourney", "Contact"] },
+        company: { title: "Ecosystem", links: ["CostPact", "FiscalCore", "PropertyJourney", "Launch", "Contact"] },
       },
       tagline: "Condition-based payment infrastructure for construction. Protect every euro of your project with AI and milestone-based payments.",
     },
@@ -1287,7 +1287,7 @@ const dict = {
       columns: {
         product: { title: "Produto", links: ["Funcionalidades", "Como funciona", "Precos", "Ecossistema"] },
         audience: { title: "Para quem", links: ["Promotores", "Construtores", "Tecnicos", "Casos de uso"] },
-        company: { title: "Ecossistema", links: ["CostPact", "FiscalCore", "PropertyJourney", "Contacto"] },
+        company: { title: "Ecossistema", links: ["CostPact", "FiscalCore", "PropertyJourney", "Lancamento", "Contacto"] },
       },
       tagline: "Escrow inteligente para construcao. Proteja cada euro da sua obra com IA e pagamentos por marcos.",
     },
