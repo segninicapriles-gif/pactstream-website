@@ -325,7 +325,11 @@ function HeroSection({ t }: { t: Dict }) {
       <div className="relative max-w-[1200px] mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-            {/* Kicker: completa la frase con el H1 — "La primera plataforma que une [control de obra...]" */}
+            {/* Kicker: la CATEGORÍA (doc 07), no un arranque de frase. El H1 es una oración
+                completa por sí sola — el copy v2 aprobado — y no depende de esta línea.
+                ⚠️ Aquí ponía "La primera plataforma que une…", un claim de primacía sin acotar
+                que se retiró el 18-ago. No reponerlo: la forma defendible es «vacante en los
+                ocho mercados que hemos analizado». */}
             <p className="text-sm md:text-base font-semibold text-[#A9F3FF] uppercase tracking-wider mb-3">{t.hero.kicker}</p>
             <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tighter mb-5">
               {t.hero.heading[0]}

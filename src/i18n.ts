@@ -11,7 +11,7 @@ const dict = {
       cta: "Reservar mi plaza",
     },
     hero: {
-      kicker: "La primera plataforma que une",
+      kicker: "Infraestructura de pago condicionado para construcción",
       heading: ["Control de obra, verificación por IA y\n", "pago condicionado al avance real", "."],
       sub: "El dinero se deposita en una cuenta regulada, externa a las dos partes. La IA verifica cada hito con las evidencias de obra. El pago se libera cuando el trabajo está hecho — y solo entonces.",
       cta: "Reservar mi plaza",
@@ -94,7 +94,7 @@ const dict = {
     },
     claim: {
       tag: "Por qué PactStream",
-      heading: "La primera plataforma que une control de obra, verificación por IA y pago condicionado al avance real",
+      heading: "Control de obra, verificación por IA y pago condicionado al avance real",
       body: "Unos hacen escrow, pero manual. Otros verifican con IA, pero no tocan el dinero. Los bancos financian, pero no verifican nada. Nadie había unido las tres piezas en un solo flujo — hasta ahora.",
     },
     example: {
@@ -183,7 +183,7 @@ const dict = {
           price: "2,4%",
           priceNote: "sobre cada transacción de hasta 100.000 €",
           priceSub: "Baja con el importe: 2,0% · 1,5% · 1,2%",
-          features: ["Cobras en 24 h: liberas 60-90 días de circulante", "Cobro garantizado por escrow regulado PSD2", "Certificaciones digitales verificables", "Trust Score que te diferencia ante el cliente"],
+          features: ["Cobras en 24 h: liberas 60-90 días de circulante", "Pago condicionado al avance, liberado desde cuenta regulada", "Certificaciones digitales verificables", "Trust Score que te diferencia ante el cliente"],
           badge: "Instrumento de venta",
         },
         {
@@ -421,7 +421,7 @@ const dict = {
       cta: "Reserve my spot",
     },
     hero: {
-      kicker: "The first platform to unite",
+      kicker: "Condition-based payment infrastructure for construction",
       heading: ["Construction monitoring, AI verification, and\n", "payment conditioned on real progress", "."],
       sub: "Funds sit in a regulated account, external to both parties. AI verifies every milestone against site evidence. Payment is released when the work is done — and only then.",
       cta: "Reserve my spot",
@@ -504,7 +504,7 @@ const dict = {
     },
     claim: {
       tag: "Why PactStream",
-      heading: "The first platform to unite construction monitoring, AI verification and payment conditioned on real progress",
+      heading: "Construction monitoring, AI verification and payment conditioned on real progress",
       body: "Some do escrow, but manually. Others verify with AI, but never touch the money. Banks finance, but verify nothing. No one had brought the three pieces together in a single flow — until now.",
     },
     example: {
@@ -593,7 +593,7 @@ const dict = {
           price: "2.4%",
           priceNote: "per transaction, up to €100,000",
           priceSub: "Falls with the amount: 2.0% · 1.5% · 1.2%",
-          features: ["Paid in 24h: releases 60-90 days of working capital", "Guaranteed payment via PSD2 escrow", "Verifiable digital certifications", "Trust Score that sets you apart"],
+          features: ["Paid in 24h: releases 60-90 days of working capital", "Payment conditioned on progress, released from a regulated account", "Verifiable digital certifications", "Trust Score that sets you apart"],
           badge: "A selling tool",
         },
         {
@@ -831,7 +831,7 @@ const dict = {
       cta: "Reservar o meu lugar",
     },
     hero: {
-      kicker: "A primeira plataforma que une",
+      kicker: "Infraestrutura de pagamento condicionado para construção",
       heading: ["Controlo de obra, verificação por IA e\n", "pagamento condicionado ao avanço real", "."],
       sub: "O dinheiro é depositado numa conta regulada, externa às duas partes. A IA verifica cada marco com as evidências da obra. O pagamento é libertado quando o trabalho está feito — e só então.",
       cta: "Reservar o meu lugar",
@@ -914,7 +914,7 @@ const dict = {
     },
     claim: {
       tag: "Porque PactStream",
-      heading: "A primeira plataforma que une controlo de obra, verificacao por IA e pagamento condicionado ao avanco real",
+      heading: "Controlo de obra, verificacao por IA e pagamento condicionado ao avanco real",
       body: "Uns fazem escrow, mas manual. Outros verificam com IA, mas nao tocam no dinheiro. Os bancos financiam, mas nao verificam nada. Ninguem tinha unido as tres pecas num so fluxo — ate agora.",
     },
     example: {
@@ -1003,7 +1003,7 @@ const dict = {
           price: "2,4%",
           priceNote: "sobre cada transação até 100.000 €",
           priceSub: "Desce com o valor: 2,0% · 1,5% · 1,2%",
-          features: ["Recebe em 24 h: liberta 60-90 dias de fundo de maneio", "Pagamento garantido por escrow PSD2", "Certificacoes digitais verificaveis", "Trust Score que o diferencia"],
+          features: ["Recebe em 24 h: liberta 60-90 dias de fundo de maneio", "Pagamento condicionado ao avanco, libertado de conta regulada", "Certificacoes digitais verificaveis", "Trust Score que o diferencia"],
           badge: "Instrumento de venda",
         },
         {
