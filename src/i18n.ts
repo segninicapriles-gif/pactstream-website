@@ -163,7 +163,7 @@ const dict = {
       tag: "Precios claros",
       heading: "Paga la constructora. Su cliente, no.",
       sub: "El promotor protege su inversión sin pagar nada. La constructora convierte esa garantía en contratos y cobra en 24 h. El técnico gana productividad.",
-      founderNote: "Estos son precios de fundador para la primera oleada (200 plazas). Los primeros 50 los conservan de por vida.",
+      founderNote: "Estos son precios de fundador para la primera oleada. Los primeros 50 los conservan de por vida.",
       cta: "Reservar mi plaza",
       profiles: [
         {
@@ -267,9 +267,9 @@ const dict = {
         { gap: "Historial de mercado", who: "STIMATpay (2018), Procore (2002)", when: "Producto validado, lanzamiento Q4 2026" },
       ],
       ctaTitle: "La comparativa más honesta es la tuya",
-      ctaSub: "200 plazas en primera fase. Acceso prioritario, soporte directo y precio fundador garantizado.",
+      ctaSub: "Acceso prioritario, soporte directo y precio fundador garantizado.",
       ctaButton: "Reserva tu plaza",
-      ctaNote: "Acceso limitado — 200 plazas en primera fase",
+      ctaNote: "Acceso limitado — primera oleada",
       wins: "PactStream gana",
       features: [
         { key: "escrow", label: "Escrow regulado PSD2", category: "Pagos" },
@@ -375,7 +375,7 @@ const dict = {
     },
     cta: {
       heading: ["Protege tu inversión.\n", "Cobra con confianza", "."],
-      sub: "Solo 200 plazas en la primera oleada. Condiciones de fundador para los primeros en llegar.",
+      sub: "Condiciones de fundador para los primeros en llegar. Plazas limitadas.",
       button: "Reservar mi plaza",
     },
     heroEmail: {
@@ -601,7 +601,7 @@ const dict = {
       tag: "Clear pricing",
       heading: "The builder pays. Their client doesn't.",
       sub: "Developers protect their investment at no cost. Builders turn that guarantee into contracts and get paid in 24 hours. Surveyors gain productivity.",
-      founderNote: "These are founder prices for the first wave (200 spots). The first 50 keep them for life.",
+      founderNote: "These are founder prices for the first wave. The first 50 keep them for life.",
       cta: "Reserve my spot",
       profiles: [
         {
@@ -705,9 +705,9 @@ const dict = {
         { gap: "Market track record", who: "STIMATpay (2018), Procore (2002)", when: "Product validated, launch Q4 2026" },
       ],
       ctaTitle: "The most honest comparison is your own",
-      ctaSub: "200 spots in the first wave. Priority access, direct support, and guaranteed founder pricing.",
+      ctaSub: "Priority access, direct support, and guaranteed founder pricing.",
       ctaButton: "Reserve my spot",
-      ctaNote: "Limited access — 200 spots in first wave",
+      ctaNote: "Limited access — first wave",
       wins: "PactStream wins",
       features: [
         { key: "escrow", label: "PSD2-regulated escrow", category: "Payments" },
@@ -813,7 +813,7 @@ const dict = {
     },
     cta: {
       heading: ["Protect your investment.\n", "Get paid with confidence", "."],
-      sub: "Only 200 spots in the first wave. Founder terms for the first to arrive.",
+      sub: "Founder terms for the first to arrive. Limited spots.",
       button: "Reserve my spot",
     },
     heroEmail: {
@@ -1039,7 +1039,7 @@ const dict = {
       tag: "Precos claros",
       heading: "Paga a construtora. O cliente dela, nao.",
       sub: "O promotor protege o seu investimento sem pagar nada. A construtora converte essa garantia em contratos e recebe em 24 horas. O tecnico ganha produtividade.",
-      founderNote: "Estes sao precos de fundador para a primeira vaga (200 lugares). Os primeiros 50 mantem-nos para sempre.",
+      founderNote: "Estes sao precos de fundador para a primeira vaga. Os primeiros 50 mantem-nos para sempre.",
       cta: "Reservar o meu lugar",
       profiles: [
         {
@@ -1143,9 +1143,9 @@ const dict = {
         { gap: "Historico de mercado", who: "STIMATpay (2018), Procore (2002)", when: "Produto validado, lancamento Q4 2026" },
       ],
       ctaTitle: "O comparativo mais honesto e o seu",
-      ctaSub: "200 lugares na primeira fase. Acesso prioritario, suporte direto e preco de fundador garantido.",
+      ctaSub: "Acesso prioritario, suporte direto e preco de fundador garantido.",
       ctaButton: "Reserve o seu lugar",
-      ctaNote: "Acesso limitado — 200 lugares na primeira fase",
+      ctaNote: "Acesso limitado — primeira vaga",
       wins: "PactStream ganha",
       features: [
         { key: "escrow", label: "Escrow regulado PSD2", category: "Pagamentos" },
@@ -1251,7 +1251,7 @@ const dict = {
     },
     cta: {
       heading: ["Proteja o seu investimento.\n", "Receba com confianca", "."],
-      sub: "Apenas 200 lugares na primeira vaga. Condicoes de fundador para os primeiros a chegar.",
+      sub: "Condicoes de fundador para os primeiros a chegar. Lugares limitados.",
       button: "Reservar o meu lugar",
     },
     heroEmail: {
