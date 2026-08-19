@@ -1,6 +1,16 @@
 import type { Metadata } from 'next'
 import { CalculadoraCaja } from '@/components/calculadora-caja/CalculadoraCaja'
 
+const ALT = {
+  canonical: 'https://pactstream.io/calculadora-dias-de-caja',
+  languages: {
+    'es-ES': 'https://pactstream.io/calculadora-dias-de-caja',
+    'en-US': 'https://pactstream.io/en/cash-days-calculator',
+    'pt-PT': 'https://pactstream.io/pt/calculadora-dias-de-caixa',
+    'x-default': 'https://pactstream.io/calculadora-dias-de-caja',
+  },
+}
+
 export const metadata: Metadata = {
   title: 'Calculadora de días de caja para constructoras | PactStream',
   description:
@@ -13,7 +23,7 @@ export const metadata: Metadata = {
     'días de caja constructora',
     'pago por certificaciones',
   ],
-  alternates: { canonical: 'https://pactstream.io/calculadora-dias-de-caja' },
+  alternates: ALT,
   openGraph: {
     title: 'Calculadora de días de caja para constructoras',
     description:
@@ -26,5 +36,5 @@ export const metadata: Metadata = {
 }
 
 export default function CalculadoraDiasDeCajaPage() {
-  return <CalculadoraCaja />
+  return <CalculadoraCaja locale="es" />
 }

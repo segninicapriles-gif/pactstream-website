@@ -855,6 +855,11 @@ function RolesSection({ t }: { t: Dict }) {
                       </li>
                     ))}
                   </ul>
+                  {(role as { link?: { href: string; label: string } }).link && (
+                    <a href={(role as { link: { href: string; label: string } }).link.href} className="mt-5 inline-flex items-center text-sm font-semibold hover:underline" style={{ color: s.color }}>
+                      {(role as { link: { href: string; label: string } }).link.label}
+                    </a>
+                  )}
                 </div>
               </AnimatedSection>
             );
@@ -882,6 +887,11 @@ function RolesSection({ t }: { t: Dict }) {
                       </li>
                     ))}
                   </ul>
+                  {(role as { link?: { href: string; label: string } }).link && (
+                    <a href={(role as { link: { href: string; label: string } }).link.href} className="mt-4 inline-flex items-center text-sm font-semibold hover:underline" style={{ color: s.color }}>
+                      {(role as { link: { href: string; label: string } }).link.label}
+                    </a>
+                  )}
                 </div>
               </div>
             );
@@ -1224,17 +1234,25 @@ function GlobalComparisonMatrix({ t }: { t: Dict }) {
   const pactstream = t.comparison.pactstream as Record<string, Support>;
   const competitors = t.comparison.competitors;
 
+  // Columnas de datos = PactStream + cada competidor. La plantilla se genera a
+  // partir del nº real de competidores (antes era fija en repeat(6), lo que
+  // desbordaba al superar 5 competidores). Va por inline style, no por clase
+  // Tailwind: una clase dinámica no la escanea el compilador y desaparece sin error.
+  const dataCols = competitors.length + 1;
+  const gridTemplateColumns = `180px repeat(${dataCols}, minmax(64px, 1fr))`;
+  const minWidth = 180 + dataCols * 76;
+
   return (
     <div className="overflow-x-auto -mx-5 px-5">
-      <div className="min-w-[800px]">
+      <div style={{ minWidth }}>
         <div className="card-surface overflow-hidden">
-          <div className="grid grid-cols-[180px_repeat(6,1fr)] bg-[#080D42] text-white text-[11px] font-semibold">
+          <div className="grid bg-[#080D42] text-white text-[11px] font-semibold" style={{ gridTemplateColumns }}>
             <div className="px-4 py-3 sticky left-0 bg-[#080D42] z-10">{t.ui.feature}</div>
             <div className="px-2 py-3 text-center text-[#A9F3FF]">PactStream</div>
             {competitors.map((c) => <div key={(c as any).id} className="px-2 py-3 text-center truncate">{c.name.split("(")[0].trim()}</div>)}
           </div>
           {features.map((f, i) => (
-            <div key={f.key} className={`grid grid-cols-[180px_repeat(6,1fr)] card-row ${i % 2 === 0 ? "bg-white" : "bg-[#F5F7FA]/30"}`}>
+            <div key={f.key} className={`grid card-row ${i % 2 === 0 ? "bg-white" : "bg-[#F5F7FA]/30"}`} style={{ gridTemplateColumns }}>
               <div className="px-4 py-2 text-xs text-[#4A5568] sticky left-0 bg-inherit z-10">{f.label}</div>
               <div className="px-2 py-2 flex justify-center bg-[var(--color-ps-green-50)]/30"><SupportBadge support={pactstream[f.key]} /></div>
               {competitors.map((c) => <div key={(c as any).id} className="px-2 py-2 flex justify-center"><SupportBadge support={(c.features as Record<string, Support>)[f.key]} /></div>)}
@@ -1276,7 +1294,7 @@ function ComparisonSection({ t }: { t: Dict }) {
 
         {/* Global Matrix */}
         <AnimatedSection className="mb-16">
-          <h3 className="text-xl font-display font-bold text-[#1A2332] mb-6 text-center">{t.comparison.matrixTitle}</h3>
+          <h3 className="text-xl font-display font-bold text-[#1A2332] mb-6 text-center">{t.comparison.matrixTitle.replace("{f}", String(t.comparison.features.length)).replace("{c}", String(t.comparison.competitors.length))}</h3>
           <GlobalComparisonMatrix t={t} />
         </AnimatedSection>
 
