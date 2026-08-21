@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oleada Fundador: 50 plazas · Cimbrium</title>
+<meta name="description" content="Empieza hoy con CostPact y FiscalCore, y sé de los primeros cuando el ciclo completo abra en tu mercado. Oleada Fundador: 50 plazas, precio de por vida.">
+<link rel="icon" type="image/png" href="/cimbrium-mark.png">
+<meta property="og:title" content="Oleada Fundador: 50 plazas · Cimbrium">
+<meta property="og:description" content="Condiciones de fundador fijadas por escrito. Precio de por vida. El ecosistema Cimbrium: CostPact, PactStream, FiscalCore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#080D1E; --navy2:#0B1330; --ink:#EDF1F8; --slate:#9AA6C0; --muted:#6B7796;
+    --cyan:#A9F3FF; --gold:#E3AC55; --blue:#0121DC; --line:rgba(169,243,255,.14); --card:#0E1636;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--navy);color:var(--ink);font-family:"Hanken Grotesk",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:44px 24px 80px}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:52px}
+  .brand img{width:64px;height:64px;object-fit:contain;mix-blend-mode:screen}
+  .brand b{font-family:"Hanken Grotesk";font-weight:800;font-size:22px;letter-spacing:-.01em}
+  .kicker{font-family:"Hanken Grotesk";font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+  h1{font-family:"Nunito";font-weight:900;font-size:clamp(34px,7vw,54px);line-height:1.08;letter-spacing:-.02em;margin-bottom:18px;text-wrap:balance}
+  h1 .n{color:var(--gold)}
+  .lead{font-size:18px;color:var(--slate);margin-bottom:26px}
+  ul.ticks{list-style:none;margin:0 0 8px;padding:0}
+  ul.ticks li{display:flex;gap:12px;padding:9px 0;font-size:15.5px;color:var(--ink)}
+  ul.ticks svg{flex:none;margin-top:3px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;margin-top:30px}
+  form .field{margin-bottom:14px}
+  .field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:var(--slate)}
+  .field input,.field select{width:100%;padding:13px 14px;border:1.5px solid rgba(169,243,255,.18);border-radius:12px;font:inherit;font-size:16px;background:#0A1128;color:var(--ink)}
+  .field input:focus,.field select:focus{outline:2px solid rgba(169,243,255,.25);border-color:var(--cyan)}
+  button{width:100%;padding:15px;background:var(--blue);color:#fff;border:0;border-radius:12px;font-family:"Nunito";font-weight:800;font-size:17px;cursor:pointer;transition:opacity .15s}
+  button:hover{opacity:.92} button:disabled{opacity:.6;cursor:default}
+  .ok{background:rgba(18,176,122,.14);border:1px solid rgba(111,224,184,.35);color:#8ff0c6;border-radius:14px;padding:20px;font-weight:600}
+  .err{color:#ff9db0;font-size:14px;margin-top:10px}
+  .foot{color:var(--muted);font-size:13px;margin-top:26px;line-height:1.6}
+  .foot a{color:var(--cyan);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><img src="/cimbrium-mark.png" alt="Cimbrium"><b>Cimbrium</b></div>
+
+  <div class="kicker">Acceso por oleadas</div>
+  <h1>Oleada Fundador: <span class="n">50 plazas</span>.</h1>
+  <p class="lead">Empieza hoy con presupuestos sobre catálogo oficial y certificaciones en CostPact y el cierre fiscal en tiempo real de FiscalCore — y sé de los primeros cuando el ciclo completo abra en tu mercado.</p>
+
+  <ul class="ticks">
+    <li><svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="#A9F3FF" stroke-width="2"><path d="M3 8.5l3.2 3.2L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Condiciones de fundador <b>fijadas por escrito</b> para tu oleada.</span></li>
+    <li><svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="#A9F3FF" stroke-width="2"><path d="M3 8.5l3.2 3.2L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alta acompañada por el equipo, <b>con tus obras reales</b>.</span></li>
+    <li><svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="#A9F3FF" stroke-width="2"><path d="M3 8.5l3.2 3.2L13 5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Prioridad de acceso <b>cuando el ciclo completo abra</b> en tu mercado.</span></li>
+  </ul>
+
+  <div class="card" id="formCard">
+    <form id="lead">
+      <div class="field"><label for="nombre">Tu nombre</label><input id="nombre" required autocomplete="name"></div>
+      <div class="field"><label for="empresa">Empresa</label><input id="empresa" required autocomplete="organization"></div>
+      <div class="field"><label for="email">Email</label><input id="email" type="email" required autocomplete="email"></div>
+      <div class="field"><label for="rol">Tu rol</label>
+        <select id="rol" required>
+          <option value="" disabled selected>Elige uno…</option>
+          <option>Constructora — obra nueva</option>
+          <option>Constructora — reforma</option>
+          <option>Oficina técnica / estudio</option>
+          <option>Promotora</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <button type="submit" id="btn">Solicitar mi plaza Fundador</button>
+      <div class="err" id="err" hidden>No se ha podido enviar. Escríbenos a hola@cimbrium.com y lo vemos.</div>
+    </form>
+  </div>
+
+  <p class="foot">
+    Precio de fundador de por vida para las 50 primeras cuentas. El ciclo completo (custodia regulada y liberación
+    del pago) se abre por oleadas, sin fechas comprometidas. Cimbrium reúne CostPact, PactStream, FiscalCore y la
+    comercialización y posventa. <a href="https://cimbrium.com" target="_blank" rel="noopener">cimbrium.com</a>
+  </p>
+</div>
+
+<script>
+  var SUPABASE_URL='https://tkncogzzlzbfhsfqlnsw.supabase.co';
+  var SUPABASE_ANON_KEY='sb_publishable_HjRkq_yRX4NzO2s7hGNLSQ_AXT-51VR';
+  document.getElementById('lead').addEventListener('submit',async function(e){
+    e.preventDefault();
+    var btn=document.getElementById('btn');btn.disabled=true;btn.textContent='Enviando…';
+    document.getElementById('err').hidden=true;
+    var email=document.getElementById('email').value.trim();
+    var role='fundador · '+document.getElementById('rol').value+' · '+document.getElementById('nombre').value.trim()
+      +' ('+document.getElementById('empresa').value.trim()+')';
+    try{
+      var res=await fetch(SUPABASE_URL+'/rest/v1/waitlist',{
+        method:'POST',
+        headers:{'Content-Type':'application/json',apikey:SUPABASE_ANON_KEY,Authorization:'Bearer '+SUPABASE_ANON_KEY,Prefer:'return=minimal'},
+        body:JSON.stringify({email:email,role:role,source:'fundador'})
+      });
+      if(!res.ok) throw new Error(res.status);
+      if(window.gtag) gtag('event','lead_submit',{source:'fundador'});
+      document.getElementById('formCard').innerHTML=
+        '<div class="ok">✓ Recibido, '+document.getElementById('nombre').value.trim()+
+        '. Te escribimos para reservar tu plaza Fundador y arrancar con tus obras reales.</div>';
+    }catch(_){
+      btn.disabled=false;btn.textContent='Solicitar mi plaza Fundador';
+      document.getElementById('err').hidden=false;
+    }
+  });
+</script>
+</body>
+</html>
