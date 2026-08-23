@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/margen", "destination": "https://fiscalcore.io/margen", "permanent": true },
+    { "source": "/margen/", "destination": "https://fiscalcore.io/margen", "permanent": true },
+    { "source": "/margen/:path*", "destination": "https://fiscalcore.io/margen", "permanent": true }
+  ]
+}
