@@ -1,5 +1,6 @@
 "use client";
 
+import type { Dict } from "@/i18n";
 import {
   Shield,
   Camera,
@@ -188,13 +189,18 @@ function AppHeader({
   );
 }
 
+/* Los mockups dibujan la app real, asi que sus textos viven en el diccionario
+   como cualquier otra cadena de la web: `t.screens`. Antes estaban escritos en
+   castellano dentro del componente y se veian asi tambien en /en y /pt. */
+type S = Dict["screens"];
+
 /* ─── Shared: BottomNav (Sistema ARCO — activa por color/peso, SIN chip) ─── */
-function BottomNav({ active }: { active: number }) {
+function BottomNav({ active, t }: { active: number; t: S }) {
   const tabs = [
-    { icon: Home, label: "Inicio" },
-    { icon: Folder, label: "Obras" },
-    { icon: Bell, label: "Avisos", badge: 3 },
-    { icon: User, label: "Perfil" },
+    { icon: Home, label: t.nav.home },
+    { icon: Folder, label: t.nav.works },
+    { icon: Bell, label: t.nav.alerts, badge: 3 },
+    { icon: User, label: t.nav.profile },
   ];
   return (
     <div
@@ -256,17 +262,17 @@ function StatusPill({ label, color, bg }: { label: string; color: string; bg: st
 /* ═════════════════════════════════════════════ */
 /* ─── 1. Dashboard Constructor ─── */
 /* ═════════════════════════════════════════════ */
-export function ScreenDashboardConstructor() {
+export function ScreenDashboardConstructor({ t }: { t: S }) {
   return (
     <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
-        <div className="text-[9px] font-medium" style={{ opacity: 0.7 }}>Buenos días</div>
-        <div className="text-[15px] mt-[1px]" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>Carlos Martínez</div>
+        <div className="text-[9px] font-medium" style={{ opacity: 0.7 }}>{t.greeting}</div>
+        <div className="text-[15px] mt-[1px]" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>{t.builderName}</div>
         {/* Hero KPI */}
         <div className="mt-3 rounded-[20px] p-3 flex items-center justify-between" style={{ background: C.heroCard }}>
           <div>
-            <div className="text-[8px] font-medium" style={{ opacity: 0.6 }}>Facturación acumulada</div>
-            <div className="mt-[1px]"><Cifra value="142.800€" size={22} weight={800} color="#FFFFFF" atenuado={0.5} /></div>
+            <div className="text-[8px] font-medium" style={{ opacity: 0.6 }}>{t.builder.revenueTotal}</div>
+            <div className="mt-[1px]"><Cifra value={t.amounts.revenueTotal} size={22} weight={800} color="#FFFFFF" atenuado={0.5} /></div>
           </div>
           {/* Arco de custodia — score */}
           <div className="flex flex-col items-center gap-[2px]">
@@ -280,14 +286,14 @@ export function ScreenDashboardConstructor() {
 
       <div className="flex-1 min-h-0 px-3 py-2.5 space-y-2 overflow-hidden">
         <div className="grid grid-cols-3 gap-2">
-          <MiniKpi label="Obras activas" value="7" />
-          <MiniKpi label="Pte. cobro" value="24.500€" />
-          <MiniKpi label="Cobrado mes" value="18.200€" />
+          <MiniKpi label={t.builder.kpiActive} value="7" />
+          <MiniKpi label={t.builder.kpiPending} value={t.amounts.pending} />
+          <MiniKpi label={t.builder.kpiCollected} value={t.amounts.collected} />
         </div>
 
         {/* Bar chart */}
         <div className="rounded-[20px] p-3" style={{ background: C.surface, boxShadow: C.cardShadow }}>
-          <div className="text-[9px] font-bold mb-2" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Facturación mensual</div>
+          <div className="text-[9px] font-bold mb-2" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{t.builder.revenueMonthly}</div>
           <div className="flex items-end gap-[3px] h-[48px]">
             {[35, 50, 42, 65, 55, 72, 80, 60, 75, 90, 70, 85].map((h, i) => (
               <div
@@ -302,29 +308,29 @@ export function ScreenDashboardConstructor() {
             ))}
           </div>
           <div className="flex justify-between mt-1 text-[6px]" style={{ color: C.textSecondary }}>
-            <span>Ene</span><span>Jun</span><span>Dic</span>
+            {t.monthsAxis.map((m) => <span key={m}>{m}</span>)}
           </div>
         </div>
 
         {/* Work card */}
         <div className="rounded-[20px] p-3" style={{ background: C.surface, boxShadow: C.cardShadow }}>
           <div className="flex justify-between items-center">
-            <span className="text-[10px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Chalet Pozuelo Norte</span>
-            <StatusPill label="En curso" color={C.blue} bg={C.blueBg} />
+            <span className="text-[10px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{t.projectA}</span>
+            <StatusPill label={t.status.inProgress} color={C.blue} bg={C.blueBg} />
           </div>
           <div className="flex items-center gap-1 mt-[2px] text-[7px]" style={{ color: C.textSecondary }}>
-            <MapPin className="w-[8px] h-[8px]" /> Pozuelo de Alarcón
+            <MapPin className="w-[8px] h-[8px]" /> {t.location}
           </div>
           <div className="mt-2 rounded-full h-[5px]" style={{ background: C.hairline }}>
             <div className="h-full rounded-full" style={{ width: "68%", background: C.blue }} />
           </div>
           <div className="flex justify-between mt-[3px] text-[7px]" style={{ color: C.textSecondary }}>
-            <span>Hito 3 de 5</span>
-            <Cifra value="345.000€" size={8} color={C.textPrimary} />
+            <span>{t.builder.milestoneOf}</span>
+            <Cifra value={t.amounts.projectValue} size={8} color={C.textPrimary} />
           </div>
         </div>
       </div>
-      <BottomNav active={0} />
+      <BottomNav active={0} t={t} />
     </div>
   );
 }
@@ -332,31 +338,33 @@ export function ScreenDashboardConstructor() {
 /* ═════════════════════════════════════════════ */
 /* ─── 2. Detalle de obra ─── */
 /* ═════════════════════════════════════════════ */
-export function ScreenObraDetail() {
-  const milestones = [
-    { name: "Cimentación", amount: "42.000€", status: "paid" as const, pct: 100 },
-    { name: "Estructura", amount: "78.000€", status: "validated" as const, pct: 100 },
-    { name: "Cerramientos", amount: "55.000€", status: "in_progress" as const, pct: 68 },
-    { name: "Instalaciones", amount: "38.000€", status: "pending" as const, pct: 0 },
-    { name: "Acabados", amount: "32.000€", status: "pending" as const, pct: 0 },
-  ];
+export function ScreenObraDetail({ t }: { t: S }) {
+  const importes = t.amounts.milestones;
+  const estados = ["paid", "validated", "in_progress", "pending", "pending"] as const;
+  const pcts = [100, 100, 68, 0, 0];
+  const milestones = t.detail.milestones.map((name, i) => ({
+    name,
+    amount: importes[i],
+    status: estados[i],
+    pct: pcts[i],
+  }));
 
   const cfg = {
-    paid: { label: "Pagado", color: C.success, bg: C.successBg },
-    validated: { label: "Validado", color: C.blue, bg: C.blueBg },
-    in_progress: { label: "En curso", color: C.amber, bg: C.amberBg },
-    pending: { label: "Pendiente", color: C.textSecondary, bg: "rgba(118,123,163,0.08)" },
+    paid: { label: t.status.paid, color: C.success, bg: C.successBg },
+    validated: { label: t.status.validated, color: C.blue, bg: C.blueBg },
+    in_progress: { label: t.status.inProgress, color: C.amber, bg: C.amberBg },
+    pending: { label: t.status.pending, color: C.textSecondary, bg: "rgba(118,123,163,0.08)" },
   };
 
   return (
     <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
         <div className="flex items-center gap-1 text-[9px] font-medium" style={{ opacity: 0.7 }}>
-          <ChevronRight className="w-3 h-3 rotate-180" /> Mis obras
+          <ChevronRight className="w-3 h-3 rotate-180" /> {t.detail.back}
         </div>
-        <div className="text-[15px] mt-1" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>Chalet Pozuelo Norte</div>
+        <div className="text-[15px] mt-1" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>{t.projectA}</div>
         <div className="flex items-center gap-1 mt-[2px] text-[9px]" style={{ opacity: 0.6 }}>
-          <MapPin className="w-[10px] h-[10px]" /> Pozuelo de Alarcón · <Cifra value="245.000€" size={9} color="#FFFFFF" atenuado={0.6} />
+          <MapPin className="w-[10px] h-[10px]" /> {t.location} · <Cifra value={t.amounts.projectTotal} size={9} color="#FFFFFF" atenuado={0.6} />
         </div>
       </AppHeader>
 
@@ -367,15 +375,15 @@ export function ScreenObraDetail() {
             <Shield className="w-4 h-4" style={{ color: C.cyan }} />
           </div>
           <div className="text-white flex-1">
-            <div className="text-[9px] font-bold" style={{ fontFamily: FONT_BODY }}>Escrow protegido</div>
+            <div className="text-[9px] font-bold" style={{ fontFamily: FONT_BODY }}>{t.detail.escrowTitle}</div>
             <div className="text-[8px]" style={{ opacity: 0.6 }}>
-              <Cifra value="55.000€" size={8} color="#FFFFFF" atenuado={0.6} /> depositados · Hito 3
+              <Cifra value={t.amounts.escrow} size={8} color="#FFFFFF" atenuado={0.6} /> {t.detail.escrowSub}
             </div>
           </div>
-          <StatusPill label="Activo" color="#080D42" bg={C.cyan} />
+          <StatusPill label={t.status.active} color="#080D42" bg={C.cyan} />
         </div>
 
-        <div className="text-[9px] font-bold mt-1" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Hitos de obra</div>
+        <div className="text-[9px] font-bold mt-1" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{t.detail.milestonesTitle}</div>
 
         {milestones.map((m) => {
           const s = cfg[m.status];
@@ -395,7 +403,7 @@ export function ScreenObraDetail() {
           );
         })}
       </div>
-      <BottomNav active={1} />
+      <BottomNav active={1} t={t} />
     </div>
   );
 }
@@ -403,21 +411,16 @@ export function ScreenObraDetail() {
 /* ═════════════════════════════════════════════ */
 /* ─── 3. Verificación IA ─── */
 /* ═════════════════════════════════════════════ */
-export function ScreenAIVerification() {
-  const findings = [
-    { ok: true, label: "Estructura completada según plano" },
-    { ok: true, label: "Cerramientos exteriores al 100%" },
-    { ok: false, label: "Tabiquería interior parcial (~70%)" },
-    { ok: true, label: "Cubierta impermeabilizada" },
-  ];
+export function ScreenAIVerification({ t }: { t: S }) {
+  const findings = t.ai.findings.map((label, i) => ({ ok: i !== 2, label }));
 
   return (
     <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
         <div className="flex items-center gap-1 text-[9px] font-medium" style={{ opacity: 0.7 }}>
-          <ChevronRight className="w-3 h-3 rotate-180" /> Hito 3 · Cerramientos
+          <ChevronRight className="w-3 h-3 rotate-180" /> {t.ai.back}
         </div>
-        <div className="text-[15px] mt-1" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>Verificación IA</div>
+        <div className="text-[15px] mt-1" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>{t.ai.title}</div>
       </AppHeader>
 
       <div className="flex-1 min-h-0 px-3 py-2.5 space-y-2 overflow-hidden">
@@ -426,25 +429,25 @@ export function ScreenAIVerification() {
           <div className="mx-auto mb-1" style={{ width: 60, height: 60 }}>
             <ArcGauge value={94} size={60} strokeWidth={6} trackColor="rgba(8,13,66,0.08)" progressColor={C.blue}>
               <Cifra value="94" size={18} weight={800} color={C.blue} />
-              <span className="text-[7px] -mt-[1px]" style={{ color: C.textSecondary }}>de 100</span>
+              <span className="text-[7px] -mt-[1px]" style={{ color: C.textSecondary }}>{t.ai.outOf}</span>
             </ArcGauge>
           </div>
-          <div className="text-[10px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Score de cumplimiento</div>
+          <div className="text-[10px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{t.ai.scoreLabel}</div>
         </div>
 
         {/* Evidence photos — real construction images */}
         <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>
-          Evidencias analizadas (<Cifra value="6" size={9} weight={700} color={C.textPrimary} />)
+          {t.ai.evidenceTitle} (<Cifra value="6" size={9} weight={700} color={C.textPrimary} />)
         </div>
         <div className="grid grid-cols-3 gap-1.5">
           {[
-            { label: "Fachada", ok: true, src: "/evidence/facade.jpg" },
-            { label: "Estructura", ok: true, src: "/evidence/structure.jpg" },
-            { label: "Cubierta", ok: true, src: "/evidence/roofing.jpg" },
-            { label: "Interior", ok: false, src: "/evidence/interior.jpg" },
-            { label: "Fontanería", ok: true, src: "/evidence/plumbing.jpg" },
-            { label: "Carpintería", ok: true, src: "/evidence/carpentry.jpg" },
-          ].map((c, n) => (
+            "/evidence/facade.jpg",
+            "/evidence/structure.jpg",
+            "/evidence/roofing.jpg",
+            "/evidence/interior.jpg",
+            "/evidence/plumbing.jpg",
+            "/evidence/carpentry.jpg",
+          ].map((src, n) => ({ label: t.ai.photos[n], ok: n !== 3, src })).map((c, n) => (
             <div key={n} className="aspect-square rounded-[14px] relative overflow-hidden">
               <img src={c.src} alt={c.label} className="w-full h-full object-cover" />
               {/* Geo tag */}
@@ -463,7 +466,7 @@ export function ScreenAIVerification() {
         </div>
 
         {/* Findings */}
-        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Hallazgos</div>
+        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{t.ai.findingsTitle}</div>
         {findings.map((f, i) => (
           <div key={i} className="flex items-center gap-2 rounded-[14px] px-2.5 py-1.5" style={{ background: f.ok ? C.successBg : C.amberBg }}>
             {f.ok ? (
@@ -477,7 +480,7 @@ export function ScreenAIVerification() {
           </div>
         ))}
       </div>
-      <BottomNav active={1} />
+      <BottomNav active={1} t={t} />
     </div>
   );
 }
@@ -485,36 +488,36 @@ export function ScreenAIVerification() {
 /* ═════════════════════════════════════════════ */
 /* ─── 4. Chat asistente ─── */
 /* ═════════════════════════════════════════════ */
-export function ScreenAssistant() {
+export function ScreenAssistant({ t }: { t: S }) {
   return (
     <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
-        <div className="text-[15px]" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>Asistente PactStream</div>
-        <div className="text-[9px] mt-[1px]" style={{ opacity: 0.6 }}>Chalet Pozuelo Norte</div>
+        <div className="text-[15px]" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>{t.assistant.title}</div>
+        <div className="text-[9px] mt-[1px]" style={{ opacity: 0.6 }}>{t.projectA}</div>
       </AppHeader>
 
       <div className="flex-1 min-h-0 px-3 py-3 space-y-2 overflow-hidden flex flex-col justify-end">
         {/* User */}
         <div className="flex justify-end">
           <div className="rounded-[18px] rounded-tr-[4px] px-3 py-2 max-w-[80%]" style={{ background: C.blue }}>
-            <div className="text-[10px] text-white">¿Cuánto llevamos gastado en fontanería?</div>
+            <div className="text-[10px] text-white">{t.assistant.q1}</div>
           </div>
         </div>
         {/* AI */}
         <div className="flex justify-start">
           <div className="rounded-[18px] rounded-tl-[4px] px-3 py-2 max-w-[85%]" style={{ background: C.surface, boxShadow: C.cardShadow }}>
             <div className="text-[10px] leading-relaxed" style={{ color: C.textPrimary }}>
-              {withCifra("El capítulo de fontanería lleva 12.450€ ejecutados de 18.200€ (68,4%).", { size: 10, color: C.textPrimary })}
+              {withCifra(t.assistant.a1, { size: 10, color: C.textPrimary })}
             </div>
             <div className="text-[10px] leading-relaxed mt-1" style={{ color: C.textPrimary }}>
-              Quedan 3 partidas pendientes. Próxima certificación: <strong>viernes 28</strong>.
+              {t.assistant.a1b} <strong>{t.assistant.a1date}</strong>.
             </div>
           </div>
         </div>
         {/* User */}
         <div className="flex justify-end">
           <div className="rounded-[18px] rounded-tr-[4px] px-3 py-2 max-w-[80%]" style={{ background: C.blue }}>
-            <div className="text-[10px] text-white">Valida la certificación del hito 3</div>
+            <div className="text-[10px] text-white">{t.assistant.q2}</div>
           </div>
         </div>
         {/* AI with action */}
@@ -522,19 +525,19 @@ export function ScreenAssistant() {
           <div className="rounded-[18px] rounded-tl-[4px] px-3 py-2.5 max-w-[85%]" style={{ background: C.surface, boxShadow: C.cardShadow }}>
             <div className="flex items-center gap-1.5 mb-1.5">
               <CheckCircle2 className="w-[12px] h-[12px]" style={{ color: C.success }} />
-              <span className="text-[9px] font-bold" style={{ color: C.success, fontFamily: FONT_BODY }}>Certificación #3 validada</span>
+              <span className="text-[9px] font-bold" style={{ color: C.success, fontFamily: FONT_BODY }}>{t.assistant.a2title}</span>
             </div>
             <div className="text-[10px]" style={{ color: C.textPrimary }}>
-              Score IA: <Cifra value="94/100" size={10} weight={700} color={C.success} atenuado={0.6} />
+              {t.assistant.a2score} <Cifra value="94/100" size={10} weight={700} color={C.success} atenuado={0.6} />
             </div>
             <div className="text-[10px] mt-0.5" style={{ color: C.textPrimary }}>
-              {withCifra("Pago de 8.750€ liberado al constructor.", { size: 10, color: C.textPrimary })}
+              {withCifra(t.assistant.a2pay, { size: 10, color: C.textPrimary })}
             </div>
             {/* Action card */}
             <div className="mt-2 rounded-[14px] px-2.5 py-2 flex items-center gap-2" style={{ background: C.successBg }}>
               <CreditCard className="w-[12px] h-[12px]" style={{ color: C.success }} />
               <span className="text-[7px] font-bold" style={{ color: C.success, fontFamily: FONT_MONO }}>
-                Transferencia procesada · Ref: PS-2026-0847
+                {t.assistant.a2ref}
               </span>
             </div>
           </div>
@@ -544,13 +547,13 @@ export function ScreenAssistant() {
       {/* Input */}
       <div className="px-3 pb-2 pt-2">
         <div className="rounded-full px-3 py-2.5 flex items-center gap-2" style={{ background: C.surface, boxShadow: C.cardShadow }}>
-          <span className="text-[10px] flex-1" style={{ color: C.textSecondary }}>Escribe un mensaje...</span>
+          <span className="text-[10px] flex-1" style={{ color: C.textSecondary }}>{t.assistant.placeholder}</span>
           <div className="w-[24px] h-[24px] rounded-full flex items-center justify-center" style={{ background: C.blue }}>
             <Send className="w-[10px] h-[10px] text-white" />
           </div>
         </div>
       </div>
-      <BottomNav active={0} />
+      <BottomNav active={0} t={t} />
     </div>
   );
 }
@@ -558,21 +561,21 @@ export function ScreenAssistant() {
 /* ═════════════════════════════════════════════ */
 /* ─── 5. Dashboard Promotor ─── */
 /* ═════════════════════════════════════════════ */
-export function ScreenDashboardPromotor() {
+export function ScreenDashboardPromotor({ t }: { t: S }) {
   return (
     <div className="h-full flex flex-col" style={{ background: C.canvas, fontFamily: FONT_BODY, fontSize: 11 }}>
       <AppHeader>
-        <div className="text-[9px] font-medium" style={{ opacity: 0.7 }}>Buenos días</div>
-        <div className="text-[15px] mt-[1px]" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>María López Vidal</div>
+        <div className="text-[9px] font-medium" style={{ opacity: 0.7 }}>{t.greeting}</div>
+        <div className="text-[15px] mt-[1px]" style={{ fontFamily: FONT_DISPLAY, fontWeight: 800 }}>{t.developerName}</div>
         {/* Hero KPI */}
         <div className="mt-3 rounded-[20px] p-3 grid grid-cols-2 gap-3" style={{ background: C.heroCard }}>
           <div>
-            <div className="text-[8px] font-medium" style={{ opacity: 0.5 }}>En escrow</div>
-            <div className="mt-[1px]"><Cifra value="124.500€" size={18} weight={800} color="#FFFFFF" atenuado={0.5} /></div>
+            <div className="text-[8px] font-medium" style={{ opacity: 0.5 }}>{t.developer.inEscrow}</div>
+            <div className="mt-[1px]"><Cifra value={t.amounts.inEscrow} size={18} weight={800} color="#FFFFFF" atenuado={0.5} /></div>
           </div>
           <div>
-            <div className="text-[8px] font-medium" style={{ opacity: 0.5 }}>Liberado hoy</div>
-            <div className="mt-[1px]"><Cifra value="8.750€" size={18} weight={800} color={C.cyan} atenuado={0.6} /></div>
+            <div className="text-[8px] font-medium" style={{ opacity: 0.5 }}>{t.developer.releasedToday}</div>
+            <div className="mt-[1px]"><Cifra value={t.amounts.releasedToday} size={18} weight={800} color={C.cyan} atenuado={0.6} /></div>
           </div>
         </div>
       </AppHeader>
@@ -580,16 +583,16 @@ export function ScreenDashboardPromotor() {
       <div className="flex-1 px-3 py-3 space-y-2 overflow-hidden">
         {/* KPI row */}
         <div className="grid grid-cols-3 gap-1.5">
-          <MiniKpi label="Obras activas" value="2" />
-          <MiniKpi label="Pte. validar" value="1" />
-          <MiniKpi label="Completadas" value="3" />
+          <MiniKpi label={t.developer.kpiActive} value="2" />
+          <MiniKpi label={t.developer.kpiToValidate} value="1" />
+          <MiniKpi label={t.developer.kpiDone} value="3" />
         </div>
 
         {/* Flow chart */}
         <div className="rounded-[20px] p-3" style={{ background: C.surface, boxShadow: C.cardShadow }}>
           <div className="flex justify-between items-center mb-2">
-            <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Flujo de fondos</div>
-            <span className="text-[7px] font-semibold" style={{ color: C.textSecondary }}>Últimos 6 meses</span>
+            <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{t.developer.fundsFlow}</div>
+            <span className="text-[7px] font-semibold" style={{ color: C.textSecondary }}>{t.developer.lastMonths}</span>
           </div>
           <div className="flex items-end gap-[3px]" style={{ height: 50 }}>
             {[
@@ -603,27 +606,27 @@ export function ScreenDashboardPromotor() {
             ))}
           </div>
           <div className="flex justify-between mt-1">
-            {["Ene","Feb","Mar","Abr","May","Jun"].map(m => <span key={m} className="text-[6px]" style={{ color: C.textSecondary }}>{m}</span>)}
+            {t.monthsShort.map(m => <span key={m} className="text-[6px]" style={{ color: C.textSecondary }}>{m}</span>)}
           </div>
           <div className="flex gap-3 mt-1 text-[7px]" style={{ color: C.textSecondary }}>
-            <div className="flex items-center gap-1"><div className="w-[5px] h-[5px] rounded-[2px]" style={{ background: C.blue }} /> Depositado</div>
-            <div className="flex items-center gap-1"><div className="w-[5px] h-[5px] rounded-[2px]" style={{ background: "#6B8CFF" }} /> Liberado</div>
+            <div className="flex items-center gap-1"><div className="w-[5px] h-[5px] rounded-[2px]" style={{ background: C.blue }} /> {t.developer.deposited}</div>
+            <div className="flex items-center gap-1"><div className="w-[5px] h-[5px] rounded-[2px]" style={{ background: "#6B8CFF" }} /> {t.developer.released}</div>
           </div>
         </div>
 
-        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Mis obras</div>
+        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{t.developer.myWorks}</div>
 
         {[
-          { name: "Chalet Pozuelo Norte", builder: "C. Martínez", hito: "3/5", pct: 60, status: "En curso" },
-          { name: "Reforma Salamanca 14", builder: "J. Fernández", hito: "2/4", pct: 45, status: "Validación" },
+          { name: t.projectA, builder: t.developer.builderShortA, hito: "3/5", pct: 60, status: t.status.inProgress, curso: true },
+          { name: t.projectB, builder: t.developer.builderShortB, hito: "2/4", pct: 45, status: t.status.validating, curso: false },
         ].map((obra) => (
           <div key={obra.name} className="rounded-[20px] p-2.5" style={{ background: C.surface, boxShadow: C.cardShadow }}>
             <div className="flex justify-between items-start">
               <div>
                 <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{obra.name}</div>
-                <div className="text-[7px] mt-[1px]" style={{ color: C.textSecondary }}>Constructor: {obra.builder} · Hito {obra.hito}</div>
+                <div className="text-[7px] mt-[1px]" style={{ color: C.textSecondary }}>{t.developer.builderPrefix} {obra.builder} · {t.developer.milestoneWord} {obra.hito}</div>
               </div>
-              <StatusPill label={obra.status} color={obra.status === "En curso" ? C.blue : C.amber} bg={obra.status === "En curso" ? C.blueBg : C.amberBg} />
+              <StatusPill label={obra.status} color={obra.curso ? C.blue : C.amber} bg={obra.curso ? C.blueBg : C.amberBg} />
             </div>
             <div className="mt-1.5 rounded-full h-[5px]" style={{ background: C.hairline }}>
               <div className="h-full rounded-full" style={{ width: `${obra.pct}%`, background: C.blue }} />
@@ -632,13 +635,16 @@ export function ScreenDashboardPromotor() {
         ))}
 
         {/* Recent activity */}
-        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>Actividad reciente</div>
+        <div className="text-[9px] font-bold" style={{ color: C.textPrimary, fontFamily: FONT_BODY }}>{t.developer.activityTitle}</div>
         <div className="rounded-[20px] p-2.5 space-y-2" style={{ background: C.surface, boxShadow: C.cardShadow }}>
-          {[
-            { icon: CreditCard, text: "Pago 8.750€ liberado a C. Martínez", time: "Hace 2h", color: C.success },
-            { icon: CheckCircle2, text: "Hito 3 validado · Score IA: 94", time: "Hace 3h", color: C.blue },
-            { icon: Camera, text: "6 evidencias subidas · Cerramientos", time: "Ayer", color: C.textSecondary },
-          ].map((act, i) => (
+          {[CreditCard, CheckCircle2, Camera]
+            .map((icon, i) => ({
+              icon,
+              text: t.developer.activity[i].text,
+              time: t.developer.activity[i].time,
+              color: [C.success, C.blue, C.textSecondary][i],
+            }))
+            .map((act, i) => (
             <div key={i} className="flex items-start gap-2">
               <div className="w-[18px] h-[18px] rounded-[8px] flex items-center justify-center shrink-0 mt-[1px]" style={{ background: `${act.color}15` }}>
                 <act.icon className="w-[9px] h-[9px]" style={{ color: act.color }} />
@@ -651,7 +657,7 @@ export function ScreenDashboardPromotor() {
           ))}
         </div>
       </div>
-      <BottomNav active={0} />
+      <BottomNav active={0} t={t} />
     </div>
   );
 }

@@ -420,11 +420,11 @@ function HeroSection({ t }: { t: Dict }) {
             >
               {/* Desktop: full phone frame */}
               <div className="hidden lg:block">
-                <PhoneFrame><ScreenDashboardConstructor /></PhoneFrame>
+                <PhoneFrame><ScreenDashboardConstructor t={t.screens} /></PhoneFrame>
               </div>
               {/* Mobile: clean screenshot, no frame */}
               <div className="lg:hidden w-[264px] h-[578px] rounded-[28px] overflow-hidden shadow-[0_12px_60px_rgba(0,0,0,0.4)] border border-white/10">
-                <ScreenDashboardConstructor />
+                <ScreenDashboardConstructor t={t.screens} />
               </div>
             </motion.div>
           </motion.div>
@@ -665,11 +665,11 @@ function StickyPhoneSection({ t }: { t: Dict }) {
   }, [swipe]);
 
   const screens = [
-    <ScreenDashboardConstructor key="dash" />,
-    <ScreenObraDetail key="obra" />,
-    <ScreenAIVerification key="ai" />,
-    <ScreenAssistant key="chat" />,
-    <ScreenDashboardPromotor key="promotor" />,
+    <ScreenDashboardConstructor key="dash" t={t.screens} />,
+    <ScreenObraDetail key="obra" t={t.screens} />,
+    <ScreenAIVerification key="ai" t={t.screens} />,
+    <ScreenAssistant key="chat" t={t.screens} />,
+    <ScreenDashboardPromotor key="promotor" t={t.screens} />,
   ];
 
   const featureIcons = [BarChart3, Shield, Eye, MessageSquare, CreditCard];
@@ -986,11 +986,11 @@ function AISection({ t }: { t: Dict }) {
             <div className="relative">
               {/* Desktop: full phone frame */}
               <div className="hidden lg:block">
-                <PhoneFrame><ScreenAIVerification /></PhoneFrame>
+                <PhoneFrame><ScreenAIVerification t={t.screens} /></PhoneFrame>
               </div>
               {/* Mobile: clean screenshot */}
               <div className="lg:hidden w-[264px] h-[578px] rounded-[28px] overflow-hidden shadow-[0_12px_60px_rgba(0,0,0,0.4)] border border-white/10">
-                <ScreenAIVerification />
+                <ScreenAIVerification t={t.screens} />
               </div>
               <div className="absolute -inset-16 bg-gradient-to-r from-[#0D9B84]/15 to-[#a9f3ff]/10 rounded-full blur-3xl -z-10" />
             </div>
