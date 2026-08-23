@@ -150,6 +150,7 @@ const dict = {
       heading: "Hito 0 Asegurado: el constructor arranca, tu dinero protegido",
       desc: "El escrow protege el dinero que está quieto — pero el constructor necesita un anticipo para comprar materiales y pagar a su equipo antes de certificar el primer hito. Ahí el escrow ya no cubre al cliente. Hito 0 Asegurado resuelve las dos caras a la vez: el constructor recibe el 30% para arrancar, y ese anticipo queda protegido por una póliza de caución con una aseguradora líder del mercado (en negociación). Si el constructor no empieza, el cliente recupera su dinero. Hasta donde alcanza nuestra investigación, ningún competidor integra anticipo asegurado, custodia y verificación por IA en un mismo flujo.",
       tags: ["Anticipo para arrancar", "Protegido con caución", "Devolución si no empieza", "Integración única"],
+      seal: { top: "HITO 0 ASEGURADO", bottom: "MILESTONE 0 SECURED" },
     },
     validation: {
       tag: "Resultados reales",
@@ -589,6 +590,7 @@ const dict = {
       heading: "Milestone 0 Insured: the builder starts, your money protected",
       desc: "Escrow protects money that sits still — but the builder needs an advance to buy materials and pay their team before the first milestone is certified. At that point, escrow no longer covers the client. Milestone 0 Insured solves both sides at once: the builder receives 30% to get started, and that advance is protected by a surety bond with a leading insurer (in negotiation). If the builder doesn't start, the client recovers their money. As far as our research reaches, no competitor integrates an insured advance, custody and AI verification in a single flow.",
       tags: ["Advance to get started", "Protected by surety bond", "Refund if work doesn't start", "Unique integration"],
+      seal: { top: "MILESTONE 0 SECURED", bottom: "HITO 0 ASEGURADO" },
     },
     validation: {
       tag: "Real results",
@@ -1028,6 +1030,7 @@ const dict = {
       heading: "Marco 0 Assegurado: o construtor arranca, o seu dinheiro protegido",
       desc: "O escrow protege o dinheiro que esta parado — mas o construtor precisa de um adiantamento para comprar materiais e pagar a sua equipa antes de certificar o primeiro marco. Ai o escrow ja nao cobre o cliente. O Marco 0 Assegurado resolve os dois lados ao mesmo tempo: o construtor recebe 30% para arrancar, e esse adiantamento fica protegido por uma apolice de caucao com uma seguradora lider do mercado (em negociacao). Se o construtor nao comecar, o cliente recupera o seu dinheiro. Mais ate onde alcanca a nossa investigacao, nenhum concorrente integra adiantamento assegurado, custodia e verificacao por IA num so fluxo.",
       tags: ["Adiantamento para arrancar", "Protegido por caucao", "Devolucao se nao comecar", "Integracao unica"],
+      seal: { top: "MARCO 0 ASSEGURADO", bottom: "MILESTONE 0 SECURED" },
     },
     validation: {
       tag: "Resultados reais",
