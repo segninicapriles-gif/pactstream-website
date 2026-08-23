@@ -222,7 +222,23 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#080D42]/90 backdrop-blur-xl border-b border-white/[0.06]">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-        <PactStreamLogo />
+        {/* El logo es el ancla al inicio, como en el resto de webs del ecosistema:
+            enlaza a la home del idioma y, si ya estás en ella, sube con scroll suave. */}
+        <a
+          href={LANG_PATH[locale]}
+          onClick={(e) => {
+            if (window.location.pathname === LANG_PATH[locale]) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D9B84] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080D42]"
+          aria-label={t.nav.homeAriaLabel}
+        >
+          <span className="block transition-transform duration-200 group-hover:scale-105">
+            <PactStreamLogo />
+          </span>
+        </a>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
           <div className="relative" onMouseEnter={() => setFeatDropdown(true)} onMouseLeave={() => setFeatDropdown(false)}>
             <a href="#funcionalidades" className="flex items-center gap-1 hover:text-white transition-colors">
@@ -1071,8 +1087,10 @@ function Hito0Section({ t }: { t: Dict }) {
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         <AnimatedSection>
           <div className="max-w-4xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
-            <motion.div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full bg-gradient-to-br from-[#F2FAF8] to-[#E6F5F2] flex items-center justify-center shrink-0" whileHover={{ scale: 1.05, rotate: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-              <Hito0Seal size={104} className="w-[88px] h-[88px] lg:w-[104px] lg:h-[104px]" />
+            {/* El sello ya es un medallón circular con cuerpo propio: no lleva
+                disco de fondo, solo una sombra suave que lo asienta sobre el blanco. */}
+            <motion.div className="shrink-0" whileHover={{ scale: 1.04, rotate: 4 }} transition={{ type: "spring", stiffness: 300 }}>
+              <Hito0Seal size={176} className="w-[136px] h-[136px] lg:w-[176px] lg:h-[176px] drop-shadow-[0_12px_28px_rgba(8,13,66,0.26)]" />
             </motion.div>
             <div>
               <p className="text-sm font-semibold text-[#0B6E5F] uppercase tracking-wider mb-3">{t.hito0.tag}</p>

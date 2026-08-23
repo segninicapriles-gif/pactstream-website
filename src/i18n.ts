@@ -9,6 +9,7 @@ const dict = {
       pricing: "Precios",
       comparison: "Comparativa",
       cta: "Reservar mi plaza",
+      homeAriaLabel: "PactStream - Inicio",
     },
     hero: {
       kicker: "Infraestructura de pago condicionado para construcción",
@@ -447,6 +448,7 @@ const dict = {
       pricing: "Pricing",
       comparison: "Comparison",
       cta: "Reserve my spot",
+      homeAriaLabel: "PactStream - Home",
     },
     hero: {
       kicker: "Condition-based payment infrastructure for construction",
@@ -885,6 +887,7 @@ const dict = {
       pricing: "Precos",
       comparison: "Comparativo",
       cta: "Reservar o meu lugar",
+      homeAriaLabel: "PactStream - Inicio",
     },
     hero: {
       kicker: "Infraestrutura de pagamento condicionado para construção",
