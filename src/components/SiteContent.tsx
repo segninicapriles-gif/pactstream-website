@@ -1091,11 +1091,11 @@ function Hito0Section({ t }: { t: Dict }) {
                 disco de fondo, solo una sombra suave que lo asienta sobre el blanco. */}
             <motion.div className="shrink-0" whileHover={{ scale: 1.04, rotate: 4 }} transition={{ type: "spring", stiffness: 300 }}>
               <Hito0Seal
-                size={176}
+                size={208}
                 top={t.hito0.seal.top}
                 bottom={t.hito0.seal.bottom}
                 title={t.hito0.seal.top}
-                className="w-[136px] h-[136px] lg:w-[176px] lg:h-[176px] drop-shadow-[0_12px_28px_rgba(8,13,66,0.26)]"
+                className="w-[152px] h-[152px] lg:w-[208px] lg:h-[208px] drop-shadow-[0_14px_32px_rgba(8,13,66,0.26)]"
               />
             </motion.div>
             <div>

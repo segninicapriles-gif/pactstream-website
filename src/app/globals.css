@@ -160,6 +160,9 @@ html {
 }
 
 body {
+  /* El sitio es solo claro. Sin declararlo, el modo oscuro automatico de
+     Chrome (y de Android) repinta por su cuenta todas las secciones blancas. */
+  color-scheme: light;
   color: #16181D; /* Tinta 900 */
   background: #F6F6F3; /* Canvas Porcelana */
   -webkit-font-smoothing: antialiased;
