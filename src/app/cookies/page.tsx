@@ -43,7 +43,7 @@ export default function CookiesPage() {
 
         <h2>3. Cookies de terceros</h2>
         <p>
-          Actualmente no utilizamos cookies de terceros ni herramientas de análisis externas. En caso de incorporarlas en el futuro, actualizaremos esta política y solicitaremos tu consentimiento previo.
+          Utilizamos Google Analytics 4 (Google Ireland Limited) para medir el uso del sitio. Está configurado en Modo de Consentimiento v2 con todas las categorías de almacenamiento <strong>denegadas por defecto</strong>: mientras no des tu consentimiento, no se instalan cookies analíticas ni se te identifica. Hoy el sitio no muestra un banner de consentimiento, por lo que esa autorización no se solicita y no se almacena ninguna cookie analítica. Si en el futuro la activamos, te lo pediremos antes y actualizaremos esta política.
         </p>
 
         <h2>4. Gestión de cookies</h2>
@@ -56,7 +56,7 @@ export default function CookiesPage() {
           Para más información sobre cómo tratamos tus datos, consulta nuestra <a href="/privacidad" className="text-[#0D9B84]">Política de Privacidad</a>.
         </p>
 
-        <p className="text-white/40 text-xs mt-12">Última actualización: junio 2026</p>
+        <p className="text-white/40 text-xs mt-12">Última actualización: agosto 2026</p>
 
         <div className="mt-8">
           <a href="/" className="text-[#0D9B84] hover:text-[#0FC9A8] text-sm">← Volver a la página principal</a>
