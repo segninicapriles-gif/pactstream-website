@@ -49,6 +49,7 @@ import {
 } from "@/components/AppScreens";
 import { type Locale, type Dict, getDictionary } from "@/i18n";
 import { track } from "@vercel/analytics";
+import { insertWaitlist } from "@/lib/waitlist";
 import { useRouter } from "next/navigation";
 
 /* ─── Language dropdown data ─── */
@@ -66,22 +67,7 @@ const LANG_PATH: Record<Locale, string> = { es: "/", en: "/en", pt: "/pt" };
    empezaría a registrarlos sin tocar código si algún día se sube de plan.
    El registro real de cada conversión es la fila en la tabla `waitlist`. */
 
-const SUPABASE_URL = "https://tkncogzzlzbfhsfqlnsw.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_9Td5AIshuNe-LOGdKTYcNw_N7rqGQUD";
-
-async function insertWaitlist(email: string, role?: string, source = "website") {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
-    method: "POST",
-    headers: {
-      "apikey": SUPABASE_ANON_KEY,
-      "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
-      "Content-Type": "application/json",
-      "Prefer": "return=minimal",
-    },
-    body: JSON.stringify({ email, role: role || null, source }),
-  });
-  if (!res.ok && res.status !== 409) throw new Error("Error al registrar");
-}
+/* insertWaitlist vive ahora en src/lib/waitlist.ts, compartido con la calculadora. */
 
 /* ─── Language context ─── */
 function useLang(initialLocale: Locale): [Dict, Locale, (l: Locale) => void] {

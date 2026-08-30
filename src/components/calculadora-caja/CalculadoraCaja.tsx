@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { insertWaitlist } from '@/lib/waitlist'
 
 /* ─────────────────────────────────────────────────────────────────────────
    Calculadora de días de caja — trilingüe (ES / EN / PT).
@@ -90,6 +91,11 @@ type Strings = {
   cierre: React.ReactNode
   cta: string
   nota: string
+  /* Captación en línea: el visitante deja el correo aquí mismo, sin salir. */
+  formEtiqueta: string
+  formEnviando: string
+  formOk: string
+  formErr: string
 }
 
 /* Escalera fundador por operación — fuente: PRICING_CANONICO_2026-08-07.md.
@@ -178,6 +184,10 @@ const STR: Record<Loc, Strings> = {
       </>
     ),
     cta: 'Reservar mi plaza en PactStream →',
+    formEtiqueta: 'Tu email',
+    formEnviando: 'Enviando…',
+    formOk: 'Hecho. Te escribimos con tu escenario y las condiciones de fundador.',
+    formErr: 'No se ha podido enviar. Escríbenos a hola@cimbrium.com y lo vemos.',
     nota: 'Cálculo orientativo sobre el importe custodiado de la operación, con la escalera de precios fundador publicada (2,4 % <100K€ · 2,0 % 100–400K€ · 1,5 % 400K€–1M€ · 1,2 % >1M€). El plazo de 24 horas se cuenta desde la validación del hito. No es una oferta vinculante.',
   },
 
@@ -256,6 +266,10 @@ const STR: Record<Loc, Strings> = {
       </>
     ),
     cta: 'Reserve my seat in PactStream →',
+    formEtiqueta: 'Your email',
+    formEnviando: 'Sending…',
+    formOk: 'Done. We will write to you with your scenario and the founder terms.',
+    formErr: 'Could not send. Write to us at hola@cimbrium.com and we will sort it out.',
     nota: 'Indicative calculation on the amount held in custody for the operation, using the published founder pricing ladder (2.4% <€100K · 2.0% €100–400K · 1.5% €400K–1M · 1.2% >€1M). The 24-hour term runs from validation of the milestone. Not a binding offer.',
   },
 
@@ -332,6 +346,10 @@ const STR: Record<Loc, Strings> = {
       </>
     ),
     cta: 'Reservar a minha vaga na PactStream →',
+    formEtiqueta: 'O seu email',
+    formEnviando: 'A enviar…',
+    formOk: 'Feito. Entramos em contacto com o seu cenário e as condições de fundador.',
+    formErr: 'Não foi possível enviar. Escreva-nos para hola@cimbrium.com e resolvemos.',
     nota: 'Cálculo orientativo sobre o valor custodiado da operação, com a escala de preços fundador publicada (2,4 % <100K€ · 2,0 % 100–400K€ · 1,5 % 400K€–1M€ · 1,2 % >1M€). O prazo de 24 horas conta-se desde a validação do marco. Não é uma oferta vinculativa.',
   },
 }
@@ -392,6 +410,11 @@ export function CalculadoraCaja({ locale = 'es' }: { locale?: Loc }) {
   const s = STR[locale]
   const f = makeFmt(locale)
   const tramo = tramoFor(s)
+
+  const [email, setEmail] = useState('')
+  const [enviando, setEnviando] = useState(false)
+  const [enviado, setEnviado] = useState(false)
+  const [errorEnvio, setErrorEnvio] = useState(false)
 
   const [obra, setObra] = useState(700_000)
   const [dias, setDias] = useState(s.defDias)
@@ -512,12 +535,56 @@ export function CalculadoraCaja({ locale = 'es' }: { locale?: Loc }) {
             <p className="mt-5 font-display text-[17px] font-bold leading-snug text-white [text-wrap:balance]">
               {s.cierre}
             </p>
-            <a
-              href={locale === 'es' ? '/#waitlist' : `/${locale}#waitlist`}
-              className="mt-4 inline-block rounded-lg bg-[var(--color-primary)] px-6 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-cyan-glow)]"
-            >
-              {s.cta}
-            </a>
+            {enviado ? (
+              <p className="mt-4 rounded-lg border border-[rgba(111,224,184,0.35)] bg-[rgba(18,176,122,0.14)] px-4 py-3 text-sm font-semibold text-[#8ff0c6]">
+                {s.formOk}
+              </p>
+            ) : (
+              <form
+                className="mt-4 flex flex-col gap-2 sm:flex-row"
+                onSubmit={async (ev) => {
+                  ev.preventDefault()
+                  setEnviando(true)
+                  setErrorEnvio(false)
+                  try {
+                    // El `role` lleva el escenario que el visitante acaba de
+                    // calcular: sus propias cifras, para poder responderle
+                    // sobre ellas sin pedírselas otra vez.
+                    await insertWaitlist(
+                      email.trim(),
+                      `calculadora-caja · obra ${f.euro(obra)} · ${f.int(dias)} días · coste ${f.pct1(coste)} %`,
+                      `calculadora-caja-${locale}`,
+                    )
+                    setEnviado(true)
+                  } catch {
+                    setErrorEnvio(true)
+                  }
+                  setEnviando(false)
+                }}
+              >
+                <label className="sr-only" htmlFor="cc-email">{s.formEtiqueta}</label>
+                <input
+                  id="cc-email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder={s.formEtiqueta}
+                  value={email}
+                  onChange={(ev) => setEmail(ev.target.value)}
+                  className="min-w-0 flex-1 rounded-lg border border-[rgba(169,243,255,0.18)] bg-[rgba(10,17,40,0.9)] px-4 py-3 text-sm text-white placeholder:text-[var(--color-ps-navy-300)] focus:border-[var(--color-cyan-glow)] focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  disabled={enviando}
+                  className="shrink-0 rounded-lg bg-[var(--color-primary)] px-6 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-cyan-glow)]"
+                >
+                  {enviando ? s.formEnviando : s.cta}
+                </button>
+              </form>
+            )}
+            {errorEnvio && (
+              <p className="mt-2 text-[13px] text-[#ff9db0]">{s.formErr}</p>
+            )}
           </section>
         </div>
 
