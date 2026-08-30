@@ -76,17 +76,14 @@
         });
         if (!res.ok) throw new Error('HTTP ' + res.status);
 
-        // `waitlist_submit` es el nombre canonico del ecosistema y el que esta
-        // configurado como evento de conversion en GA4 (ver memoria
-        // ga4-properties). El antiguo `lead_submit` de esta pagina no coincidia
-        // con ninguno, asi que no habria contado como conversion.
+        // Aqui no se emite ningun evento de analitica, y es deliberado: GA4 se
+        // retiro del sitio el 30-ago-2026 (sin banner de consentimiento nunca
+        // llego a registrar nada) y estas paginas estaticas quedan fuera del
+        // arbol de Next, asi que tampoco cargan Vercel Analytics.
         //
-        // Solo se dispara si la pagina carga GA4 y hay consentimiento. Hoy las
-        // estaticas de public/ no cargan GA4 y el consentimiento esta denegado
-        // por defecto en todo el sitio: la medicion real es la fila en
-        // `waitlist`, que no necesita cookies ni consentimiento.
-        if (window.gtag) window.gtag('event', 'waitlist_submit', { source: source });
-
+        // El registro de la conversion es la fila que se acaba de insertar en
+        // `waitlist`, con su `source` y su `created_at`: sin cookies, sin
+        // consentimiento y sin depender de que el visitante acepte nada.
         exito(form, nombre);
       } catch (err) {
         if (btn) { btn.disabled = false; btn.textContent = textoBoton; }

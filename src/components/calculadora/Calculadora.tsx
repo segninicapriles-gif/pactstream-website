@@ -1,16 +1,11 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { track } from '@vercel/analytics'
 import { Formulario, DATOS_INICIALES, usaFichaRES022, type DatosFormulario } from './Formulario'
 import { Resultado } from './Resultado'
 import { Captacion } from './Captacion'
 import { AvisoPeriodoTransitorio } from './AvisoPeriodoTransitorio'
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void
-  }
-}
 
 export function Calculadora() {
   const [datos, setDatos] = useState<DatosFormulario>(DATOS_INICIALES)
@@ -30,7 +25,11 @@ export function Calculadora() {
       esPrimerRenderizado.current = false
       return
     }
-    window.gtag?.('event', 'calculadora_tecnologia', {
+    // Vercel Analytics en vez de GA4: sin cookies, sin consentimiento. GA4 se
+    // retiró el 30-ago-2026 porque el sitio no tiene banner y nunca llegó a
+    // registrar nada. En el plan Hobby los custom events no se guardan; el día
+    // que se suba de plan, esto empieza a registrar sin tocar código.
+    track('calculadora_tecnologia', {
       tecnologia: datos.tecnologia,
       tiene_cef: datos.cefCalefaccion != null,
     })

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { track } from '@vercel/analytics'
 import type { DatosFormulario } from './Formulario'
 import { usaFichaRES022 } from './Formulario'
 
@@ -49,7 +50,7 @@ export function Captacion({ datos }: { datos: DatosFormulario }) {
         />
         <a
           href={enlace}
-          onClick={() => window.gtag?.('event', 'calculadora_correo', { tecnologia: datos.tecnologia })}
+          onClick={() => track('calculadora_correo', { tecnologia: datos.tecnologia })}
           className="shrink-0 rounded-[var(--radius-sm)] bg-[var(--color-primary)] px-4 py-2 text-center text-sm font-medium text-white hover:opacity-90"
         >
           Enviar

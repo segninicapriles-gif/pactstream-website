@@ -43,7 +43,7 @@ export default function CookiesPage() {
 
         <h2>3. Cookies de terceros</h2>
         <p>
-          Utilizamos Google Analytics 4 (Google Ireland Limited) para medir el uso del sitio. Está configurado en Modo de Consentimiento v2 con todas las categorías de almacenamiento <strong>denegadas por defecto</strong>: mientras no des tu consentimiento, no se instalan cookies analíticas ni se te identifica. Hoy el sitio no muestra un banner de consentimiento, por lo que esa autorización no se solicita y no se almacena ninguna cookie analítica. Si en el futuro la activamos, te lo pediremos antes y actualizaremos esta política.
+          Para contar visitas usamos Vercel Analytics, del proveedor que aloja este sitio. Es una medición <strong>sin cookies</strong>: no instala ningún archivo en tu dispositivo, no te identifica y no te sigue entre sitios web. No utilizamos Google Analytics ni ninguna otra herramienta que instale cookies de terceros. Si en el futuro incorporáramos alguna, te pediríamos tu consentimiento antes y actualizaríamos esta política.
         </p>
 
         <h2>4. Gestión de cookies</h2>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, JetBrains_Mono, Nunito } from "next/font/google";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -126,24 +125,18 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        {/* Analitica sin cookies: no requiere consentimiento y funciona hoy.
+            GA4 se retiro el 30-ago-2026 (ver nota abajo). */}
         <Analytics />
-        {/* Google Analytics 4 — Consent Mode v2, denied por defecto: sin cookies sin consentimiento */}
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments)}
-            window.gtag = gtag;
-            gtag('consent', 'default', {
-              ad_storage: 'denied',
-              ad_user_data: 'denied',
-              ad_personalization: 'denied',
-              analytics_storage: 'denied'
-            });
-            gtag('js', new Date());
-            gtag('config', 'G-0X036FTNKN');
-          `}
-        </Script>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-0X036FTNKN" strategy="afterInteractive" />
+        {/* GA4 estuvo aqui con Consent Mode v2 denegado por defecto. Como el
+            sitio no tiene banner de consentimiento, esa autorizacion nunca se
+            concedia: el tag se cargaba en cada visita, hacia peticiones a
+            Google y no recogia nada. Se retira en vez de mantener un tercero
+            mudo. La medicion util vive en dos sitios sin cookies: las visitas
+            en Vercel Analytics y las conversiones en la tabla `waitlist`, con
+            su `source` por pagina e idioma.
+            Si algun dia se anade banner, reponerlo es volver a montar los dos
+            scripts de GA4 y pasar el consentimiento a granted. */}
       </body>
     </html>
   );
