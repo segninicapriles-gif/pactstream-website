@@ -128,6 +128,13 @@ export default function RootLayout({
         {/* Analitica sin cookies: no requiere consentimiento y funciona hoy.
             GA4 se retiro el 30-ago-2026 (ver nota abajo). */}
         <Analytics />
+        {/* Segunda medicion, propia y VERIFICABLE: escribe en la tabla `visitas`
+            del mismo Supabase que `waitlist`, asi visitas y conversiones se
+            cruzan con una sola consulta. Sin cookies ni PII (no requiere banner).
+            Existe porque <Analytics/> depende de un interruptor del panel de
+            Vercel que no se puede comprobar desde fuera: componente presente
+            no es lo mismo que dato recogido. */}
+        <script defer src="/assets/visitas.js" />
         {/* GA4 estuvo aqui con Consent Mode v2 denegado por defecto. Como el
             sitio no tiene banner de consentimiento, esa autorizacion nunca se
             concedia: el tag se cargaba en cada visita, hacia peticiones a
