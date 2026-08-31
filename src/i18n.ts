@@ -54,7 +54,7 @@ const dict = {
       items: [
         { tag: "DASHBOARD", title: "Tu obra, tu vista, tu control", desc: "Cada rol ve lo que necesita. Constructores: obras y cobros. Promotores: escrow y flujo de fondos. Técnicos: certificaciones pendientes. Sin ruido, solo lo relevante." },
         { tag: "HITOS", title: "Paga por trabajo hecho, no por promesas", desc: "Cada hito tiene su presupuesto en escrow. Sabes exactamente qué se ha ejecutado, qué está protegido y cuánto falta por certificar." },
-        { tag: "VERIFICACIÓN IA", title: "Sube fotos, recibe un score de cumplimiento", desc: "Evidencias geolocalizadas analizadas por IA. Score 0-100 con hallazgos: verde (cumple), ámbar (parcial), rojo (incumplimiento). Sin subjetividad." },
+        { tag: "VERIFICACIÓN IA", title: "Sube fotos, recibe un score de cumplimiento", desc: "Evidencias selladas analizadas por IA. Score 0-100 con hallazgos: verde (cumple), ámbar (parcial), rojo (incumplimiento). Sin subjetividad." },
         { tag: "ASISTENTE", title: "Pregúntale a tu obra", desc: "Un asistente con IA que responde sobre presupuesto, certifica hitos, libera pagos y coordina validaciones. Todo en lenguaje natural." },
         { tag: "FINANZAS", title: "Cada euro, trazado en tiempo real", desc: "El promotor ve cuánto tiene en escrow, cuánto se ha liberado y a quién. El constructor ve cuánto tiene pendiente de cobro. Transparencia total." },
       ],
@@ -65,7 +65,7 @@ const dict = {
       steps: [
         { step: "01", title: "Define tu obra", desc: "Crea el proyecto, establece hitos y presupuesto. PactStream genera el calendario de pagos automáticamente." },
         { step: "02", title: "Protege los fondos", desc: "El promotor deposita en escrow regulado PSD2. El dinero queda blindado hasta que se verifique el trabajo." },
-        { step: "03", title: "Documenta el avance", desc: "El constructor sube evidencias geolocalizadas. La IA las analiza y genera un score de cumplimiento en segundos." },
+        { step: "03", title: "Documenta el avance", desc: "El constructor sube evidencias selladas. La IA las analiza y genera un score de cumplimiento en segundos." },
         { step: "04", title: "Cobra al instante", desc: "Promotor y técnico validan. El pago se libera automáticamente a la cuenta del constructor. Sin esperas de 30-45 días." },
       ],
     },
@@ -105,7 +105,7 @@ const dict = {
       steps: [
         { title: "Firman el contrato en PactStream", desc: "Definen alcance y calendario: anticipo de 19.500€ y cinco hitos de 9.100€. Las condiciones de cada hito quedan escritas — qué tiene que estar hecho para que se libere el pago." },
         { title: "Ana deposita el anticipo", desc: "Los 19.500€ salen de su cuenta, pero no llegan a la de Miguel: van a la cuenta segregada. Y como es el Hito 0, quedan cubiertos por la póliza de caución." },
-        { title: "Miguel arranca la obra", desc: "Demolición e instalaciones. Cuando termina el primer hito, sube ocho fotos geolocalizadas desde el móvil, a pie de obra." },
+        { title: "Miguel arranca la obra", desc: "Demolición e instalaciones. Cuando termina el primer hito, sube ocho fotos con sello temporal desde el móvil, a pie de obra." },
         { title: "La IA analiza las evidencias", desc: "Cuarenta segundos. Score de cumplimiento: 91 sobre 100. Cuatro hallazgos en verde, uno en ámbar — la instalación eléctrica aparece parcialmente cubierta en dos fotos." },
         { title: "La arquitecta revisa y valida", desc: "Pide a Miguel una foto adicional del cuadro eléctrico. La sube en diez minutos. El ámbar pasa a verde y la técnica certifica desde el móvil, sin desplazarse." },
         { title: "Ana aprueba", desc: "Ve el informe completo, las evidencias y la certificación firmada. Aprueba con un toque en la app." },
@@ -120,7 +120,7 @@ const dict = {
       blocks: [
         { q: "¿Dónde va mi dinero?", a: "A una cuenta bancaria segregada, gestionada por un proveedor de pagos autorizado bajo normativa PSD2. No es tu cuenta. No es la del constructor. Y no es la de PactStream: nosotros no custodiamos fondos en ningún momento." },
         { q: "¿Quién puede sacarlo?", a: "Nadie por su cuenta. El dinero se libera únicamente cuando se cumplen las condiciones del contrato: evidencias subidas desde la obra, verificación de la IA y validación del técnico y del promotor. Si falta un paso, el pago no sale." },
-        { q: "¿Qué pasa si no estamos de acuerdo?", a: "El sistema conserva las evidencias geolocalizadas con marca de tiempo, el informe completo de la IA y el histórico de cada decisión. En una disputa no hay \"tu palabra contra la mía\": hay un expediente que cualquier técnico, abogado o juez puede revisar." },
+        { q: "¿Qué pasa si no estamos de acuerdo?", a: "El sistema conserva las evidencias selladas con marca de tiempo, el informe completo de la IA y el histórico de cada decisión. En una disputa no hay \"tu palabra contra la mía\": hay un expediente que cualquier técnico, abogado o juez puede revisar." },
         { q: "¿Y el anticipo? Es lo que más miedo da.", a: "Con razón: es el único momento en que se paga antes de que exista trabajo. Por eso existe Hito 0 Asegurado — el anticipo del 30% queda cubierto por una póliza de caución con una aseguradora líder del mercado (en negociación). Si el constructor no arranca, recuperas tu dinero." },
       ],
     },
@@ -129,7 +129,7 @@ const dict = {
       heading: "Documenta mejor. Cobra más rápido. Certifica sin riesgos.",
       sub: "La IA emite un dictamen 0-100 sobre evidencia sellada — GPS, hora de servidor y huella criptográfica — y el dictamen es inmutable. La dirección facultativa firma encima, siempre.",
       items: [
-        { title: "Verificación visual automática", desc: "Sube fotos geolocalizadas. La IA las compara con el presupuesto y genera un score 0-100. Hallazgos clasificados: verde (cumple), ámbar (revisión), rojo (incumplimiento). Certificas con datos, no con opiniones." },
+        { title: "Verificación visual automática", desc: "Sube fotos con sello temporal. La IA las compara con el presupuesto y genera un score 0-100. Hallazgos clasificados: verde (cumple), ámbar (revisión), rojo (incumplimiento). Certificas con datos, no con opiniones." },
         { title: "Asistente que ejecuta, no solo responde", desc: "Pregunta sobre presupuesto, pide una certificación, libera un pago, detecta desviaciones. Todo conversacional, todo en tiempo real, todo con acciones reales." },
         { title: "Trust Score que te diferencia", desc: "Reputación basada en hitos completados, calidad de evidencias y ausencia de disputas. Los mejores profesionales lo demuestran con datos." },
       ],
@@ -281,7 +281,7 @@ const dict = {
         { key: "trust_score", label: "Trust Score del profesional", category: "Confianza" },
         { key: "hito0_insurance", label: "Hito 0 con póliza de caución", category: "Seguros" },
         { key: "ai_assistant", label: "Asistente conversacional IA", category: "IA" },
-        { key: "geo_evidence", label: "Evidencias geolocalizadas", category: "Documentación" },
+        { key: "geo_evidence", label: "Evidencias selladas", category: "Documentación" },
         { key: "multi_role", label: "Dashboards multi-rol", category: "Plataforma" },
         { key: "ai_budgets", label: "Presupuestos con IA (CostPact)", category: "Ecosistema" },
         { key: "mobile", label: "App móvil nativa", category: "Plataforma" },
@@ -306,7 +306,7 @@ const dict = {
           color: "#6C5CE7", pricing: "No publicado", pricingDetail: "Custodia de fondos vía Stripe Payments Europe (entidad regulada en la UE). Precios no públicos en su web (julio 2026).",
           strengths: ["Custodia regulada por un tercero (Stripe Payments Europe)", "El dinero se deposita antes de empezar la obra", "Cobro de cada fase validada en 24 horas", "Mediación y peritaje en disputas"],
           weaknesses: ["Sin verificación IA — la validación depende del cliente", "Sin anticipo: el constructor financia la primera fase de su bolsillo", "Sin protección del anticipo (no hay póliza de caución)", "Sin presupuestación integrada", "Centrado en reforma"],
-          verdict: "Fintiq valida nuestro modelo: custodia externa y pago por fases, en España. La diferencia está en cómo se libera el dinero — en Fintiq valida el cliente; en PactStream verifica la IA con evidencias geolocalizadas — y en el arranque: Fintiq no da anticipo al constructor; PactStream lo da y lo protege con Hito 0.",
+          verdict: "Fintiq valida nuestro modelo: custodia externa y pago por fases, en España. La diferencia está en cómo se libera el dinero — en Fintiq valida el cliente; en PactStream verifica la IA con evidencias selladas — y en el arranque: Fintiq no da anticipo al constructor; PactStream lo da y lo protege con Hito 0.",
           features: { escrow: "yes", ai_verification: "no", auto_payment: "partial", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "partial", ai_budgets: "no", mobile: "no", freemium: "no" },
         },
         {
@@ -399,7 +399,7 @@ const dict = {
       heading: "Resolvemos tus dudas",
       items: [
         { q: "¿Qué es un escrow de construcción?", a: "Es una cuenta regulada PSD2 donde se deposita el dinero de cada hito de obra. Los fondos solo se liberan cuando el trabajo se verifica y valida. Tu dinero está protegido en todo momento — PactStream nunca tiene acceso directo a él." },
-        { q: "¿Cómo verifica la IA el avance de obra?", a: "El constructor sube fotos geolocalizadas. Nuestra IA las analiza, las compara con el presupuesto y genera un score de cumplimiento (0-100) con hallazgos clasificados: verde (cumple), ámbar (requiere revisión) y rojo (incumplimiento). El técnico confirma y se libera el pago." },
+        { q: "¿Cómo verifica la IA el avance de obra?", a: "El constructor sube fotos con sello temporal. Nuestra IA las analiza, las compara con el presupuesto y genera un score de cumplimiento (0-100) con hallazgos clasificados: verde (cumple), ámbar (requiere revisión) y rojo (incumplimiento). El técnico confirma y se libera el pago." },
         { q: "¿Qué pasa si hay una disputa?", a: "PactStream actúa como mediador neutral. Las evidencias verificadas por IA sirven como documentación objetiva e inmutable. El dinero permanece protegido en escrow hasta que se resuelva la situación." },
         { q: "¿Cuánto cuesta usar PactStream?", a: "Ofrecemos 3 paquetes que incluyen CostPact (presupuestación IA) + PactStream (escrow + pagos). La comisión la paga la constructora, no su cliente. Starter: gratis, solo pagas la comisión por transacción, que baja con el importe de la obra — 2,4% hasta 100.000 €, 2,0% hasta 400.000 €, 1,5% hasta 1M€ y 1,2% por encima. Professional: 99€/mes con presupuestos ilimitados, multi-obra y verificación IA ilimitada. Enterprise: desde 990€/mes con comisión desde 1,2%, API, SSO y CSM dedicado; se activa con GMV superior a 5M€ al año o con una sola obra de más de 3M€. Los primeros 50 usuarios obtienen pricing de fundador de por vida." },
         { q: "¿Está mi dinero seguro?", a: "Sí. Los fondos se custodian en cuentas segregadas reguladas bajo la directiva PSD2 europea. PactStream nunca tiene acceso directo a tu dinero — solo facilita la liberación cuando se cumplen las condiciones del hito." },
@@ -586,7 +586,7 @@ const dict = {
       items: [
         { tag: "DASHBOARD", title: "Your project, your view, your control", desc: "Each role sees what they need. Builders: projects and payments. Developers: escrow and cash flow. Surveyors: pending certifications. No noise, only what matters." },
         { tag: "MILESTONES", title: "Pay for work done, not promises", desc: "Each milestone has its budget in escrow. You know exactly what's been executed, what's protected, and what's left to certify." },
-        { tag: "AI VERIFICATION", title: "Upload photos, get a compliance score", desc: "Geolocated evidence analyzed by AI. Score 0-100 with findings: green (compliant), amber (partial), red (non-compliant). No subjectivity." },
+        { tag: "AI VERIFICATION", title: "Upload photos, get a compliance score", desc: "Sealed evidence analyzed by AI. Score 0-100 with findings: green (compliant), amber (partial), red (non-compliant). No subjectivity." },
         { tag: "ASSISTANT", title: "Ask your project anything", desc: "An AI assistant that answers budget questions, certifies milestones, releases payments, and coordinates validations. All in natural language." },
         { tag: "FINANCES", title: "Every euro, traced in real time", desc: "Developers see how much is in escrow, how much has been released, and to whom. Builders see how much is pending. Total transparency." },
       ],
@@ -597,7 +597,7 @@ const dict = {
       steps: [
         { step: "01", title: "Define your project", desc: "Create the project, set milestones and budget. PactStream generates the payment schedule automatically." },
         { step: "02", title: "Protect the funds", desc: "The developer deposits into PSD2-regulated escrow. Money is locked until work is verified." },
-        { step: "03", title: "Document progress", desc: "The builder uploads geolocated evidence. AI analyzes it and generates a compliance score in seconds." },
+        { step: "03", title: "Document progress", desc: "The builder uploads sealed evidence. AI analyzes it and generates a compliance score in seconds." },
         { step: "04", title: "Get paid instantly", desc: "Developer and surveyor validate. Payment is released automatically to the builder's account. No 30-45 day waits." },
       ],
     },
@@ -637,7 +637,7 @@ const dict = {
       steps: [
         { title: "They sign the contract on PactStream", desc: "They define scope and schedule: a €19,500 advance and five milestones of €9,100. The conditions of each milestone are written down — what must be done for the payment to be released." },
         { title: "Ana deposits the advance", desc: "The €19,500 leaves her account, but never reaches Miguel's: it goes to the segregated account. And since it is Milestone 0, it is covered by the surety bond." },
-        { title: "Miguel starts the work", desc: "Demolition and installations. When the first milestone is done, he uploads eight geolocated photos from his phone, on site." },
+        { title: "Miguel starts the work", desc: "Demolition and installations. When the first milestone is done, he uploads eight time-stamped photos from his phone, on site." },
         { title: "AI analyses the evidence", desc: "Forty seconds. Compliance score: 91 out of 100. Four findings in green, one in amber — the electrical installation appears partially covered in two photos." },
         { title: "The architect reviews and validates", desc: "She asks Miguel for one extra photo of the electrical panel. He uploads it in ten minutes. The amber turns green and she certifies from her phone, without travelling." },
         { title: "Ana approves", desc: "She sees the full report, the evidence and the signed certification. She approves with one tap in the app." },
@@ -652,7 +652,7 @@ const dict = {
       blocks: [
         { q: "Where does my money go?", a: "To a segregated bank account, managed by an authorised payment provider under PSD2 regulation. It is not your account. It is not the builder's. And it is not PactStream's: we never hold funds at any point." },
         { q: "Who can take it out?", a: "No one on their own. The money is released only when the contract conditions are met: evidence uploaded from the site, AI verification, and validation by the surveyor and the client. If one step is missing, the payment does not move." },
-        { q: "What if we disagree?", a: "The system keeps the geolocated, timestamped evidence, the full AI report and the history of every decision. In a dispute there is no \"your word against mine\": there is a file any surveyor, lawyer or judge can review." },
+        { q: "What if we disagree?", a: "The system keeps the sealed, timestamped evidence, the full AI report and the history of every decision. In a dispute there is no \"your word against mine\": there is a file any surveyor, lawyer or judge can review." },
         { q: "And the advance? That is the scariest part.", a: "Rightly so: it is the only moment you pay before any work exists. That is why Milestone 0 Insured exists — the 30% advance is covered by a surety bond with a leading insurer (in negotiation). If the builder never starts, you get your money back." },
       ],
     },
@@ -661,7 +661,7 @@ const dict = {
       heading: "Document better. Get paid faster. Certify risk-free.",
       sub: "AI issues a 0-100 verdict on sealed evidence — GPS, server time and cryptographic fingerprint — and the verdict is immutable. The supervising architect signs on top of it, always.",
       items: [
-        { title: "Automatic visual verification", desc: "Upload geolocated photos. AI compares them with the budget and generates a 0-100 score. Classified findings: green (compliant), amber (review), red (non-compliant). Certify with data, not opinions." },
+        { title: "Automatic visual verification", desc: "Upload time-stamped photos. AI compares them with the budget and generates a 0-100 score. Classified findings: green (compliant), amber (review), red (non-compliant). Certify with data, not opinions." },
         { title: "An assistant that acts, not just answers", desc: "Ask about budget, request a certification, release a payment, detect deviations. All conversational, all real-time, all with real actions." },
         { title: "Trust Score that sets you apart", desc: "Reputation based on completed milestones, evidence quality, and dispute-free record. The best professionals prove it with data." },
       ],
@@ -813,7 +813,7 @@ const dict = {
         { key: "trust_score", label: "Professional Trust Score", category: "Trust" },
         { key: "hito0_insurance", label: "Milestone 0 with surety bond", category: "Insurance" },
         { key: "ai_assistant", label: "AI conversational assistant", category: "AI" },
-        { key: "geo_evidence", label: "Geolocated evidence", category: "Documentation" },
+        { key: "geo_evidence", label: "Sealed evidence", category: "Documentation" },
         { key: "multi_role", label: "Multi-role dashboards", category: "Platform" },
         { key: "ai_budgets", label: "AI budgets (CostPact)", category: "Ecosystem" },
         { key: "mobile", label: "Native mobile app", category: "Platform" },
@@ -838,7 +838,7 @@ const dict = {
           color: "#6C5CE7", pricing: "Not published", pricingDetail: "Funds held by Stripe Payments Europe (EU-regulated entity). Pricing not public on their website (July 2026).",
           strengths: ["Regulated third-party custody (Stripe Payments Europe)", "Money deposited before work starts", "Each validated phase paid within 24 hours", "Mediation and expert assessment in disputes"],
           weaknesses: ["No AI verification — release depends on client approval", "No advance: the builder self-finances the first phase", "No advance protection (no surety bond)", "No integrated budgeting", "Renovation-focused"],
-          verdict: "Fintiq validates our model: external custody and phased payments, in Spain. The difference is how the money is released — with Fintiq the client validates; with PactStream AI verifies against geolocated evidence — and at the start: Fintiq gives the builder no advance; PactStream provides one and protects it with Milestone 0.",
+          verdict: "Fintiq validates our model: external custody and phased payments, in Spain. The difference is how the money is released — with Fintiq the client validates; with PactStream AI verifies against sealed evidence — and at the start: Fintiq gives the builder no advance; PactStream provides one and protects it with Milestone 0.",
           features: { escrow: "yes", ai_verification: "no", auto_payment: "partial", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "partial", ai_budgets: "no", mobile: "no", freemium: "no" },
         },
         {
@@ -931,7 +931,7 @@ const dict = {
       heading: "Your questions answered",
       items: [
         { q: "What is a construction escrow?", a: "It's a PSD2-regulated account where funds for each project milestone are deposited. Funds are only released when work is verified and validated. Your money is protected at all times — PactStream never has direct access to it." },
-        { q: "How does AI verify construction progress?", a: "The builder uploads geolocated photos. Our AI analyzes them, compares with the budget, and generates a compliance score (0-100) with classified findings: green (compliant), amber (needs review), red (non-compliant). The surveyor confirms and payment is released." },
+        { q: "How does AI verify construction progress?", a: "The builder uploads time-stamped photos. Our AI analyzes them, compares with the budget, and generates a compliance score (0-100) with classified findings: green (compliant), amber (needs review), red (non-compliant). The surveyor confirms and payment is released." },
         { q: "What happens if there's a dispute?", a: "PactStream acts as a neutral mediator. AI-verified evidence serves as objective, immutable documentation. Money remains protected in escrow until the situation is resolved." },
         { q: "How much does PactStream cost?", a: "We offer 3 bundles including CostPact (AI budgeting) + PactStream (escrow + payments). The fee is paid by the builder, not by their client. Starter: free, you only pay the transaction fee, which falls as the project grows — 2.4% up to €100,000, 2.0% up to €400,000, 1.5% up to €1M and 1.2% above that. Professional: €99/mo with unlimited budgets, multi-project and unlimited AI verification. Enterprise: from €990/mo with fees from 1.2%, API, SSO and a dedicated CSM; it kicks in above €5M annual GMV or with a single project over €3M. The first 50 users get lifetime founder pricing." },
         { q: "Is my money safe?", a: "Yes. Funds are held in segregated accounts regulated under the European PSD2 directive. PactStream never has direct access to your money — it only facilitates release when milestone conditions are met." },
@@ -1118,7 +1118,7 @@ const dict = {
       items: [
         { tag: "DASHBOARD", title: "A sua obra, a sua vista, o seu controlo", desc: "Cada papel vê o que precisa. Construtores: obras e pagamentos. Promotores: escrow e fluxo de fundos. Técnicos: certificações pendentes. Sem ruído, só o relevante." },
         { tag: "MARCOS", title: "Pague por trabalho feito, não por promessas", desc: "Cada marco tem o seu orçamento em escrow. Sabe exatamente o que foi executado, o que está protegido e quanto falta certificar." },
-        { tag: "VERIFICAÇÃO IA", title: "Carregue fotos, receba um score de conformidade", desc: "Evidências geolocalizadas analisadas por IA. Score 0-100 com conclusões: verde (conforme), âmbar (parcial), vermelho (incumprimento). Sem subjetividade." },
+        { tag: "VERIFICAÇÃO IA", title: "Carregue fotos, receba um score de conformidade", desc: "Evidências seladas analisadas por IA. Score 0-100 com conclusões: verde (conforme), âmbar (parcial), vermelho (incumprimento). Sem subjetividade." },
         { tag: "ASSISTENTE", title: "Pergunte a sua obra", desc: "Um assistente com IA que responde sobre orçamento, certifica marcos, libera pagamentos e coordena validações. Tudo em linguagem natural." },
         { tag: "FINANÇAS", title: "Cada euro, rastreado em tempo real", desc: "O promotor vê quanto tem em escrow, quanto foi liberado e a quem. O construtor vê quanto tem pendente de recebimento. Transparência total." },
       ],
@@ -1129,7 +1129,7 @@ const dict = {
       steps: [
         { step: "01", title: "Defina a sua obra", desc: "Crie o projeto, estabeleça marcos e orçamento. O PactStream gera o calendário de pagamentos automaticamente." },
         { step: "02", title: "Proteja os fundos", desc: "O promotor deposita em escrow regulado PSD2. O dinheiro fica protegido até que o trabalho seja verificado." },
-        { step: "03", title: "Documente o avanço", desc: "O construtor carrega evidências geolocalizadas. A IA analisa-as e gera um score de conformidade em segundos." },
+        { step: "03", title: "Documente o avanço", desc: "O construtor carrega evidências seladas. A IA analisa-as e gera um score de conformidade em segundos." },
         { step: "04", title: "Receba de imediato", desc: "Promotor e técnico validam. O pagamento é liberado automaticamente para a conta do construtor. Sem esperas de 30-45 dias." },
       ],
     },
@@ -1169,7 +1169,7 @@ const dict = {
       steps: [
         { title: "Assinam o contrato no PactStream", desc: "Definem âmbito e calendário: adiantamento de 19.500€ e cinco marcos de 9.100€. As condições de cada marco ficam escritas — o que tem de estar feito para o pagamento ser libertado." },
         { title: "A Ana deposita o adiantamento", desc: "Os 19.500€ saem da sua conta, mas não chegam à do Miguel: vão para a conta segregada. E como é o Marco 0, ficam cobertos pela apólice de caução." },
-        { title: "O Miguel arranca a obra", desc: "Demolição e instalações. Quando termina o primeiro marco, carrega oito fotos geolocalizadas a partir do telemóvel, em obra." },
+        { title: "O Miguel arranca a obra", desc: "Demolição e instalações. Quando termina o primeiro marco, carrega oito fotos con sello temporal a partir do telemóvel, em obra." },
         { title: "A IA analisa as evidências", desc: "Quarenta segundos. Score de conformidade: 91 em 100. Quatro achados em verde, um em âmbar — a instalação elétrica aparece parcialmente coberta em duas fotos." },
         { title: "A arquiteta revê e valida", desc: "Pede ao Miguel uma foto adicional do quadro elétrico. Ele carrega-a em dez minutos. O âmbar passa a verde e a técnica certifica a partir do telemóvel, sem se deslocar." },
         { title: "A Ana aprova", desc: "Vê o relatório completo, as evidências e a certificação assinada. Aprova com um toque na app." },
@@ -1184,7 +1184,7 @@ const dict = {
       blocks: [
         { q: "Para onde vai o meu dinheiro?", a: "Para uma conta bancária segregada, gerida por um prestador de pagamentos autorizado ao abrigo da PSD2. Não é a sua conta. Não é a do construtor. E não é a do PactStream: nós nunca custodiamos fundos." },
         { q: "Quem pode levantá-lo?", a: "Ninguém por conta própria. O dinheiro é libertado apenas quando as condições do contrato se cumprem: evidências carregadas da obra, verificação da IA e validação do técnico e do promotor. Se falta um passo, o pagamento não sai." },
-        { q: "E se não estivermos de acordo?", a: "O sistema conserva as evidências geolocalizadas com marca temporal, o relatório completo da IA e o histórico de cada decisão. Numa disputa não há \"a tua palavra contra a minha\": há um processo que qualquer técnico, advogado ou juiz pode rever." },
+        { q: "E se não estivermos de acordo?", a: "O sistema conserva as evidências seladas com marca temporal, o relatório completo da IA e o histórico de cada decisão. Numa disputa não há \"a tua palavra contra a minha\": há um processo que qualquer técnico, advogado ou juiz pode rever." },
         { q: "E o adiantamento? É o que mais assusta.", a: "Com razão: é o único momento em que se paga antes de existir trabalho. Por isso existe o Marco 0 Assegurado — o adiantamento de 30% fica coberto por uma apólice de caução com uma seguradora líder do mercado (em negociação). Se o construtor não arrancar, recupera o seu dinheiro." },
       ],
     },
@@ -1193,7 +1193,7 @@ const dict = {
       heading: "Documente melhor. Receba mais rápido. Certifique sem riscos.",
       sub: "A IA emite um parecer 0-100 sobre evidência selada — GPS, hora de servidor e impressão digital criptográfica — e o parecer é imutável. A direção de fiscalização assina por cima, sempre.",
       items: [
-        { title: "Verificação visual automática", desc: "Carregue fotos geolocalizadas. A IA compara-as com o orçamento e gera um score 0-100. Conclusões classificadas: verde (conforme), âmbar (revisão), vermelho (incumprimento). Certifique com dados, não com opiniões." },
+        { title: "Verificação visual automática", desc: "Carregue fotos con sello temporal. A IA compara-as com o orçamento e gera um score 0-100. Conclusões classificadas: verde (conforme), âmbar (revisão), vermelho (incumprimento). Certifique com dados, não com opiniões." },
         { title: "Assistente que executa, não apenas responde", desc: "Pergunte sobre orçamento, peça uma certificação, libere um pagamento, detete desvios. Tudo conversacional, tudo em tempo real, tudo com ações reais." },
         { title: "Trust Score que o diferencia", desc: "Reputação baseada em marcos concluídos, qualidade de evidências e ausência de disputas. Os melhores profissionais demonstram-no com dados." },
       ],
@@ -1345,7 +1345,7 @@ const dict = {
         { key: "trust_score", label: "Trust Score do profissional", category: "Confiança" },
         { key: "hito0_insurance", label: "Marco 0 com apólice de caução", category: "Seguros" },
         { key: "ai_assistant", label: "Assistente conversacional IA", category: "IA" },
-        { key: "geo_evidence", label: "Evidências geolocalizadas", category: "Documentação" },
+        { key: "geo_evidence", label: "Evidências seladas", category: "Documentação" },
         { key: "multi_role", label: "Dashboards multi-papel", category: "Plataforma" },
         { key: "ai_budgets", label: "Orçamentos com IA (CostPact)", category: "Ecossistema" },
         { key: "mobile", label: "App móvel nativa", category: "Plataforma" },
@@ -1370,7 +1370,7 @@ const dict = {
           color: "#6C5CE7", pricing: "Não publicado", pricingDetail: "Fundos custodiados pela Stripe Payments Europe (entidade regulada na UE). Preços não públicos no site (julho 2026).",
           strengths: ["Custódia regulada por terceiro (Stripe Payments Europe)", "O dinheiro é depositado antes de começar a obra", "Cada fase validada e paga em 24 horas", "Mediação e peritagem em disputas"],
           weaknesses: ["Sem verificação IA — a libertação depende da aprovação do cliente", "Sem adiantamento: o construtor financia a primeira fase do próprio bolso", "Sem proteção do adiantamento (sem apólice de caução)", "Sem orçamentação integrada", "Focado em renovações"],
-          verdict: "O Fintiq valida o nosso modelo: custódia externa e pagamento por fases, em Espanha. A diferença está em como o dinheiro é libertado — no Fintiq valida o cliente; no PactStream verifica a IA com evidências geolocalizadas — e no arranque: o Fintiq não dá adiantamento ao construtor; o PactStream dá-o e protege-o com o Marco 0.",
+          verdict: "O Fintiq valida o nosso modelo: custódia externa e pagamento por fases, em Espanha. A diferença está em como o dinheiro é libertado — no Fintiq valida o cliente; no PactStream verifica a IA com evidências seladas — e no arranque: o Fintiq não dá adiantamento ao construtor; o PactStream dá-o e protege-o com o Marco 0.",
           features: { escrow: "yes", ai_verification: "no", auto_payment: "partial", milestone_payments: "yes", trust_score: "no", hito0_insurance: "no", ai_assistant: "no", geo_evidence: "no", multi_role: "partial", ai_budgets: "no", mobile: "no", freemium: "no" },
         },
         {
@@ -1463,7 +1463,7 @@ const dict = {
       heading: "Respondemos às suas dúvidas",
       items: [
         { q: "O que é um escrow de construção?", a: "É uma conta regulada PSD2 onde se deposita o dinheiro de cada marco de obra. Os fundos só são liberados quando o trabalho é verificado e validado. O seu dinheiro está protegido em todos os momentos — o PactStream nunca tem acesso direto a ele." },
-        { q: "Como é que a IA verifica o avanço da obra?", a: "O construtor carrega fotos geolocalizadas. A nossa IA analisa-as, compara-as com o orçamento e gera um score de conformidade (0-100) com conclusões classificadas: verde (conforme), âmbar (requer revisão) e vermelho (incumprimento). O técnico confirma e o pagamento é liberado." },
+        { q: "Como é que a IA verifica o avanço da obra?", a: "O construtor carrega fotos con sello temporal. A nossa IA analisa-as, compara-as com o orçamento e gera um score de conformidade (0-100) com conclusões classificadas: verde (conforme), âmbar (requer revisão) e vermelho (incumprimento). O técnico confirma e o pagamento é liberado." },
         { q: "O que acontece se houver uma disputa?", a: "O PactStream atua como mediador neutro. As evidências verificadas por IA servem como documentação objetiva e imutável. O dinheiro permanece protegido em escrow até que a situação se resolva." },
         { q: "Quanto custa usar o PactStream?", a: "Oferecemos 3 pacotes que incluem CostPact (orçamentação IA) + PactStream (escrow + pagamentos). A comissão é paga pela construtora, não pelo cliente dela. Starter: grátis, só paga a comissão por transação, que desce com o valor da obra — 2,4% até 100.000 €, 2,0% até 400.000 €, 1,5% até 1M€ e 1,2% acima disso. Professional: 99€/mês com orçamentos ilimitados, multi-obra e verificação IA ilimitada. Enterprise: a partir de 990€/mês com comissão desde 1,2%, API, SSO e CSM dedicado; ativa-se com GMV acima de 5M€ por ano ou com uma única obra acima de 3M€. Os primeiros 50 utilizadores obtêm preço de fundador vitalício." },
         { q: "O meu dinheiro está seguro?", a: "Sim. Os fundos são custodiados em contas segregadas reguladas ao abrigo da diretiva PSD2 europeia. O PactStream nunca tem acesso direto ao seu dinheiro — apenas facilita a liberação quando se cumprem as condições do marco." },
