@@ -389,6 +389,10 @@ const dict = {
     estado: {
       titulo: "Estado del producto",
       cuerpo: "CostPact (presupuesto) y FiscalCore (fiscalidad) están operativos hoy. La custodia del dinero y la liberación automática del pago están sujetas a la contratación de un proveedor de pagos regulado: en esta web describen el diseño del producto, no un servicio disponible hoy. Lanzamiento previsto Q4 2026. El Hito 0 Asegurado se instrumenta con póliza de caución de una aseguradora líder del mercado, en negociación.",
+      hoyTitulo: "Operativo hoy",
+      hoy: ["CostPact — presupuestos con IA y control de costes", "FiscalCore — fiscalidad, facturación y Verifactu", "PactStream — control de obra, hitos y verificación con IA"],
+      despuesTitulo: "Llega después",
+      despues: ["Custodia del dinero y liberación automática del pago — previsto Q4 2026, sujeto a la contratación de un proveedor de pagos regulado. Lo que esta web describe es el diseño del producto, no un servicio disponible hoy.", "Hito 0 Asegurado — se instrumenta con póliza de caución de una aseguradora líder del mercado, en negociación."],
     },
     faq: {
       tag: "Preguntas frecuentes",
@@ -917,6 +921,10 @@ const dict = {
     estado: {
       titulo: "Product status",
       cuerpo: "CostPact (budgeting) and FiscalCore (tax) are live today. Money custody and automatic payment release are subject to contracting a regulated payment provider: on this site they describe the product design, not a service available today. Launch planned for Q4 2026. Milestone 0 Insured is arranged through a surety bond with a leading insurer, under negotiation.",
+      hoyTitulo: "Live today",
+      hoy: ["CostPact — AI budgeting and cost control", "FiscalCore — tax, invoicing and Verifactu", "PactStream — site control, milestones and AI verification"],
+      despuesTitulo: "Coming next",
+      despues: ["Money custody and automatic payment release — expected Q4 2026, subject to signing a regulated payment provider. What this site describes is the product design, not a service available today.", "Insured Milestone 0 — instrumented with a surety bond from a leading insurer, under negotiation."],
     },
     faq: {
       tag: "FAQ",
@@ -1445,6 +1453,10 @@ const dict = {
     estado: {
       titulo: "Estado do produto",
       cuerpo: "O CostPact (orçamentação) e o FiscalCore (fiscalidade) estão operacionais hoje. A custódia do dinheiro e a libertação automática do pagamento estão sujeitas a contratação de um fornecedor de pagamentos regulado: nesta página descrevem o desenho do produto, não um serviço disponível hoje. Lançamento previsto para o 4.o trimestre de 2026. O Marco 0 Assegurado é instrumentado com apólice de caução de uma seguradora líder de mercado, em negociação.",
+      hoyTitulo: "Operacional hoje",
+      hoy: ["CostPact — orçamentos com IA e controlo de custos", "FiscalCore — fiscalidade, faturação e Verifactu", "PactStream — controlo de obra, marcos e verificação com IA"],
+      despuesTitulo: "Chega depois",
+      despues: ["Custódia do dinheiro e libertação automática do pagamento — previsto Q4 2026, sujeito à contratação de um prestador de pagamentos regulado. O que este site descreve é o desenho do produto, não um serviço disponível hoje.", "Marco 0 Assegurado — instrumentado com apólice de caução de uma seguradora líder de mercado, em negociação."],
     },
     faq: {
       tag: "Perguntas frequentes",

@@ -251,7 +251,11 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
           <a href="#como-funciona" className="hover:text-white transition-colors">{t.nav.howItWorks}</a>
           <a href="#para-quien" className="hover:text-white transition-colors">{t.nav.forWhom}</a>
           <a href="#comparativa" className="hover:text-white transition-colors">{t.nav.comparison}</a>
-          <a href="#precios" className="hover:text-white transition-colors">{t.nav.pricing}</a>
+          {/* precios-fuera-del-nav: prometer «Precios» en la barra y no poder
+              comprar es una trampa de credibilidad —la custodia sigue sin proveedor
+              de pagos contratado. La seccion #precios sigue existiendo y explica el
+              modelo a quien baja; lo que se retira es la promesa de arriba.
+              Devolverla el dia que se pueda pagar. */}
         </div>
         <div className="flex items-center gap-3">
           <LangDropdown locale={locale} setLocale={setLocale} variant="nav" />
@@ -277,7 +281,6 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
                 { href: "#como-funciona", label: t.nav.howItWorks },
                 { href: "#para-quien", label: t.nav.forWhom },
                 { href: "#comparativa", label: t.nav.comparison },
-                { href: "#precios", label: t.nav.pricing },
               ].map((link) => (
                 <a key={link.href} href={link.href} onClick={() => setMobileOpen(false)} className="py-3 text-sm font-medium text-white/70 hover:text-white transition-colors">
                   {link.label}
@@ -368,18 +371,6 @@ function HeroSection({ t }: { t: Dict }) {
               <a href="#como-funciona" className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/20 text-white text-sm font-semibold rounded-[10px] hover:bg-white/10 transition-colors">
                 {t.hero.ctaSecondary}
               </a>
-              {/* Declaracion de estado. Va AQUI, bajo el heroe y sobre el pliegue,
-                  porque la pagina describe en presente un mecanismo cuya custodia
-                  todavia no tiene proveedor contratado — es el unico bloqueante de
-                  salida comercial. Enterrarla en el pie seria cumplir la forma y no
-                  el fondo. Se marca role="note" para que la lean los lectores de
-                  pantalla como aclaracion, no como reclamo. */}
-              <div role="note" className="mb-6 max-w-xl rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3">
-                <p className="text-xs font-semibold uppercase tracking-wider text-[#A9F3FF] mb-1.5">
-                  {t.estado.titulo}
-                </p>
-                <p className="text-xs leading-relaxed text-[#8896A6]">{t.estado.cuerpo}</p>
-              </div>
               <div className="flex flex-wrap gap-4">
                 {t.trustBadges.map((badge) => (
                   <div key={badge} className="flex items-center gap-1.5 text-xs text-[#8896A6]">
@@ -420,6 +411,67 @@ function HeroSection({ t }: { t: Dict }) {
             </div>
           ))}
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+
+/* ─── ESTADO DEL PRODUCTO ───
+   Estaba justo DEBAJO del formulario del heroe: el visitante dejaba su correo y lo
+   siguiente que leia era que la custodia todavia no existe. El contenido es correcto
+   y obligatorio — no se suaviza ni una palabra —, pero como descargo bajo el
+   formulario se leia como disculpa. Aqui es posicionamiento: lo que funciona hoy a la
+   izquierda, lo que llega despues a la derecha, con su condicion y su fecha.
+   `cuerpo` se conserva integro debajo como letra pequena: es el texto autorizado y
+   ninguna reordenacion puede hacerlo desaparecer. */
+function EstadoSection({ t }: { t: Dict }) {
+  return (
+    <section
+      aria-labelledby="estado-heading"
+      className="border-y border-white/10 bg-white/[0.02] py-12 md:py-16"
+    >
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <h2
+          id="estado-heading"
+          className="mb-8 text-xs font-semibold uppercase tracking-wider text-[#A9F3FF]"
+        >
+          {t.estado.titulo}
+        </h2>
+
+        <div className="grid gap-8 md:grid-cols-2 md:gap-12">
+          <div>
+            <p className="mb-4 flex items-center gap-2 text-sm font-semibold text-[#0D9B84]">
+              <CheckCircle2 className="h-4 w-4 shrink-0" />
+              {t.estado.hoyTitulo}
+            </p>
+            <ul className="space-y-2.5">
+              {t.estado.hoy.map((linea: string) => (
+                <li key={linea} className="text-sm leading-relaxed text-white/80">
+                  {linea}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-4 flex items-center gap-2 text-sm font-semibold text-[#8896A6]">
+              <ShieldCheck className="h-4 w-4 shrink-0" />
+              {t.estado.despuesTitulo}
+            </p>
+            <ul className="space-y-3">
+              {t.estado.despues.map((linea: string) => (
+                <li key={linea} className="text-sm leading-relaxed text-[#8896A6]">
+                  {linea}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <p role="note" className="mt-8 border-t border-white/10 pt-5 text-xs leading-relaxed text-[#8896A6]/80">
+          {t.estado.cuerpo}
+        </p>
       </div>
     </section>
   );
@@ -1853,6 +1905,7 @@ export default function SiteContent({ initialLocale }: { initialLocale: Locale }
       <Navbar t={t} locale={locale} setLocale={setLocale} />
       <main id="main-content">
         <HeroSection t={t} />
+        <EstadoSection t={t} />
         <ClaimSection t={t} />
         <ProblemSection t={t} />
         <HowItWorksSection t={t} />
