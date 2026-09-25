@@ -93,6 +93,13 @@ const dict = {
         { tag: "Hoteles", title: "Reformas hoteleras por fases", desc: "Reformar sin cerrar el hotel exige certificar por zonas y plantas. Cada fase se verifica y se paga de forma independiente, sin bloquear el resto de la obra. Ticket típico: 200.000€–2M€." },
       ],
     },
+    video: {
+      tag: "El orden del dinero",
+      heading: "Míralo en dos minutos",
+      body: "Cómo se le da la vuelta al cobro en obra: el dinero custodiado en una cuenta de garantía regulada antes de empezar, y liberado con cada certificación verificada.",
+      cta: "Reproducir vídeo",
+      duration: "2 min",
+    },
     claim: {
       tag: "Por qué PactStream",
       heading: "Control de obra, verificación por IA y pago condicionado al avance real",
@@ -625,6 +632,13 @@ const dict = {
         { tag: "Hotels", title: "Phased hotel renovations", desc: "Renovating without closing the hotel means certifying by zones and floors. Each phase is verified and paid independently, without blocking the rest. Typical ticket: €200,000–2M." },
       ],
     },
+    video: {
+      tag: "The order of money",
+      heading: "See it in two minutes",
+      body: "How construction payments get turned around: money held in a regulated escrow account before work starts, and released with each verified certification.",
+      cta: "Play video",
+      duration: "2 min",
+    },
     claim: {
       tag: "Why PactStream",
       heading: "Construction monitoring, AI verification and payment conditioned on real progress",
@@ -1156,6 +1170,13 @@ const dict = {
         { tag: "Obra pública", title: "Obra pública menor", desc: "Contratos menores de câmaras municipais e entidades locais. Evidências com marca temporal e processo exportável para fiscalização. Ticket típico: 100.000–500.000€." },
         { tag: "Hotéis", title: "Renovações hoteleiras por fases", desc: "Renovar sem fechar o hotel exige certificar por zonas e pisos. Cada fase é verificada e paga de forma independente, sem bloquear o resto da obra. Ticket típico: 200.000€–2M€." },
       ],
+    },
+    video: {
+      tag: "A ordem do dinheiro",
+      heading: "Veja em dois minutos",
+      body: "Como se dá a volta ao pagamento em obra: o dinheiro em custódia numa conta de garantia regulada antes de começar, e libertado a cada certificação verificada.",
+      cta: "Reproduzir vídeo",
+      duration: "2 min",
     },
     claim: {
       tag: "Porque PactStream",

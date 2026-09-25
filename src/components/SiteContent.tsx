@@ -37,6 +37,7 @@ import {
   Briefcase,
   Landmark,
   Hotel,
+  Play,
 } from "lucide-react";
 import PhoneFrame from "@/components/PhoneFrame";
 import { Hito0Seal } from "@/components/Hito0Seal";
@@ -1894,6 +1895,64 @@ function MoneySection({ t }: { t: Dict }) {
 }
 
 /* ─── PAGE ─── */
+/* ─── VÍDEO PROMO (fachada click-to-load) ─── */
+function VideoSection({ t }: { t: Dict }) {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <section id="video" className="relative py-20 md:py-28 bg-[#080D42] overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full opacity-[0.06] pointer-events-none"
+        style={{ background: "radial-gradient(circle, #0D9B84 0%, transparent 70%)" }}
+      />
+      <div className="relative max-w-[980px] mx-auto px-6 lg:px-10">
+        <AnimatedSection className="text-center mb-10">
+          <span className="inline-block px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.18em] font-medium text-[#0D9B84] bg-[#0D9B84]/10 mb-5">
+            {t.video.tag}
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">{t.video.heading}</h2>
+          <p className="text-lg text-white/60 max-w-2xl mx-auto">{t.video.body}</p>
+        </AnimatedSection>
+        <AnimatedSection delay={0.1}>
+          <div className="relative aspect-video rounded-[24px] overflow-hidden ring-1 ring-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] bg-black">
+            {playing ? (
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube-nocookie.com/embed/P5D83F_xj7M?autoplay=1&rel=0&modestbranding=1"
+                title="El orden del dinero"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setPlaying(true)}
+                aria-label={t.video.cta}
+                className="group absolute inset-0 w-full h-full cursor-pointer"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/lanzamiento/orden-del-dinero-poster.jpg"
+                  alt=""
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <span className="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition-colors" />
+                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-20 h-20 rounded-full bg-[#0121DC] shadow-[0_10px_40px_rgba(1,33,220,0.5)] transition-transform duration-300 group-hover:scale-105">
+                  <Play className="w-8 h-8 text-white translate-x-[2px]" fill="currentColor" />
+                </span>
+                <span className="absolute bottom-4 right-4 px-2.5 py-1 rounded-md bg-black/60 text-white/90 text-xs font-medium backdrop-blur-sm">
+                  {t.video.duration}
+                </span>
+              </button>
+            )}
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
+
 export default function SiteContent({ initialLocale }: { initialLocale: Locale }) {
   const [t, locale, setLocale] = useLang(initialLocale);
   useEffect(() => { document.documentElement.lang = locale; }, [locale]);
@@ -1905,6 +1964,7 @@ export default function SiteContent({ initialLocale }: { initialLocale: Locale }
       <Navbar t={t} locale={locale} setLocale={setLocale} />
       <main id="main-content">
         <HeroSection t={t} />
+        <VideoSection t={t} />
         <EstadoSection t={t} />
         <ClaimSection t={t} />
         <ProblemSection t={t} />
