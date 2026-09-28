@@ -1918,7 +1918,7 @@ function VideoSection({ t }: { t: Dict }) {
             {playing ? (
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube-nocookie.com/embed/P5D83F_xj7M?autoplay=1&rel=0&modestbranding=1"
+                src="https://www.youtube-nocookie.com/embed/CzJ9kU9ogdU?autoplay=1&rel=0&modestbranding=1"
                 title="El orden del dinero"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -1932,7 +1932,7 @@ function VideoSection({ t }: { t: Dict }) {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/lanzamiento/orden-del-dinero-poster.jpg"
+                  src="/lanzamiento/orden-del-dinero-poster-personas.jpg"
                   alt=""
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover"
