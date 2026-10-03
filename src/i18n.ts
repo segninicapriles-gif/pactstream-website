@@ -423,7 +423,7 @@ const dict = {
       contact: "Contacto",
       columns: {
         product: { title: "Producto", links: ["Funcionalidades", "Cómo funciona", "Precios", "Ecosistema"] },
-        audience: { title: "Para quién", links: ["Promotores", "Constructores", "Técnicos", "Casos de uso"] },
+        audience: { title: "Para quién", links: ["Promotores", "Constructores", "Técnicos", "Casos de uso", "Autopromotores y reformas"] },
         company: { title: "Ecosistema", links: ["CostPact", "FiscalCore", "PropertyJourney", "Lanzamiento", "Contacto"] },
       },
       tagline: "Escrow inteligente para construcción. Protege cada euro de tu obra con IA y pagos por hitos.",

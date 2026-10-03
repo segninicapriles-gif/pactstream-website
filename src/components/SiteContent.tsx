@@ -1733,7 +1733,7 @@ function Footer({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
   const footerColumns = (t.footer as any).columns as { product: { title: string; links: string[] }; audience: { title: string; links: string[] }; company: { title: string; links: string[] } };
   const tagline = (t.footer as any).tagline as string;
   const productHrefs = ["#funcionalidades", "#como-funciona", "#precios", "#ecosistema"];
-  const audienceHrefs = ["#para-quien", "#para-quien", "#para-quien", "#casos-de-uso"];
+  const audienceHrefs = ["#para-quien", "#para-quien", "#para-quien", "#casos-de-uso", "/autopromotores"];
   // "Sobre nosotros" y "Blog" no existen aún — solo se renderizan enlaces con destino real
   const launchHref = locale === "en" ? "/en/launch" : locale === "pt" ? "/pt/lancamento" : "/lanzamiento";
   const companyHrefs = ["https://costpact.io", "https://fiscalcore.io", "https://propertyjourney.pt", launchHref, "mailto:hello@pactstream.io"];
