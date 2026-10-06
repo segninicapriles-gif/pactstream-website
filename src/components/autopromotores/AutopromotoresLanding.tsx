@@ -224,7 +224,7 @@ export function AutopromotoresLanding() {
 #autopromotores-faq summary::-webkit-details-marker{display:none}`}</style>
 
       {/* NAV */}
-      <nav className="sticky top-0 z-50 border-b border-white/[0.06]" style={{ background: 'rgba(8,13,66,0.85)', backdropFilter: 'blur(12px)' }}>
+      <nav className="sticky top-0 z-50 border-b border-white/[0.06]" style={{ background: '#080D42' }}>
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center" aria-label="PactStream">
             {/* eslint-disable-next-line @next/next/no-img-element */}
