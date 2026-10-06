@@ -224,7 +224,7 @@ export function AutopromotoresLanding() {
 #autopromotores-faq summary::-webkit-details-marker{display:none}`}</style>
 
       {/* NAV */}
-      <nav className="sticky top-0 z-50 border-b border-white/[0.06]" style={{ background: '#080D42' }}>
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06]" style={{ background: 'rgba(8,13,66,0.85)', backdropFilter: 'blur(12px)' }}>
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center" aria-label="PactStream">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -237,7 +237,7 @@ export function AutopromotoresLanding() {
       </nav>
 
       {/* HERO */}
-      <section className="relative pt-14 pb-20 md:pt-20 md:pb-28 overflow-hidden" style={{ background: NAVY }}>
+      <section className="relative pt-30 pb-20 md:pt-36 md:pb-28 overflow-hidden" style={{ background: NAVY }}>
         <NavyAtmosphere />
         <div className="relative max-w-[1200px] mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
