@@ -204,7 +204,7 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [featDropdown, setFeatDropdown] = useState(false);
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#080D42] border-b border-white/[0.06]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#080D42]/90 backdrop-blur-xl border-b border-white/[0.06]">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
         {/* El logo es el ancla al inicio, como en el resto de webs del ecosistema:
             enlaza a la home del idioma y, si ya estás en ella, sube con scroll suave. */}
