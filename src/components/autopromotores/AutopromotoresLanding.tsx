@@ -14,7 +14,7 @@ import { useMemo, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import {
   ShieldCheck, Lock, ClipboardCheck, ScanLine, Boxes, ArrowRight, Plus,
-  CircleDollarSign, TrendingUp, CalendarX2, FileWarning,
+  CircleDollarSign, TrendingUp, CalendarX2, FileWarning, Download,
 } from 'lucide-react'
 import PhoneFrame from '@/components/PhoneFrame'
 import { ScreenDashboardPromotor } from '@/components/AppScreens'
@@ -437,6 +437,40 @@ export function AutopromotoresLanding() {
           <h2 className="font-display text-2xl md:text-3xl font-black tracking-tight mb-4">Nacido dentro de una constructora</h2>
           <p className="text-lg text-[#5A6B7F] leading-relaxed">PactStream no lo ha ideado alguien que miró la construcción desde fuera. Viene de una constructora con años de obra real en Madrid, donde hemos visto de cerca dónde se rompe la confianza entre quien paga y quien construye. Los anticipos perdidos y las obras abandonadas son casos documentados en el sector: es el motivo por el que lo hemos diseñado así.</p>
         </Reveal>
+      </section>
+
+      {/* GUÍAS GRATIS (lead magnets) */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-12">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3" style={{ color: TEAL }}>Guías gratuitas</p>
+            <h2 className="font-display text-3xl md:text-4xl font-black tracking-tight mb-3">Llévate lo que hemos aprendido en obra</h2>
+            <p className="text-lg text-[#5A6B7F] max-w-xl mx-auto">Dos guías prácticas para proteger tu dinero antes de firmar. Descarga directa, sin compromiso.</p>
+          </Reveal>
+          <div className="grid md:grid-cols-2 gap-5">
+            {([
+              [ClipboardCheck, '20 preguntas antes de firmar con tu constructor', 'La lista que lleva por escrito quien no quiere jugársela a la confianza.', '/guias/20-preguntas-antes-de-firmar.pdf'],
+              [ShieldCheck, 'Cómo proteger el anticipo de tu obra', 'El pago que más miedo da, y cómo darle respaldo paso a paso.', '/guias/proteger-el-anticipo-de-tu-obra.pdf'],
+            ] as const).map(([Icon, t, d, href]) => (
+              <Reveal key={href}>
+                <a href={href} download className="card-surface card-surface-hover p-7 flex flex-col h-full group">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ background: 'rgba(13,155,132,0.1)' }}>
+                    <Icon className="w-5 h-5" style={{ color: TEAL }} />
+                  </div>
+                  <h3 className="font-display text-lg font-bold mb-2 leading-snug">{t}</h3>
+                  <p className="text-[#5A6B7F] leading-relaxed mb-5 flex-1">{d}</p>
+                  <span className="inline-flex items-center gap-2 font-semibold text-sm" style={{ color: BLUE }}>
+                    <Download className="w-4 h-4" /> Descargar PDF
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="text-center mt-8">
+            <p className="text-sm text-[#5A6B7F]">¿Eres arquitecto, aparejador o asesor? <a href="/guias/one-pager-prescriptores.pdf" download className="font-semibold underline" style={{ color: BLUE }}>Descarga el one-pager para prescriptores</a>.</p>
+          </Reveal>
+        </div>
       </section>
 
       {/* CTA FINAL */}
