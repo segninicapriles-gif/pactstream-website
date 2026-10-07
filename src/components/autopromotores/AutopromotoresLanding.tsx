@@ -162,7 +162,7 @@ function Waitlist({ caso }: { caso: Caso }) {
         </button>
       </div>
       {state === 'err' && <p className="text-[#F7B54A] text-sm mt-2">No hemos podido guardar tu reserva. Inténtalo de nuevo.</p>}
-      <p className="text-xs text-[#8896A6] mt-3">Sin coste ni compromiso. Solo te escribimos para avisarte del lanzamiento (previsto Q4 2026).</p>
+      <p className="text-xs text-[#8896A6] mt-3">Al reservar, aceptas recibir correos de PactStream sobre el acceso anticipado (previsto Q4 2026). Sin coste ni compromiso; te das de baja cuando quieras. <a href="/privacidad" className="underline hover:text-white transition-colors">Privacidad</a>.</p>
     </form>
   )
 }
