@@ -54,5 +54,5 @@
     enviar('/evento/' + String(nombre || 'sin-nombre').slice(0, 60));
   };
 
-  enviar(location.pathname);
+  enviar(location.pathname + location.search);
 })();
