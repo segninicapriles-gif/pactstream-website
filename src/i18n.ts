@@ -4,7 +4,7 @@ const dict = {
   es: {
     nav: {
       features: "Funcionalidades",
-      howItWorks: "Cómo funciona",
+      howItWorks: "En 4 pasos",
       forWhom: "Para quién",
       pricing: "Precios",
       comparison: "Comparativa",
@@ -422,7 +422,7 @@ const dict = {
       cookies: "Cookies",
       contact: "Contacto",
       columns: {
-        product: { title: "Producto", links: ["Funcionalidades", "Cómo funciona", "Precios", "Ecosistema"] },
+        product: { title: "Producto", links: ["Funcionalidades", "En 4 pasos", "Precios", "Ecosistema"] },
         audience: { title: "Para quién", links: ["Promotores", "Constructores", "Técnicos", "Casos de uso", "Autopromotores y reformas"] },
         company: { title: "Ecosistema", links: ["CostPact", "FiscalCore", "PropertyJourney", "Lanzamiento", "Contacto"] },
       },
@@ -543,7 +543,7 @@ const dict = {
   en: {
     nav: {
       features: "Features",
-      howItWorks: "How it works",
+      howItWorks: "In 4 steps",
       forWhom: "For whom",
       pricing: "Pricing",
       comparison: "Comparison",
@@ -961,7 +961,7 @@ const dict = {
       cookies: "Cookies",
       contact: "Contact",
       columns: {
-        product: { title: "Product", links: ["Features", "How it works", "Pricing", "Ecosystem"] },
+        product: { title: "Product", links: ["Features", "In 4 steps", "Pricing", "Ecosystem"] },
         audience: { title: "For whom", links: ["Developers", "Builders", "Surveyors", "Use cases"] },
         company: { title: "Ecosystem", links: ["CostPact", "FiscalCore", "PropertyJourney", "Launch", "Contact"] },
       },
@@ -1082,7 +1082,7 @@ const dict = {
   pt: {
     nav: {
       features: "Funcionalidades",
-      howItWorks: "Como funciona",
+      howItWorks: "Em 4 passos",
       forWhom: "Para quem",
       pricing: "Preços",
       comparison: "Comparativo",
@@ -1500,7 +1500,7 @@ const dict = {
       cookies: "Cookies",
       contact: "Contacto",
       columns: {
-        product: { title: "Produto", links: ["Funcionalidades", "Como funciona", "Preços", "Ecossistema"] },
+        product: { title: "Produto", links: ["Funcionalidades", "Em 4 passos", "Preços", "Ecossistema"] },
         audience: { title: "Para quem", links: ["Promotores", "Construtores", "Técnicos", "Casos de uso"] },
         company: { title: "Ecossistema", links: ["CostPact", "FiscalCore", "PropertyJourney", "Lançamento", "Contacto"] },
       },
