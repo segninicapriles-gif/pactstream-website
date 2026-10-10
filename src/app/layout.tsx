@@ -26,6 +26,7 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pactstream.io"),
+  verification: { google: "b9XpzGkYsrJOYKBjLaDhqPHstHcoDRKUJi7NQjUYbtI" },
   title: "PactStream — Control de obra, verificación IA y pago condicionado",
   description:
     "Control de obra, verificación del avance con IA (score 0-100) y pago condicionado al trabajo hecho. El dinero, en una cuenta regulada PSD2 externa a las partes. Para promotores, constructores y técnicos.",
