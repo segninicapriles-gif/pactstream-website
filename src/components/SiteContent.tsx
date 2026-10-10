@@ -347,7 +347,7 @@ function HeroSection({ t }: { t: Dict }) {
             </p>
             {/* Inline email capture */}
             {!heroSubmitted ? (
-              <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); try { await insertWaitlist(heroEmail, undefined, "hero"); track("waitlist_submit", { source: "hero" }); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
+              <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); (window as any).cimbriumEvento?.('pactstream-hero-submit'); try { await insertWaitlist(heroEmail, undefined, "hero"); track("waitlist_submit", { source: "hero" }); (window as any).cimbriumEvento?.('pactstream-hero-alta'); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
                 <input
                   type="email"
                   required
@@ -492,7 +492,8 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
     if (!email || !role) return;
     setLoading(true);
     setError(false);
-    try { await insertWaitlist(email, role, "waitlist"); track("waitlist_submit", { source: "waitlist", role }); setSubmitted(true); } catch { setError(true); }
+    (window as any).cimbriumEvento?.('pactstream-waitlist-submit');
+    try { await insertWaitlist(email, role, "waitlist"); track("waitlist_submit", { source: "waitlist", role }); (window as any).cimbriumEvento?.('pactstream-waitlist-alta'); setSubmitted(true); } catch { setError(true); }
     setLoading(false);
   };
 
