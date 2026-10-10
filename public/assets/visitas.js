@@ -54,5 +54,16 @@
     enviar('/evento/' + String(nombre || 'sin-nombre').slice(0, 60));
   };
 
-  enviar(location.pathname + location.search);
+  // Solo conservamos parámetros de campaña conocidos — nunca el query completo,
+  // para no registrar jamás PII que pudiera viajar en la URL (email, token, etc.).
+  var TAGS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','s','ref','gclid','fbclid','li_fat_id','msclkid'];
+  function rutaMedible() {
+    try {
+      var q = new URLSearchParams(location.search), keep = [];
+      TAGS.forEach(function (k) { if (q.has(k)) keep.push(k + '=' + String(q.get(k)).slice(0, 60)); });
+      return location.pathname + (keep.length ? '?' + keep.join('&') : '');
+    } catch (e) { return location.pathname; }
+  }
+
+  enviar(rutaMedible());
 })();
