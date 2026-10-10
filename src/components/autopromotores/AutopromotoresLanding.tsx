@@ -142,7 +142,8 @@ function Waitlist({ caso }: { caso: Caso }) {
     e.preventDefault()
     if (!email || state === 'loading') return
     setState('loading')
-    try { await insertWaitlist(email, 'Promotor / Autopromotor', `autopromotores-${caso}`); setState('ok') }
+    ;(window as any).cimbriumEvento?.(`autopromotores-submit-${caso}`)
+    try { await insertWaitlist(email, 'Promotor / Autopromotor', `autopromotores-${caso}`); (window as any).cimbriumEvento?.(`autopromotores-alta-${caso}`); setState('ok') }
     catch { setState('err') }
   }
   if (state === 'ok') return (
