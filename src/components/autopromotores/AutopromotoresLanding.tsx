@@ -65,7 +65,7 @@ function Calculadora() {
   const [obra, setObra] = useState(300_000)
   const [anticipo, setAnticipo] = useState(20)
   const [hitos, setHitos] = useState(5)
-  const [reten, setReten] = useState(5)
+  const [reten, setReten] = useState(0)
   const r = useMemo(() => {
     const anticipoEur = (obra * anticipo) / 100
     const porHito = (obra - anticipoEur) / hitos
@@ -101,7 +101,7 @@ function Calculadora() {
               <Field label={`Certificaciones (hitos): ${hitos}`}>
                 <input type="range" min={2} max={10} step={1} value={hitos} onChange={(e) => setHitos(+e.target.value)} className="ps-range" />
               </Field>
-              <Field label={`Retención por certificación: ${reten}%`} hint="Garantía de remate que se libera al final de la obra">
+              <Field label={`Retención por certificación: ${reten}%`} hint="La que figure en tu contrato. Se libera al final de la obra">
                 <input type="range" min={0} max={10} step={1} value={reten} onChange={(e) => setReten(+e.target.value)} className="ps-range" />
               </Field>
             </div>
