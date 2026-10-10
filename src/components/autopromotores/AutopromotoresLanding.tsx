@@ -95,7 +95,7 @@ function Calculadora() {
               <Field label={`Presupuesto de la obra: ${eur(obra)}`} hint="Autopromoción ~700.000 € · reforma integral ~65.000 €">
                 <input type="range" min={30_000} max={1_200_000} step={5_000} value={obra} onChange={(e) => setObra(+e.target.value)} className="ps-range" />
               </Field>
-              <Field label={`Anticipo inicial: ${anticipo}%`} hint="Recomendación habitual: no más del 20-30% (OCU)">
+              <Field label={`Anticipo inicial: ${anticipo}%`} hint="No hay cifra fija: si el anticipo no tiene respaldo, solo lo imprescindible para empezar">
                 <input type="range" min={0} max={40} step={1} value={anticipo} onChange={(e) => setAnticipo(+e.target.value)} className="ps-range" />
               </Field>
               <Field label={`Certificaciones (hitos): ${hitos}`}>
