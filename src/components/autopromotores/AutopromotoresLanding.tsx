@@ -63,7 +63,7 @@ function NavyAtmosphere() {
 /* ─── Calculadora de retención por hito ─────────────────────────────────── */
 function Calculadora() {
   const [obra, setObra] = useState(300_000)
-  const [anticipo, setAnticipo] = useState(20)
+  const [anticipo, setAnticipo] = useState(0)
   const [hitos, setHitos] = useState(5)
   const [reten, setReten] = useState(0)
   const r = useMemo(() => {
@@ -86,7 +86,7 @@ function Calculadora() {
       <div className="relative max-w-[1000px] mx-auto px-6 lg:px-10">
         <Reveal className="text-center mb-12">
           <p className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: CYAN }}>Herramienta</p>
-          <h2 className="font-display text-3xl md:text-4xl font-black tracking-tight text-white mb-4">¿Cuánto deberías retener en cada hito?</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Mira cómo se reparten tus pagos por tramos</h2>
           <p className="text-lg text-[#8896A6] max-w-2xl mx-auto">Mueve los datos de tu obra y mira cuánto conviene no pagar por adelantado. Orientación educativa — las cifras son tuyas, no se guardan.</p>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-6 items-start">
