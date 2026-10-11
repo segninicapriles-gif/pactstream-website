@@ -299,7 +299,7 @@ function Navbar({ t, locale, setLocale }: { t: Dict; locale: Locale; setLocale: 
 }
 
 /* ─── HERO ─── */
-function HeroSection({ t }: { t: Dict }) {
+function HeroSection({ t, locale }: { t: Dict; locale: Locale }) {
   const [heroEmail, setHeroEmail] = useState("");
   const [heroSubmitted, setHeroSubmitted] = useState(false);
   const [heroLoading, setHeroLoading] = useState(false);
@@ -347,7 +347,7 @@ function HeroSection({ t }: { t: Dict }) {
             </p>
             {/* Inline email capture */}
             {!heroSubmitted ? (
-              <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); (window as any).cimbriumEvento?.('pactstream-hero-submit'); try { await insertWaitlist(heroEmail, undefined, "hero"); track("waitlist_submit", { source: "hero" }); (window as any).cimbriumEvento?.('pactstream-hero-alta'); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
+              <form onSubmit={async (e) => { e.preventDefault(); if (!heroEmail) return; setHeroLoading(true); (window as any).cimbriumEvento?.('pactstream-hero-submit'); try { await insertWaitlist(heroEmail, undefined, `hero-${locale}`); track("waitlist_submit", { source: "hero" }); (window as any).cimbriumEvento?.('pactstream-hero-alta'); setHeroSubmitted(true); } catch { /* error silently */ } setHeroLoading(false); }} className="flex flex-col sm:flex-row gap-3 mb-6">
                 <input
                   type="email"
                   required
@@ -493,7 +493,7 @@ function WaitlistSection({ t, locale }: { t: Dict; locale: Locale }) {
     setLoading(true);
     setError(false);
     (window as any).cimbriumEvento?.('pactstream-waitlist-submit');
-    try { await insertWaitlist(email, role, "waitlist"); track("waitlist_submit", { source: "waitlist", role }); (window as any).cimbriumEvento?.('pactstream-waitlist-alta'); setSubmitted(true); } catch { setError(true); }
+    try { await insertWaitlist(email, role, `waitlist-${locale}`); track("waitlist_submit", { source: "waitlist", role }); (window as any).cimbriumEvento?.('pactstream-waitlist-alta'); setSubmitted(true); } catch { setError(true); }
     setLoading(false);
   };
 
@@ -1964,7 +1964,7 @@ export default function SiteContent({ initialLocale }: { initialLocale: Locale }
       </a>
       <Navbar t={t} locale={locale} setLocale={setLocale} />
       <main id="main-content">
-        <HeroSection t={t} />
+        <HeroSection t={t} locale={locale} />
         <VideoSection t={t} />
         <EstadoSection t={t} />
         <ClaimSection t={t} />
