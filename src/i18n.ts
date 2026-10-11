@@ -145,7 +145,7 @@ const dict = {
       tag: "Ecosistema",
       heading: "El ciclo completo, de principio a fin",
       sub: "Ningún competidor en Europa integra el ciclo entero: presupuesto con IA, obra y pagos verificados, caja y fiscal, y comercialización.",
-      costpact: { name: "CostPact", sub: "SaaS de presupuestación con IA", desc: "Genera presupuestos profesionales en minutos desde un catálogo propio con 13 años de datos reales de obra. El punto de entrada al ecosistema.", link: "El presupuesto aprobado se convierte en el contrato de PactStream" },
+      costpact: { name: "CostPact", sub: "SaaS de presupuestación con IA", desc: "Genera presupuestos profesionales en minutos desde un catálogo propio con 15 años de datos reales de obra. El punto de entrada al ecosistema.", link: "El presupuesto aprobado se convierte en el contrato de PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificación IA + pagos", desc: "Protege los pagos en escrow regulado PSD2, verifica el avance con IA y libera fondos por hitos validados. El motor financiero de la construcción.", link: "Ciclo completo: presupuesto → pago" },
       fiscalcore: { name: "FiscalCore", sub: "Del cobro bruto al ingreso real, con la fiscalidad resuelta", desc: "El tercer eslabón: tesorería Profit First pensada para obra y cumplimiento Verifactu 2027, con un CFO-IA que no solo aconseja — ejecuta. Cada cobro certificado aterriza en una caja ordenada.", link: "Únete a la lista → fiscalcore.io" },
       propertyjourney: { name: "PropertyJourney", sub: "Comercialización y posventa" },
@@ -165,7 +165,7 @@ const dict = {
       stats: [
         { value: 84, suffix: "/100", divisor: 1, label: "Score UX/Diseño", sub: "Auditoría independiente post-implementación" },
         { value: 3, suffix: " roles", divisor: 1, label: "Dashboards diferenciados", sub: "Promotor, constructor y técnico" },
-        { value: 200, suffix: "+", divisor: 1, label: "Obras reales detrás del catálogo", sub: "13 años de datos medidos en obra" },
+        { value: 200, suffix: "+", divisor: 1, label: "Obras reales detrás del catálogo", sub: "15 años de datos medidos en obra" },
       ],
     },
     pricing: {
@@ -684,7 +684,7 @@ const dict = {
       tag: "Ecosystem",
       heading: "The complete cycle, end to end",
       sub: "No competitor in Europe integrates the entire cycle: AI budgeting, verified site and payments, cash and tax, and sales.",
-      costpact: { name: "CostPact", sub: "AI-powered budgeting SaaS", desc: "Generate professional budgets in minutes from a proprietary catalog built on 13 years of real construction data. The entry point to the ecosystem.", link: "Your approved budget becomes the PactStream contract" },
+      costpact: { name: "CostPact", sub: "AI-powered budgeting SaaS", desc: "Generate professional budgets in minutes from a proprietary catalog built on 15 years of real construction data. The entry point to the ecosystem.", link: "Your approved budget becomes the PactStream contract" },
       pactstream: { name: "PactStream", sub: "Smart escrow + AI verification + payments", desc: "Protects payments in PSD2-regulated escrow, verifies progress with AI, and releases funds on validated milestones. The financial engine of construction.", link: "Complete cycle: budget → payment" },
       fiscalcore: { name: "FiscalCore", sub: "From gross collection to real income, taxation resolved", desc: "The third link: Profit First treasury designed for construction and Verifactu 2027 compliance, with an AI CFO that doesn't just advise — it executes. Every certified payment lands in an orderly cash position.", link: "Join the list → fiscalcore.io" },
       propertyjourney: { name: "PropertyJourney", sub: "Sales and after-sales" },
@@ -704,7 +704,7 @@ const dict = {
       stats: [
         { value: 84, suffix: "/100", divisor: 1, label: "UX/Design score", sub: "Independent post-implementation audit" },
         { value: 3, suffix: " roles", divisor: 1, label: "Differentiated dashboards", sub: "Developer, builder, and surveyor" },
-        { value: 200, suffix: "+", divisor: 1, label: "Real projects behind the catalog", sub: "13 years of data measured on site" },
+        { value: 200, suffix: "+", divisor: 1, label: "Real projects behind the catalog", sub: "15 years of data measured on site" },
       ],
     },
     pricing: {
@@ -1223,7 +1223,7 @@ const dict = {
       tag: "Ecossistema",
       heading: "O ciclo completo, de ponta a ponta",
       sub: "Nenhum concorrente na Europa integra o ciclo inteiro: orçamento com IA, obra e pagamentos verificados, caixa e fiscal, e comercialização.",
-      costpact: { name: "CostPact", sub: "SaaS de orçamentação com IA", desc: "Gere orçamentos profissionais em minutos a partir de um catálogo próprio com 13 anos de dados reais de obra. O ponto de entrada no ecossistema.", link: "O orçamento aprovado converte-se no contrato do PactStream" },
+      costpact: { name: "CostPact", sub: "SaaS de orçamentação com IA", desc: "Gere orçamentos profissionais em minutos a partir de um catálogo próprio com 15 anos de dados reais de obra. O ponto de entrada no ecossistema.", link: "O orçamento aprovado converte-se no contrato do PactStream" },
       pactstream: { name: "PactStream", sub: "Escrow inteligente + verificação IA + pagamentos", desc: "Protege os pagamentos em escrow regulado PSD2, verifica o avanço com IA e libera fundos por marcos validados. O motor financeiro da construção.", link: "Ciclo completo: orçamento → pagamento" },
       fiscalcore: { name: "FiscalCore", sub: "Do recebimento bruto ao rendimento real, com a fiscalidade resolvida", desc: "O terceiro elo: tesouraria Profit First pensada para obra e conformidade Verifactu 2027, com um CFO-IA que não só aconselha — executa. Cada recebimento certificado aterra numa caixa ordenada.", link: "Junta-te à lista → fiscalcore.io" },
       propertyjourney: { name: "PropertyJourney", sub: "Comercialização e pós-venda" },
@@ -1243,7 +1243,7 @@ const dict = {
       stats: [
         { value: 84, suffix: "/100", divisor: 1, label: "Score UX/Design", sub: "Auditoria independente pós-implementação" },
         { value: 3, suffix: " papéis", divisor: 1, label: "Dashboards diferenciados", sub: "Promotor, construtor e técnico" },
-        { value: 200, suffix: "+", divisor: 1, label: "Obras reais por trás do catálogo", sub: "13 anos de dados medidos em obra" },
+        { value: 200, suffix: "+", divisor: 1, label: "Obras reais por trás do catálogo", sub: "15 anos de dados medidos em obra" },
       ],
     },
     pricing: {
