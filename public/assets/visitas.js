@@ -12,8 +12,11 @@
    arreglos opuestos.  Consulta:
      select path, count(*) from visitas where path like '/evento/%' group by 1;
 
-   ⚠️ Fichero IDÉNTICO en las 4 webs. Al tocarlo, copiarlo a las cuatro rutas
-   (ver la nota de memoria `analitica-visitas-canario`).                        */
+   ⚠️ Fichero IDÉNTICO en las 5 webs: cimbrium.com, pactstream.io, costpact.io,
+   fiscalcore.io y wearetomato.com. Al tocarlo, copiarlo a LAS CINCO rutas (la
+   tabla canónica está en la nota de memoria `analitica-visitas-canario`).
+   Contar las webs, no fiarse de un número: el 10-oct-2026 se actualizaron «las
+   4 webs» y wearetomato.com, la quinta, se quedó con la versión vieja.         */
 (function () {
   var URL = 'https://tkncogzzlzbfhsfqlnsw.supabase.co/rest/v1/visitas';
   var KEY = 'sb_publishable_HjRkq_yRX4NzO2s7hGNLSQ_AXT-51VR';
@@ -56,7 +59,14 @@
 
   // Solo conservamos parámetros de campaña conocidos — nunca el query completo,
   // para no registrar jamás PII que pudiera viajar en la URL (email, token, etc.).
-  var TAGS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','s','ref','gclid','fbclid','li_fat_id','msclkid'];
+  //
+  // ⚠️ SIN identificadores de clic de anuncio (gclid, fbclid, li_fat_id, msclkid),
+  // a propósito (11-oct-2026). Son únicos por clic y la plataforma de anuncios
+  // puede asociarlos a la persona que hizo clic: guardarlos contradice la promesa
+  // «sin ningún identificador de persona» de las políticas de cookies. Las
+  // etiquetas de abajo describen la CAMPAÑA, no a quien llega por ella.
+  // Si algún día se lanzan campañas de pago, revisar antes las cinco políticas.
+  var TAGS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','s','ref'];
   function rutaMedible() {
     try {
       var q = new URLSearchParams(location.search), keep = [];
