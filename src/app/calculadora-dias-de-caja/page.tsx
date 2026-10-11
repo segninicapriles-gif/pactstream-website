@@ -14,7 +14,7 @@ const ALT = {
 export const metadata: Metadata = {
   title: 'Calculadora de días de caja para constructoras | PactStream',
   description:
-    'El sector cobra a 96,5 días de media. Calcula cuánta caja te devuelve cobrar contra certificación verificada — con el resultado honesto, también cuando no nos favorece.',
+    'El sector cobra a 96,5 días. Calcula cuánta caja recuperas al cobrar contra certificación verificada, con el resultado honesto aunque no nos favorezca.',
   keywords: [
     'plazo de cobro construcción',
     'circulante obra',
