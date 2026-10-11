@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Política de Cookies — PactStream",
+  // Canonical PROPIO. Sin él, Next hereda el del layout raíz, que apuntaba a
+  // la home: Google trataba esta página como duplicado de / (11-oct-2026).
+  alternates: { canonical: "https://pactstream.io/cookies" },
 };
 
 export default function CookiesPage() {

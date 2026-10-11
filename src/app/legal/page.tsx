@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Aviso Legal — PactStream",
+  // Canonical PROPIO. Sin él, Next hereda el del layout raíz, que apuntaba a
+  // la home: Google trataba esta página como duplicado de / (11-oct-2026).
+  alternates: { canonical: "https://pactstream.io/legal" },
 };
 
 export default function LegalPage() {

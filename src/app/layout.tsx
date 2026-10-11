@@ -72,9 +72,13 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  alternates: {
-    canonical: "https://pactstream.io",
-  },
+  // ⚠️ SIN canonical aquí, a propósito (11-oct-2026). El layout raíz lo hereda
+  // TODA página que no declare el suyo, y aquí valía "https://pactstream.io":
+  // /legal, /privacidad, /terminos y /cookies se declaraban duplicados de la home
+  // y Google no las indexaba. Cada página declara ahora su propio canonical.
+  // Una página nueva que lo olvide saldrá «sin canonical» en
+  // scripts/verificar_despliegue.py — visible — en vez de apuntar a la home en
+  // silencio, que es lo que pasaba. NO volver a ponerlo aquí.
   icons: {
     icon: [
       { url: "/favicon-64.png?v=arco2", sizes: "64x64", type: "image/png" },
