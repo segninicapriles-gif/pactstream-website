@@ -21,8 +21,23 @@
   var URL = 'https://tkncogzzlzbfhsfqlnsw.supabase.co/rest/v1/visitas';
   var KEY = 'sb_publishable_HjRkq_yRX4NzO2s7hGNLSQ_AXT-51VR';
 
+  // Tráfico INTERNO (13-oct-2026): las comprobaciones del equipo y de Claude
+  // inflaban las cifras (16 de 44 entradas en wearetomato.com). Abrir cualquier
+  // página con ?interno=1 marca ESE navegador en ESA web y deja de contar;
+  // ?interno=0 lo deshace. localStorage es por dominio: hay que marcar cada web.
+  // Solo lo activa quien abre el enlace a propósito; al visitante no se le guarda nada.
+  function interno() {
+    try {
+      var q = new URLSearchParams(location.search).get('interno');
+      if (q === '1') localStorage.setItem('cimbrium-interno', '1');
+      if (q === '0') localStorage.removeItem('cimbrium-interno');
+      return localStorage.getItem('cimbrium-interno') === '1';
+    } catch (e) { return false; }
+  }
+
   function permitido() {
     if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return false;
+    if (interno()) return false;
     var h = location.hostname;
     return !(h === 'localhost' || h === '127.0.0.1' || /\.vercel\.app$/.test(h));
   }
