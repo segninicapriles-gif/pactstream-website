@@ -44,7 +44,7 @@ export default function TerminosPage() {
 
         <h2>4. Registro y cuenta</h2>
         <p>
-          El usuario se compromete a facilitar información veraz, completa y actualizada, y a mantener la confidencialidad de sus credenciales. Es responsable de toda actividad realizada desde su cuenta. Determinadas funcionalidades requieren superar un proceso de verificación de identidad (KYC) exigido por la normativa de prevención de blanqueo de capitales.
+          El usuario se compromete a facilitar información veraz, completa y actualizada, y a mantener la confidencialidad de sus credenciales. Es responsable de toda actividad realizada desde su cuenta. La plataforma dispone de verificación de identidad mediante Veriff. Cuando la normativa de prevención del blanqueo de capitales lo exija, determinadas funcionalidades podrán quedar condicionadas a completarla.
         </p>
 
         <h2>5. Funcionamiento del servicio</h2>
@@ -119,7 +119,7 @@ export default function TerminosPage() {
           Estos Términos se rigen por la legislación española. Para las controversias relativas al uso de la plataforma, las partes se someten a los Juzgados y Tribunales de Madrid, salvo que la ley establezca otro fuero imperativo, en particular el que corresponda al usuario consumidor. Las controversias sobre la ejecución de la obra se rigen por lo previsto en la cláusula de resolución de disputas del contrato entre las partes.
         </p>
 
-        <p className="text-white/40 text-xs mt-12">Última actualización: agosto 2026</p>
+        <p className="text-white/40 text-xs mt-12">Última actualización: octubre 2026</p>
 
         <div className="mt-8">
           <a href="/" className="text-[#0D9B84] hover:text-[#0FC9A8] text-sm">← Volver a la página principal</a>
