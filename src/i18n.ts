@@ -171,7 +171,7 @@ const dict = {
     pricing: {
       tag: "Precios claros",
       heading: "Paga la constructora. Su cliente, no.",
-      sub: "El promotor protege su inversión sin pagar nada. La constructora convierte esa garantía en contratos y cobra en 24 h. El técnico gana productividad.",
+      sub: "El promotor protege su inversión sin pagar nada. La constructora convierte esa garantía en contratos y cobra en 24 h desde la validación de cada hito. El técnico gana productividad.",
       founderNote: "Estos son precios de fundador para la primera oleada. Los primeros 50 los conservan de por vida.",
       cta: "Reservar mi plaza",
       profiles: [
@@ -710,7 +710,7 @@ const dict = {
     pricing: {
       tag: "Clear pricing",
       heading: "The builder pays. Their client doesn't.",
-      sub: "Developers protect their investment at no cost. Builders turn that guarantee into contracts and get paid in 24 hours. Surveyors gain productivity.",
+      sub: "Developers protect their investment at no cost. Builders turn that guarantee into contracts and get paid within 24 hours of each milestone's validation. Surveyors gain productivity.",
       founderNote: "These are founder prices for the first wave. The first 50 keep them for life.",
       cta: "Reserve my spot",
       profiles: [
@@ -1249,7 +1249,7 @@ const dict = {
     pricing: {
       tag: "Preços claros",
       heading: "Paga a construtora. O cliente dela, não.",
-      sub: "O promotor protege o seu investimento sem pagar nada. A construtora converte essa garantia em contratos e recebe em 24 horas. O técnico ganha produtividade.",
+      sub: "O promotor protege o seu investimento sem pagar nada. A construtora converte essa garantia em contratos e recebe em 24 horas após a validação de cada marco. O técnico ganha produtividade.",
       founderNote: "Estes são preços de fundador para a primeira vaga. Os primeiros 50 mantêm-nos para sempre.",
       cta: "Reservar o meu lugar",
       profiles: [
