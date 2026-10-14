@@ -116,7 +116,7 @@ const STR: Record<Loc, Strings> = {
     h1: '¿Cuánta caja te devuelve cobrar contra certificación?',
     lead: (
       <>
-        El sector cobra a 96,5 días de media (PMcM).{' '}
+        En construcción, el periodo medio de pago es de 96,5 días (CEPYME, cierre de 2025).{' '}
         <b className="text-[var(--color-navy-vault)]">PactStream invierte el orden</b>: el dinero de
         la obra queda custodiado en cuenta regulada antes de empezar, y cada certificación verificada
         libera tu cobro en 24&nbsp;horas desde la validación del hito. Mueve los datos de tu obra y
@@ -196,7 +196,7 @@ const STR: Record<Loc, Strings> = {
     h1: 'How much cash does getting paid against certification give back to you?',
     lead: (
       <>
-        In construction, getting paid takes months — 96.5 days on average in Spain (PMcM), 81 in
+        In construction, getting paid takes months — 96.5 days on average in Spain (CEPYME, end of 2025), 81 in
         Portugal, the worst in the EU.{' '}
         <b className="text-[var(--color-navy-vault)]">PactStream inverts the order</b>: the project&apos;s
         money is held in a regulated account before work starts, and each verified certification
