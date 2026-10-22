@@ -3,7 +3,7 @@
 /* ─────────────────────────────────────────────────────────────────────────
    Landing /autopromotores — captación del PARTICULAR que invierte en su obra
    (autopromoción + reforma integral). Enfoque CANAL (reserva plaza → trae a su
-   constructor; la custodia la paga la constructora). Acceso anticipado, Q4 2026.
+   constructor; la custodia la paga la constructora). Acceso anticipado: se activa con los primeros clientes.
    Copy aprobado 3-oct-2026. Sin «único», Hito 0 «en negociación», la dirección
    técnica certifica (la IA solo puntúa). ES.
    Craft al nivel de pactstream.io (Sistema ARCO): acento cian #A9F3FF sobre navy
@@ -163,7 +163,7 @@ function Waitlist({ caso }: { caso: Caso }) {
         </button>
       </div>
       {state === 'err' && <p className="text-[#F7B54A] text-sm mt-2">No hemos podido guardar tu reserva. Inténtalo de nuevo.</p>}
-      <p className="text-xs text-[#8896A6] mt-3">Al reservar, aceptas recibir correos de PactStream sobre el acceso anticipado (previsto Q4 2026). Sin coste ni compromiso; te das de baja cuando quieras. <a href="/privacidad" className="underline hover:text-white transition-colors">Privacidad</a>.</p>
+      <p className="text-xs text-[#8896A6] mt-3">Al reservar, aceptas recibir correos de PactStream sobre el acceso anticipado (se activa con los primeros clientes). Sin coste ni compromiso; te das de baja cuando quieras. <a href="/privacidad" className="underline hover:text-white transition-colors">Privacidad</a>.</p>
     </form>
   )
 }
@@ -210,7 +210,7 @@ export function AutopromotoresLanding() {
     ['¿Necesito arquitecto o aparejador?', 'En obra nueva y autopromoción la normativa ya exige dirección facultativa, así que tu técnico es quien certifica cada hito. En reforma integral lo habitual es contar con técnico cuando hay licencia o intervención de calado. Si aún no tienes a nadie, en la lista de espera te explicamos cómo incorporar a un profesional independiente. La certificación técnica es el corazón del sistema: sin ella no hay liberación de pago.'],
     ['¿Y si mi constructor no quiere usarlo?', 'Es una pregunta lógica. Para la constructora, el sistema es una ventaja: el dinero del hito está depositado y a la vista, y cobra al certificarse. Te prepararemos un mensaje claro para presentárselo. Y aunque decida no hacerlo, reservar tu plaza no te compromete a nada.'],
     ['¿Sirve para obra nueva y para reforma?', 'Sí. Está diseñado para ambas: desde la autopromoción de una vivienda unifamiliar hasta una reforma integral de un piso, con los hitos adaptados a cada caso.'],
-    ['¿Cuándo estará disponible?', 'El lanzamiento está previsto para el cuarto trimestre de 2026. Ahora abrimos una lista de espera de acceso anticipado: quienes reserven plaza recibirán el aviso antes que nadie y serán de los primeros en probarlo. Todavía no es un servicio operativo.'],
+    ['¿Cuándo estará disponible?', 'PactStream está desarrollado y lo activamos con los primeros clientes. Ahora abrimos una lista de espera de acceso anticipado: quienes reserven plaza recibirán el aviso antes que nadie y serán de los primeros en probarlo. Todavía no es un servicio operativo.'],
     ['¿Cuánto me cuesta?', 'Para ti, nada: la custodia la paga la constructora. Reservar tu plaza tampoco te cuesta nada ni te obliga a contratar.'],
     ['¿Y si el constructor abandona la obra?', 'Como cada pago solo se libera tras la certificación de la dirección técnica, lo que no se ha certificado no se ha pagado: tu dinero sigue en la cuenta de garantía. Para el anticipo inicial, el momento de mayor exposición, está el Hito 0, protegido por una póliza de caución con una aseguradora líder del mercado (en negociación).'],
     ['¿Quién custodia mi dinero? ¿Es seguro?', 'Se deposita en una cuenta de garantía regulada, externa a ti y al constructor, sujeta a la normativa europea de servicios de pago (PSD2). Ninguna de las dos partes puede disponer de él por su cuenta. Detallaremos entidad y condiciones antes del lanzamiento.'],
@@ -273,7 +273,7 @@ export function AutopromotoresLanding() {
               [ShieldCheck, 'Cuenta de garantía regulada'],
               [ClipboardCheck, 'Libera la dirección técnica'],
               [CircleDollarSign, 'Sin coste para el propietario'],
-              [TrendingUp, 'Acceso anticipado · Q4 2026'],
+              [TrendingUp, 'Acceso anticipado · primeros clientes'],
             ].map(([Icon, t], i) => (
               <div key={i} className="flex items-center gap-2.5 rounded-[14px] px-4 py-3.5 border border-white/[0.06]" style={{ background: 'rgba(255,255,255,0.04)' }}>
                 <Icon className="w-5 h-5 shrink-0" style={{ color: TEAL }} />
