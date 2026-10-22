@@ -23,7 +23,7 @@ export default function TerminosPage() {
 
         <h2>2. Qué es PactStream y qué no es</h2>
         <p>
-          PactStream es una plataforma tecnológica de custodia y validación de pagos por hitos para obras de construcción y reforma. Su función es retener el importe de cada hito hasta que se cumplan las condiciones de liberación pactadas entre las partes.
+          PactStream es una plataforma tecnológica de validación y liberación de pagos por hitos para obras de construcción y reforma. Su función es que el importe de cada hito permanezca reservado hasta que se cumplan las condiciones de liberación pactadas entre las partes. PactStream no custodia los fondos: los custodia un proveedor de pagos regulado, ajeno a las partes y a PactStream.
         </p>
         <p>
           <strong>PactStream no es parte del contrato de obra.</strong> No ejecuta obra, no dirige la ejecución, no supervisa la calidad constructiva ni asume la posición de promotor, constructor o dirección facultativa. El contrato de obra se celebra exclusivamente entre las partes que lo suscriben.
@@ -49,7 +49,7 @@ export default function TerminosPage() {
 
         <h2>5. Funcionamiento del servicio</h2>
         <p>
-          El presupuesto de cada obra se divide en hitos secuenciales. El promotor deposita el importe correspondiente a cada hito en una cuenta de custodia gestionada por PactStream, donde permanece bloqueado hasta su liberación.
+          El presupuesto de cada obra se divide en hitos secuenciales. El promotor deposita el importe correspondiente a cada hito en una cuenta de custodia gestionada por un proveedor de pagos regulado, ajeno a las partes y a PactStream, donde permanece bloqueado hasta su liberación. PactStream comunica al proveedor la liberación cuando se cumplen las condiciones pactadas.
         </p>
         <p>
           La validación de cada hito depende del tipo de obra:

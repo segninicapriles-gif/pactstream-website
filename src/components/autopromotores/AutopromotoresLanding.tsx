@@ -177,7 +177,7 @@ export function AutopromotoresLanding() {
     ? {
         kicker: 'Autopromoción · construir tu casa',
         title: ['Vas a poner media vida en una obra. ', 'Que cada pago tenga respaldo.'],
-        subtitle: 'PactStream guarda el dinero en una cuenta de garantía regulada y solo lo libera cuando tu arquitecto o aparejador certifica que ese tramo de obra está hecho. Tú no pagas por protegerte: la custodia la paga tu constructora.',
+        subtitle: 'Tu dinero lo custodia un proveedor de pagos regulado, no nosotros, en una cuenta de garantía, y solo se libera cuando tu arquitecto o aparejador certifica que ese tramo de obra está hecho. Tú no pagas por protegerte: la custodia la paga tu constructora.',
       }
     : {
         kicker: 'Reforma integral de tu vivienda',
@@ -213,7 +213,7 @@ export function AutopromotoresLanding() {
     ['¿Cuándo estará disponible?', 'PactStream está desarrollado y lo activamos con los primeros clientes. Ahora abrimos una lista de espera de acceso anticipado: quienes reserven plaza recibirán el aviso antes que nadie y serán de los primeros en probarlo. Todavía no es un servicio operativo.'],
     ['¿Cuánto me cuesta?', 'Para ti, nada: la custodia la paga la constructora. Reservar tu plaza tampoco te cuesta nada ni te obliga a contratar.'],
     ['¿Y si el constructor abandona la obra?', 'Como cada pago solo se libera tras la certificación de la dirección técnica, lo que no se ha certificado no se ha pagado: tu dinero sigue en la cuenta de garantía. Para el anticipo inicial, el momento de mayor exposición, está el Hito 0, protegido por una póliza de caución con una aseguradora líder del mercado (en negociación).'],
-    ['¿Quién custodia mi dinero? ¿Es seguro?', 'Se deposita en una cuenta de garantía regulada, externa a ti y al constructor, sujeta a la normativa europea de servicios de pago (PSD2). Ninguna de las dos partes puede disponer de él por su cuenta. Detallaremos entidad y condiciones antes del lanzamiento.'],
+    ['¿Quién custodia mi dinero? ¿Es seguro?', 'Se deposita en una cuenta de garantía regulada, externa a ti, al constructor y a PactStream, y la gestiona un proveedor de pagos regulado por la normativa europea de servicios de pago (PSD2). Nadie puede disponer de él por su cuenta. Detallaremos entidad y condiciones antes del lanzamiento.'],
     ['¿Decide una máquina si se me paga?', 'No. La decisión es de la dirección técnica, que certifica el avance. La puntuación de las evidencias (0 a 100, verde/ámbar/rojo) solo es una ayuda para que certifique con más información. Ni tú ni nadie aprueba pagos a ciegas.'],
   ]
 
