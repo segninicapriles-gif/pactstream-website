@@ -430,12 +430,12 @@ function EstadoSection({ t }: { t: Dict }) {
   return (
     <section
       aria-labelledby="estado-heading"
-      className="border-y border-white/10 bg-white/[0.02] py-12 md:py-16"
+      className="border-y border-[#1A2332]/10 bg-white/60 py-12 md:py-16"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <h2
           id="estado-heading"
-          className="mb-8 text-xs font-semibold uppercase tracking-wider text-[#A9F3FF]"
+          className="mb-8 text-xs font-semibold uppercase tracking-wider text-[#0B6E5F]"
         >
           {t.estado.titulo}
         </h2>
@@ -448,7 +448,7 @@ function EstadoSection({ t }: { t: Dict }) {
             </p>
             <ul className="space-y-2.5">
               {t.estado.hoy.map((linea: string) => (
-                <li key={linea} className="text-sm leading-relaxed text-white/80">
+                <li key={linea} className="text-sm leading-relaxed text-[#1A2332]">
                   {linea}
                 </li>
               ))}
@@ -456,13 +456,13 @@ function EstadoSection({ t }: { t: Dict }) {
           </div>
 
           <div>
-            <p className="mb-4 flex items-center gap-2 text-sm font-semibold text-[#8896A6]">
+            <p className="mb-4 flex items-center gap-2 text-sm font-semibold text-[#5A6B7F]">
               <ShieldCheck className="h-4 w-4 shrink-0" />
               {t.estado.despuesTitulo}
             </p>
             <ul className="space-y-3">
               {t.estado.despues.map((linea: string) => (
-                <li key={linea} className="text-sm leading-relaxed text-[#8896A6]">
+                <li key={linea} className="text-sm leading-relaxed text-[#5A6B7F]">
                   {linea}
                 </li>
               ))}
@@ -470,7 +470,7 @@ function EstadoSection({ t }: { t: Dict }) {
           </div>
         </div>
 
-        <p role="note" className="mt-8 border-t border-white/10 pt-5 text-xs leading-relaxed text-[#8896A6]/80">
+        <p role="note" className="mt-8 border-t border-[#1A2332]/10 pt-5 text-xs leading-relaxed text-[#5A6B7F]">
           {t.estado.cuerpo}
         </p>
       </div>
