@@ -13,7 +13,7 @@
    Propiedad común: site = 'pactstream'. El origen desde cimbrium.com llega en utm_source=cimbrium.
 */
 (function () {
-  var POSTHOG_KEY = '__POSTHOG_KEY__';
+  var POSTHOG_KEY = 'phc_m2ZMAr4Qq6a3Uf3PdQsnJBB4MFg9r4ZF587mMCrVKptw';
   var HOST = 'https://eu.i.posthog.com';
 
   var m = (location.pathname || '/').match(/^\/(en|pt)(\/|$)/);
