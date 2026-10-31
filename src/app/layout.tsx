@@ -140,6 +140,8 @@ export default function RootLayout({
             Vercel que no se puede comprobar desde fuera: componente presente
             no es lo mismo que dato recogido. */}
         <script defer src="/assets/visitas.js" />
+        {/* PostHog (NG-67): inerte mientras la clave sea el marcador; sin cookies. */}
+        <script defer src="/assets/analitica.js" />
         {/* GA4 estuvo aqui con Consent Mode v2 denegado por defecto. Como el
             sitio no tiene banner de consentimiento, esa autorizacion nunca se
             concedia: el tag se cargaba en cada visita, hacia peticiones a

@@ -31,6 +31,16 @@ export async function insertWaitlist(
   role?: string,
   source = "website",
 ): Promise<void> {
+  try {
+    await insertarFila(email, role, source);
+    medirAlta(true, role, source);
+  } catch (err) {
+    medirAlta(false, role, source);
+    throw err;
+  }
+}
+
+async function insertarFila(email: string, role: string | undefined, source: string): Promise<void> {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
     method: "POST",
     headers: {
@@ -44,4 +54,21 @@ export async function insertWaitlist(
   // 409 = ya estaba apuntado. Para el visitante eso es un éxito, no un fallo:
   // ya está en la lista y volver a decírselo como error solo confunde.
   if (!res.ok && res.status !== 409) throw new Error("Error al registrar");
+}
+
+/**
+ * Medición del alta (PostHog, NG-67). Inerte mientras analitica.js lleve el
+ * marcador de clave. NUNCA recibe ni envía el email: solo el perfil (si es un
+ * valor corto, no el texto libre de la calculadora) y el `source` de la página.
+ */
+export function medirAlta(ok: boolean, role?: string, source?: string): void {
+  try {
+    const perfil = role && role.length <= 40 ? role : undefined;
+    (window as any).pactstreamAnalitica?.(
+      ok ? "waitlist_submit_success" : "waitlist_submit_error",
+      { perfil, origen: source },
+    );
+  } catch {
+    /* la analítica jamás rompe el formulario */
+  }
 }
