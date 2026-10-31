@@ -23,7 +23,7 @@ export default function PrivacidadPage() {
         <ul>
           <li><strong>Correo electrónico:</strong> proporcionado voluntariamente al registrarse en la lista de espera.</li>
           <li><strong>Rol profesional:</strong> promotor, constructor o técnico, seleccionado al registrarse.</li>
-          <li><strong>Datos de navegación:</strong> dirección IP, tipo de navegador, páginas visitadas y duración de la visita (mediante cookies analíticas, sujetas a consentimiento).</li>
+          <li><strong>Datos de navegación:</strong> medimos las visitas y el uso de la lista de espera con PostHog (servidores en la UE), sin cookies ni almacenamiento en tu dispositivo, sin grabar sesiones y sin enviar tu correo electrónico. Respetamos la señal «No rastrear» de tu navegador.</li>
         </ul>
 
         <h2>3. Finalidad del tratamiento</h2>
