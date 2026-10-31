@@ -42,6 +42,9 @@
   window.posthog.init(POSTHOG_KEY, {
     api_host: HOST,
     persistence: 'memory',
+    capture_dead_clicks: false,
+    capture_performance: false,
+    capture_heatmaps: false,
     disable_session_recording: true,
     autocapture: false,
     capture_pageview: true,
