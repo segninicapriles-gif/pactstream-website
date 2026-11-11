@@ -138,12 +138,6 @@ function softwareApp() {
     "Control de obra con verificación del avance por IA (score 0-100) y pago condicionado por hitos sobre cuenta regulada PSD2. Presupuesto de origen con CostPact.",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web, iOS, Android",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "EUR",
-    description: "Starter — gratis, 2,4% por transacción",
-  },
   author: {
     "@type": "Organization",
     name: "Tomato Design S.L.",
