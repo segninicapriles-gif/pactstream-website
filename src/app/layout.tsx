@@ -91,11 +91,49 @@ export const metadata: Metadata = {
   },
 };
 
+// Entidad de marca (SEO de marca, 11-nov-2026): sin Organization ni WebSite,
+// Google trataba «PactStream» como errata de «PacketStream». El @graph declara
+// la marca, sus perfiles verificados (sameAs) y su matriz, Cimbrium, con el
+// mismo @id que usa cimbrium.com, para que Google una las tres webs.
+const ORG_ID = "https://pactstream.io/#org";
+
 const jsonLd = {
   "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: "PactStream",
+      alternateName: "Pact Stream",
+      url: "https://pactstream.io/",
+      logo: "https://pactstream.io/icon-512.png",
+      sameAs: ["https://www.linkedin.com/company/pactstream"],
+      parentOrganization: {
+        "@type": "Organization",
+        "@id": "https://cimbrium.com/#org",
+        name: "Cimbrium",
+        url: "https://cimbrium.com/",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://pactstream.io/#web",
+      name: "PactStream",
+      alternateName: "Pact Stream",
+      url: "https://pactstream.io/",
+      publisher: { "@id": ORG_ID },
+      inLanguage: "es-ES",
+    },
+    softwareApp(),
+  ],
+};
+
+function softwareApp() {
+  return {
   "@type": "SoftwareApplication",
   name: "PactStream",
   url: "https://pactstream.io",
+  publisher: { "@id": ORG_ID },
   description:
     "Control de obra con verificación del avance por IA (score 0-100) y pago condicionado por hitos sobre cuenta regulada PSD2. Presupuesto de origen con CostPact.",
   applicationCategory: "BusinessApplication",
@@ -112,7 +150,8 @@ const jsonLd = {
     url: "https://wearetomato.com",
   },
   inLanguage: "es",
-};
+  };
+}
 
 export default function RootLayout({
   children,
